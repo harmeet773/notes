@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Comparitive Study Of Languages 
+title: Comparitive Study Of syntax of  Languages 
 ---
 
 The purpose of the page is to serve as a quick reference guide for syntax
@@ -8,3 +8,35 @@ The purpose of the page is to serve as a quick reference guide for syntax
 Array / List 
 
 js - array
+
+const fruits = ["apple", "banana", "mango"];
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("ban"));  // false , full element should match
+
+
+string 
+
+string - js 
+
+// string matching js
+const text = "JavaScript is fun";
+console.log(text.includes("Script")); // true
+console.log(text.includes("script")); // false (case-sensitive)
+
+// string matching python
+string - pyton 
+text = "Python is awesome"
+print("Python" in text)     # ✅ True
+print("python" in text)     # ❌ False (case-sensitive)
+
+
+different naming conventions
+naming conventions — 
+ways to write multi-word names (like variables, functions, classes) in code
+
+| Style      | Example     | Common Use Case                          |
+| ---------- | ----------- | ---------------------------------------- |
+| camelCase  | `userName`  | JS variables, functions, object keys     |
+| PascalCase | `UserName`  | Classes, React components                |
+| snake_case | `user_name` | Python, databases, environment variables |
+| kebab-case | `user-name` | CSS class names, HTML attributes         |
