@@ -22,12 +22,54 @@ for (const x of arr) console.log(x); // a, b, c
 for (const x in arr) console.log(x); // 0, 1, 2
 </code>
 </pre>
-js - array
+array - js 
 
 const fruits = ["apple", "banana", "mango"];
 console.log(fruits.includes("banana")); // true
 console.log(fruits.includes("ban"));  // false , full element should match
 
+spread and rest operator (...)
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Spread (<code>...</code>)</th>
+<th>Rest (<code>...</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Expand/expand elements of an iterable (array, object, string) into individual elements.</td>
+<td>Collect multiple elements/arguments into a single array or collect remaining properties.</td>
+</tr>
+<tr>
+<td><strong>Typical syntax</strong></td>
+<td><code>[...arr]</code>, <code>{...obj}</code>, <code>fn(...args)</code></td>
+<td><code>function f(...args)</code>, <code>const { a, ...rest } = obj</code></td>
+</tr>
+<tr>
+<td><strong>Used in</strong></td>
+<td>Array literals, object literals, function calls, iterable expansions.</td>
+<td>Function parameters, array/object destructuring to gather remaining items.</td>
+</tr>
+<tr>
+<td><strong>Result</strong></td>
+<td>Produces individual elements (does not create nested arrays unless element is nested).</td>
+<td>Creates an array of the remaining arguments/items or an object with remaining props.</td>
+</tr>
+<tr>
+<td><strong>Mutates original?</strong></td>
+<td>No — creates new arrays/objects when used in literals or calls.</td>
+<td>No — creates a new array/object holding collected values.</td>
+</tr>
+<tr>
+<td><strong>When to prefer</strong></td>
+<td>When you need to merge or expand values (e.g., shallow-copy arrays, pass array as args).</td>
+<td>When you want to accept variable number of args or extract "rest" fields in destructuring.</td>
+</tr>
+</tbody>
+</table>
 
 
 
