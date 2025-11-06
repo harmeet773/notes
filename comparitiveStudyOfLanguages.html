@@ -7,11 +7,29 @@ The purpose of the page is to serve as a quick reference guide for syntax
 
 Array / List 
 
+
+
+js - iterations methods 
+In JavaScript, the for...of loop is used to iterate over the values of an iterable object,
+such as an array, string, Map, or Set. 
+It gives you direct access to each element’s value,
+making it ideal when you only care about the data itself.
+On the other hand, the for...in loop is used to iterate over the keys (or property names) of an object. It’s commonly used for looping through object properties rather than array elements. While for...in works with objects and returns the keys as strings, for...of works with iterables and returns their actual values. Therefore, for...of is better suited for arrays and other iterable structures, while for...in is typically used for plain JavaScript objects.
+<pre>
+<code>
+const arr = ["a", "b", "c"];
+for (const x of arr) console.log(x); // a, b, c
+for (const x in arr) console.log(x); // 0, 1, 2
+</code>
+</pre>
 js - array
 
 const fruits = ["apple", "banana", "mango"];
 console.log(fruits.includes("banana")); // true
 console.log(fruits.includes("ban"));  // false , full element should match
+
+
+
 
 
 string 
