@@ -7,8 +7,10 @@ The purpose of the page is to serve as a quick reference guide for syntax
 
 Array / List 
 
-
-
+array -js 
+<p>In JavaScript, any non promitive data type is a kind of object hence ,arrays are a special kind of object, which is why  -
+<code> [1,3]  is // "object"    </code>
+</p>
 js - iterations methods 
 <p>
 In JavaScript, the for...of loop is used to iterate over the values of an iterable object,
@@ -24,12 +26,14 @@ for (const x in arr) console.log(x); // 0, 1, 2
 </code>
 </pre>
 </p>
-array - js 
-
+array and operations on array - js 
+<p>
+<pre>
+<code>
 const fruits = ["apple", "banana", "mango"];
 console.log(fruits.includes("banana")); // true
 console.log(fruits.includes("ban"));  // false , full element should match
-
+</code></pre></p>
 spread and rest operator (...)
 <table>
 <thead>
@@ -73,7 +77,99 @@ spread and rest operator (...)
 </tbody>
 </table>
 
+type conversion in js
+String(numerial value) // to conver into string 
+Number(string_value) // ro convert into number
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Direction</th>
+      <th>Converts</th>
+      <th>Example</th>
+      <th>Output</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>toString()</code></td>
+      <td>Number → String</td>
+      <td>Converts any value to string</td>
+      <td><code>(123).toString()</code></td>
+      <td><code>"123"</code></td>
+      <td>string</td>
+    </tr>
+    <tr>
+      <td><code>parseInt()</code></td>
+      <td>String → Number</td>
+      <td>Converts string to integer</td>
+      <td><code>parseInt("123")</code></td>
+      <td><code>123</code></td>
+      <td>number</td>
+    </tr>
+    <tr>
+      <td><code>parseFloat()</code></td>
+      <td>String → Number</td>
+      <td>Converts string to float</td>
+      <td><code>parseFloat("12.5")</code></td>
+      <td><code>12.5</code></td>
+      <td>number</td>
+    </tr>
+  </tbody>
+</table>
 
+
+operators - js
+
+% - The % operator is the remainder (modulus) operator.
+/ - The / operator in JavaScript is the division operator.
+console.log(7 / 2);   // 3.5  
+const quotient = Math.floor(7 / 2); // to get quotient 
+
+Not operator - 
+In JavaScript, there is no dedicated not keyword — but the same logic is done using the logical NOT operator i.e !
+in js we could use Double NOT (!!) to converts any value to its boolean equivalent.
+
+
+Set - js 
+
+let mySet = new Set();
+//  .add(value)  , .delete(value) , .has(value) , .clear() , .size
+mySet.add(10);
+mySet.add(20);
+mySet.add(10); // duplicate, ignored
+console.log(mySet);       // Set(2) {10, 20}
+console.log(mySet.size);  // 2
+
+map  - js 
+<p>we can also use js object as map.but objects only accept string or symbol keys — not other data types.</p>
+<pre>
+<code>
+const map = new Map();
+// Add key-value pairs
+map.set('name', 'Harmeet');
+map.set('age', 25);
+map.set(true, 'Yes'); // can use boolean as key
+
+// Get a value
+console.log(map.get('name')); // "Harmeet"
+
+// Check if key exists
+console.log(map.has('age')); // true
+
+// Delete a key
+map.delete('age');
+
+// Get map size
+console.log(map.size); // 2
+
+// Iterate through entries
+for (const [key, value] of map) {
+  console.log(key, value);
+}
+<pre>
+<code>
 
 
 string 
@@ -96,9 +192,34 @@ different naming conventions
 naming conventions — 
 ways to write multi-word names (like variables, functions, classes) in code
 
-| Style      | Example     | Common Use Case                          |
-| ---------- | ----------- | ---------------------------------------- |
-| camelCase  | `userName`  | JS variables, functions, object keys     |
-| PascalCase | `UserName`  | Classes, React components                |
-| snake_case | `user_name` | Python, databases, environment variables |
-| kebab-case | `user-name` | CSS class names, HTML attributes         |
+<table border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Style</th>
+      <th>Example</th>
+      <th>Common Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>camelCase</td>
+      <td><code>userName</code></td>
+      <td>JS variables, functions, object keys</td>
+    </tr>
+    <tr>
+      <td>PascalCase</td>
+      <td><code>UserName</code></td>
+      <td>Classes, React components</td>
+    </tr>
+    <tr>
+      <td>snake_case</td>
+      <td><code>user_name</code></td>
+      <td>Python, databases, environment variables</td>
+    </tr>
+    <tr>
+      <td>kebab-case</td>
+      <td><code>user-name</code></td>
+      <td>CSS class names, HTML attributes</td>
+    </tr>
+  </tbody>
+</table>
