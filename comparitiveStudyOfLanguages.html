@@ -3,13 +3,97 @@ layout: default
 title: Comparitive Study Of syntax of  Languages 
 ---
 
-The purpose of the page is to serve as a quick reference guide for syntax
+The purpose of the page is to serve as a quick reference guide for syntax.
+
+<p>JavaScript’s <code>ToBoolean</code> operation converts any expression into a boolean.  
+The <code>while( expr)</code> loop runs only when <code>ToBoolean(expr) === true</code>is true.</p>
+
+<a class="btn btn-link" data-bs-toggle="HowJSConvertsExpressionsInBollean" href="#HowJSConvertsExpressionsInBollean?">
+  Show / Hide Info
+</a>  
+<div id="HowJSConvertsExpressionsInBollean" class="collapse"></div>
+<div class="mb-4">
+  <h5 class="mb-3">JavaScript’s falsy values</h5>
+  <p>There are only a handful of falsy values:</p>
+
+  <ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>false</code>
+      <span class="badge bg-secondary">boolean</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>0</code>
+      <span class="badge bg-secondary">number</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>-0</code>
+      <span class="badge bg-secondary">negative zero</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>0n</code>
+      <span class="badge bg-secondary">BigInt zero</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>""</code>
+      <span class="badge bg-secondary">empty string</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>null</code>
+      <span class="badge bg-secondary">null</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>undefined</code>
+      <span class="badge bg-secondary">undefined</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <code>NaN</code>
+      <span class="badge bg-secondary">Not-a-Number</span>
+    </li>
+  </ul>
+
+  <p><strong>Note:</strong> Everything else—objects, arrays, functions, non-empty strings, and non-zero numbers—is <strong>truthy</strong>.</p>
+</div>
+
+
+slice - js
+<p>In JavaScript, slice() is used to extract a portion of an array or string without modifying the original.
+It works on arrays and strings.  It does not modifies original.</p>
+<pre>array.slice(start, end); string.slice(start,end) </pre>
+
+
+<div class="mb-4">
+  <h3 class="h4">JavaScript Data Types and How They Are Stored</h3>
+  <p class="text-muted">Understanding the difference between primitive values and objects in memory.</p>
+
+  <table class="table table-bordered table-striped mt-3">
+    <thead class="table-light">
+      <tr>
+        <th>Type</th>
+        <th>Example</th>
+        <th>What variable stores?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primitive</strong> (string, number, boolean, null, undefined, bigint, symbol)</td>
+        <td><code>"har"</code>, <code>10</code>, <code>true</code></td>
+        <td><strong>The actual value itself</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Object</strong> (array, function, object)</td>
+        <td><code>{}</code>, <code>[]</code>, <code>function(){}</code></td>
+        <td><strong>A reference (pointer) to the object</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 Array / List 
 
 array -js 
 <p>In JavaScript, any non promitive data type is a kind of object hence ,arrays are a special kind of object, which is why  -
-<code> [1,3]  is // "object"    </code>
+<code> [1,3]  is // "object" </code>
 </p>
 js - iterations methods 
 <p>
@@ -33,6 +117,10 @@ array and operations on array - js
 const fruits = ["apple", "banana", "mango"];
 console.log(fruits.includes("banana")); // true
 console.log(fruits.includes("ban"));  // false , full element should match
+console.log(fruits.shift()); //	Removes the first element of an array, and returns that element
+console.log(fruits.unshift()); // Adds new elements to the beginning of an array, and returns the new length
+console.log(fruits.push("orange")); // push() → Add element at the END
+console.log(fruits.pop());  // Returns removed element -> "orange"
 </code></pre></p>
 spread and rest operator (...)
 <table>

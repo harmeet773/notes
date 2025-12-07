@@ -3,9 +3,8 @@ layout: default
 title: General concepts related to programming 
 ---
 
-
 initialization vs assignment vs declaration 
-
+ 
 Declaration means telling the compiler/interpreter that a variable (or function) exists and what type it is (if applicable).
 int x;  // declaration
 
@@ -16,3 +15,67 @@ Assignment means giving or updating the value of a variable after it has already
 int x;      // declaration
 x = 10;     // initialization (first assignment)
 x = 20;     // reassignment (new value)
+
+
+node.js is single threaded non-blocking Asynchronous framework.
+linux treats threads as sub-proces and windows treats threads as actual threads.
+
+
+async / await - we write a async function and every code that's blocking we write await to it . it will act Asynchronously but look synchrounously.
+
+with help of  multi process programming we can run the code on different machines . For example a function that bruteforces. 
+<div class="mb-4">
+  <h3 class="h4">Process</h3>
+  <p>An instance of a program with its own address space, resources, and execution state.</p>
+</div>
+
+<div class="mb-4">
+  <h3 class="h4">Thread</h3>
+  <p>A smaller execution unit within a process that shares the same memory with other threads inside the same process .</p>
+</div>
+
+<div class="mb-4">
+  <h3 class="h4">Process</h3>
+  <p><strong>process -</strong> A process is an independent program in execution.</p>
+
+  <h5 class="mt-3">Key Points</h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Has its own memory (RAM space).
+    </li>
+    <li class="list-group-item">
+      Has its own CPU time, stack, heap, file handles.
+    </li>
+    <li class="list-group-item">
+      Crashing one process doesn't affect others.
+    </li>
+    <li class="list-group-item">
+      <strong>Examples:</strong> Chrome.exe, VSCode.exe, python.exe
+    </li>
+  </ul>
+</div>
+<div class="mb-4">
+  <h3 class="h4">Thread</h3>
+  <p><strong>What is a Thread?</strong> A thread is the smallest unit of execution inside a process.</p>
+
+  <h5 class="mt-3">Key Points</h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Threads share the memory of the process.
+    </li>
+    <li class="list-group-item">
+      Lightweight compared to a process.
+    </li>
+    <li class="list-group-item">
+      One process can have multiple threads.
+    </li>
+    <li class="list-group-item">
+      <strong>Examples:</strong> A browser tab, file download thread, render thread.
+    </li>
+  </ul>
+</div>
+
+<p>
+event listeners  - event listeners listens to the subscribed event , they get invoked every time the event happens , as long as the listener is active.
+Instead of listening to event listener on DOM we can listen on specific elements of DOM , etc .</p>
+
