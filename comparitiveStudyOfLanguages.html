@@ -2,63 +2,75 @@
 layout: default
 title: Comparitive Study Of syntax of  Languages 
 ---
-
+ 
 The purpose of the page is to serve as a quick reference guide for syntax.
+<br/>
+<hr />
+<a class="btn btn-link" data-bs-toggle="collapse" href="#HowJSConvertsExpressionsInBoolean">
+  How JS Converts Expressions Into Boolean?
+</a>
 
-<a class="btn btn-link" data-bs-toggle="HowJSConvertsExpressionsInBollean" href="#HowJSConvertsExpressionsInBollean?">
-  How  and JS Converts Expressions Into boolean ? 
-</a>  
-<div id="HowJSConvertsExpressionsInBollean" class="collapse">
+<div id="HowJSConvertsExpressionsInBoolean" class="collapse">
 
-  
-<p>JavaScript’s <code>ToBoolean</code> operation converts any expression into a boolean.  
-  why conversion is required ?
-The <code>while( expr)</code> loop runs only when <code>ToBoolean(expr) === true</code>is true.</p>
+  <p>
+    JavaScript’s <code>ToBoolean</code> operation converts any expression into a boolean.  
+    <strong>Why is conversion required?</strong><br>
+    Because the <code>while(expr)</code> loop runs only when 
+    <code>ToBoolean(expr) === true</code>.
+  </p>
 
+  <div class="mb-4">
+    <h5 class="mb-3">JavaScript’s falsy values</h5>
+    <p>There are only a handful of falsy values:</p>
 
-<div class="mb-4">
-  <h5 class="mb-3">JavaScript’s falsy values</h5>
-  <p>There are only a handful of falsy values:</p>
+    <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>false</code>
+        <span class="badge bg-secondary">boolean</span>
+      </li>
 
-  <ul class="list-group mb-3">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>false</code>
-      <span class="badge bg-secondary">boolean</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>0</code>
-      <span class="badge bg-secondary">number</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>-0</code>
-      <span class="badge bg-secondary">negative zero</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>0n</code>
-      <span class="badge bg-secondary">BigInt zero</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>""</code>
-      <span class="badge bg-secondary">empty string</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>null</code>
-      <span class="badge bg-secondary">null</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>undefined</code>
-      <span class="badge bg-secondary">undefined</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <code>NaN</code>
-      <span class="badge bg-secondary">Not-a-Number</span>
-    </li>
-  </ul>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>0</code>
+        <span class="badge bg-secondary">number</span>
+      </li>
 
-  <p><strong>Note:</strong> Everything else—objects, arrays, functions, non-empty strings, and non-zero numbers—is <strong>truthy</strong>.</p>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>-0</code>
+        <span class="badge bg-secondary">negative zero</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>0n</code>
+        <span class="badge bg-secondary">BigInt zero</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>""</code>
+        <span class="badge bg-secondary">empty string</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>null</code>
+        <span class="badge bg-secondary">null</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>undefined</code>
+        <span class="badge bg-secondary">undefined</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <code>NaN</code>
+        <span class="badge bg-secondary">Not-a-Number</span>
+      </li>
+    </ul>
+
+    <p><strong>Note:</strong> Everything else—objects, arrays, functions, non-empty strings, and non-zero numbers—is <strong>truthy</strong>.</p>
+  </div>
+
 </div>
-</div>
 
+<hr />
 
 slice - js
 <p>In JavaScript, slice() is used to extract a portion of an array or string without modifying the original.
