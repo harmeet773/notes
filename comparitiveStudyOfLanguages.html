@@ -114,7 +114,7 @@ array -js
 </p>
 js - iterations methods 
 <p>
-In JavaScript, the for...of loop is used to iterate over the values of an iterable object,
+In JavaScript, the for...of loop  is used to iterate over the values of an iterable object,
 such as an array, string, Map, or Set. 
 It gives you direct access to each element’s value,
 making it ideal when you only care about the data itself.
@@ -124,6 +124,8 @@ On the other hand, the for...in loop is used to iterate over the keys (or proper
 const arr = ["a", "b", "c"];
 for (const x of arr) console.log(x); // a, b, c
 for (const x in arr) console.log(x); // 0, 1, 2
+// in → key , use of in should be avoided for arrays 
+// of → value
 </code>
 </pre>
 </p>
@@ -138,6 +140,18 @@ console.log(fruits.shift()); //	Removes the first element of an array, and retur
 console.log(fruits.unshift()); // Adds new elements to the beginning of an array, and returns the new length
 console.log(fruits.push("orange")); // push() → Add element at the END
 console.log(fruits.pop());  // Returns removed element -> "orange"
+
+"hello world".split() // No separator is provided ,The entire string becomes one single array element. // ["hello world"]
+"hello world".split("") // Empty string "" is used as the separator,The string is split character by character // ["h","e","l","l","o"," ","w","o","r","l","d"]
+
+["h", "e", "l", "l", "o"].join() // JavaScript uses comma , as the default separator . output -"h,e,l,l,o"
+["h", "e", "l", "l", "o"].join("") // Elements are joined without anything in between . output - "hello"
+// to reverse a string 
+let reversed = str.split("").reverse().join("");
+
+
+
+
 </code></pre></p>
 spread and rest operator (...)
 <table>
@@ -240,7 +254,7 @@ in js we could use Double NOT (!!) to converts any value to its boolean equivale
 Set - js 
 
 let mySet = new Set();
-//  .add(value)  , .delete(value) , .has(value) , .clear() , .size
+//  .add(value)  , .delete(value) , .has(value) , .clear()// clears the set , removes all element from set , .size
 mySet.add(10);
 mySet.add(20);
 mySet.add(10); // duplicate, ignored
@@ -276,6 +290,7 @@ for (const [key, value] of map) {
 <pre>
 <code>
 
+<p> The structuredClone() method in JavaScript is a built-in global function used to create a deep copy of an object or value.</p>
 
 string 
 
@@ -285,6 +300,8 @@ string - js
 const text = "JavaScript is fun";
 console.log(text.includes("Script")); // true
 console.log(text.includes("script")); // false (case-sensitive)
+let s2 = 'World';
+let s3 = `Hello ${s2}`; // template literal
 
 // string matching python
 string - pyton 
@@ -292,6 +309,11 @@ text = "Python is awesome"
 print("Python" in text)     # ✅ True
 print("python" in text)     # ❌ False (case-sensitive)
 
+
+js code snippets 
+To find quotient use 
+
+let quotient = Math.floor(sum / 10); // sum/10  would give a float value is it is not fully divisible 
 
 different naming conventions
 naming conventions — 

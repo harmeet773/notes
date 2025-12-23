@@ -20,10 +20,47 @@ x = 20;     // reassignment (new value)
 node.js is single threaded non-blocking Asynchronous framework.
 linux treats threads as sub-proces and windows treats threads as actual threads.
 
+<br/>
 
 async / await - we write a async function and every code that's blocking we write await to it . it will act Asynchronously but look synchrounously.
 
+Async = makes a function return a promise.
+Await = makes an async function wait for a promise. Await can only be 
+used inside an async function.
+Async/Await  
+// Allows you write asynchronous code in a synchronous manner
+// Async doesn't have resolve or reject parameters
+// Everything after Await is placed in an event queue
+
+<br/>
+
 with help of  multi process programming we can run the code on different machines . For example a function that bruteforces. 
+
+
+  <a class="btn btn-link" data-bs-toggle="collapse" href="#CORS">
+  How JS Converts Expressions Into Boolean?
+</a>
+
+<div id="CORS" class="collapse">
+
+  <p>
+    JavaScript’s <code>ToBoolean</code> operation converts any expression into a boolean.  
+    <strong>Why is conversion required?</strong><br>
+    Because the <code>while(expr)</code> loop runs only when 
+    <code>ToBoolean(expr) === true</code>.
+  </p>
+
+  <div class="mb-4">
+    CORS - Cross origin resource sharing 
+    
+
+    
+  </div>
+
+</div>
+
+
+
 <div class="mb-4">
   <h3 class="h4">Process</h3>
   <p>An instance of a program with its own address space, resources, and execution state.</p>
@@ -42,7 +79,7 @@ with help of  multi process programming we can run the code on different machine
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
       Has its own memory (RAM space).
-    </li>
+    </li>  
     <li class="list-group-item">
       Has its own CPU time, stack, heap, file handles.
     </li>
