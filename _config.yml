@@ -1,3 +1,32 @@
-title: notes
+title: Harmeet Notes
+description: Quick reference notes and snippets
+url: https://your-username.github.io
+baseurl: /github_notes
+theme: minima
+
+# GitHub Pages safe plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections and posts
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+paginate: 10
+paginate_path: "/page:num/"
+
+# Build settings
+include:
+  - _pages
+exclude:
+  - README.md
+  - node_modules
+  - vendor
+
+# Minima theme config
+minima:
+  skin: auto
+  social_links:
+    - { platform: github,  user_url: "https://github.com/your-username" }title: notes
 description: Welcome to my notes site
 theme: minima

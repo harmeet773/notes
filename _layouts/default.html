@@ -1,4 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {%- seo -%}
+    <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+    <style>
+      body { background: #fafafa; }
+      .site-header { background: white; border-bottom: 1px solid #eee; }
+      .site-title a { text-decoration: none; color: inherit; }
+      .post-card { background: #fff; border: 1px solid #eee; border-radius: .5rem; }
+      footer { color: #6c757d; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header py-3 mb-4">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h4 site-title m-0">
+          <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        </h1>
+        <nav class="d-flex gap-3">
+          <a class="link-secondary" href="{{ '/' | relative_url }}">Home</a>
+          <a class="link-secondary" href="{{ '/about/' | relative_url }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mb-5">
+      {{ content }}
+    </main>
+
+    <footer class="py-4">
+      <div class="container d-flex justify-content-between">
+        <small>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</small>
+        <small><a class="link-secondary" href="{{ '/feed.xml' | relative_url }}">RSS</a></small>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

@@ -3,6 +3,77 @@ layout: default
 title: Home
 ---
 
+<div class="row">
+  <div class="col-lg-8">
+    {% if paginator.posts %}
+      {% assign posts_list = paginator.posts %}
+    {% else %}
+      {% assign posts_list = site.posts %}
+    {% endif %}
+
+    {% for post in posts_list %}
+      <article class="post-card p-4 mb-4">
+        <h2 class="h4 mb-1">
+          <a class="link-dark text-decoration-none" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+        <p class="text-muted mb-2">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+          {% if post.tags and post.tags.size > 0 %} •
+            {% for tag in post.tags %}
+              <span class="badge rounded-pill text-bg-light">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+        </p>
+        <p class="mb-0">
+          {% if post.excerpt %}
+            {{ post.excerpt | strip_html | truncate: 200 }}
+          {% else %}
+            {{ post.content | strip_html | truncate: 200 }}
+          {% endif %}
+        </p>
+      </article>
+    {% endfor %}
+
+    {% if paginator.total_pages and paginator.total_pages > 1 %}
+      <nav aria-label="Posts pagination">
+        <ul class="pagination">
+          {% if paginator.previous_page %}
+            <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">Newer</a></li>
+          {% else %}
+            <li class="page-item disabled"><span class="page-link">Newer</span></li>
+          {% endif %}
+          <li class="page-item disabled"><span class="page-link">Page {{ paginator.page }} of {{ paginator.total_pages }}</span></li>
+          {% if paginator.next_page %}
+            <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | relative_url }}">Older</a></li>
+          {% else %}
+            <li class="page-item disabled"><span class="page-link">Older</span></li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+
+  <aside class="col-lg-4">
+    <div class="post-card p-4 mb-4">
+      <h3 class="h6 text-uppercase text-muted">About</h3>
+      <p class="mb-0">Notes and snippets on JavaScript, Python, and more.</p>
+    </div>
+
+    <div class="post-card p-4">
+      <h3 class="h6 text-uppercase text-muted">Tags</h3>
+      <div class="d-flex flex-wrap gap-2">
+        {% assign tags_list = site.tags | sort %}
+        {% for tag in tags_list %}
+          <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ '/tag/' | append: tag[0] | relative_url }}">{{ tag[0] }} ({{ tag[1].size }})</a>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
+</div>---
+layout: default
+title: Home
+---
+
 <h2>Welcome to My Website</h2>
 <p>This site is built with Jekyll using plain HTML files.</p>
 
