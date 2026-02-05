@@ -1,5 +1,5 @@
 title: Harmeet Notes
-description: Quick reference notes and snippets
+description: Welcome to my notes site
 url: https://your-username.github.io
 baseurl: /github_notes
 theme: minima
@@ -27,6 +27,4 @@ exclude:
 minima:
   skin: auto
   social_links:
-    - { platform: github,  user_url: "https://github.com/your-username" }title: notes
-description: Welcome to my notes site
-theme: minima
+    - { platform: github, user_url: "https://github.com/your-username" }
