@@ -1,0 +1,108 @@
+---
+layout: default
+title: React.js
+---
+
+<h2>React.js</h2>
+
+<h3>React.js Interview Questions</h3>
+
+<div>
+  <p>
+    Source:
+    <a href="https://www.youtube.com/watch?v=nWaHZT2o0VI&list=PPSV" target="_blank" rel="noopener">
+      https://www.youtube.com/watch?v=nWaHZT2o0VI&list=PPSV
+    </a>
+  </p>
+
+  <p><em>Watched till: 6:35 minutes</em></p>
+
+  <h4>JavaScript & React Basics</h4>
+  <ul>
+    <li>
+      <strong>Difference between arrow function and normal function?</strong>
+      <ul>
+        <li>Arrow functions don’t have their own <code>this</code> or <code>arguments</code> object.</li>
+        <li><code>this</code> is captured lexically from the surrounding scope.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Closure</strong> — A closure is created when a function remembers and can access variables from its outer (lexical) scope, even after the outer function has finished executing.
+    </li>
+    <li>
+      <strong>Async, await, promise</strong> — A Promise has 3 states: <em>pending</em>, <em>fulfilled</em>, <em>rejected</em>. <code>async/await</code> provides a cleaner way to work with promises.
+    </li>
+    <li>
+      <strong>React component extends which class?</strong> — Class components extend <code>React.Component</code>.
+    </li>
+    <li>
+      <strong>Can functional components implement all features without hooks?</strong> — Hooks are required to use state, lifecycle, context, etc., in functional components.
+    </li>
+  </ul>
+
+  <h4>Forms</h4>
+  <ul>
+    <li><strong>Controlled component</strong> — React state controls the form input value.</li>
+    <li><strong>Uncontrolled component</strong> — The DOM manages the value, typically accessed via refs.</li>
+  </ul>
+
+  <h4>State Management & Optimization</h4>
+  <ul>
+    <li>
+      <strong>Prop drilling</strong> — Passing props down multiple levels unnecessarily; avoid with Context API or state management libraries like Redux.
+    </li>
+    <li>
+      <strong>useMemo and useCallback</strong>
+      <ul>
+        <li><code>useMemo</code> memoizes expensive computed values.</li>
+        <li><code>useCallback</code> memoizes function references to prevent unnecessary re-renders of child components.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>Lists & Keys</h4>
+  <ul>
+    <li>
+      <strong>When to use keys? What happens if we do not use a key?</strong>
+      <ul>
+        <li>Use stable keys for list items to help React track changes efficiently.</li>
+        <li>Without keys (or with unstable keys), React may re-render or reorder items incorrectly, causing visual glitches and performance issues.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>HTML Tags</h4>
+  <ul>
+    <li>
+      <strong>&lt;link&gt; vs &lt;a&gt;</strong>
+      <ul>
+        <li><code>&lt;link&gt;</code> is used in the document head to include external resources (e.g., CSS, preloads).</li>
+        <li><code>&lt;a&gt;</code> creates a hyperlink to navigate to another URL or section.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>Utilities</h4>
+  <ul>
+    <li>
+      <strong>Debounce function — example implementation</strong>
+      <pre><code class="language-javascript">
+// Simple debounce implementation
+function debounce(fn, delay) {
+  let timerId;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timerId);
+    timerId = setTimeout(() => fn.apply(context, args), delay);
+  };
+}
+
+// Example usage:
+// const onInput = debounce((e) => console.log(e.target.value), 300);
+      </code></pre>
+    </li>
+  </ul>
+</div>
+
+
+
