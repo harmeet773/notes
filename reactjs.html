@@ -9,100 +9,232 @@ title: React.js
 
 <div>
   <p>
-    Source:
+    <strong>Reference Video:</strong>
     <a href="https://www.youtube.com/watch?v=nWaHZT2o0VI&list=PPSV" target="_blank" rel="noopener">
       https://www.youtube.com/watch?v=nWaHZT2o0VI&list=PPSV
     </a>
   </p>
 
-  <p><em>Watched till: 6:35 minutes</em></p>
+  <p><em>Progress: Watched up to 6 minutes 35 seconds</em></p>
 
-  <h4>JavaScript & React Basics</h4>
+  <h3>JavaScript & React Fundamentals</h3>
   <ul>
     <li>
-      <strong>Difference between arrow function and normal function?</strong>
+      <strong>Arrow Function vs Normal Function</strong>
       <ul>
-        <li>Arrow functions don’t have their own <code>this</code> or <code>arguments</code> object.</li>
-        <li><code>this</code> is captured lexically from the surrounding scope.</li>
+        <li>Arrow functions do not have their own <code>this</code> binding or <code>arguments</code> object.</li>
+        <li>The value of <code>this</code> inside an arrow function is inherited from its surrounding (lexical) scope.</li>
       </ul>
     </li>
-    <li>
-      <strong>Closure</strong> — A closure is created when a function remembers and can access variables from its outer (lexical) scope, even after the outer function has finished executing.
-    </li>
-    <li>
-      <strong>Async, await, promise</strong> — A Promise has 3 states: <em>pending</em>, <em>fulfilled</em>, <em>rejected</em>. <code>async/await</code> provides a cleaner way to work with promises.
-    </li>
-    <li>
-      <strong>React component extends which class?</strong> — Class components extend <code>React.Component</code>.
-    </li>
-    <li>
-      <strong>Can functional components implement all features without hooks?</strong> — Hooks are required to use state, lifecycle, context, etc., in functional components.
-    </li>
-  </ul>
 
-  <h4>Forms</h4>
-  <ul>
-    <li><strong>Controlled component</strong> — React state controls the form input value.</li>
-    <li><strong>Uncontrolled component</strong> — The DOM manages the value, typically accessed via refs.</li>
-  </ul>
-
-  <h4>State Management & Optimization</h4>
-  <ul>
     <li>
-      <strong>Prop drilling</strong> — Passing props down multiple levels unnecessarily; avoid with Context API or state management libraries like Redux.
+      <strong>Closure</strong> — A closure occurs when a function retains access to variables from its outer scope, even after the outer function has completed execution.
     </li>
+
     <li>
-      <strong>useMemo and useCallback</strong>
+      <strong>Promises, Async & Await</strong>
       <ul>
-        <li><code>useMemo</code> memoizes expensive computed values.</li>
+        <li>A Promise can be in one of three states: <em>Pending</em>, <em>Fulfilled</em>, or <em>Rejected</em>.</li>
+        <li><code>async</code> and <code>await</code> simplify working with Promises by making asynchronous code appear synchronous.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>React Class Components</strong> — Class-based components extend <code>React.Component</code>.
+    </li>
+
+    <li>
+      <strong>Functional Components & Hooks</strong> — Functional components require Hooks (such as <code>useState</code> and <code>useEffect</code>) to manage state, lifecycle methods, and context.
+    </li>
+  </ul>
+
+  <h3>Forms in React</h3>
+  <ul>
+    <li>
+      <strong>Controlled Components</strong> — Form input values are managed and controlled by React state.
+    </li>
+    <li>
+      <strong>Uncontrolled Components</strong> — The DOM manages form values, typically accessed using <code>refs</code>.
+    </li>
+  </ul>
+
+  <h3>State Management & Performance Optimization</h3>
+  <ul>
+    <li>
+      <strong>Prop Drilling</strong> — Passing data through multiple nested components unnecessarily. This can be avoided using the Context API or state management libraries like Redux.
+    </li>
+
+    <li>
+      <strong>useMemo & useCallback</strong>
+      <ul>
+        <li><code>useMemo</code> is used to memoize expensive computed values.</li>
         <li><code>useCallback</code> memoizes function references to prevent unnecessary re-renders of child components.</li>
       </ul>
     </li>
   </ul>
 
-  <h4>Lists & Keys</h4>
+  <h3>Lists & Keys in React</h3>
   <ul>
     <li>
-      <strong>When to use keys? What happens if we do not use a key?</strong>
+      <strong>Importance of Keys</strong>
       <ul>
-        <li>Use stable keys for list items to help React track changes efficiently.</li>
-        <li>Without keys (or with unstable keys), React may re-render or reorder items incorrectly, causing visual glitches and performance issues.</li>
+        <li>Keys help React identify which list items have changed, been added, or removed.</li>
+        <li>Using unstable or missing keys can cause incorrect re-rendering, UI glitches, and performance issues.</li>
       </ul>
     </li>
   </ul>
 
-  <h4>HTML Tags</h4>
+  <h3>HTML Elements</h3>
   <ul>
     <li>
       <strong>&lt;link&gt; vs &lt;a&gt;</strong>
       <ul>
-        <li><code>&lt;link&gt;</code> is used in the document head to include external resources (e.g., CSS, preloads).</li>
-        <li><code>&lt;a&gt;</code> creates a hyperlink to navigate to another URL or section.</li>
+        <li><code>&lt;link&gt;</code> is used inside the <code>&lt;head&gt;</code> section to include external resources such as CSS files or preloads.</li>
+        <li><code>&lt;a&gt;</code> is used to create hyperlinks for navigation to other pages or sections.</li>
       </ul>
     </li>
   </ul>
 
-  <h4>Utilities</h4>
-  <ul>
-    <li>
-      <strong>Debounce function — example implementation</strong>
-      <pre><code class="language-javascript">
-// Simple debounce implementation
+
+  <h3>Utility Functions: Debounce and Throttle</h3>
+
+<p>
+  <strong>Debounce</strong> and <strong>Throttle</strong> are performance optimization techniques 
+  used in JavaScript to control how often a function executes, especially for events 
+  like <code>scroll</code>, <code>resize</code>, or <code>input</code>.
+</p>
+
+<hr />
+
+<h4>1. Debounce</h4>
+
+<p>
+  <strong>Debounce</strong> ensures that a function is executed only after a certain 
+  amount of time has passed since the last event trigger.
+</p>
+
+<p><strong>Use Case:</strong> Search input box (API call after user stops typing).</p>
+
+<h5>How It Works:</h5>
+<ul>
+  <li>If the event keeps firing, the timer keeps resetting.</li>
+  <li>The function runs only after the user stops triggering the event for the given delay.</li>
+</ul>
+
+<h5>Debounce Implementation:</h5>
+
+<pre><code class="language-javascript">
+// Basic debounce implementation
 function debounce(fn, delay) {
-  let timerId;
+  let timer;
+
   return function (...args) {
     const context = this;
-    clearTimeout(timerId);
-    timerId = setTimeout(() => fn.apply(context, args), delay);
+
+    clearTimeout(timer); // Reset previous timer
+
+    timer = setTimeout(() => {
+      fn.apply(context, args);
+    }, delay);
   };
 }
 
 // Example usage:
-// const onInput = debounce((e) => console.log(e.target.value), 300);
-      </code></pre>
-    </li>
-  </ul>
+const handleInput = debounce((event) => {
+  console.log("User typed:", event.target.value);
+}, 300);
+
+document.getElementById("search").addEventListener("input", handleInput);
+</code></pre>
+
+<p>
+  ✅ The function executes only after 300ms of no typing.
+</p>
+
+<hr />
+
+<h4>2. Throttle</h4>
+
+<p>
+  <strong>Throttle</strong> ensures that a function executes at most once in a specified 
+  time interval, no matter how many times the event fires.
+</p>
+
+<p><strong>Use Case:</strong> Window scroll event (limit execution frequency).</p>
+
+<h5>How It Works:</h5>
+<ul>
+  <li>The first event executes immediately.</li>
+  <li>Further calls within the delay period are ignored.</li>
+  <li>After delay passes, it can execute again.</li>
+</ul>
+
+<h5>Throttle Implementation:</h5>
+
+<pre><code class="language-javascript">
+// Basic throttle implementation
+function throttle(fn, delay) {
+  let lastCall = 0;
+
+  return function (...args) {
+    const now = Date.now();
+
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      fn.apply(this, args);
+    }
+  };
+}
+
+// Example usage:
+const handleScroll = throttle(() => {
+  console.log("Scroll event triggered");
+}, 500);
+
+window.addEventListener("scroll", handleScroll);
+</code></pre>
+
+<p>
+  ✅ The function executes at most once every 500ms.
+</p>
+
+<hr />
+
+<h4>Key Differences</h4>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Debounce</th>
+      <th>Throttle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Execution Timing</td>
+      <td>After user stops triggering event</td>
+      <td>At regular intervals</td>
+    </tr>
+    <tr>
+      <td>Best For</td>
+      <td>Search inputs, auto-save</td>
+      <td>Scroll, resize, mouse move</td>
+    </tr>
+    <tr>
+      <td>Frequency Control</td>
+      <td>Waits for inactivity</td>
+      <td>Limits execution rate</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4>Simple Analogy</h4>
+<ul>
+  <li><strong>Debounce:</strong> Wait until you stop talking before I respond.</li>
+  <li><strong>Throttle:</strong> I will respond at most once every 5 seconds while you talk.</li>
+</ul>
 </div>
-
-
 
