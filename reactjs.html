@@ -11,34 +11,48 @@ title: React.js
 <!-- =============================== -->
 
 <div class="accordion mb-4" id="coreReactAccordion">
-
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#reactInternals">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#reactInternals"
+      >
         How React.js Works Internally (Core Concepts)
       </button>
     </h2>
 
-    <div id="reactInternals"
-         class="accordion-collapse collapse"
-         data-bs-parent="#coreReactAccordion">
-
+    <div
+      id="reactInternals"
+      class="accordion-collapse collapse"
+      data-bs-parent="#coreReactAccordion"
+    >
       <div class="accordion-body">
-
         <h5>1️⃣ Virtual DOM</h5>
         <ul>
-          <li>React creates a lightweight copy of the real DOM called the <strong>Virtual DOM</strong>.</li>
-          <li>Whenever state or props change, React updates the Virtual DOM first.</li>
-          <li>It compares the updated Virtual DOM with the previous version.</li>
+          <li>
+            React creates a lightweight copy of the real DOM called the
+            <strong>Virtual DOM</strong>.
+          </li>
+          <li>
+            Whenever state or props change, React updates the Virtual DOM first.
+          </li>
+          <li>
+            It compares the updated Virtual DOM with the previous version.
+          </li>
         </ul>
 
         <h5>2️⃣ Diffing Algorithm (Reconciliation)</h5>
         <ul>
-          <li>React uses a smart diffing algorithm to compare old and new Virtual DOM trees.</li>
-          <li>Instead of re-rendering the entire DOM, React finds only the changed nodes.</li>
+          <li>
+            React uses a smart diffing algorithm to compare old and new Virtual
+            DOM trees.
+          </li>
+          <li>
+            Instead of re-rendering the entire DOM, React finds only the changed
+            nodes.
+          </li>
           <li>This process is called <strong>Reconciliation</strong>.</li>
           <li>React uses keys to efficiently track list changes.</li>
         </ul>
@@ -66,64 +80,68 @@ title: React.js
           <li>Example:</li>
         </ul>
 
-<pre>
+        <pre>
 JSX:
 &lt;h1&gt;Hello&lt;/h1&gt;
 
 Converted by Babel:
 React.createElement("h1", null, "Hello");
-</pre>
+</pre
+        >
 
         <ul>
-          <li>Babel also converts modern ES6+ syntax to browser-compatible JavaScript.</li>
+          <li>
+            Babel also converts modern ES6+ syntax to browser-compatible
+            JavaScript.
+          </li>
         </ul>
-
       </div>
     </div>
   </div>
-
 </div>
-
 
 <!-- =============================== -->
 <!-- Existing Accordion Below -->
 <!-- =============================== -->
 
-
 <div class="accordion" id="mainAccordion">
-
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#reactSection">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#reactSection"
+      >
         React.js Specific Interview Questions
       </button>
     </h2>
 
-    <div id="reactSection"
-         class="accordion-collapse collapse"
-         data-bs-parent="#mainAccordion">
-
+    <div
+      id="reactSection"
+      class="accordion-collapse collapse"
+      data-bs-parent="#mainAccordion"
+    >
       <div class="accordion-body">
-
         <div class="accordion" id="reactSubAccordion">
-
           <!-- Functional vs Class -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#functional">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#functional"
+              >
                 1. Functional vs Class Components
               </button>
             </h2>
 
-            <div id="functional"
-                 class="accordion-collapse collapse"
-                 data-bs-parent="#reactSubAccordion">
+            <div
+              id="functional"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
               <div class="accordion-body">
                 <ul>
                   <li>Class components use lifecycle methods.</li>
@@ -137,24 +155,200 @@ React.createElement("h1", null, "Hello");
           <!-- Hooks -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#hooks">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hooks"
+              >
                 2. Hooks
               </button>
             </h2>
 
-            <div id="hooks"
-                 class="accordion-collapse collapse"
-                 data-bs-parent="#reactSubAccordion">
+            <div
+              id="hooks"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
               <div class="accordion-body">
+                <h6>1️⃣ useState</h6>
                 <ul>
-                  <li><code>useState</code> – Manage local component state.</li>
-                  <li><code>useEffect</code> – Handle side effects.</li>
-                  <li><code>useMemo</code> – Memoize expensive values.</li>
-                  <li><code>useCallback</code> – Memoize functions.</li>
-                  <li><code>useRef</code> – Access DOM or persist values.</li>
+                  <li>Used to manage local component state.</li>
+                  <li>Triggers re-render when state updates.</li>
+                </ul>
+
+                <pre><code>
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;button onClick={() => setCount(count + 1)}&gt;
+      Count: {count}
+    &lt;/button&gt;
+  );
+}
+</code></pre>
+
+                <hr />
+
+                <h6>2️⃣ useReducer</h6>
+                <ul>
+                  <li>Used for complex state logic.</li>
+                  <li>Better for managing multiple related state values.</li>
+                  <li>Similar to Redux reducer pattern.</li>
+                </ul>
+
+                <pre><code>
+import { useReducer } from "react";
+
+function reducer(state, action) {
+  switch(action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    &lt;button onClick={() => dispatch({ type: "increment" })}&gt;
+      Count: {state.count}
+    &lt;/button&gt;
+  );
+}
+</code></pre>
+
+                <hr />
+
+                <h6>3️⃣ useContext</h6>
+                <ul>
+                  <li>Used to consume values from Context API.</li>
+                  <li>Avoids prop drilling.</li>
+                </ul>
+
+                <pre><code>
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
+
+function Button() {
+  const theme = useContext(ThemeContext);
+  return &lt;button style={{ background: theme }}&gt;Click&lt;/button&gt;;
+}
+</code></pre>
+
+                <hr />
+
+                <h6>4️⃣ useRef</h6>
+                <ul>
+                  <li>Access DOM elements directly.</li>
+                  <li>Stores mutable values without re-rendering.</li>
+                </ul>
+
+                <pre><code>
+import { useRef } from "react";
+
+function InputFocus() {
+  const inputRef = useRef();
+
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    &lt;&gt;
+      &lt;input ref={inputRef} /&gt;
+      &lt;button onClick={focusInput}&gt;Focus&lt;/button&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre>
+
+                <hr />
+
+                <h6>5️⃣ useEffect</h6>
+                <ul>
+                  <li>
+                    Used for side effects (API calls, subscriptions, timers).
+                  </li>
+                  <li>Runs after render.</li>
+                  <li>Dependency array controls execution.</li>
+                </ul>
+
+                <pre><code>
+import { useEffect, useState } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return &lt;h1&gt;{count}&lt;/h1&gt;;
+}
+</code></pre>
+
+                <hr />
+
+                <h6>6️⃣ useMemo</h6>
+                <ul>
+                  <li>Memoizes expensive computed values.</li>
+                  <li>Prevents unnecessary recalculations.</li>
+                </ul>
+
+                <pre><code>
+import { useMemo } from "react";
+
+function Expensive({ num }) {
+  const squared = useMemo(() => {
+    console.log("Calculating...");
+    return num * num;
+  }, [num]);
+
+  return &lt;p&gt;Result: {squared}&lt;/p&gt;;
+}
+</code></pre>
+
+                <hr />
+
+                <h6>7️⃣ useCallback</h6>
+                <ul>
+                  <li>Memoizes function references.</li>
+                  <li>Prevents unnecessary re-renders of child components.</li>
+                </ul>
+
+                <pre><code>
+import { useCallback } from "react";
+
+function Parent() {
+  const handleClick = useCallback(() => {
+    console.log("Clicked");
+  }, []);
+
+  return &lt;Child onClick={handleClick} /&gt;;
+}
+</code></pre>
+
+                <hr />
+
+                <h6>🔥 Interview Summary</h6>
+                <ul>
+                  <li><strong>useState</strong> → Simple state</li>
+                  <li><strong>useReducer</strong> → Complex state logic</li>
+                  <li><strong>useContext</strong> → Global data</li>
+                  <li><strong>useRef</strong> → DOM access / mutable values</li>
+                  <li><strong>useEffect</strong> → Side effects</li>
+                  <li><strong>useMemo</strong> → Memoize values</li>
+                  <li><strong>useCallback</strong> → Memoize functions</li>
                 </ul>
               </div>
             </div>
@@ -163,19 +357,25 @@ React.createElement("h1", null, "Hello");
           <!-- Context API -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#context">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#context"
+              >
                 3. Context API
               </button>
             </h2>
 
-            <div id="context"
-                 class="accordion-collapse collapse"
-                 data-bs-parent="#reactSubAccordion">
+            <div
+              id="context"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
               <div class="accordion-body">
-                <p>Context API allows sharing global data without prop drilling.</p>
+                <p>
+                  Context API allows sharing global data without prop drilling.
+                </p>
                 <ul>
                   <li>Create using <code>React.createContext()</code></li>
                   <li>Wrap with <code>Provider</code></li>
@@ -188,19 +388,22 @@ React.createElement("h1", null, "Hello");
           <!-- Pure vs Impure Components -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#pure">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#pure"
+              >
                 4. Pure vs Impure Components
               </button>
             </h2>
 
-            <div id="pure"
-                 class="accordion-collapse collapse"
-                 data-bs-parent="#reactSubAccordion">
+            <div
+              id="pure"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
               <div class="accordion-body">
-
                 <h6>Pure Component</h6>
                 <ul>
                   <li>Same output for same props & state.</li>
@@ -208,13 +411,13 @@ React.createElement("h1", null, "Hello");
                   <li>Predictable and easy to test.</li>
                 </ul>
 
-<pre><code>
+                <pre><code>
 function Greeting({ name }) {
   return &lt;h1&gt;Hello {name}&lt;/h1&gt;;
 }
 </code></pre>
 
-                <hr/>
+                <hr />
 
                 <h6>Impure Component</h6>
                 <ul>
@@ -222,7 +425,7 @@ function Greeting({ name }) {
                   <li>Uses external variables or random values.</li>
                 </ul>
 
-<pre><code>
+                <pre><code>
 let count = 0;
 
 function Counter() {
@@ -231,7 +434,7 @@ function Counter() {
 }
 </code></pre>
 
-                <hr/>
+                <hr />
 
                 <h6>React.PureComponent vs React.memo</h6>
 
@@ -272,16 +475,16 @@ function Counter() {
                   </tbody>
                 </table>
 
-                <p><strong>Interview Tip:</strong> Prefer <code>React.memo</code> in modern React applications since functional components are the standard now.</p>
-
+                <p>
+                  <strong>Interview Tip:</strong> Prefer
+                  <code>React.memo</code> in modern React applications since
+                  functional components are the standard now.
+                </p>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
-
 </div>
