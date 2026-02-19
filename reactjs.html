@@ -232,12 +232,14 @@ function Counter() {
                       <div class="accordion-body">
                         <ul>
                           <li>Used for complex state logic.</li>
-                          <li>Better for managing multiple related state values.</li>
+                          <li>
+                            Better for managing multiple related state values.
+                          </li>
                           <li>Similar to Redux reducer pattern.</li>
                         </ul>
 
                         <pre><code>
-import { useReducer } from "react";
+  import { useReducer } from "react";
 
 function reducer(state, action) {
   switch(action.type) {
@@ -362,7 +364,10 @@ function InputFocus() {
                     >
                       <div class="accordion-body">
                         <ul>
-                          <li>Used for side effects (API calls, subscriptions, timers).</li>
+                          <li>
+                            Used for side effects (API calls, subscriptions,
+                            timers).
+                          </li>
                           <li>Runs after render.</li>
                           <li>Dependency array controls execution.</li>
                         </ul>
@@ -447,7 +452,9 @@ function Expensive({ num }) {
                       <div class="accordion-body">
                         <ul>
                           <li>Memoizes function references.</li>
-                          <li>Prevents unnecessary re-renders of child components.</li>
+                          <li>
+                            Prevents unnecessary re-renders of child components.
+                          </li>
                         </ul>
 
                         <pre><code>
@@ -485,17 +492,25 @@ function Parent() {
                       <div class="accordion-body">
                         <ul>
                           <li><strong>useState</strong> → Simple state</li>
-                          <li><strong>useReducer</strong> → Complex state logic</li>
+                          <li>
+                            <strong>useReducer</strong> → Complex state logic
+                          </li>
                           <li><strong>useContext</strong> → Global data</li>
-                          <li><strong>useRef</strong> → DOM access / mutable values</li>
+                          <li>
+                            <strong>useRef</strong> → DOM access / mutable
+                            values
+                          </li>
                           <li><strong>useEffect</strong> → Side effects</li>
                           <li><strong>useMemo</strong> → Memoize values</li>
-                          <li><strong>useCallback</strong> → Memoize functions</li>
+                          <li>
+                            <strong>useCallback</strong> → Memoize functions
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                </div> <!-- /#hooksNestedAccordion -->
+                </div>
+                <!-- /#hooksNestedAccordion -->
               </div>
             </div>
           </div>
