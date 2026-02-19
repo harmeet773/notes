@@ -3,253 +3,256 @@ layout: default
 title: React.js
 ---
 
-<h2>React.js</h2>
+<h2 class="mb-3">React.js</h2>
+<h3 class="mb-4">Interview Preparation Notes</h3>
 
-<h3>React.js Interview Preparation Notes</h3>
+<div class="accordion" id="mainAccordion">
 
-<div>    
+  <!-- ============================ -->
+  <!-- JavaScript Section -->
+  <!-- ============================ -->
 
-  <h3>JavaScript Fundamentals (Very Important for React Interviews)</h3>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#jsSection">
+        JavaScript Specific Interview Questions
+      </button>
+    </h2>
 
-  <ul>
+    <div id="jsSection"
+         class="accordion-collapse collapse"
+         data-bs-parent="#mainAccordion">
 
-    <li>
-      <strong>1. Arrow Function vs Normal Function</strong>
+      <div class="accordion-body">
 
-      <p><strong>Definition:</strong></p>
-      <ul>
-        <li>Arrow functions do not have their own <code>this</code>, <code>arguments</code>, <code>super</code>, or <code>new.target</code>.</li>
-        <li>They inherit <code>this</code> from the surrounding (lexical) scope.</li>
-      </ul>
+        <div class="accordion" id="jsSubAccordion">
 
-      <p><strong>Why Important in React?</strong></p>
-      <ul>
-        <li>Avoids manual binding in class components.</li>
-        <li>Commonly used in functional components and callbacks.</li>
-      </ul>
+          <!-- Arrow Function -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#arrowFunction">
+                1. Arrow Function vs Normal Function
+              </button>
+            </h2>
 
-      <p><strong>Interview Follow-up:</strong></p>
-      <ul>
-        <li>Why can't arrow functions be used as constructors?</li>
-        <li>Why don’t arrow functions have their own <code>this</code>?</li>
-      </ul>
-    </li>
+            <div id="arrowFunction"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#jsSubAccordion">
 
-    <li>
-      <strong>2. Closure</strong>
+              <div class="accordion-body">
 
-      <p><strong>Definition:</strong></p>
-      <p>A closure is created when a function retains access to variables from its outer scope even after the outer function has finished execution.</p>
+                <p><strong>Definition:</strong></p>
+                <ul>
+                  <li>Arrow functions do not have their own <code>this</code>, <code>arguments</code>, <code>super</code>, or <code>new.target</code>.</li>
+                  <li>They inherit <code>this</code> from lexical scope.</li>
+                </ul>
 
-      <p><strong>Why Important?</strong></p>
-      <ul>
-        <li>Used in React Hooks internally.</li>
-        <li>Important in debounce, throttle, and event handlers.</li>
-      </ul>
+                <p><strong>Common Interview Questions:</strong></p>
+                <ul>
+                  <li>Why can't arrow functions be used as constructors?</li>
+                  <li>Difference between arrow and normal functions?</li>
+                </ul>
 
-      <p><strong>Common Question:</strong></p>
-      <ul>
-        <li>What is a stale closure in React?</li>
-      </ul>
-    </li>
+              </div>
+            </div>
+          </div>
 
-    <li>
-      <strong>3. Hoisting</strong>
+          <!-- Closure -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#closure">
+                2. Closure
+              </button>
+            </h2>
 
-      <p><strong>Definition:</strong></p>
-      <p>Hoisting is JavaScript’s behavior of moving declarations to the top of their scope during compilation.</p>
+            <div id="closure"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#jsSubAccordion">
 
-      <ul>
-        <li>Function declarations → Fully hoisted</li>
-        <li><code>var</code> → Hoisted, initialized as <code>undefined</code></li>
-        <li><code>let</code> & <code>const</code> → Hoisted but in Temporal Dead Zone (TDZ)</li>
-      </ul>
+              <div class="accordion-body">
+                <p><strong>Definition:</strong></p>
+                <p>A closure allows a function to retain access to outer scope variables even after execution.</p>
+              </div>
+            </div>
+          </div>
 
-      <pre><code>
+          <!-- Hoisting -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#hoisting">
+                3. Hoisting
+              </button>
+            </h2>
+
+            <div id="hoisting"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#jsSubAccordion">
+
+              <div class="accordion-body">
+
+                <ul>
+                  <li>Function declarations → Fully hoisted</li>
+                  <li><code>var</code> → Hoisted as undefined</li>
+                  <li><code>let</code> & <code>const</code> → Temporal Dead Zone</li>
+                </ul>
+
+                <pre><code>
 console.log(a); // undefined
 var a = 5;
 
 console.log(b); // ReferenceError
 let b = 10;
-      </code></pre>
-    </li>
+                </code></pre>
 
-    <li>
-      <strong>4. Promises, Async & Await</strong>
+              </div>
+            </div>
+          </div>
 
-      <p><strong>Promise States:</strong></p>
-      <ul>
-        <li>Pending</li>
-        <li>Fulfilled</li>
-        <li>Rejected</li>
-      </ul>
+          <!-- Promises -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#promises">
+                4. Promises, Async & Await
+              </button>
+            </h2>
 
-      <p><strong>Why async/await?</strong></p>
-      <ul>
-        <li>Makes asynchronous code readable.</li>
-        <li>Avoids promise chaining.</li>
-      </ul>
+            <div id="promises"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#jsSubAccordion">
 
-      <p><strong>Interview Follow-up:</strong></p>
-      <ul>
-        <li>What happens if you don’t use <code>await</code>?</li>
-        <li>Difference between <code>Promise.all</code> and <code>Promise.allSettled</code>?</li>
-      </ul>
-    </li>
+              <div class="accordion-body">
 
-  </ul>
+                <ul>
+                  <li>Promise states: Pending, Fulfilled, Rejected</li>
+                  <li><code>async/await</code> improves readability</li>
+                  <li>Difference between <code>Promise.all</code> and <code>Promise.allSettled</code></li>
+                </ul>
 
-  <hr />
+              </div>
+            </div>
+          </div>
 
-  <h3>React Core Concepts</h3>
+        </div>
 
-  <ul>
+      </div>
+    </div>
+  </div>
 
-    <li>
-      <strong>1. Functional vs Class Components</strong>
 
-      <ul>
-        <li>Class components use lifecycle methods.</li>
-        <li>Functional components use Hooks.</li>
-        <li>Modern React prefers functional components.</li>
-      </ul>
+  <!-- ============================ -->
+  <!-- React Section -->
+  <!-- ============================ -->
 
-      <p><strong>Important:</strong></p>
-      <p>All features of class components can be implemented using functional components — but only with Hooks.</p>
-    </li>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#reactSection">
+        React.js Specific Interview Questions
+      </button>
+    </h2>
 
-    <li>
-      <strong>2. Hooks</strong>
+    <div id="reactSection"
+         class="accordion-collapse collapse"
+         data-bs-parent="#mainAccordion">
 
-      <ul>
-        <li><code>useState</code> → Manage state</li>
-        <li><code>useEffect</code> → Side effects</li>
-        <li><code>useMemo</code> → Memoize computed values</li>
-        <li><code>useCallback</code> → Memoize function references</li>
-        <li><code>useRef</code> → Access DOM or persist values</li>
-      </ul>
+      <div class="accordion-body">
 
-      <p><strong>Interview Question:</strong></p>
-      <ul>
-        <li>Why can't hooks be used inside loops or conditions?</li>
-      </ul>
-    </li>
+        <div class="accordion" id="reactSubAccordion">
 
-    <li>
-      <strong>3. Controlled vs Uncontrolled Components</strong>
+          <!-- Functional vs Class -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#functional">
+                1. Functional vs Class Components
+              </button>
+            </h2>
 
-      <ul>
-        <li><strong>Controlled:</strong> Form data handled by React state.</li>
-        <li><strong>Uncontrolled:</strong> Form data handled by DOM using refs.</li>
-      </ul>
-    </li>
+            <div id="functional"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#reactSubAccordion">
 
-    <li>
-      <strong>4. Prop Drilling</strong>
+              <div class="accordion-body">
+                <ul>
+                  <li>Class components use lifecycle methods.</li>
+                  <li>Functional components use Hooks.</li>
+                  <li>Modern React prefers functional components.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-      <p>Passing data through multiple nested components unnecessarily.</p>
+          <!-- Hooks -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#hooks">
+                2. Hooks
+              </button>
+            </h2>
 
-      <p><strong>Solution:</strong> Context API or state management libraries.</p>
-    </li>
+            <div id="hooks"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#reactSubAccordion">
 
-    <li>
-      <strong>5. Context API</strong>
+              <div class="accordion-body">
+                <ul>
+                  <li><code>useState</code></li>
+                  <li><code>useEffect</code></li>
+                  <li><code>useMemo</code></li>
+                  <li><code>useCallback</code></li>
+                  <li><code>useRef</code></li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-      <p><strong>Definition:</strong></p>
-      <p>Context API allows sharing global data across components without prop drilling.</p>
+          <!-- Context API -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#context">
+                3. Context API
+              </button>
+            </h2>
 
-      <p><strong>When to Use:</strong></p>
-      <ul>
-        <li>Theme (dark/light mode)</li>
-        <li>User authentication</li>
-        <li>Language preference</li>
-        <li>Small to medium global state</li>
-      </ul>
+            <div id="context"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#reactSubAccordion">
 
-      <p><strong>How to Use:</strong></p>
+              <div class="accordion-body">
+                Context API allows sharing global data without prop drilling.
+              </div>
+            </div>
+          </div>
 
-      <p><strong>Step 1: Create Context</strong></p>
-      <pre><code>
-import { createContext } from "react";
-export const ThemeContext = createContext();
-      </code></pre>
+        </div>
 
-      <p><strong>Step 2: Provide Context</strong></p>
-      <pre><code>
-function App() {
-  const [theme, setTheme] = useState("light");
-
-  return (
-    &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
-      &lt;Home /&gt;
-    &lt;/ThemeContext.Provider&gt;
-  );
-}
-      </code></pre>
-
-      <p><strong>Step 3: Consume Context</strong></p>
-      <pre><code>
-function Home() {
-  const { theme, setTheme } = useContext(ThemeContext);
-
-  return (
-    &lt;div&gt;
-      &lt;h1&gt;Theme: {theme}&lt;/h1&gt;
-      &lt;button onClick={() => setTheme("dark")}&gt;
-        Change Theme
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-}
-      </code></pre>
-
-      <p><strong>Performance Note:</strong></p>
-      <ul>
-        <li>All consumers re-render when context value changes.</li>
-        <li>Not ideal for very frequent updates.</li>
-      </ul>
-
-      <p><strong>Interview Question:</strong></p>
-      <ul>
-        <li>Can Context API replace Redux?</li>
-      </ul>
-    </li>
-
-    <li>
-      <strong>6. Keys in React</strong>
-
-      <ul>
-        <li>Helps React identify changed elements.</li>
-        <li>Should be stable and unique.</li>
-        <li>Avoid using array index as key (unless list is static).</li>
-      </ul>
-    </li>
-
-  </ul>
-
-  <hr />
-
-  <h3>Performance Optimization</h3>
-
-  <ul>
-    <li><strong>useMemo</strong> → Memoizes expensive values.</li>
-    <li><strong>useCallback</strong> → Prevents unnecessary re-renders.</li>
-    <li><strong>Debounce</strong> → Executes after inactivity.</li>
-    <li><strong>Throttle</strong> → Executes at fixed intervals.</li>
-  </ul>
-
-  <hr />
-
-  <h3>HTML & Web Basics</h3>
-
-  <ul>
-    <li>
-      <strong>&lt;link&gt; vs &lt;a&gt;</strong>
-      <ul>
-        <li><code>&lt;link&gt;</code> → Used inside head for resources (CSS).</li>
-        <li><code>&lt;a&gt;</code> → Used for navigation.</li>
-      </ul>
-    </li>
-  </ul>
+      </div>
+    </div>
+  </div>
 
 </div>
