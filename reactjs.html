@@ -171,13 +171,31 @@ React.createElement("h1", null, "Hello");
               data-bs-parent="#reactSubAccordion"
             >
               <div class="accordion-body">
-                <h6>1️⃣ useState</h6>
-                <ul>
-                  <li>Used to manage local component state.</li>
-                  <li>Triggers re-render when state updates.</li>
-                </ul>
+                <div class="accordion" id="hooksNestedAccordion">
+                  <!-- useState -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseState"
+                      >
+                        <h6 class="mb-0">1️⃣ useState</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseState"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Used to manage local component state.</li>
+                          <li>Triggers re-render when state updates.</li>
+                        </ul>
 
-                <pre><code>
+                        <pre><code>
 import { useState } from "react";
 
 function Counter() {
@@ -190,17 +208,35 @@ function Counter() {
   );
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
+                  <!-- useReducer -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseReducer"
+                      >
+                        <h6 class="mb-0">2️⃣ useReducer</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseReducer"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Used for complex state logic.</li>
+                          <li>Better for managing multiple related state values.</li>
+                          <li>Similar to Redux reducer pattern.</li>
+                        </ul>
 
-                <h6>2️⃣ useReducer</h6>
-                <ul>
-                  <li>Used for complex state logic.</li>
-                  <li>Better for managing multiple related state values.</li>
-                  <li>Similar to Redux reducer pattern.</li>
-                </ul>
-
-                <pre><code>
+                        <pre><code>
 import { useReducer } from "react";
 
 function reducer(state, action) {
@@ -222,16 +258,34 @@ function Counter() {
   );
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
+                  <!-- useContext -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseContext"
+                      >
+                        <h6 class="mb-0">3️⃣ useContext</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseContext"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Used to consume values from Context API.</li>
+                          <li>Avoids prop drilling.</li>
+                        </ul>
 
-                <h6>3️⃣ useContext</h6>
-                <ul>
-                  <li>Used to consume values from Context API.</li>
-                  <li>Avoids prop drilling.</li>
-                </ul>
-
-                <pre><code>
+                        <pre><code>
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 
@@ -240,16 +294,34 @@ function Button() {
   return &lt;button style={{ background: theme }}&gt;Click&lt;/button&gt;;
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
+                  <!-- useRef -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseRef"
+                      >
+                        <h6 class="mb-0">4️⃣ useRef</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseRef"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Access DOM elements directly.</li>
+                          <li>Stores mutable values without re-rendering.</li>
+                        </ul>
 
-                <h6>4️⃣ useRef</h6>
-                <ul>
-                  <li>Access DOM elements directly.</li>
-                  <li>Stores mutable values without re-rendering.</li>
-                </ul>
-
-                <pre><code>
+                        <pre><code>
 import { useRef } from "react";
 
 function InputFocus() {
@@ -267,19 +339,35 @@ function InputFocus() {
   );
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
+                  <!-- useEffect -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseEffect"
+                      >
+                        <h6 class="mb-0">5️⃣ useEffect</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseEffect"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Used for side effects (API calls, subscriptions, timers).</li>
+                          <li>Runs after render.</li>
+                          <li>Dependency array controls execution.</li>
+                        </ul>
 
-                <h6>5️⃣ useEffect</h6>
-                <ul>
-                  <li>
-                    Used for side effects (API calls, subscriptions, timers).
-                  </li>
-                  <li>Runs after render.</li>
-                  <li>Dependency array controls execution.</li>
-                </ul>
-
-                <pre><code>
+                        <pre><code>
 import { useEffect, useState } from "react";
 
 function Timer() {
@@ -296,16 +384,34 @@ function Timer() {
   return &lt;h1&gt;{count}&lt;/h1&gt;;
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
+                  <!-- useMemo -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseMemo"
+                      >
+                        <h6 class="mb-0">6️⃣ useMemo</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseMemo"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Memoizes expensive computed values.</li>
+                          <li>Prevents unnecessary recalculations.</li>
+                        </ul>
 
-                <h6>6️⃣ useMemo</h6>
-                <ul>
-                  <li>Memoizes expensive computed values.</li>
-                  <li>Prevents unnecessary recalculations.</li>
-                </ul>
-
-                <pre><code>
+                        <pre><code>
 import { useMemo } from "react";
 
 function Expensive({ num }) {
@@ -317,16 +423,34 @@ function Expensive({ num }) {
   return &lt;p&gt;Result: {squared}&lt;/p&gt;;
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
+                  <!-- useCallback -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookUseCallback"
+                      >
+                        <h6 class="mb-0">7️⃣ useCallback</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookUseCallback"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>Memoizes function references.</li>
+                          <li>Prevents unnecessary re-renders of child components.</li>
+                        </ul>
 
-                <h6>7️⃣ useCallback</h6>
-                <ul>
-                  <li>Memoizes function references.</li>
-                  <li>Prevents unnecessary re-renders of child components.</li>
-                </ul>
-
-                <pre><code>
+                        <pre><code>
 import { useCallback } from "react";
 
 function Parent() {
@@ -337,19 +461,41 @@ function Parent() {
   return &lt;Child onClick={handleClick} /&gt;;
 }
 </code></pre>
+                      </div>
+                    </div>
+                  </div>
 
-                <hr />
-
-                <h6>🔥 Interview Summary</h6>
-                <ul>
-                  <li><strong>useState</strong> → Simple state</li>
-                  <li><strong>useReducer</strong> → Complex state logic</li>
-                  <li><strong>useContext</strong> → Global data</li>
-                  <li><strong>useRef</strong> → DOM access / mutable values</li>
-                  <li><strong>useEffect</strong> → Side effects</li>
-                  <li><strong>useMemo</strong> → Memoize values</li>
-                  <li><strong>useCallback</strong> → Memoize functions</li>
-                </ul>
+                  <!-- Summary -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#hookSummary"
+                      >
+                        <h6 class="mb-0">🔥 Interview Summary</h6>
+                      </button>
+                    </h2>
+                    <div
+                      id="hookSummary"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#hooksNestedAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li><strong>useState</strong> → Simple state</li>
+                          <li><strong>useReducer</strong> → Complex state logic</li>
+                          <li><strong>useContext</strong> → Global data</li>
+                          <li><strong>useRef</strong> → DOM access / mutable values</li>
+                          <li><strong>useEffect</strong> → Side effects</li>
+                          <li><strong>useMemo</strong> → Memoize values</li>
+                          <li><strong>useCallback</strong> → Memoize functions</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- /#hooksNestedAccordion -->
               </div>
             </div>
           </div>
