@@ -6,11 +6,90 @@ title: React.js
 <h2 class="mb-3">React.js</h2>
 <h3 class="mb-4">Interview Preparation Notes</h3>
 
-<div class="accordion" id="mainAccordion">
+<!-- =============================== -->
+<!-- React Internal Working Section -->
+<!-- =============================== -->
 
-  <!-- ============================ -->
-  <!-- React Section -->
-  <!-- ============================ -->
+<div class="accordion mb-4" id="coreReactAccordion">
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#reactInternals">
+        How React.js Works Internally (Core Concepts)
+      </button>
+    </h2>
+
+    <div id="reactInternals"
+         class="accordion-collapse collapse"
+         data-bs-parent="#coreReactAccordion">
+
+      <div class="accordion-body">
+
+        <h5>1️⃣ Virtual DOM</h5>
+        <ul>
+          <li>React creates a lightweight copy of the real DOM called the <strong>Virtual DOM</strong>.</li>
+          <li>Whenever state or props change, React updates the Virtual DOM first.</li>
+          <li>It compares the updated Virtual DOM with the previous version.</li>
+        </ul>
+
+        <h5>2️⃣ Diffing Algorithm (Reconciliation)</h5>
+        <ul>
+          <li>React uses a smart diffing algorithm to compare old and new Virtual DOM trees.</li>
+          <li>Instead of re-rendering the entire DOM, React finds only the changed nodes.</li>
+          <li>This process is called <strong>Reconciliation</strong>.</li>
+          <li>React uses keys to efficiently track list changes.</li>
+        </ul>
+
+        <h5>3️⃣ Rendering Process</h5>
+        <ul>
+          <li>State/Props change → Virtual DOM updates</li>
+          <li>Diffing happens</li>
+          <li>Only changed elements are updated in the real DOM</li>
+          <li>This makes React fast and efficient.</li>
+        </ul>
+
+        <h5>4️⃣ Fiber Architecture</h5>
+        <ul>
+          <li>React Fiber is the internal engine of React.</li>
+          <li>It allows incremental rendering.</li>
+          <li>Supports features like Concurrent Mode.</li>
+          <li>Improves UI responsiveness.</li>
+        </ul>
+
+        <h5>5️⃣ Why Babel is Used</h5>
+        <ul>
+          <li>Browsers do not understand JSX directly.</li>
+          <li>Babel converts JSX into regular JavaScript.</li>
+          <li>Example:</li>
+        </ul>
+
+<pre>
+JSX:
+&lt;h1&gt;Hello&lt;/h1&gt;
+
+Converted by Babel:
+React.createElement("h1", null, "Hello");
+</pre>
+
+        <ul>
+          <li>Babel also converts modern ES6+ syntax to browser-compatible JavaScript.</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- =============================== -->
+<!-- Existing Accordion Below -->
+<!-- =============================== -->
+
+<div class="accordion" id="mainAccordion">
 
   <div class="accordion-item">
     <h2 class="accordion-header">
