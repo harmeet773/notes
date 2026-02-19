@@ -5,236 +5,251 @@ title: React.js
 
 <h2>React.js</h2>
 
-<h3>React.js Interview Questions</h3>
+<h3>React.js Interview Preparation Notes</h3>
 
-<div>
-  <p>
-    <strong>Reference Video:</strong>
-    <a href="https://www.youtube.com/watch?v=nWaHZT2o0VI&list=PPSV" target="_blank" rel="noopener">
-      https://www.youtube.com/watch?v=nWaHZT2o0VI&list=PPSV
-    </a>
-  </p>
+<div>    
 
-  <p><em>Progress: Watched up to 6 minutes 35 seconds</em></p>
+  <h3>JavaScript Fundamentals (Very Important for React Interviews)</h3>
 
-  <h3>JavaScript & React Fundamentals</h3>
   <ul>
+
     <li>
-      <strong>Arrow Function vs Normal Function</strong>
+      <strong>1. Arrow Function vs Normal Function</strong>
+
+      <p><strong>Definition:</strong></p>
       <ul>
-        <li>Arrow functions do not have their own <code>this</code> binding or <code>arguments</code> object.</li>
-        <li>The value of <code>this</code> inside an arrow function is inherited from its surrounding (lexical) scope.</li>
+        <li>Arrow functions do not have their own <code>this</code>, <code>arguments</code>, <code>super</code>, or <code>new.target</code>.</li>
+        <li>They inherit <code>this</code> from the surrounding (lexical) scope.</li>
+      </ul>
+
+      <p><strong>Why Important in React?</strong></p>
+      <ul>
+        <li>Avoids manual binding in class components.</li>
+        <li>Commonly used in functional components and callbacks.</li>
+      </ul>
+
+      <p><strong>Interview Follow-up:</strong></p>
+      <ul>
+        <li>Why can't arrow functions be used as constructors?</li>
+        <li>Why don’t arrow functions have their own <code>this</code>?</li>
       </ul>
     </li>
 
     <li>
-      <strong>Closure</strong> — A closure occurs when a function retains access to variables from its outer scope, even after the outer function has completed execution.
-    </li>
+      <strong>2. Closure</strong>
 
-    <li>
-      <strong>Promises, Async & Await</strong>
+      <p><strong>Definition:</strong></p>
+      <p>A closure is created when a function retains access to variables from its outer scope even after the outer function has finished execution.</p>
+
+      <p><strong>Why Important?</strong></p>
       <ul>
-        <li>A Promise can be in one of three states: <em>Pending</em>, <em>Fulfilled</em>, or <em>Rejected</em>.</li>
-        <li><code>async</code> and <code>await</code> simplify working with Promises by making asynchronous code appear synchronous.</li>
+        <li>Used in React Hooks internally.</li>
+        <li>Important in debounce, throttle, and event handlers.</li>
+      </ul>
+
+      <p><strong>Common Question:</strong></p>
+      <ul>
+        <li>What is a stale closure in React?</li>
       </ul>
     </li>
 
     <li>
-      <strong>React Class Components</strong> — Class-based components extend <code>React.Component</code>.
-    </li>
+      <strong>3. Hoisting</strong>
 
-    <li>
-      <strong>Functional Components & Hooks</strong> — Functional components require Hooks (such as <code>useState</code> and <code>useEffect</code>) to manage state, lifecycle methods, and context.
-    </li>
-  </ul>
+      <p><strong>Definition:</strong></p>
+      <p>Hoisting is JavaScript’s behavior of moving declarations to the top of their scope during compilation.</p>
 
-  <h3>Forms in React</h3>
-  <ul>
-    <li>
-      <strong>Controlled Components</strong> — Form input values are managed and controlled by React state.
-    </li>
-    <li>
-      <strong>Uncontrolled Components</strong> — The DOM manages form values, typically accessed using <code>refs</code>.
-    </li>
-  </ul>
-
-  <h3>State Management & Performance Optimization</h3>
-  <ul>
-    <li>
-      <strong>Prop Drilling</strong> — Passing data through multiple nested components unnecessarily. This can be avoided using the Context API or state management libraries like Redux.
-    </li>
-
-    <li>
-      <strong>useMemo & useCallback</strong>
       <ul>
-        <li><code>useMemo</code> is used to memoize expensive computed values.</li>
-        <li><code>useCallback</code> memoizes function references to prevent unnecessary re-renders of child components.</li>
+        <li>Function declarations → Fully hoisted</li>
+        <li><code>var</code> → Hoisted, initialized as <code>undefined</code></li>
+        <li><code>let</code> & <code>const</code> → Hoisted but in Temporal Dead Zone (TDZ)</li>
+      </ul>
+
+      <pre><code>
+console.log(a); // undefined
+var a = 5;
+
+console.log(b); // ReferenceError
+let b = 10;
+      </code></pre>
+    </li>
+
+    <li>
+      <strong>4. Promises, Async & Await</strong>
+
+      <p><strong>Promise States:</strong></p>
+      <ul>
+        <li>Pending</li>
+        <li>Fulfilled</li>
+        <li>Rejected</li>
+      </ul>
+
+      <p><strong>Why async/await?</strong></p>
+      <ul>
+        <li>Makes asynchronous code readable.</li>
+        <li>Avoids promise chaining.</li>
+      </ul>
+
+      <p><strong>Interview Follow-up:</strong></p>
+      <ul>
+        <li>What happens if you don’t use <code>await</code>?</li>
+        <li>Difference between <code>Promise.all</code> and <code>Promise.allSettled</code>?</li>
       </ul>
     </li>
+
   </ul>
 
-  <h3>Lists & Keys in React</h3>
+  <hr />
+
+  <h3>React Core Concepts</h3>
+
   <ul>
+
     <li>
-      <strong>Importance of Keys</strong>
+      <strong>1. Functional vs Class Components</strong>
+
       <ul>
-        <li>Keys help React identify which list items have changed, been added, or removed.</li>
-        <li>Using unstable or missing keys can cause incorrect re-rendering, UI glitches, and performance issues.</li>
+        <li>Class components use lifecycle methods.</li>
+        <li>Functional components use Hooks.</li>
+        <li>Modern React prefers functional components.</li>
+      </ul>
+
+      <p><strong>Important:</strong></p>
+      <p>All features of class components can be implemented using functional components — but only with Hooks.</p>
+    </li>
+
+    <li>
+      <strong>2. Hooks</strong>
+
+      <ul>
+        <li><code>useState</code> → Manage state</li>
+        <li><code>useEffect</code> → Side effects</li>
+        <li><code>useMemo</code> → Memoize computed values</li>
+        <li><code>useCallback</code> → Memoize function references</li>
+        <li><code>useRef</code> → Access DOM or persist values</li>
+      </ul>
+
+      <p><strong>Interview Question:</strong></p>
+      <ul>
+        <li>Why can't hooks be used inside loops or conditions?</li>
       </ul>
     </li>
+
+    <li>
+      <strong>3. Controlled vs Uncontrolled Components</strong>
+
+      <ul>
+        <li><strong>Controlled:</strong> Form data handled by React state.</li>
+        <li><strong>Uncontrolled:</strong> Form data handled by DOM using refs.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>4. Prop Drilling</strong>
+
+      <p>Passing data through multiple nested components unnecessarily.</p>
+
+      <p><strong>Solution:</strong> Context API or state management libraries.</p>
+    </li>
+
+    <li>
+      <strong>5. Context API</strong>
+
+      <p><strong>Definition:</strong></p>
+      <p>Context API allows sharing global data across components without prop drilling.</p>
+
+      <p><strong>When to Use:</strong></p>
+      <ul>
+        <li>Theme (dark/light mode)</li>
+        <li>User authentication</li>
+        <li>Language preference</li>
+        <li>Small to medium global state</li>
+      </ul>
+
+      <p><strong>How to Use:</strong></p>
+
+      <p><strong>Step 1: Create Context</strong></p>
+      <pre><code>
+import { createContext } from "react";
+export const ThemeContext = createContext();
+      </code></pre>
+
+      <p><strong>Step 2: Provide Context</strong></p>
+      <pre><code>
+function App() {
+  const [theme, setTheme] = useState("light");
+
+  return (
+    &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
+      &lt;Home /&gt;
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+      </code></pre>
+
+      <p><strong>Step 3: Consume Context</strong></p>
+      <pre><code>
+function Home() {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Theme: {theme}&lt;/h1&gt;
+      &lt;button onClick={() => setTheme("dark")}&gt;
+        Change Theme
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+      </code></pre>
+
+      <p><strong>Performance Note:</strong></p>
+      <ul>
+        <li>All consumers re-render when context value changes.</li>
+        <li>Not ideal for very frequent updates.</li>
+      </ul>
+
+      <p><strong>Interview Question:</strong></p>
+      <ul>
+        <li>Can Context API replace Redux?</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>6. Keys in React</strong>
+
+      <ul>
+        <li>Helps React identify changed elements.</li>
+        <li>Should be stable and unique.</li>
+        <li>Avoid using array index as key (unless list is static).</li>
+      </ul>
+    </li>
+
   </ul>
 
-  <h3>HTML Elements</h3>
+  <hr />
+
+  <h3>Performance Optimization</h3>
+
+  <ul>
+    <li><strong>useMemo</strong> → Memoizes expensive values.</li>
+    <li><strong>useCallback</strong> → Prevents unnecessary re-renders.</li>
+    <li><strong>Debounce</strong> → Executes after inactivity.</li>
+    <li><strong>Throttle</strong> → Executes at fixed intervals.</li>
+  </ul>
+
+  <hr />
+
+  <h3>HTML & Web Basics</h3>
+
   <ul>
     <li>
       <strong>&lt;link&gt; vs &lt;a&gt;</strong>
       <ul>
-        <li><code>&lt;link&gt;</code> is used inside the <code>&lt;head&gt;</code> section to include external resources such as CSS files or preloads.</li>
-        <li><code>&lt;a&gt;</code> is used to create hyperlinks for navigation to other pages or sections.</li>
+        <li><code>&lt;link&gt;</code> → Used inside head for resources (CSS).</li>
+        <li><code>&lt;a&gt;</code> → Used for navigation.</li>
       </ul>
     </li>
   </ul>
 
-
-  <h3>Utility Functions: Debounce and Throttle</h3>
-
-<p>
-  <strong>Debounce</strong> and <strong>Throttle</strong> are performance optimization techniques 
-  used in JavaScript to control how often a function executes, especially for events 
-  like <code>scroll</code>, <code>resize</code>, or <code>input</code>.
-</p>
-
-<hr />
-
-<h4>1. Debounce</h4>
-
-<p>
-  <strong>Debounce</strong> ensures that a function is executed only after a certain 
-  amount of time has passed since the last event trigger.
-</p>
-
-<p><strong>Use Case:</strong> Search input box (API call after user stops typing).</p>
-
-<h5>How It Works:</h5>
-<ul>
-  <li>If the event keeps firing, the timer keeps resetting.</li>
-  <li>The function runs only after the user stops triggering the event for the given delay.</li>
-</ul>
-
-<h5>Debounce Implementation:</h5>
-
-<pre><code class="language-javascript">
-// Basic debounce implementation
-function debounce(fn, delay) {
-  let timer;
-
-  return function (...args) {
-    const context = this;
-
-    clearTimeout(timer); // Reset previous timer
-
-    timer = setTimeout(() => {
-      fn.apply(context, args);
-    }, delay);
-  };
-}
-
-// Example usage:
-const handleInput = debounce((event) => {
-  console.log("User typed:", event.target.value);
-}, 300);
-
-document.getElementById("search").addEventListener("input", handleInput);
-</code></pre>
-
-<p>
-  ✅ The function executes only after 300ms of no typing.
-</p>
-
-<hr />
-
-<h4>2. Throttle</h4>
-
-<p>
-  <strong>Throttle</strong> ensures that a function executes at most once in a specified 
-  time interval, no matter how many times the event fires.
-</p>
-
-<p><strong>Use Case:</strong> Window scroll event (limit execution frequency).</p>
-
-<h5>How It Works:</h5>
-<ul>
-  <li>The first event executes immediately.</li>
-  <li>Further calls within the delay period are ignored.</li>
-  <li>After delay passes, it can execute again.</li>
-</ul>
-
-<h5>Throttle Implementation:</h5>
-
-<pre><code class="language-javascript">
-// Basic throttle implementation
-function throttle(fn, delay) {
-  let lastCall = 0;
-
-  return function (...args) {
-    const now = Date.now();
-
-    if (now - lastCall >= delay) {
-      lastCall = now;
-      fn.apply(this, args);
-    }
-  };
-}
-
-// Example usage:
-const handleScroll = throttle(() => {
-  console.log("Scroll event triggered");
-}, 500);
-
-window.addEventListener("scroll", handleScroll);
-</code></pre>
-
-<p>
-  ✅ The function executes at most once every 500ms.
-</p>
-
-<hr />
-
-<h4>Key Differences</h4>
-
-<table border="1" cellpadding="8" cellspacing="0">
-  <thead>
-    <tr>
-      <th>Feature</th>
-      <th>Debounce</th>
-      <th>Throttle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Execution Timing</td>
-      <td>After user stops triggering event</td>
-      <td>At regular intervals</td>
-    </tr>
-    <tr>
-      <td>Best For</td>
-      <td>Search inputs, auto-save</td>
-      <td>Scroll, resize, mouse move</td>
-    </tr>
-    <tr>
-      <td>Frequency Control</td>
-      <td>Waits for inactivity</td>
-      <td>Limits execution rate</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h4>Simple Analogy</h4>
-<ul>
-  <li><strong>Debounce:</strong> Wait until you stop talking before I respond.</li>
-  <li><strong>Throttle:</strong> I will respond at most once every 5 seconds while you talk.</li>
-</ul>
 </div>
-
