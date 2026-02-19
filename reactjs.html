@@ -644,6 +644,101 @@ function Counter() {
               </div>
             </div>
           </div>
+          <!-- Portals -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#portals"
+              >
+                5. React Portals
+              </button>
+            </h2>
+
+            <div
+              id="portals"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
+              <div class="accordion-body">
+                <h6>What are Portals?</h6>
+                <p>
+                  Portals allow rendering a component outside its parent DOM
+                  hierarchy while keeping it inside the same React component
+                  tree.
+                </p>
+
+                <ul>
+                  <li>Used for Modals, Tooltips, Dropdowns, Overlays.</li>
+                  <li>Helps avoid CSS overflow / z-index issues.</li>
+                  <li>Still supports event bubbling through React tree.</li>
+                </ul>
+
+                <hr />
+
+                <h6>How Portals Work</h6>
+
+                <p>
+                  Instead of rendering inside <code>#root</code>, you render
+                  into another DOM node.
+                </p>
+
+                <h6>Step 1: Add a div in index.html</h6>
+
+                <pre><code>
+&lt;div id="root"&gt;&lt;/div&gt;
+&lt;div id="portal-root"&gt;&lt;/div&gt;
+</code></pre>
+
+                <h6>Step 2: Create Portal Component</h6>
+
+                <pre><code>
+import ReactDOM from "react-dom";
+
+function Modal({ children }) {
+  return ReactDOM.createPortal(
+    &lt;div className="modal"&gt;
+      {children}
+    &lt;/div&gt;,
+    document.getElementById("portal-root")
+  );
+}
+</code></pre>
+
+                <h6>Step 3: Use It</h6>
+
+                <pre><code>
+function App() {
+  return (
+    &lt;&gt;
+      &lt;h1&gt;Main App&lt;/h1&gt;
+      &lt;Modal&gt;
+        &lt;p&gt;This is rendered using Portal&lt;/p&gt;
+      &lt;/Modal&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre>
+
+                <hr />
+
+                <h6>Key Interview Points</h6>
+
+                <ul>
+                  <li>Portals do NOT break React’s event bubbling.</li>
+                  <li>They only change DOM placement, not React hierarchy.</li>
+                  <li>Useful for UI layers (modals, popups).</li>
+                </ul>
+
+                <p>
+                  <strong>Interview Tip:</strong> Portals solve UI layering
+                  problems without breaking React’s component structure.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
