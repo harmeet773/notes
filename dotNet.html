@@ -1,0 +1,468 @@
+---
+layout: default
+title: dotNet
+---
+
+<h2 class="mb-3">.NET Core</h2>
+<h3 class="mb-4">Interview Preparation Notes</h3>
+
+<div class="accordion" id="dotnetMainAccordion">
+  <!-- 1. Core Concepts -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingCore">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnCoreConcepts"
+        aria-expanded="false"
+        aria-controls="dnCoreConcepts"
+      >
+        1. Core Concepts
+      </button>
+    </h2>
+    <div
+      id="dnCoreConcepts"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingCore"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Cross-platform, open-source, high-performance framework for building modern apps.</li>
+          <li>Unified platform (.NET 5+) for web, desktop, mobile, cloud, and microservices.</li>
+          <li>CLR manages memory via GC, just-in-time compilation, and type safety.</li>
+        </ul>
+        <h6>SDK vs Runtime</h6>
+        <ul>
+          <li><strong>SDK</strong>: includes compilers, tools, and runtime to build apps.</li>
+          <li><strong>Runtime</strong>: to run apps only; no compilers/dev tools.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Project Structure & CLI -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingCLI">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnCLI"
+        aria-expanded="false"
+        aria-controls="dnCLI"
+      >
+        2. Project Structure & CLI
+      </button>
+    </h2>
+    <div
+      id="dnCLI"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingCLI"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li><code>Program.cs</code> with top-level statements (minimal hosting) in .NET 6+.</li>
+          <li><code>appsettings.json</code> for configuration per environment.</li>
+          <li>Use <code>dotnet</code> CLI for creating, building, running, and publishing.</li>
+        </ul>
+
+        <pre><code class="language-bash">dotnet new webapi -n SampleApi
+dotnet build
+dotnet run
+dotnet publish -c Release
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Dependency Injection (DI) -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingDI">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnDI"
+        aria-expanded="false"
+        aria-controls="dnDI"
+      >
+        3. Dependency Injection (DI)
+      </button>
+    </h2>
+    <div
+      id="dnDI"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingDI"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Built-in IoC container supports <code>Singleton</code>, <code>Scoped</code>, and <code>Transient</code> lifetimes.</li>
+          <li>Prefer constructor injection; avoid service locator anti-pattern.</li>
+        </ul>
+
+        <pre><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton&lt;ICache, MemoryCacheImpl&gt;();
+builder.Services.AddScoped&lt;IRepository, EfRepository&gt;();
+builder.Services.AddTransient&lt;INotifier, EmailNotifier&gt;();
+
+var app = builder.Build();
+app.Run();
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Configuration & Options Pattern -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingConfig">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnConfig"
+        aria-expanded="false"
+        aria-controls="dnConfig"
+      >
+        4. Configuration & Options Pattern
+      </button>
+    </h2>
+    <div
+      id="dnConfig"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingConfig"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Bind strongly-typed settings via <code>IOptions&lt;T&gt;</code> / <code>IOptionsMonitor&lt;T&gt;</code>.</li>
+          <li>Support multiple configuration providers: JSON, env vars, user secrets, Azure Key Vault.</li>
+        </ul>
+
+        <pre><code class="language-json">{
+  "Smtp": {
+    "Host": "smtp.example.com",
+    "Port": 587
+  }
+}
+</code></pre>
+
+        <pre><code class="language-csharp">builder.Services.Configure&lt;SmtpOptions&gt;(builder.Configuration.GetSection("Smtp"));
+
+public class SmtpOptions { public string Host { get; set; } = ""; public int Port { get; set; } }
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Middleware & Request Pipeline -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingMiddleware">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnMiddleware"
+        aria-expanded="false"
+        aria-controls="dnMiddleware"
+      >
+        5. Middleware & Request Pipeline
+      </button>
+    </h2>
+    <div
+      id="dnMiddleware"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingMiddleware"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Pipeline built from middleware: authentication, routing, endpoints, static files, etc.</li>
+          <li>Order matters: place <code>UseRouting()</code> before <code>UseEndpoints()</code>, etc.</li>
+        </ul>
+
+        <pre><code class="language-csharp">var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+app.Run();
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Controllers & Routing -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingControllers">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnControllers"
+        aria-expanded="false"
+        aria-controls="dnControllers"
+      >
+        6. Controllers & Routing
+      </button>
+    </h2>
+    <div
+      id="dnControllers"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingControllers"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Attribute routing with tokens like <code>[Route("api/[controller]")]</code>.</li>
+          <li>Use <code>ApiController</code> for automatic 400 responses and binding behaviors.</li>
+        </ul>
+
+        <pre><code class="language-csharp">[ApiController]
+[Route("api/[controller]")]
+public class UsersController : ControllerBase
+{
+    [HttpGet("{id:int}")]
+    public ActionResult&lt;UserDto&gt; Get(int id) =&gt; Ok(new UserDto(id, "John"));
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Model Binding & Validation -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingModel">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnModel"
+        aria-expanded="false"
+        aria-controls="dnModel"
+      >
+        7. Model Binding & Validation
+      </button>
+    </h2>
+    <div
+      id="dnModel"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingModel"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Automatic binding from route, query, headers, and body to action parameters.</li>
+          <li>Use DataAnnotations like <code>[Required]</code>, <code>[EmailAddress]</code>, <code>[Range]</code>.</li>
+        </ul>
+
+        <pre><code class="language-csharp">public record RegisterDto(
+  [property: Required, EmailAddress] string Email,
+  [property: Required, MinLength(6)] string Password);
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Entity Framework Core -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingEf">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnEf"
+        aria-expanded="false"
+        aria-controls="dnEf"
+      >
+        8. Entity Framework Core (EF Core)
+      </button>
+    </h2>
+    <div
+      id="dnEf"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingEf"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>ORM for data access with LINQ; supports migrations and change tracking.</li>
+          <li>DbContext configured via DI; providers: SQL Server, SQLite, PostgreSQL, etc.</li>
+        </ul>
+
+        <pre><code class="language-csharp">builder.Services.AddDbContext&lt;AppDbContext&gt;(o =&gt;
+    o.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+
+public class AppDbContext : DbContext
+{
+  public AppDbContext(DbContextOptions options) : base(options) {}
+  public DbSet&lt;User&gt; Users =&gt; Set&lt;User&gt;();
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Asynchronous Programming -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingAsync">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnAsync"
+        aria-expanded="false"
+        aria-controls="dnAsync"
+      >
+        9. Asynchronous Programming
+      </button>
+    </h2>
+    <div
+      id="dnAsync"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingAsync"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Use async/await to free threads; avoid blocking with <code>.Result</code>/<code>.Wait()</code>.</li>
+          <li>Use <code>CancellationToken</code> for cooperative cancellation.</li>
+        </ul>
+
+        <pre><code class="language-csharp">[HttpGet]
+public async Task&lt;IEnumerable&lt;UserDto&gt;&gt; GetAll(CancellationToken ct) =&gt;
+    await _svc.GetUsersAsync(ct);
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Logging & Monitoring -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingLogging">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnLogging"
+        aria-expanded="false"
+        aria-controls="dnLogging"
+      >
+        10. Logging & Monitoring
+      </button>
+    </h2>
+    <div
+      id="dnLogging"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingLogging"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Built-in logging abstractions with providers (Console, Debug, Seq, Application Insights).</li>
+          <li>Use scopes and structured logging for richer context.</li>
+        </ul>
+
+        <pre><code class="language-csharp">public class UsersController(ILogger&lt;UsersController&gt; logger) : ControllerBase
+{
+  [HttpGet]
+  public IActionResult Get() {
+    using (logger.BeginScope("RequestId:{RequestId}", Guid.NewGuid())) {
+      logger.LogInformation("Fetching users");
+      return Ok(Array.Empty&lt;string&gt;());
+    }
+  }
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Testing -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingTesting">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnTesting"
+        aria-expanded="false"
+        aria-controls="dnTesting"
+      >
+        11. Testing
+      </button>
+    </h2>
+    <div
+      id="dnTesting"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingTesting"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Use xUnit/NUnit/MSTest for unit tests; Moq/NSubstitute for mocking.</li>
+          <li>WebApplicationFactory enables integration testing of minimal APIs and MVC.</li>
+        </ul>
+
+        <pre><code class="language-csharp">public class ApiTests : IClassFixture&lt;WebApplicationFactory&lt;Program&gt;&gt;
+{
+  private readonly HttpClient _client;
+  public ApiTests(WebApplicationFactory&lt;Program&gt; factory) =&gt; _client = factory.CreateClient();
+
+  [Fact]
+  public async Task Get_ReturnsOk() {
+    var res = await _client.GetAsync("/weatherforecast");
+    res.EnsureSuccessStatusCode();
+  }
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Security & Identity -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingSecurity">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnSecurity"
+        aria-expanded="false"
+        aria-controls="dnSecurity"
+      >
+        12. Security & Identity
+      </button>
+    </h2>
+    <div
+      id="dnSecurity"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingSecurity"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Use ASP.NET Core Identity or external providers (JWT/OAuth/OpenID Connect).</li>
+          <li>Protect APIs with authentication/authorization policies and role-based access.</li>
+        </ul>
+
+        <pre><code class="language-csharp">builder.Services
+  .AddAuthentication("Bearer")
+  .AddJwtBearer("Bearer", o =&gt; {
+    o.Authority = "https://auth.example.com";
+    o.Audience = "api";
+  });
+
+app.UseAuthentication();
+app.UseAuthorization();
+</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
