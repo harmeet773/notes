@@ -782,6 +782,102 @@ function App() {
               </div>
             </div>
           </div>
+
+          <!-- Thunk and Saga -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#thunkSaga"
+              >
+                6. Redux Thunk and Redux Saga
+              </button>
+            </h2>
+
+            <div
+              id="thunkSaga"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
+              <div class="accordion-body">
+                <h6>Redux Thunk</h6>
+                <ul>
+                  <li>Thunk is a middleware that lets you write action creators returning a function instead of an action.</li>
+                  <li>Great for simple async flows: dispatch before/after API calls.</li>
+                  <li>Lower learning curve and smaller bundle size.</li>
+                </ul>
+
+                <pre><code class="language-javascript">// actions.js
+export const fetchUsers = () =&gt; async (dispatch, getState) =&gt; {
+  dispatch({ type: 'USERS_REQUEST' });
+  try {
+    const res = await fetch('/api/users');
+    const data = await res.json();
+    dispatch({ type: 'USERS_SUCCESS', payload: data });
+  } catch (err) {
+    dispatch({ type: 'USERS_FAILURE', error: err.message });
+  }
+};
+
+// store.js
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducer';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+</code></pre>
+
+                <hr />
+
+                <h6>Redux Saga</h6>
+                <ul>
+                  <li>Saga is a middleware for managing complex async side effects using generator functions.</li>
+                  <li>Provides powerful effects like <code>takeEvery</code>, <code>takeLatest</code>, <code>call</code>, <code>put</code>, and cancellation.</li>
+                  <li>Great for orchestrating flows, retries, debouncing, and complex business logic.</li>
+                </ul>
+
+                <pre><code class="language-javascript">// sagas.js
+import { call, put, takeLatest } from 'redux-saga/effects';
+
+function* fetchUsersWorker() {
+  try {
+    const res = yield call(fetch, '/api/users');
+    const data = yield call([res, 'json']);
+    yield put({ type: 'USERS_SUCCESS', payload: data });
+  } catch (err) {
+    yield put({ type: 'USERS_FAILURE', error: err.message });
+  }
+}
+
+export function* usersSaga() {
+  yield takeLatest('USERS_REQUEST', fetchUsersWorker);
+}
+
+// store.js
+import createSagaMiddleware from 'redux-saga';
+import { applyMiddleware, createStore } from 'redux';
+import rootReducer from './reducer';
+import { usersSaga } from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(usersSaga);
+</code></pre>
+
+                <hr />
+
+                <h6>When to Choose Which?</h6>
+                <ul>
+                  <li><strong>Thunk</strong>: Simple async needs, few API calls, minimal orchestration.</li>
+                  <li><strong>Saga</strong>: Complex workflows, background tasks, cancellation, debouncing, sequencing.</li>
+                </ul>
+
+                <p><strong>Interview Tip:</strong> Start with Thunk for simplicity; move to Saga when side-effect complexity grows and testability/orchestration become priorities.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
