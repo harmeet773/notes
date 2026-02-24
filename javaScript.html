@@ -194,6 +194,60 @@ function addToTotal(value) {
                 </div>
             </div>
 
+            <!-- Debouncing -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#debouncing">
+                    6. Debouncing
+                </button>
+                </h2>
+
+                <div id="debouncing"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#jsSubAccordion">
+
+                <div class="accordion-body">
+                    <p><strong>Definition:</strong> Debouncing ensures a function runs only after a specified period of inactivity since the last call.</p>
+
+                    <p><strong>Use cases:</strong></p>
+                    <ul>
+                        <li>Search-as-you-type to reduce API calls.</li>
+                        <li>Window resize or scroll handlers.</li>
+                        <li>Form input validation.</li>
+                    </ul>
+
+                    <p><strong>Debounce vs Throttle:</strong></p>
+                    <ul>
+                        <li><strong>Debounce</strong> waits until the user stops triggering events.</li>
+                        <li><strong>Throttle</strong> executes at most once per interval during a burst of events.</li>
+                    </ul>
+
+<pre><code class="language-javascript">// Simple debounce implementation
+function debounce(fn, delay) {
+  let timerId;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timerId);
+    timerId = setTimeout(() => fn.apply(context, args), delay);
+  };
+}
+
+// Example: Debounce input handler
+const input = document.querySelector('#search');
+const onInput = debounce((e) => {
+  console.log('Searching for:', e.target.value);
+  // fetch(`/api/search?q=${encodeURIComponent(e.target.value)}`)
+}, 300);
+
+input.addEventListener('input', onInput);
+</code></pre>
+                </div>
+                </div>
+            </div>
+
             </div>
 
         </div>
