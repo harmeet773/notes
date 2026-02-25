@@ -7,6 +7,39 @@ title: Angular
 <h3 class="mb-4">Interview Preparation Notes</h3>
 
 <div class="accordion" id="angularMainAccordion">
+  <!-- 0. Angular History -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingHistory">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#angularHistory"
+        aria-expanded="false"
+        aria-controls="angularHistory"
+      >
+        0. Angular History
+      </button>
+    </h2>
+    <div
+      id="angularHistory"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingHistory"
+      data-bs-parent="#angularMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li><strong>AngularJS (1.x)</strong> — Released in 2010; MVC/MVVM style, two-way binding, digest cycle; written in JavaScript.</li>
+          <li><strong>Angular (2+)</strong> — Complete rewrite released in 2016; component-based, TypeScript-first, RxJS, Ahead-of-Time (AOT) compilation.</li>
+          <li><strong>Major versions</strong> — v4 (2017, alignment), v5-8 (CLI/build improvements), v9 (Ivy by default), v10-12 (strict mode, TS updates), v13-15 (ESBuild/Vite options), v16-17 (Standalone APIs, signals preview), v18+ (continued performance/tooling enhancements).</li>
+          <li><strong>CLI Evolution</strong> — Angular CLI became standard for scaffolding, building, testing, and deploying.</li>
+          <li><strong>Long-term Support (LTS)</strong> — Regular 6-month release cadence with active and LTS phases.</li>
+        </ul>
+        <p><em>Interview Tip:</em> Emphasize Angular (2+) is a new framework vs AngularJS; note Ivy (v9) and Standalone APIs as key milestones.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- 1. Angular Core Concepts -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingCore">
@@ -362,6 +395,45 @@ onSubmit() {
   console.log(this.form.value);
 }
 </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Angular vs AngularJS (Key Differences) -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingNgVsNgjs">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#angularVsAngularJs"
+        aria-expanded="false"
+        aria-controls="angularVsAngularJs"
+      >
+        10. Angular vs AngularJS (Key Differences)
+      </button>
+    </h2>
+    <div
+      id="angularVsAngularJs"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingNgVsNgjs"
+      data-bs-parent="#angularMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li><strong>Architecture</strong> — AngularJS uses MVC/MVVM; Angular uses component-based architecture with modules.</li>
+          <li><strong>Language</strong> — AngularJS: JavaScript; Angular: TypeScript-first (superset of JS).</li>
+          <li><strong>Data Binding</strong> — AngularJS: two-way binding with digest cycle; Angular: unidirectional data flow by default with one-way bindings and optional two-way via <code>ngModel</code>.</li>
+          <li><strong>Rendering</strong> — AngularJS uses runtime compilation; Angular supports JIT and AOT, with Ivy compiler/runtime improving tree-shaking and performance.</li>
+          <li><strong>Performance</strong> — Angular outperforms AngularJS due to AOT, Ivy, change detection optimizations, and RxJS usage.</li>
+          <li><strong>Mobile</strong> — Angular supports mobile development workflows and better tooling; AngularJS had limited mobile focus.</li>
+          <li><strong>Tooling</strong> — Angular CLI standardizes scaffolding/testing/build; AngularJS relied on manual setup/grunt/gulp.</li>
+          <li><strong>Dependency Injection</strong> — Both have DI; Angular’s DI is more powerful and modular.</li>
+          <li><strong>Routing</strong> — Angular Router with lazy loading and guards; AngularJS had <code>ngRoute</code>/<code>ui-router</code>.</li>
+          <li><strong>Testing</strong> — Both support unit/e2e testing; Angular integrates TestBed, Karma/Jasmine, Jest options, Protractor (legacy)/Cypress.</li>
+          <li><strong>Ecosystem</strong> — Angular embraces RxJS, TypeScript, and modern build tools; AngularJS ecosystem is legacy and in LTS-only status.</li>
+        </ul>
+        <p><em>Interview Tip:</em> Emphasize Angular (2+) as a complete rewrite: TypeScript, components, AOT/Ivy, RxJS, CLI, and significantly better performance compared to AngularJS.</p>
       </div>
     </div>
   </div>
