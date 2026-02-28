@@ -121,17 +121,41 @@ dotnet publish -c Release
       data-bs-parent="#dotnetMainAccordion"
     >
       <div class="accordion-body">
+        <h6>IoC (Inversion of Control) Overview</h6>
         <ul>
-          <li>
-            Built-in IoC container supports <code>Singleton</code>,
-            <code>Scoped</code>, and <code>Transient</code> lifetimes.
-          </li>
-          <li>
-            Prefer constructor injection; avoid service locator anti-pattern.
-          </li>
+          <li>IoC is a principle where control of object creation and dependency resolution is delegated to an external component (a container) instead of being handled by the objects themselves.</li>
+          <li>Promotes loose coupling, testability, and separation of concerns.</li>
+        </ul>
+
+        <h6>DI (Dependency Injection)</h6>
+        <ul>
+          <li>DI is a specific way to implement IoC by supplying dependencies to a class (usually via constructor, sometimes via properties or methods) rather than creating them internally.</li>
+          <li>ASP.NET Core includes a built-in IoC container to register and resolve services.</li>
+        </ul>
+
+        <h6>IoC vs DI</h6>
+        <ul>
+          <li>IoC is the broader principle (who controls object creation and flow).</li>
+          <li>DI is a concrete technique to achieve IoC by injecting dependencies.</li>
+        </ul>
+
+        <h6>Benefits</h6>
+        <ul>
+          <li>Loose coupling and cleaner architecture.</li>
+          <li>Easier unit testing and mocking (swap implementations).</li>
+          <li>Centralized configuration of lifetimes and implementations.</li>
+        </ul>
+
+        <h6>Registration & Lifetimes</h6>
+        <ul>
+          <li><strong>Singleton</strong> — one instance for app lifetime.</li>
+          <li><strong>Scoped</strong> — one instance per request scope.</li>
+          <li><strong>Transient</strong> — new instance every resolution.</li>
         </ul>
 
         <pre><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
+
+// Register interfaces to implementations with lifetimes
 builder.Services.AddSingleton&lt;ICache, MemoryCacheImpl&gt;();
 builder.Services.AddScoped&lt;IRepository, EfRepository&gt;();
 builder.Services.AddTransient&lt;INotifier, EmailNotifier&gt;();
@@ -139,6 +163,30 @@ builder.Services.AddTransient&lt;INotifier, EmailNotifier&gt;();
 var app = builder.Build();
 app.Run();
 </code></pre>
+
+        <h6>Constructor Injection Example</h6>
+        <pre><code class="language-csharp">public interface IGreeter { string Greet(string name); }
+public class Greeter : IGreeter { public string Greet(string name) =&gt; $"Hello {name}"; }
+
+// Registration
+// builder.Services.AddScoped&lt;IGreeter, Greeter&gt;();
+
+[ApiController]
+[Route("api/[controller]")]
+public class HelloController : ControllerBase
+{
+    private readonly IGreeter _greeter;
+    public HelloController(IGreeter greeter) =&gt; _greeter = greeter;
+
+    [HttpGet("{name}")]
+    public string Get(string name) =&gt; _greeter.Greet(name);
+}
+</code></pre>
+
+        <h6>Avoid Service Locator</h6>
+        <ul>
+          <li>Prefer constructor injection over resolving services imperatively from <code>IServiceProvider</code> within classes (service locator anti-pattern), which hides dependencies and complicates testing.</li>
+        </ul>
       </div>
     </div>
   </div>
