@@ -757,7 +757,6 @@ app.UseAuthorization();
             </ul>
           </li>
         </ol>
-
         <h6>ADO.NET vs Code-First vs Database-First</h6>
         <p>
           <strong>ADO.NET</strong> requires manual SQL and data
@@ -815,18 +814,77 @@ app.UseAuthorization();
       data-bs-parent="#dotnetMainAccordion"
     >
       <div class="accordion-body">
-        <h6>.NET Core vs .NET Framework</h6>
-        <ul>
-          <li><strong>Platform support</strong> — .NET Framework: Windows only; .NET Core: Cross-platform (Windows, Linux, macOS).</li>
-          <li><strong>Type of apps</strong> — .NET Framework: Web Forms, WPF, WinForms, ASP.NET MVC; .NET Core: ASP.NET Core, Console apps, Microservices, Cloud apps.</li>
-          <li><strong>Open Source</strong> — .NET Framework: Partially; .NET Core: Fully open source (on GitHub).</li>
-          <li><strong>Performance</strong> — .NET Framework: Slower (IIS dependent); .NET Core: Faster, modular, lightweight.</li>
-          <li><strong>Deployment</strong> — .NET Framework: Installed system-wide; .NET Core: Self-contained, per-app deployment possible.</li>
-          <li><strong>CLI support</strong> — .NET Framework: Limited; .NET Core: Full CLI (dotnet) support.</li>
-          <li><strong>Versioning</strong> — .NET Framework: System-wide; .NET Core: Per-application, avoids version conflicts.</li>
-          <li><strong>Web Server</strong> — .NET Framework: IIS only; .NET Core: Kestrel (built-in), can run behind IIS/Nginx/Apache.</li>
-          <li><strong>Modern Development</strong> — .NET Framework: Not evolving (last 4.8); .NET (.NET 6/7/8): Actively evolving.</li>
-        </ul>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>.NET Core vs .NET Framework</th>
+
+                </tr>
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>.NET Framework</th>
+
+                    <th>.NET Core</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><strong>Platform support</strong></td>
+                    <td>Windows only</td>
+                    <td>Cross-platform (Windows, Linux, macOS)</td>
+                </tr>
+                <tr>
+                    <td><strong>Type of apps</strong></td>
+                    <td>Web Forms, WPF, WinForms, ASP.NET MVC</td>
+                    <td>ASP.NET Core, Console apps, Microservices, Cloud apps</td>
+                </tr>
+                <tr>
+                    <td><strong>Open Source</strong></td>
+                    <td>Partially</td>
+                    <td>Fully open source (on GitHub)</td>
+                </tr>
+                <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>Slower (IIS dependent)</td>
+                    <td>Faster, modular, lightweight</td>
+                </tr>
+                <tr>
+                    <td><strong>Deployment</strong></td>
+                    <td>Installed system-wide</td>
+                    <td>Self-contained, per-app deployment possible</td>
+                </tr>
+                <tr>
+                    <td><strong>CLI support</strong></td>
+                    <td>Limited</td>
+                    <td>Full CLI (dotnet) support</td>
+                </tr>
+                <tr>
+                    <td><strong>Versioning</strong></td>
+                    <td>System-wide</td>
+                    <td>Per-application, avoids version conflicts</td>
+                </tr>
+                <tr>
+                    <td><strong>Web Server</strong></td>
+                    <td>IIS only</td>
+                    <td>Kestrel (built-in), can run behind IIS/Nginx/Apache</td>
+                </tr>
+                <tr>
+                    <td><strong>Modern Development</strong></td>
+                    <td>Not evolving (last 4.8)</td>
+                    <td>.NET (.NET 6/7/8): Actively evolving</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h6>1) Which .NET version are you using?</h6>
         <p>Ans — .NET 6 (LTS). .NET 6 released Nov 9, 2021; .NET 8 (LTS) released Nov 14, 2023.</p>
@@ -844,28 +902,37 @@ app.UseAuthorization();
 
         <h6>4) How do you change object values in DI when required?</h6>
         <p>Use options pattern (<code>IOptionsMonitor&lt;T&gt;</code>) for config reloads, or inject a factory (<code>IServiceProvider</code> or custom <code>Func&lt;T&gt;</code>) to resolve fresh instances; for scoped state, use scoped services or <code>IMemoryCache</code>.</p>
-
         <h6>5) How do you handle exceptions in .NET Core APIs?</h6>
         <ul>
           <li><strong>Try–Catch</strong> — Local handling within actions or services to return meaningful errors.</li>
           <li><strong>Custom Middleware</strong> — Centralized global handler to standardize error responses and logging.</li>
           <li><strong>UseExceptionHandler()</strong> — Built-in global handler routing errors to a specific endpoint.</li>
         </ul>
-
         <h6>6) What is middleware and its uses?</h6>
         <p>Requests pass through a sequence of middleware; each can process the request, call the next middleware, or short-circuit. Responses flow back in reverse order.</p>
         <ul>
           <li>Common uses: Authentication/Authorization, Logging, Exception handling, CORS, Static files, Localization.</li>
         </ul>
-
         <h6>7) How do you classify exceptions and create custom exceptions?</h6>
         <p>Exceptions are runtime errors derived from <code>System.Exception</code>. System exceptions are predefined (e.g., NullReferenceException, FileNotFoundException). Custom exceptions derive from <code>Exception</code> for domain-specific errors.</p>
+        Exceptions are runtime errors that occur during program execution — for example, dividing by zero, accessing null objects, or reading missing files.
+They are objects derived from the System.Exception base class.
+
+System exceptions → predefined runtime errors (e.g., NullReferenceException, FileNotFoundException).Custom exceptions → user-defined classes derived from Exception for handling application-specific errors.
 
         <h6>8) Which Entity Framework approach do you use? (Database First / Code First)</h6>
         <p>Answer based on project: Code-First for greenfield with migrations; Database-First for existing schemas.</p>
 
         <h6>9) How do you write queries – LINQ, raw SQL, or other approaches?</h6>
         <p>LINQ describes the data shape (filters, sorts, joins) while the ORM (EF) translates LINQ into SQL and executes it. Use raw SQL for complex or performance-critical cases.</p>
+        we can write with LINQ , 
+
+LINQ provides the language for writing queries,
+ORM (like Entity Framework) provides the engine that runs those queries on the database.
+
+LINQ --- Describes what data you want in a query (e.g., filtering, sorting, joining).
+
+ORM (EF) -- Executes that query against the database by converting LINQ expressions into SQL.
       </div>
     </div>
   </div>
