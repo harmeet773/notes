@@ -29,14 +29,28 @@ title: dotNet
     >
       <div class="accordion-body">
         <ul>
-          <li>Cross-platform, open-source, high-performance framework for building modern apps.</li>
-          <li>Unified platform (.NET 5+) for web, desktop, mobile, cloud, and microservices.</li>
-          <li>CLR manages memory via GC, just-in-time compilation, and type safety.</li>
+          <li>
+            Cross-platform, open-source, high-performance framework for building
+            modern apps.
+          </li>
+          <li>
+            Unified platform (.NET 5+) for web, desktop, mobile, cloud, and
+            microservices.
+          </li>
+          <li>
+            CLR manages memory via GC, just-in-time compilation, and type
+            safety.
+          </li>
         </ul>
         <h6>SDK vs Runtime</h6>
         <ul>
-          <li><strong>SDK</strong>: includes compilers, tools, and runtime to build apps.</li>
-          <li><strong>Runtime</strong>: to run apps only; no compilers/dev tools.</li>
+          <li>
+            <strong>SDK</strong>: includes compilers, tools, and runtime to
+            build apps.
+          </li>
+          <li>
+            <strong>Runtime</strong>: to run apps only; no compilers/dev tools.
+          </li>
         </ul>
       </div>
     </div>
@@ -64,9 +78,17 @@ title: dotNet
     >
       <div class="accordion-body">
         <ul>
-          <li><code>Program.cs</code> with top-level statements (minimal hosting) in .NET 6+.</li>
-          <li><code>appsettings.json</code> for configuration per environment.</li>
-          <li>Use <code>dotnet</code> CLI for creating, building, running, and publishing.</li>
+          <li>
+            <code>Program.cs</code> with top-level statements (minimal hosting)
+            in .NET 6+.
+          </li>
+          <li>
+            <code>appsettings.json</code> for configuration per environment.
+          </li>
+          <li>
+            Use <code>dotnet</code> CLI for creating, building, running, and
+            publishing.
+          </li>
         </ul>
 
         <pre><code class="language-bash">dotnet new webapi -n SampleApi
@@ -100,8 +122,13 @@ dotnet publish -c Release
     >
       <div class="accordion-body">
         <ul>
-          <li>Built-in IoC container supports <code>Singleton</code>, <code>Scoped</code>, and <code>Transient</code> lifetimes.</li>
-          <li>Prefer constructor injection; avoid service locator anti-pattern.</li>
+          <li>
+            Built-in IoC container supports <code>Singleton</code>,
+            <code>Scoped</code>, and <code>Transient</code> lifetimes.
+          </li>
+          <li>
+            Prefer constructor injection; avoid service locator anti-pattern.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
@@ -138,8 +165,14 @@ app.Run();
     >
       <div class="accordion-body">
         <ul>
-          <li>Bind strongly-typed settings via <code>IOptions&lt;T&gt;</code> / <code>IOptionsMonitor&lt;T&gt;</code>.</li>
-          <li>Support multiple configuration providers: JSON, env vars, user secrets, Azure Key Vault.</li>
+          <li>
+            Bind strongly-typed settings via <code>IOptions&lt;T&gt;</code> /
+            <code>IOptionsMonitor&lt;T&gt;</code>.
+          </li>
+          <li>
+            Support multiple configuration providers: JSON, env vars, user
+            secrets, Azure Key Vault.
+          </li>
         </ul>
 
         <pre><code class="language-json">{
@@ -180,8 +213,14 @@ public class SmtpOptions { public string Host { get; set; } = ""; public int Por
     >
       <div class="accordion-body">
         <ul>
-          <li>Pipeline built from middleware: authentication, routing, endpoints, static files, etc.</li>
-          <li>Order matters: place <code>UseRouting()</code> before <code>UseEndpoints()</code>, etc.</li>
+          <li>
+            Pipeline built from middleware: authentication, routing, endpoints,
+            static files, etc.
+          </li>
+          <li>
+            Order matters: place <code>UseRouting()</code> before
+            <code>UseEndpoints()</code>, etc.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">var app = builder.Build();
@@ -220,8 +259,14 @@ app.Run();
     >
       <div class="accordion-body">
         <ul>
-          <li>Attribute routing with tokens like <code>[Route("api/[controller]")]</code>.</li>
-          <li>Use <code>ApiController</code> for automatic 400 responses and binding behaviors.</li>
+          <li>
+            Attribute routing with tokens like
+            <code>[Route("api/[controller]")]</code>.
+          </li>
+          <li>
+            Use <code>ApiController</code> for automatic 400 responses and
+            binding behaviors.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">[ApiController]
@@ -258,8 +303,14 @@ public class UsersController : ControllerBase
     >
       <div class="accordion-body">
         <ul>
-          <li>Automatic binding from route, query, headers, and body to action parameters.</li>
-          <li>Use DataAnnotations like <code>[Required]</code>, <code>[EmailAddress]</code>, <code>[Range]</code>.</li>
+          <li>
+            Automatic binding from route, query, headers, and body to action
+            parameters.
+          </li>
+          <li>
+            Use DataAnnotations like <code>[Required]</code>,
+            <code>[EmailAddress]</code>, <code>[Range]</code>.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">public record RegisterDto(
@@ -292,8 +343,14 @@ public class UsersController : ControllerBase
     >
       <div class="accordion-body">
         <ul>
-          <li>ORM for data access with LINQ; supports migrations and change tracking.</li>
-          <li>DbContext configured via DI; providers: SQL Server, SQLite, PostgreSQL, etc.</li>
+          <li>
+            ORM for data access with LINQ; supports migrations and change
+            tracking.
+          </li>
+          <li>
+            DbContext configured via DI; providers: SQL Server, SQLite,
+            PostgreSQL, etc.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">builder.Services.AddDbContext&lt;AppDbContext&gt;(o =&gt;
@@ -331,8 +388,13 @@ public class AppDbContext : DbContext
     >
       <div class="accordion-body">
         <ul>
-          <li>Use async/await to free threads; avoid blocking with <code>.Result</code>/<code>.Wait()</code>.</li>
-          <li>Use <code>CancellationToken</code> for cooperative cancellation.</li>
+          <li>
+            Use async/await to free threads; avoid blocking with
+            <code>.Result</code>/<code>.Wait()</code>.
+          </li>
+          <li>
+            Use <code>CancellationToken</code> for cooperative cancellation.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">[HttpGet]
@@ -365,7 +427,10 @@ public async Task&lt;IEnumerable&lt;UserDto&gt;&gt; GetAll(CancellationToken ct)
     >
       <div class="accordion-body">
         <ul>
-          <li>Built-in logging abstractions with providers (Console, Debug, Seq, Application Insights).</li>
+          <li>
+            Built-in logging abstractions with providers (Console, Debug, Seq,
+            Application Insights).
+          </li>
           <li>Use scopes and structured logging for richer context.</li>
         </ul>
 
@@ -406,8 +471,13 @@ public async Task&lt;IEnumerable&lt;UserDto&gt;&gt; GetAll(CancellationToken ct)
     >
       <div class="accordion-body">
         <ul>
-          <li>Use xUnit/NUnit/MSTest for unit tests; Moq/NSubstitute for mocking.</li>
-          <li>WebApplicationFactory enables integration testing of minimal APIs and MVC.</li>
+          <li>
+            Use xUnit/NUnit/MSTest for unit tests; Moq/NSubstitute for mocking.
+          </li>
+          <li>
+            WebApplicationFactory enables integration testing of minimal APIs
+            and MVC.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">public class ApiTests : IClassFixture&lt;WebApplicationFactory&lt;Program&gt;&gt;
@@ -448,8 +518,14 @@ public async Task&lt;IEnumerable&lt;UserDto&gt;&gt; GetAll(CancellationToken ct)
     >
       <div class="accordion-body">
         <ul>
-          <li>Use ASP.NET Core Identity or external providers (JWT/OAuth/OpenID Connect).</li>
-          <li>Protect APIs with authentication/authorization policies and role-based access.</li>
+          <li>
+            Use ASP.NET Core Identity or external providers (JWT/OAuth/OpenID
+            Connect).
+          </li>
+          <li>
+            Protect APIs with authentication/authorization policies and
+            role-based access.
+          </li>
         </ul>
 
         <pre><code class="language-csharp">builder.Services
@@ -484,96 +560,109 @@ app.UseAuthorization();
       id="dnSelfStudy"
       class="accordion-collapse collapse"
       aria-labelledby="dnHeadingSelfStudy"
-      data-bs-parent="#dotnetMainAccordion">
-
+      data-bs-parent="#dotnetMainAccordion"
+    >
       <div class="accordion-body">
         <p>
-          <a href="https://www.youtube.com/watch?v=rUtWgEs07eI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=rUtWgEs07eI</a>
+          <a
+            href="https://www.youtube.com/watch?v=rUtWgEs07eI"
+            target="_blank"
+            rel="noopener"
+            >https://www.youtube.com/watch?v=rUtWgEs07eI</a
+          >
         </p>
 
-        <h6>What is Scaffolding? How does it work in .NET?</h6>
-        <p>Scaffolding in .NET (especially ASP.NET Core) automatically generates code for common CRUD operations, controllers, views, and UI pages based on your models. It speeds up development by providing a ready-to-use skeleton you can customize.</p>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="dnHeadingScaffolding">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#dnScaffolding"
+              aria-expanded="false"
+              aria-controls="dnScaffolding"
+            >
+              What is Scaffolding? How does it work in .NET?
+            </button>
+          </h2>
 
-        <p><strong>Scaffolding automates creation of:</strong></p>
-        <ul>
-          <li><strong>Controllers</strong> – Handle HTTP requests and responses.</li>
-          <li><strong>Views</strong> – Razor Pages or MVC Views for listing, editing, creating, and deleting records.</li>
-          <li><strong>Data Access Code</strong> – Can include DbContext and model binding if needed.</li>
-          <li><strong>CRUD Methods</strong> – Pre-built methods for Create, Read, Update, Delete operations.</li>
-        </ul>
-        <p>Essentially, it creates a template structure based on your models. By providing Models as input, you can generate controller and views code.</p>
-        <p>In ASP.NET Core, scaffolding can generate both <strong>MVC</strong>, <strong>Razor Pages</strong>, as well as for <strong>RESTful APIs</strong>.</p>
+          <div
+            id="dnScaffolding"
+            class="accordion-collapse collapse"
+            aria-labelledby="dnHeadingScaffolding"
+            data-bs-parent="#dotnetMainAccordion"
+          >
+            <div class="accordion-body">
+              <p>
+                <strong>Scaffolding in .NET (especially ASP.NET Core)</strong>
+                automatically generates code for common CRUD operations,
+                controllers, views, and UI pages based on your models. It speeds
+                up development by providing a ready-to-use skeleton you can
+                customize.
+              </p>
 
-        <ul>
-          <li><strong>MVC scaffolding</strong> → multiple views + centralized controller → better for complex apps.</li>
-          <li><strong>Razor Pages scaffolding</strong> → each page has its own code-behind → simpler for page-focused apps.</li>
-        </ul>
+              <p><strong>Scaffolding automates creation of:</strong></p>
+              <ul>
+                <li>
+                  <strong>Controllers</strong> – Handle HTTP requests and
+                  responses.
+                </li>
+                <li>
+                  <strong>Views</strong> – Razor Pages or MVC Views for listing,
+                  editing, creating, and deleting records.
+                </li>
+                <li>
+                  <strong>Data Access Code</strong> – Can include DbContext and
+                  model binding if needed.
+                </li>
+                <li>
+                  <strong>CRUD Methods</strong> – Pre-built methods for Create,
+                  Read, Update, Delete operations.
+                </li>
+              </ul>
 
+              <p>
+                Essentially, it creates a template structure based on your
+                models. By providing Models as input, you can generate
+                controller and views code.
+              </p>
 
+              <p>In <strong>ASP.NET Core</strong>, scaffolding can generate:</p>
 
-
-
-<div class="accordion-item">
-  <h2 class="accordion-header" id="dnHeadingScaffolding">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#dnScaffolding"
-      aria-expanded="false"
-      aria-controls="dnScaffolding"
-    >
-      What is Scaffolding? How does it work in .NET?
-    </button>
-  </h2>
-
-  <div
-    id="dnScaffolding"
-    class="accordion-collapse collapse"
-    aria-labelledby="dnHeadingScaffolding"
-    data-bs-parent="#dotnetMainAccordion"
-  >
-    <div class="accordion-body">
-
-      <p>
-        <strong>Scaffolding in .NET (especially ASP.NET Core)</strong> automatically generates 
-        code for common CRUD operations, controllers, views, and UI pages 
-        based on your models. It speeds up development by providing a 
-        ready-to-use skeleton you can customize.
-      </p>
-
-      <p><strong>Scaffolding automates creation of:</strong></p>
-      <ul>
-        <li><strong>Controllers</strong> – Handle HTTP requests and responses.</li>
-        <li><strong>Views</strong> – Razor Pages or MVC Views for listing, editing, creating, and deleting records.</li>
-        <li><strong>Data Access Code</strong> – Can include DbContext and model binding if needed.</li>
-        <li><strong>CRUD Methods</strong> – Pre-built methods for Create, Read, Update, Delete operations.</li>
-      </ul>
-
-      <p>
-        Essentially, it creates a template structure based on your models. 
-        By providing Models as input, you can generate controller and views code.
-      </p>
-
-      <p>
-        In <strong>ASP.NET Core</strong>, scaffolding can generate:
-      </p>
-
-      <ul>
-        <li><strong>MVC scaffolding</strong> → Multiple views + centralized controller → Better for complex applications.</li>
-        <li><strong>Razor Pages scaffolding</strong> → Each page has its own code-behind → Simpler for page-focused applications.</li>
-        <li><strong>RESTful API scaffolding</strong> → Generates API controllers with CRUD endpoints.</li>
-      </ul>
-
-    </div>
-  </div>
-</div>
-
+              <ul>
+                <li>
+                  <strong>MVC scaffolding</strong> → Multiple views +
+                  centralized controller → Better for complex applications.
+                </li>
+                <li>
+                  <strong>Razor Pages scaffolding</strong> → Each page has its
+                  own code-behind → Simpler for page-focused applications.
+                </li>
+                <li>
+                  <strong>RESTful API scaffolding</strong> → Generates API
+                  controllers with CRUD endpoints.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <h6>Razor Pages</h6>
-        <p>MVC and Razor Pages are two different approaches (they can be used together). MVC is an architectural pattern, whereas Razor Pages is a framework feature/programming model.</p>
-        <p>Razor Pages is a page-based programming model in ASP.NET Core that simplifies building web apps compared to traditional MVC.</p>
-        <p>Razor Pages are <code>.cshtml</code> files (views) with an associated Page Model (<code>.cshtml.cs</code>) that contains the C# code. They combine UI and logic for a single page in a self-contained structure, ideal for simple CRUD or page-focused applications.</p>
+        <p>
+          MVC and Razor Pages are two different approaches (they can be used
+          together). MVC is an architectural pattern, whereas Razor Pages is a
+          framework feature/programming model.
+        </p>
+        <p>
+          Razor Pages is a page-based programming model in ASP.NET Core that
+          simplifies building web apps compared to traditional MVC.
+        </p>
+        <p>
+          Razor Pages are <code>.cshtml</code> files (views) with an associated
+          Page Model (<code>.cshtml.cs</code>) that contains the C# code. They
+          combine UI and logic for a single page in a self-contained structure,
+          ideal for simple CRUD or page-focused applications.
+        </p>
 
         <p><strong>Each Razor Page has two parts:</strong></p>
         <ul>
@@ -582,76 +671,133 @@ app.UseAuthorization();
         </ul>
 
         <h6>DbContext (EF Core)</h6>
-        <p>In ASP.NET Core with Entity Framework (EF) Core, a <code>DbContext</code> manages your database connection and operations—the bridge between your app code and the database.</p>
+        <p>
+          In ASP.NET Core with Entity Framework (EF) Core, a
+          <code>DbContext</code> manages your database connection and
+          operations—the bridge between your app code and the database.
+        </p>
         <ol>
-          <li><strong>Definition</strong> — Represents a session with the database, enables querying/saving, and tracks changes for persistence. Implement by creating a class inheriting from <code>DbContext</code>.</li>
-          <li><strong>Key Components</strong>
+          <li>
+            <strong>Definition</strong> — Represents a session with the
+            database, enables querying/saving, and tracks changes for
+            persistence. Implement by creating a class inheriting from
+            <code>DbContext</code>.
+          </li>
+          <li>
+            <strong>Key Components</strong>
             <ul>
-              <li><code>DbSet&lt;T&gt;</code> — Represents a table; each DbSet corresponds to an entity/model.</li>
-              <li><code>OnModelCreating</code> (optional) — Configure relationships/constraints via Fluent API.</li>
+              <li>
+                <code>DbSet&lt;T&gt;</code> — Represents a table; each DbSet
+                corresponds to an entity/model.
+              </li>
+              <li>
+                <code>OnModelCreating</code> (optional) — Configure
+                relationships/constraints via Fluent API.
+              </li>
             </ul>
           </li>
         </ol>
 
         <h6>.NET Authentication (Built-in)</h6>
-        <p>.NET provides built-in support for three common authentication mechanisms:</p>
+        <p>
+          .NET provides built-in support for three common authentication
+          mechanisms:
+        </p>
         <ol>
-          <li><strong>Individual User Accounts</strong>
+          <li>
+            <strong>Individual User Accounts</strong>
             <ul>
-              <li>Classic form-based authentication using ASP.NET Core Identity.</li>
-              <li>Features: registration, login, password hashing, email confirmation, password reset, roles.</li>
-              <li>Use case: Consumer apps where users create accounts (blogs, e-commerce, portals).</li>
-              <li>How it works: Credentials verified by Identity → cookie issued for session; user data stored in DB.</li>
+              <li>
+                Classic form-based authentication using ASP.NET Core Identity.
+              </li>
+              <li>
+                Features: registration, login, password hashing, email
+                confirmation, password reset, roles.
+              </li>
+              <li>
+                Use case: Consumer apps where users create accounts (blogs,
+                e-commerce, portals).
+              </li>
+              <li>
+                How it works: Credentials verified by Identity → cookie issued
+                for session; user data stored in DB.
+              </li>
             </ul>
           </li>
-          <li><strong>Microsoft Identity Platform (Azure AD)</strong>
+          <li>
+            <strong>Microsoft Identity Platform (Azure AD)</strong>
             <ul>
               <li>Users log in with Microsoft work/school accounts.</li>
-              <li>Features: SSO, MFA, Microsoft Graph integration, OAuth 2.0/OpenID Connect tokens.</li>
+              <li>
+                Features: SSO, MFA, Microsoft Graph integration, OAuth
+                2.0/OpenID Connect tokens.
+              </li>
               <li>Use case: Enterprise/internal applications.</li>
-              <li>How it works: App redirects to Microsoft login → token returned → app calls APIs securely.</li>
+              <li>
+                How it works: App redirects to Microsoft login → token returned
+                → app calls APIs securely.
+              </li>
             </ul>
           </li>
-          <li><strong>Windows Authentication</strong>
+          <li>
+            <strong>Windows Authentication</strong>
             <ul>
-              <li>Uses existing Windows credentials (Active Directory); no login form.</li>
+              <li>
+                Uses existing Windows credentials (Active Directory); no login
+                form.
+              </li>
               <li>Features: Kerberos/NTLM; suitable for intranet apps.</li>
               <li>Use case: Internal tools within the same domain/network.</li>
-              <li>How it works: Browser sends Windows credentials → verified against AD → user logged in.</li>
+              <li>
+                How it works: Browser sends Windows credentials → verified
+                against AD → user logged in.
+              </li>
             </ul>
           </li>
         </ol>
 
         <h6>ADO.NET vs Code-First vs Database-First</h6>
-        <p><strong>ADO.NET</strong> requires manual SQL and data handling—fine-grained control but more boilerplate.</p>
-        <p><strong>Entity Framework Code-First</strong> defines the database with C# classes, automates CRUD and migrations, and improves maintainability.</p>
-        <p><strong>Entity Framework Database-First</strong> starts from an existing DB—EF generates models and <code>DbContext</code> from schema. Relationships/keys are scaffolded; DB changes require regenerating/updating models. CRUD via EF similar to Code-First.</p>
-        <p>Visual Studio provides an in-built database designer to create a DB and generate entity models.</p>
+        <p>
+          <strong>ADO.NET</strong> requires manual SQL and data
+          handling—fine-grained control but more boilerplate.
+        </p>
+        <p>
+          <strong>Entity Framework Code-First</strong> defines the database with
+          C# classes, automates CRUD and migrations, and improves
+          maintainability.
+        </p>
+        <p>
+          <strong>Entity Framework Database-First</strong> starts from an
+          existing DB—EF generates models and <code>DbContext</code> from
+          schema. Relationships/keys are scaffolded; DB changes require
+          regenerating/updating models. CRUD via EF similar to Code-First.
+        </p>
+        <p>
+          Visual Studio provides an in-built database designer to create a DB
+          and generate entity models.
+        </p>
 
         <h6>How to use Visual Studio Database Designer (SQL Server)</h6>
         <ol>
-          <li>Create a database using “SQL Server Database Project” or use an existing one.</li>
-          <li>To create a new DB: File → New → Project → SQL Server Database Project.</li>
+          <li>
+            Create a database using “SQL Server Database Project” or use an
+            existing one.
+          </li>
+          <li>
+            To create a new DB: File → New → Project → SQL Server Database
+            Project.
+          </li>
         </ol>
       </div>
     </div>
   </div>
-
-
-
 </div>
 
-
-
-https://www.youtube.com/watch?v=Aa5ARJRWaEs
-
-.net core introduced in 2002 was used only for windows platforms
-.net core introduced in 2016 and was cross platform and had modular Architecture ( only the library used was included , not all library ).
-.net 5 introduced in 2020 - it unified .net under one platform  ( .net core and xamrin  ).
-.net introduced in 2023  had AOT( ahead of time compilation ) feature - code is compiled in native code elimination the need for JIT( just in compilation ) compilation.
-
-
-from 40 minutes it explains oops.
-
-add about library such as dapper , newtonsoft.json
-
+https://www.youtube.com/watch?v=Aa5ARJRWaEs .net core introduced in 2002 was
+used only for windows platforms .net core introduced in 2016 and was cross
+platform and had modular Architecture ( only the library used was included , not
+all library ). .net 5 introduced in 2020 - it unified .net under one platform (
+.net core and xamrin ). .net introduced in 2023 had AOT( ahead of time
+compilation ) feature - code is compiled in native code elimination the need for
+JIT( just in compilation ) compilation. from 40 minutes it explains oops. add
+about library such as dapper , newtonsoft.json
