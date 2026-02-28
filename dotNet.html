@@ -465,6 +465,116 @@ app.UseAuthorization();
       </div>
     </div>
   </div>
+
+  <!-- 13. Self Study -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingSelfStudy">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnSelfStudy"
+        aria-expanded="false"
+        aria-controls="dnSelfStudy"
+      >
+        13. Self Study
+      </button>
+    </h2>
+    <div
+      id="dnSelfStudy"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingSelfStudy"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          <a href="https://www.youtube.com/watch?v=rUtWgEs07eI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=rUtWgEs07eI</a>
+        </p>
+
+        <h6>What is Scaffolding? How does it work in .NET?</h6>
+        <p>Scaffolding in .NET (especially ASP.NET Core) automatically generates code for common CRUD operations, controllers, views, and UI pages based on your models. It speeds up development by providing a ready-to-use skeleton you can customize.</p>
+
+        <p><strong>Scaffolding automates creation of:</strong></p>
+        <ul>
+          <li><strong>Controllers</strong> – Handle HTTP requests and responses.</li>
+          <li><strong>Views</strong> – Razor Pages or MVC Views for listing, editing, creating, and deleting records.</li>
+          <li><strong>Data Access Code</strong> – Can include DbContext and model binding if needed.</li>
+          <li><strong>CRUD Methods</strong> – Pre-built methods for Create, Read, Update, Delete operations.</li>
+        </ul>
+        <p>Essentially, it creates a template structure based on your models. By providing Models as input, you can generate controller and views code.</p>
+        <p>In ASP.NET Core, scaffolding can generate both <strong>MVC</strong>, <strong>Razor Pages</strong>, as well as for <strong>RESTful APIs</strong>.</p>
+
+        <ul>
+          <li><strong>MVC scaffolding</strong> → multiple views + centralized controller → better for complex apps.</li>
+          <li><strong>Razor Pages scaffolding</strong> → each page has its own code-behind → simpler for page-focused apps.</li>
+        </ul>
+
+        <h6>Razor Pages</h6>
+        <p>MVC and Razor Pages are two different approaches (they can be used together). MVC is an architectural pattern, whereas Razor Pages is a framework feature/programming model.</p>
+        <p>Razor Pages is a page-based programming model in ASP.NET Core that simplifies building web apps compared to traditional MVC.</p>
+        <p>Razor Pages are <code>.cshtml</code> files (views) with an associated Page Model (<code>.cshtml.cs</code>) that contains the C# code. They combine UI and logic for a single page in a self-contained structure, ideal for simple CRUD or page-focused applications.</p>
+
+        <p><strong>Each Razor Page has two parts:</strong></p>
+        <ul>
+          <li><code>.cshtml</code> → HTML and Razor markup (the view)</li>
+          <li><code>.cshtml.cs</code> → Page Model (code-behind)</li>
+        </ul>
+
+        <h6>DbContext (EF Core)</h6>
+        <p>In ASP.NET Core with Entity Framework (EF) Core, a <code>DbContext</code> manages your database connection and operations—the bridge between your app code and the database.</p>
+        <ol>
+          <li><strong>Definition</strong> — Represents a session with the database, enables querying/saving, and tracks changes for persistence. Implement by creating a class inheriting from <code>DbContext</code>.</li>
+          <li><strong>Key Components</strong>
+            <ul>
+              <li><code>DbSet&lt;T&gt;</code> — Represents a table; each DbSet corresponds to an entity/model.</li>
+              <li><code>OnModelCreating</code> (optional) — Configure relationships/constraints via Fluent API.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h6>.NET Authentication (Built-in)</h6>
+        <p>.NET provides built-in support for three common authentication mechanisms:</p>
+        <ol>
+          <li><strong>Individual User Accounts</strong>
+            <ul>
+              <li>Classic form-based authentication using ASP.NET Core Identity.</li>
+              <li>Features: registration, login, password hashing, email confirmation, password reset, roles.</li>
+              <li>Use case: Consumer apps where users create accounts (blogs, e-commerce, portals).</li>
+              <li>How it works: Credentials verified by Identity → cookie issued for session; user data stored in DB.</li>
+            </ul>
+          </li>
+          <li><strong>Microsoft Identity Platform (Azure AD)</strong>
+            <ul>
+              <li>Users log in with Microsoft work/school accounts.</li>
+              <li>Features: SSO, MFA, Microsoft Graph integration, OAuth 2.0/OpenID Connect tokens.</li>
+              <li>Use case: Enterprise/internal applications.</li>
+              <li>How it works: App redirects to Microsoft login → token returned → app calls APIs securely.</li>
+            </ul>
+          </li>
+          <li><strong>Windows Authentication</strong>
+            <ul>
+              <li>Uses existing Windows credentials (Active Directory); no login form.</li>
+              <li>Features: Kerberos/NTLM; suitable for intranet apps.</li>
+              <li>Use case: Internal tools within the same domain/network.</li>
+              <li>How it works: Browser sends Windows credentials → verified against AD → user logged in.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h6>ADO.NET vs Code-First vs Database-First</h6>
+        <p><strong>ADO.NET</strong> requires manual SQL and data handling—fine-grained control but more boilerplate.</p>
+        <p><strong>Entity Framework Code-First</strong> defines the database with C# classes, automates CRUD and migrations, and improves maintainability.</p>
+        <p><strong>Entity Framework Database-First</strong> starts from an existing DB—EF generates models and <code>DbContext</code> from schema. Relationships/keys are scaffolded; DB changes require regenerating/updating models. CRUD via EF similar to Code-First.</p>
+        <p>Visual Studio provides an in-built database designer to create a DB and generate entity models.</p>
+
+        <h6>How to use Visual Studio Database Designer (SQL Server)</h6>
+        <ol>
+          <li>Create a database using “SQL Server Database Project” or use an existing one.</li>
+          <li>To create a new DB: File → New → Project → SQL Server Database Project.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
 
 
