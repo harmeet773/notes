@@ -321,7 +321,108 @@ public class UsersController : ControllerBase
     </div>
   </div>
 
-  <!-- 8. Entity Framework Core -->
+  <!-- 8. Access Modifiers & Non-Access Modifiers -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingAccess">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnAccess"
+        aria-expanded="false"
+        aria-controls="dnAccess"
+      >
+        8. Access Modifiers & Non-Access Modifiers
+      </button>
+    </h2>
+    <div
+      id="dnAccess"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingAccess"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <h6>Access Modifiers (Visibility/Accessibility)</h6>
+        <ul>
+          <li><strong>public</strong> — Accessible from anywhere.</li>
+          <li><strong>private</strong> — Accessible only within the containing type.</li>
+          <li><strong>protected</strong> — Accessible within the containing type and derived types.</li>
+          <li><strong>internal</strong> — Accessible within the same assembly.</li>
+          <li><strong>protected internal</strong> — Accessible from the same assembly OR from derived types in any assembly.</li>
+          <li><strong>private protected</strong> — Accessible from the containing type or its derived types in the same assembly.</li>
+        </ul>
+
+        <pre><code class="language-csharp">public class A
+{
+  private int x;
+  protected int y;
+  internal int z;
+  protected internal int p;
+  private protected int q;
+}
+
+public class B : A
+{
+  void Test() {
+    // x not accessible (private)
+    y = 1;  // protected OK
+    z = 2;  // internal OK if same assembly
+    p = 3;  // protected internal OK
+    q = 4;  // private protected OK if same assembly
+  }
+}
+</code></pre>
+
+        <h6>Non-Access Modifiers (Behavior/Semantics)</h6>
+        <ul>
+          <li><strong>static</strong> — Member/type belongs to the type itself; one shared instance.</li>
+          <li><strong>readonly</strong> — Field can be assigned only at declaration or in constructor.</li>
+          <li><strong>const</strong> — Compile-time constant; implicitly static; must be assigned at declaration.</li>
+          <li><strong>sealed</strong> — Class cannot be inherited; method cannot be overridden further.</li>
+          <li><strong>abstract</strong> — Incomplete class/member; must be implemented by derived classes.</li>
+          <li><strong>virtual</strong> — Member can be overridden in derived classes.</li>
+          <li><strong>override</strong> — Provides a new implementation of a virtual/abstract member.</li>
+          <li><strong>partial</strong> — Type/Method split across files; combined at compile time.</li>
+          <li><strong>ref/out/in</strong> — Parameter passing modifiers: by reference, output-only, by-ref readonly.</li>
+          <li><strong>async</strong> — Marks a method that contains await; returns Task/Task&lt;T&gt;/ValueTask.</li>
+        </ul>
+
+        <pre><code class="language-csharp">public static class MathUtil
+{
+  public const double Pi = 3.14159;
+  public static int Square(int x) =&gt; x * x;
+}
+
+public abstract class Animal
+{
+  public abstract void Speak();
+  public virtual void Move() =&gt; Console.WriteLine("Moving...");
+}
+
+public sealed class Dog : Animal
+{
+  public override void Speak() =&gt; Console.WriteLine("Woof");
+  public override void Move() =&gt; Console.WriteLine("Running...");
+}
+
+public class Sample
+{
+  public readonly Guid Id = Guid.NewGuid();
+  public void Update(ref int a, out int b, in int c)
+  {
+    a += c;
+    b = a * 2; // out must be assigned
+    // c is readonly by-ref
+  }
+
+  public async Task&lt;string&gt; FetchAsync() =&gt; await Task.FromResult("ok");
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Entity Framework Core -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="dnHeadingEf">
       <button
@@ -332,7 +433,7 @@ public class UsersController : ControllerBase
         aria-expanded="false"
         aria-controls="dnEf"
       >
-        8. Entity Framework Core (EF Core)
+        9. Entity Framework Core (EF Core)
       </button>
     </h2>
     <div
