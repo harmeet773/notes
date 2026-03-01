@@ -512,6 +512,14 @@ public class AppDbContext : DbContext
   public DbSet&lt;User&gt; Users =&gt; Set&lt;User&gt;();
 }
 </code></pre>
+
+        <h6>3. How do you perform migrations in EF?</h6>
+        <p>For EF Core, you can use either the Package Manager Console (PMC) or the .NET CLI to manage migrations.</p>
+        <ul>
+          <li>PMC: <code>Add-Migration InitialCreate</code>, <code>Update-Database</code></li>
+          <li>CLI: <code>dotnet ef migrations add InitialCreate</code>, <code>dotnet ef database update</code></li>
+        </ul>
+        <p>For EF6 (the classic Entity Framework for .NET Framework), migrations are handled via the Package Manager Console only.</p>
       </div>
     </div>
   </div>
