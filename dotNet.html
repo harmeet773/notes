@@ -467,6 +467,97 @@ public class Sample
   public async Task&lt;string&gt; FetchAsync() =&gt; await Task.FromResult("ok");
 }
 </code></pre>
+    </div>
+  </div>
+</div>
+
+  <!-- 9. Generics in C# -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingGenerics">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnGenerics"
+        aria-expanded="false"
+        aria-controls="dnGenerics"
+      >
+        9. Generics in C#
+      </button>
+    </h2>
+    <div
+      id="dnGenerics"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingGenerics"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <p>Generics enable type-safe classes, methods, interfaces, and delegates using type parameters. They improve reusability, performance (avoid boxing/casting), and compile-time safety.</p>
+
+        <h6>Generic Class</h6>
+        <pre><code class="language-csharp">public class Box&lt;T&gt;
+{
+    public T Value { get; }
+    public Box(T value) =&gt; Value = value;
+}
+
+var intBox = new Box&lt;int&gt;(42);
+var strBox = new Box&lt;string&gt;("hello");
+</code></pre>
+
+        <h6>Generic Method</h6>
+        <pre><code class="language-csharp">public static T Max&lt;T&gt;(T a, T b) where T : IComparable&lt;T&gt;
+{
+    return a.CompareTo(b) &gt;= 0 ? a : b;
+}
+
+var m1 = Max(3, 7);
+var m2 = Max("a", "b");
+</code></pre>
+
+        <h6>Constraints</h6>
+        <ul>
+          <li><code>where T : class</code> (reference type), <code>struct</code> (value type)</li>
+          <li><code>new()</code> (public parameterless constructor)</li>
+          <li>Interfaces/types: <code>where T : IDisposable</code>, <code>where T : BaseType</code></li>
+          <li>Multiple constraints: <code>where T : class, new()</code></li>
+        </ul>
+
+        <h6>Common Generic Collections</h6>
+        <ul>
+          <li><code>List&lt;T&gt;</code>, <code>Dictionary&lt;TKey, TValue&gt;</code>, <code>HashSet&lt;T&gt;</code>, <code>Queue&lt;T&gt;</code>, <code>Stack&lt;T&gt;</code></li>
+        </ul>
+        <pre><code class="language-csharp">var dict = new Dictionary&lt;string, int&gt; { ["a"] = 1, ["b"] = 2 };
+if (dict.TryGetValue("a", out var val)) Console.WriteLine(val);
+</code></pre>
+
+        <h6>Generic Interfaces and Variance</h6>
+        <ul>
+          <li><code>out</code> (covariant) for output positions; <code>in</code> (contravariant) for input positions.</li>
+          <li>Examples: <code>IEnumerable&lt;out T&gt;</code> (covariant), <code>IComparer&lt;in T&gt;</code> (contravariant).</li>
+        </ul>
+        <pre><code class="language-csharp">IEnumerable&lt;string&gt; strings = new List&lt;string&gt; { "a", "b" };
+IEnumerable&lt;object&gt; objs = strings; // covariance works
+</code></pre>
+
+        <h6>Repository Pattern with Generics</h6>
+        <pre><code class="language-csharp">public interface IRepository&lt;T&gt; where T : class
+{
+    Task&lt;T?&gt; GetByIdAsync(Guid id);
+    Task AddAsync(T entity);
+}
+
+public class EfRepository&lt;T&gt; : IRepository&lt;T&gt; where T : class
+{
+    private readonly DbContext _ctx;
+    public EfRepository(DbContext ctx) =&gt; _ctx = ctx;
+
+    public Task&lt;T?&gt; GetByIdAsync(Guid id) =&gt; _ctx.Set&lt;T&gt;().FindAsync(id).AsTask();
+    public async Task AddAsync(T entity) { await _ctx.Set&lt;T&gt;().AddAsync(entity); }
+}
+</code></pre>
+
+        <p><strong>Interview Tip:</strong> Use constraints to express requirements on type parameters, and prefer generic collections to avoid boxing/casting and improve performance.</p>
       </div>
     </div>
   </div>
