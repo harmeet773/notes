@@ -607,6 +607,104 @@ public async Task&lt;IEnumerable&lt;UserDto&gt;&gt; GetAll(CancellationToken ct)
     </div>
   </div>
 
+  <!-- 10.5 Delegates: Internals & Examples -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingDelegatesInternals">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnDelegatesInternals"
+        aria-expanded="false"
+        aria-controls="dnDelegatesInternals"
+      >
+        10.5 Delegates: How They Work Internally + Examples
+      </button>
+    </h2>
+    <div
+      id="dnDelegatesInternals"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingDelegatesInternals"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <h6>What is a Delegate?</h6>
+        <p>A delegate is a type-safe function pointer. It encapsulates a reference to a method with a particular signature, enabling callbacks, event handling, and functional composition.</p>
+
+        <h6>How Delegates Work Internally</h6>
+        <ul>
+          <li>A delegate is a sealed class derived from <code>System.MulticastDelegate</code>.</li>
+          <li>It stores a target (object for instance methods or null for static) and a method pointer.</li>
+          <li>Multicast delegates maintain an invocation list (array) of method references; invoking the delegate iterates through this list in order.</li>
+          <li>For non-void return types in a multicast delegate, the return value of the last method is observed; prior results are ignored.</li>
+          <li>Delegates support covariance (return type can be more derived) and contravariance (parameter types can be less derived).</li>
+        </ul>
+
+        <pre><code class="language-csharp">// Custom delegate type
+public delegate int MathOp(int a, int b);
+
+// Methods matching the signature
+static int Add(int x, int y) =&gt; x + y;
+static int Sub(int x, int y) =&gt; x - y;
+
+// Create and invoke
+MathOp op = Add;
+Console.WriteLine(op(2, 3)); // 5
+
+// Reassign
+op = Sub;
+Console.WriteLine(op(5, 2)); // 3
+</code></pre>
+
+        <h6>Multicast Delegates</h6>
+        <pre><code class="language-csharp">Action pipeline = () =&gt; Console.WriteLine("Step 1");
+pipeline += () =&gt; Console.WriteLine("Step 2");
+pipeline += () =&gt; Console.WriteLine("Step 3");
+pipeline(); // Invokes all three steps in order
+</code></pre>
+
+        <h6>Generic Delegates</h6>
+        <ul>
+          <li><strong>Action&lt;T...&gt;</strong> — encapsulates a method that returns void.</li>
+          <li><strong>Func&lt;T..., TResult&gt;</strong> — encapsulates a method that returns a value.</li>
+          <li><strong>Predicate&lt;T&gt;</strong> — shorthand for <code>Func&lt;T, bool&gt;</code>.</li>
+        </ul>
+        <pre><code class="language-csharp">Func&lt;int, int, int&gt; mul = (a, b) =&gt; a * b;
+Action&lt;string&gt; log = msg =&gt; Console.WriteLine(msg);
+Predicate&lt;string&gt; hasAt = s =&gt; s != null &amp;&amp; s.Contains('@');
+
+Console.WriteLine(mul(3, 4)); // 12
+log("Hello");
+Console.WriteLine(hasAt("user@example.com")); // True
+</code></pre>
+
+        <h6>Delegates and Events</h6>
+        <p>Events provide publish/subscribe built on delegates; only the declaring type can raise the event, while consumers subscribe via <code>+=</code>.</p>
+        <pre><code class="language-csharp">public class Button
+{
+    public event EventHandler? Click;
+    public void RaiseClick() =&gt; Click?.Invoke(this, EventArgs.Empty);
+}
+
+var btn = new Button();
+btn.Click += (s, e) =&gt; Console.WriteLine("Clicked!");
+btn.RaiseClick();
+</code></pre>
+
+        <h6>Behind the Scenes (Conceptual)</h6>
+        <pre><code class="language-csharp">// Delegate instance conceptually holds:
+// - object? _target
+// - IntPtr _methodPtr
+// - Delegate[]? _invocationList (for multicast)
+// Invocation effectively loops through the invocation list:
+// foreach (var d in invocationList) d.Invoke(args);
+</code></pre>
+
+        <p><strong>Interview Tip:</strong> Prefer built-in generic delegates (Action/Func/Predicate) and lambdas for clarity; use custom delegates when naming conveys strong intent.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- 11. Testing -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="dnHeadingTesting">
