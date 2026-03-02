@@ -746,6 +746,87 @@ public class EfRepository&lt;T&gt; : IRepository&lt;T&gt; where T : class
 
         <p><strong>Interview Tip:</strong> Use constraints to express requirements on type parameters, and prefer generic collections to avoid boxing/casting and improve performance.</p>
       </div>
+  </div>
+</div>
+
+  <!-- 9.5 Attributes in .NET -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingAttributes">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnAttributes"
+        aria-expanded="false"
+        aria-controls="dnAttributes"
+      >
+        9.5 Attributes in .NET
+      </button>
+    </h2>
+    <div
+      id="dnAttributes"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingAttributes"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <h6>What are Attributes?</h6>
+        <p>Attributes are metadata annotations applied to code elements (assemblies, types, members, parameters, return values) to influence behavior at compile time or runtime via frameworks and reflection.</p>
+
+        <h6>Applying Attributes</h6>
+        <pre><code class="language-csharp">[Serializable]
+public class Person
+{
+    [Required, StringLength(50)]
+    public string Name { get; set; } = string.Empty;
+
+    [Range(0, 120)]
+    public int Age { get; set; }
+}
+</code></pre>
+
+        <h6>Common Built-in Attributes</h6>
+        <ul>
+          <li><strong>DataAnnotations</strong>: <code>[Required]</code>, <code>[StringLength]</code>, <code>[Range]</code>, <code>[EmailAddress]</code>.</li>
+          <li><strong>ASP.NET Core MVC</strong>: <code>[ApiController]</code>, <code>[HttpGet]</code>, <code>[FromBody]</code>, <code>[FromQuery]</code>, <code>[Authorize]</code>.</li>
+          <li><strong>Serialization</strong>: <code>[JsonPropertyName]</code> (System.Text.Json), <code>[JsonIgnore]</code>.</li>
+          <li><strong>Interoperability</strong>: <code>[DllImport]</code>, <code>[MarshalAs]</code>.</li>
+          <li><strong>Diagnostics</strong>: <code>[Conditional]</code>, <code>[Obsolete]</code>.</li>
+        </ul>
+
+        <h6>Create a Custom Attribute</h6>
+        <pre><code class="language-csharp">[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
+public sealed class AuditAttribute : Attribute
+{
+    public string Action { get; }
+    public AuditAttribute(string action) =&gt; Action = action;
+}
+
+[Audit("CreateUser")]
+public class UserService
+{
+    [Audit("ResetPassword")]
+    public void Reset(string userId) { /* ... */ }
+}
+</code></pre>
+
+        <h6>Read Attributes via Reflection</h6>
+        <pre><code class="language-csharp">var method = typeof(UserService).GetMethod("Reset");
+var audits = method?.GetCustomAttributes(typeof(AuditAttribute), inherit: false)
+                    .Cast&lt;AuditAttribute&gt;();
+foreach (var a in audits!) Console.WriteLine(a.Action);
+</code></pre>
+
+        <h6>Conditional and Obsolete</h6>
+        <pre><code class="language-csharp">[Conditional("DEBUG")]
+static void DebugLog(string msg) =&gt; Console.WriteLine(msg); // removed from release builds
+
+[Obsolete("Use NewMethod instead.", error: false)]
+public void OldMethod() { /* ... */ }
+</code></pre>
+
+        <p><strong>Interview Tip:</strong> Attributes provide declarative metadata that frameworks (e.g., ASP.NET Core, EF Core, serializers) use to alter behavior without changing imperative code; custom attributes plus reflection enable cross-cutting concerns like auditing and validation.</p>
+      </div>
     </div>
   </div>
 
