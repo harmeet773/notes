@@ -471,6 +471,137 @@ public class Sample
   </div>
 </div>
 
+  <!-- 8.5 Properties, Fields, and CLR Internals (Summary) -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingPropsSummary">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnPropsSummary"
+        aria-expanded="false"
+        aria-controls="dnPropsSummary"
+      >
+        8.5 Properties, Fields, and CLR Internals (Summary)
+      </button>
+    </h2>
+    <div
+      id="dnPropsSummary"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingPropsSummary"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <h6>1) Field in .NET</h6>
+        <p><strong>What is a Field?</strong> A field is a variable declared inside a class; it stores the internal state of an object.</p>
+        <pre><code class="language-csharp">private string name;</code></pre>
+        <ul>
+          <li>Usually declared private</li>
+          <li>Direct data storage (no validation)</li>
+          <li>Used internally</li>
+        </ul>
+        <p><strong>Best Practice:</strong> Keep fields private and expose via properties.</p>
+
+        <h6>2) Property in .NET</h6>
+        <p><strong>What is a Property?</strong> A property provides controlled access to a field.</p>
+        <pre><code class="language-csharp">private string _name;
+public string Name
+{
+    get { return _name; }
+    set { _name = value; }
+}
+</code></pre>
+        <ul>
+          <li>Looks like a variable but compiles to methods</li>
+          <li>Supports validation, encapsulation, and controlled access</li>
+        </ul>
+
+        <h6>3) Auto-Property</h6>
+        <pre><code class="language-csharp">public string Name { get; set; }</code></pre>
+        <p><strong>Internally the compiler generates:</strong></p>
+        <pre><code class="language-csharp">private string &lt;Name&gt;k__BackingField;
+public string get_Name() =&gt; &lt;Name&gt;k__BackingField;
+public void set_Name(string value) =&gt; &lt;Name&gt;k__BackingField = value;</code></pre>
+        <p>Auto-properties are syntactic sugar for a hidden backing field and getter/setter methods.</p>
+
+        <h6>4) Property vs Field</h6>
+        <ul>
+          <li><strong>Field</strong> — Stores data directly; usually private; no validation.</li>
+          <li><strong>Property</strong> — Controls access to data; can add validation; usually public.</li>
+        </ul>
+
+        <h6>5) Property vs Method</h6>
+        <p>Properties conceptually represent state; methods represent actions/behavior.</p>
+        <ul>
+          <li>Properties compile to methods, but are not conceptually “methods.”</li>
+          <li>Use a property for fast access to state; use a method for heavier logic or actions.</li>
+        </ul>
+        <pre><code class="language-csharp">emp.Name          // Property (state)
+emp.CalculatePay() // Method (behavior)</code></pre>
+
+        <h6>6) Avoid Infinite Recursion in Setters</h6>
+        <pre><code class="language-csharp">// Wrong: causes recursion
+public string Name
+{
+    get =&gt; _name;
+    set =&gt; Name = value; // ❌ calls setter again, StackOverflowException
+}
+
+// Correct:
+public string Name
+{
+    get =&gt; _name;
+    set =&gt; _name = value; // use the field
+}
+</code></pre>
+
+        <h6>7) Use of this Keyword</h6>
+        <p><code>this</code> is optional unless there’s a naming conflict.</p>
+        <pre><code class="language-csharp">public Employee(string name)
+{
+    this.name = name; // disambiguates parameter vs field
+}
+// Equivalent without conflict:
+_name = value; // or this._name = value;
+</code></pre>
+
+        <h6>8) What Happens Internally on Access</h6>
+        <pre><code class="language-csharp">emp.Name = "Harmeet";  // compiles to: emp.set_Name("Harmeet");
+var name = emp.Name;    // compiles to: var name = emp.get_Name();</code></pre>
+        <p>In IL you will see calls similar to <code>callvirt set_Name</code> and <code>callvirt get_Name</code>. Property access is a method call at runtime.</p>
+
+        <h6>9) Why Properties Are Powerful</h6>
+        <p>You can evolve logic without changing callers (encapsulation + maintainability).</p>
+        <pre><code class="language-csharp">// Initially
+public string Name { get; set; }
+
+// Later with validation
+private string _name = "";
+public string Name
+{
+    get =&gt; _name;
+    set
+    {
+        if (value == null || value.Length &lt; 3) throw new ArgumentException("Too short");
+        _name = value;
+    }
+}
+</code></pre>
+
+        <h6>Core OOP Principles Practiced</h6>
+        <ul>
+          <li>Encapsulation and abstraction</li>
+          <li>Backing field concept</li>
+          <li>CLR method generation for getters/setters</li>
+          <li>Avoiding infinite recursion</li>
+        </ul>
+
+        <h6>Interview-Level Summary</h6>
+        <p>In C#, fields store data, properties provide controlled access to fields, and methods define behavior. Although properties look like variables, they compile to getter and setter methods, so property access is a method call at runtime.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- 9. Generics in C# -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="dnHeadingGenerics">
