@@ -467,6 +467,60 @@ public class Sample
   public async Task&lt;string&gt; FetchAsync() =&gt; await Task.FromResult("ok");
 }
 </code></pre>
+
+        <h6>ref, out, and in Parameters (Details)</h6>
+        <p>These modifiers change how arguments are passed to methods in C#.</p>
+
+        <h6>ref (Pass by reference)</h6>
+        <ul>
+          <li>Caller must initialize the variable before passing.</li>
+          <li>Callee can read and modify the caller’s variable.</li>
+          <li>Useful when you need to return multiple values or mutate inputs.</li>
+        </ul>
+        <pre><code class="language-csharp">void DoubleValue(ref int x) { x *= 2; }
+
+int a = 10;
+DoubleValue(ref a);
+Console.WriteLine(a); // 20
+</code></pre>
+
+        <h6>out (Output parameter)</h6>
+        <ul>
+          <li>Caller does not need to initialize the variable.</li>
+          <li>Callee must assign the variable before the method returns.</li>
+          <li>Ideal for try-style APIs returning multiple outputs.</li>
+        </ul>
+        <pre><code class="language-csharp">bool TryParsePositive(string s, out int value)
+{
+    if (int.TryParse(s, out var v) &amp;&amp; v &gt;= 0) { value = v; return true; }
+    value = 0; // must assign on all paths
+    return false;
+}
+
+if (TryParsePositive("42", out int n))
+    Console.WriteLine(n); // 42
+</code></pre>
+
+        <h6>in (Read-only reference)</h6>
+        <ul>
+          <li>Passes the argument by reference but as read-only inside the method.</li>
+          <li>Avoids copying large structs while preventing modification.</li>
+          <li>Compiler may copy if needed to maintain readonly semantics.</li>
+        </ul>
+        <pre><code class="language-csharp">readonly struct Point { public readonly int X, Y; public Point(int x, int y) { X = x; Y = y; } }
+
+int DistanceSquared(in Point p) { return p.X * p.X + p.Y * p.Y; }
+
+var p = new Point(3, 4);
+Console.WriteLine(DistanceSquared(in p)); // 25
+</code></pre>
+
+        <h6>Choosing between ref vs out vs in</h6>
+        <ul>
+          <li><strong>ref</strong>: caller initializes; callee may read/write.</li>
+          <li><strong>out</strong>: caller need not initialize; callee must write.</li>
+          <li><strong>in</strong>: caller initializes; callee reads only (no writes).</li>
+        </ul>
     </div>
   </div>
 </div>
