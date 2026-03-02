@@ -473,182 +473,6 @@ public class Sample
 
 
 
-<h6>Access Modifiers (Visibility/Accessibility)</h6>
-
-<div class="accordion" id="accessModifierAccordion">
-
-  <!-- Public -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingPublic">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsePublic"
-        aria-expanded="false"
-        aria-controls="collapsePublic">
-        public
-      </button>
-    </h2>
-    <div id="collapsePublic"
-         class="accordion-collapse collapse"
-         aria-labelledby="headingPublic"
-         data-bs-parent="#accessModifierAccordion">
-      <div class="accordion-body">
-        <strong>Definition:</strong> Accessible from anywhere (any class, any assembly).
-        <pre><code class="language-csharp">
-public class Employee
-{
-    public string Name;
-}
-        </code></pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- Private -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingPrivate">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsePrivate"
-        aria-expanded="false"
-        aria-controls="collapsePrivate">
-        private
-      </button>
-    </h2>
-    <div id="collapsePrivate"
-         class="accordion-collapse collapse"
-         aria-labelledby="headingPrivate"
-         data-bs-parent="#accessModifierAccordion">
-      <div class="accordion-body">
-        <strong>Definition:</strong> Accessible only within the containing type.
-        <pre><code class="language-csharp">
-public class Employee
-{
-    private int salary;
-}
-        </code></pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- Protected -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingProtected">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseProtected"
-        aria-expanded="false"
-        aria-controls="collapseProtected">
-        protected
-      </button>
-    </h2>
-    <div id="collapseProtected"
-         class="accordion-collapse collapse"
-         aria-labelledby="headingProtected"
-         data-bs-parent="#accessModifierAccordion">
-      <div class="accordion-body">
-        <strong>Definition:</strong> Accessible within the containing class and its derived classes.
-        <pre><code class="language-csharp">
-public class Base
-{
-    protected int age;
-}
-
-public class Child : Base
-{
-    void Test()
-    {
-        age = 10; // Accessible here
-    }
-}
-        </code></pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- Internal -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingInternal">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseInternal"
-        aria-expanded="false"
-        aria-controls="collapseInternal">
-        internal
-      </button>
-    </h2>
-    <div id="collapseInternal"
-         class="accordion-collapse collapse"
-         aria-labelledby="headingInternal"
-         data-bs-parent="#accessModifierAccordion">
-      <div class="accordion-body">
-        <strong>Definition:</strong> Accessible only within the same assembly.
-        <pre><code class="language-csharp">
-internal class Helper
-{
-    internal void DoWork() { }
-}
-        </code></pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- Protected Internal -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingProtectedInternal">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseProtectedInternal"
-        aria-expanded="false"
-        aria-controls="collapseProtectedInternal">
-        protected internal
-      </button>
-    </h2>
-    <div id="collapseProtectedInternal"
-         class="accordion-collapse collapse"
-         aria-labelledby="headingProtectedInternal"
-         data-bs-parent="#accessModifierAccordion">
-      <div class="accordion-body">
-        <strong>Definition:</strong> Accessible from the same assembly OR from derived classes in any assembly.
-        <pre><code class="language-csharp">
-public class Base
-{
-    protected internal int value;
-}
-        </code></pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- Private Protected -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingPrivateProtected">
-      <button class="accordion-button collapsed" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsePrivateProtected"
-        aria-expanded="false"
-        aria-controls="collapsePrivateProtected">
-        private protected
-      </button>
-    </h2>
-    <div id="collapsePrivateProtected"
-         class="accordion-collapse collapse"
-         aria-labelledby="headingPrivateProtected"
-         data-bs-parent="#accessModifierAccordion">
-      <div class="accordion-body">
-        <strong>Definition:</strong> Accessible within the containing class OR its derived classes, but only in the same assembly.
-        <pre><code class="language-csharp">
-public class Base
-{
-    private protected int number;
-}
-        </code></pre>
-      </div>
-    </div>
-  </div>
-
-</div>
-
   <!-- 8.5 Properties, Fields, and CLR Internals (Summary) -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="dnHeadingPropsSummary">
@@ -1548,13 +1372,106 @@ app.UseAuthorization();
         <h6>2) What is Dependency Injection (DI) and how does it work?</h6>
         <p>Explain DI as providing dependencies to classes via constructors or properties, managed by the built-in IoC container registered in Program.cs using service lifetimes.</p>
 
-        <h6>3) Explain Transient vs Scoped vs Singleton DI</h6>
-        <ul>
-          <li><strong>AddTransient</strong> — New instance every time the service is requested. Not stored; each request/consumer gets a fresh instance, even within the same HTTP request.</li>
-          <li><strong>AddScoped</strong> — One instance per request scope. Same instance reused for the duration of a single HTTP request.</li>
-          <li><strong>AddSingleton</strong> — Single instance for the lifetime of the application. Reused across all requests; effectively stored statically.</li>
-        </ul>
-        <p>These three lifetimes control how long service instances live in ASP.NET Core DI.</p>
+    <h6>3) Explain Transient vs Scoped vs Singleton DI</h6>
+
+<ul>
+  <li>
+    <strong>AddTransient</strong> — An instance is created every time the service is requested.
+    The instance is not stored; each request/consumer gets a fresh instance,
+    even within the same HTTP request.
+    
+    <br><br>
+    <strong>When to use (Lifecycle Examples):</strong>
+    <ul>
+      <li>Lightweight, stateless services.</li>
+      <li>Business logic calculators.</li>
+      <li>Email/SMS sender services.</li>
+      <li>Mapping/Transformation services (e.g., DTO mappers).</li>
+    </ul>
+
+    <pre><code class="language-csharp">
+// Registration
+services.AddTransient<IEmailService, EmailService>();
+
+// Every injection gets a new instance
+public class OrderService
+{
+    private readonly IEmailService _email;
+
+    public OrderService(IEmailService email)
+    {
+        _email = email;
+    }
+}
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>AddScoped</strong> — A single instance is created per request scope.
+    The same instance is reused for the duration of a single HTTP request.
+
+    <br><br>
+    <strong>When to use (Lifecycle Examples):</strong>
+    <ul>
+      <li>Database contexts (e.g., DbContext).</li>
+      <li>Unit of Work pattern.</li>
+      <li>Services that maintain request-specific state.</li>
+      <li>Repository layer services.</li>
+    </ul>
+
+    <pre><code class="language-csharp">
+// Registration
+services.AddScoped<IOrderRepository, OrderRepository>();
+
+// Same instance used throughout one HTTP request
+public class OrderController : ControllerBase
+{
+    private readonly IOrderRepository _repo;
+
+    public OrderController(IOrderRepository repo)
+    {
+        _repo = repo;
+    }
+}
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>AddSingleton</strong> — A single instance is utilized for the lifetime of the application.
+    This instance is reused across all requests.
+
+    <br><br>
+    <strong>When to use (Lifecycle Examples):</strong>
+    <ul>
+      <li>Configuration services.</li>
+      <li>Logging services.</li>
+      <li>In-memory caching services.</li>
+      <li>Application-wide shared state.</li>
+    </ul>
+
+    <pre><code class="language-csharp">
+// Registration
+services.AddSingleton<ICacheService, MemoryCacheService>();
+
+// Same instance shared across entire app lifetime
+public class ProductService
+{
+    private readonly ICacheService _cache;
+
+    public ProductService(ICacheService cache)
+    {
+        _cache = cache;
+    }
+}
+    </code></pre>
+  </li>
+</ul>
+
+<p>
+The mentioned three lifetimes control how long service instances exist in ASP.NET Core DI.
+Choosing the correct lifetime is critical to avoid memory leaks, threading issues,
+or unintended shared state.
+</p>
 
         <h6>4) How do you change object values in DI when required?</h6>
         <p>Use options pattern (<code>IOptionsMonitor&lt;T&gt;</code>) for config reloads, or inject a factory (<code>IServiceProvider</code> or custom <code>Func&lt;T&gt;</code>) to resolve fresh instances; for scoped state, use scoped services or <code>IMemoryCache</code>.</p>
