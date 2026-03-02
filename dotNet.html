@@ -471,6 +471,184 @@ public class Sample
   </div>
 </div>
 
+
+
+<h6>Access Modifiers (Visibility/Accessibility)</h6>
+
+<div class="accordion" id="accessModifierAccordion">
+
+  <!-- Public -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingPublic">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsePublic"
+        aria-expanded="false"
+        aria-controls="collapsePublic">
+        public
+      </button>
+    </h2>
+    <div id="collapsePublic"
+         class="accordion-collapse collapse"
+         aria-labelledby="headingPublic"
+         data-bs-parent="#accessModifierAccordion">
+      <div class="accordion-body">
+        <strong>Definition:</strong> Accessible from anywhere (any class, any assembly).
+        <pre><code class="language-csharp">
+public class Employee
+{
+    public string Name;
+}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Private -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingPrivate">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsePrivate"
+        aria-expanded="false"
+        aria-controls="collapsePrivate">
+        private
+      </button>
+    </h2>
+    <div id="collapsePrivate"
+         class="accordion-collapse collapse"
+         aria-labelledby="headingPrivate"
+         data-bs-parent="#accessModifierAccordion">
+      <div class="accordion-body">
+        <strong>Definition:</strong> Accessible only within the containing type.
+        <pre><code class="language-csharp">
+public class Employee
+{
+    private int salary;
+}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Protected -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingProtected">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseProtected"
+        aria-expanded="false"
+        aria-controls="collapseProtected">
+        protected
+      </button>
+    </h2>
+    <div id="collapseProtected"
+         class="accordion-collapse collapse"
+         aria-labelledby="headingProtected"
+         data-bs-parent="#accessModifierAccordion">
+      <div class="accordion-body">
+        <strong>Definition:</strong> Accessible within the containing class and its derived classes.
+        <pre><code class="language-csharp">
+public class Base
+{
+    protected int age;
+}
+
+public class Child : Base
+{
+    void Test()
+    {
+        age = 10; // Accessible here
+    }
+}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Internal -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingInternal">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseInternal"
+        aria-expanded="false"
+        aria-controls="collapseInternal">
+        internal
+      </button>
+    </h2>
+    <div id="collapseInternal"
+         class="accordion-collapse collapse"
+         aria-labelledby="headingInternal"
+         data-bs-parent="#accessModifierAccordion">
+      <div class="accordion-body">
+        <strong>Definition:</strong> Accessible only within the same assembly.
+        <pre><code class="language-csharp">
+internal class Helper
+{
+    internal void DoWork() { }
+}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Protected Internal -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingProtectedInternal">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseProtectedInternal"
+        aria-expanded="false"
+        aria-controls="collapseProtectedInternal">
+        protected internal
+      </button>
+    </h2>
+    <div id="collapseProtectedInternal"
+         class="accordion-collapse collapse"
+         aria-labelledby="headingProtectedInternal"
+         data-bs-parent="#accessModifierAccordion">
+      <div class="accordion-body">
+        <strong>Definition:</strong> Accessible from the same assembly OR from derived classes in any assembly.
+        <pre><code class="language-csharp">
+public class Base
+{
+    protected internal int value;
+}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Private Protected -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingPrivateProtected">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsePrivateProtected"
+        aria-expanded="false"
+        aria-controls="collapsePrivateProtected">
+        private protected
+      </button>
+    </h2>
+    <div id="collapsePrivateProtected"
+         class="accordion-collapse collapse"
+         aria-labelledby="headingPrivateProtected"
+         data-bs-parent="#accessModifierAccordion">
+      <div class="accordion-body">
+        <strong>Definition:</strong> Accessible within the containing class OR its derived classes, but only in the same assembly.
+        <pre><code class="language-csharp">
+public class Base
+{
+    private protected int number;
+}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
   <!-- 8.5 Properties, Fields, and CLR Internals (Summary) -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="dnHeadingPropsSummary">
