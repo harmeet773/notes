@@ -991,6 +991,108 @@ public void OldMethod() { /* ... */ }
 
         <p><strong>Interview Tip:</strong> Attributes provide declarative metadata that frameworks (e.g., ASP.NET Core, EF Core, serializers) use to alter behavior without changing imperative code; custom attributes plus reflection enable cross-cutting concerns like auditing and validation.</p>
       </div>
+  </div>
+</div>
+
+  <!-- 9.6 Typecasting in C# -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dnHeadingTypecasting">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dnTypecasting"
+        aria-expanded="false"
+        aria-controls="dnTypecasting"
+      >
+        9.6 Typecasting in C#
+      </button>
+    </h2>
+    <div
+      id="dnTypecasting"
+      class="accordion-collapse collapse"
+      aria-labelledby="dnHeadingTypecasting"
+      data-bs-parent="#dotnetMainAccordion"
+    >
+      <div class="accordion-body">
+        <p>Typecasting converts a value from one type to another. In C#, casts can be <strong>implicit</strong> (safe, no data loss) or <strong>explicit</strong> (may lose data or fail at runtime for references).</p>
+
+        <h6>Implicit vs Explicit (Numeric Examples)</h6>
+        <pre><code class="language-csharp">int i = 42;
+long l = i;          // implicit widening
+double d = l;        // implicit
+
+double dx = 3.14;
+int ix = (int)dx;    // explicit narrowing (3, truncates)
+</code></pre>
+
+        <h6>Reference Types: Upcasting vs Downcasting</h6>
+        <ul>
+          <li><strong>Upcasting</strong>: Cast from derived to base. Always safe; often implicit.</li>
+          <li><strong>Downcasting</strong>: Cast from base to derived. Requires runtime check; can throw InvalidCastException if incompatible.</li>
+        </ul>
+        <pre><code class="language-csharp">class Animal { public virtual void Speak() =&gt; Console.WriteLine("Animal"); }
+class Dog : Animal { public override void Speak() =&gt; Console.WriteLine("Dog"); }
+
+Dog dog = new Dog();
+Animal a = dog;            // upcasting (implicit)
+a.Speak();                 // "Dog" due to virtual dispatch
+
+// Downcasting
+Dog d2 = (Dog)a;           // explicit; OK because 'a' actually refers to Dog
+// Dog d3 = (Dog)new Animal(); // throws InvalidCastException
+</code></pre>
+
+        <h6>Safe Downcasting: as and is</h6>
+        <pre><code class="language-csharp">Animal a2 = GetAnimal();
+
+Dog? maybeDog = a2 as Dog;     // returns Dog reference or null
+if (maybeDog != null) maybeDog.Speak();
+
+// C# pattern matching with 'is'
+if (a2 is Dog d4) d4.Speak();
+</code></pre>
+
+        <h6>Boxing/Unboxing</h6>
+        <ul>
+          <li><strong>Boxing</strong>: Value type → object heap allocation.</li>
+          <li><strong>Unboxing</strong>: object → value type; requires explicit cast and correct type.</li>
+        </ul>
+        <pre><code class="language-csharp">int v = 10;
+object o = v;           // boxing
+int v2 = (int)o;        // unboxing (must match original value type)
+</code></pre>
+
+        <h6>Convert Class vs Cast Operators</h6>
+        <ul>
+          <li><code>(T)expr</code> uses language/runtime casting rules; for numeric, truncates/overflows unless checked; for references, runtime type check.</li>
+          <li><code>Convert.ToInt32</code>, <code>Convert.ToDouble</code>, etc., support conversions from strings and other types with culture/format handling.</li>
+        </ul>
+        <pre><code class="language-csharp">string s = "123";
+int n = Convert.ToInt32(s);   // parses string
+
+try {
+  int bad = (int)(object)3.5; // InvalidCastException: cannot unbox double to int
+} catch (InvalidCastException) { /* handle */ }
+</code></pre>
+
+        <h6>User-defined Conversions</h6>
+        <p>Types can define <code>implicit</code> and <code>explicit</code> operators to customize casting behavior.</p>
+        <pre><code class="language-csharp">struct Celsius
+{
+    public double Value;
+    public Celsius(double v) =&gt; Value = v;
+
+    public static implicit operator Celsius(double v) =&gt; new Celsius(v);
+    public static explicit operator double(Celsius c) =&gt; c.Value;
+}
+
+Celsius c = 25.0;           // implicit from double
+double temp = (double)c;    // explicit to double
+</code></pre>
+
+        <p><strong>Interview Tip:</strong> Prefer <code>is</code>/<code>as</code> (or pattern matching) for safe reference casts; be mindful of boxing with generics/collections; use user-defined conversions sparingly with clear semantics.</p>
+      </div>
     </div>
   </div>
 
