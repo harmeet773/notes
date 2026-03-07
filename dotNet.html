@@ -226,7 +226,133 @@ public class HelloController : ControllerBase
         <ul>
           <li>Prefer constructor injection over resolving services imperatively from <code>IServiceProvider</code> within classes (service locator anti-pattern), which hides dependencies and complicates testing.</li>
         </ul>
+     
+        <h6>Examples of Dependency Injection</h6>
+
+<div class="accordion" id="diExamplesAccordion">
+
+  <!-- Constructor Injection -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingConstructor">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#constructorDI"
+        aria-expanded="false"
+        aria-controls="constructorDI">
+        1. Constructor Injection
+      </button>
+    </h2>
+    <div id="constructorDI"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingConstructor"
+      data-bs-parent="#diExamplesAccordion">
+      <div class="accordion-body">
+
+<pre><code class="language-csharp">
+public interface IMessageService
+{
+    void SendMessage(string message);
+}
+
+public class EmailService : IMessageService
+{
+    public void SendMessage(string message)
+    {
+        Console.WriteLine("Email sent: " + message);
+    }
+}
+
+public class Notification
+{
+    private readonly IMessageService _messageService;
+
+    // Dependency injected through constructor
+    public Notification(IMessageService messageService)
+    {
+        _messageService = messageService;
+    }
+
+    public void Notify(string message)
+    {
+        _messageService.SendMessage(message);
+    }
+}
+</code></pre>
+
       </div>
+    </div>
+  </div>
+
+
+  <!-- Property Injection -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingProperty">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#propertyDI"
+        aria-expanded="false"
+        aria-controls="propertyDI">
+        2. Property Injection
+      </button>
+    </h2>
+    <div id="propertyDI"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingProperty"
+      data-bs-parent="#diExamplesAccordion">
+      <div class="accordion-body">
+
+<pre><code class="language-csharp">
+public class Notification
+{
+    // Dependency injected through property
+    public IMessageService MessageService { get; set; }
+
+    public void Notify(string message)
+    {
+        MessageService.SendMessage(message);
+    }
+}
+</code></pre>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Method Injection -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingMethod">
+      <button class="accordion-button collapsed" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#methodDI"
+        aria-expanded="false"
+        aria-controls="methodDI">
+        3. Method Injection
+      </button>
+    </h2>
+    <div id="methodDI"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingMethod"
+      data-bs-parent="#diExamplesAccordion">
+      <div class="accordion-body">
+
+<pre><code class="language-csharp">
+public class Notification
+{
+    // Dependency injected through method
+    public void Notify(IMessageService messageService, string message)
+    {
+        messageService.SendMessage(message);
+    }
+}
+</code></pre>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+       </div>
     </div>
   </div>
 
