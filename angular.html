@@ -440,4 +440,37 @@ onSubmit() {
   </div>
 </div>
 
+  <!-- 11. to do -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTodo">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#angularTodo"
+        aria-expanded="false"
+        aria-controls="angularTodo"
+      >
+        11. to do
+      </button>
+    </h2>
+    <div
+      id="angularTodo"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingTodo"
+      data-bs-parent="#angularMainAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>Styles applied within a component stay scoped to that component by default (ViewEncapsulation); global styles can be applied via styles.css or by changing encapsulation.</li>
+          <li>Two-way data binding can be implemented using signals in Angular 16+ in addition to ngModel.</li>
+          <li>To pass data from parent to child: the child declares an <code>@Input()</code> property, and the parent binds to it in the template (similar to props in React).</li>
+          <li>To create a service, use the <code>@Injectable()</code> decorator; provide it in root or a specific provider scope.</li>
+          <li>Lifecycle hooks: <code>ngOnInit</code>, <code>ngOnChanges</code>, <code>ngAfterViewInit</code>, <code>ngOnDestroy</code>, etc.</li>
+          <li>Directives in Angular: structural (<code>*ngIf</code>, <code>*ngFor</code>) and attribute (<code>[ngClass]</code>, <code>[ngStyle]</code>); you can also create custom directives.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 https://www.youtube.com/watch?v=-FyMkfvyYIY&list=PPSV

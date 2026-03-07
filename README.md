@@ -1,6 +1,6 @@
 "# notes" 
 
 
-this is the notes file
+this is repositary contains notes.
 
 live at https://harmeet773.github.io/notes/
