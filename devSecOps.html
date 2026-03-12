@@ -1,0 +1,256 @@
+---
+layout: default
+title: DevSecOps
+---
+
+<h2 class="mb-3">DevSecOps</h2>
+<h3 class="mb-4">Interview Questions & Preparation Notes</h3>
+
+<div class="accordion" id="devsecopsMainAccordion">
+  <!-- 1. Core Concepts -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingCore">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsCore" aria-expanded="false" aria-controls="dsCore">
+        1. Core Concepts
+      </button>
+    </h2>
+    <div id="dsCore" class="accordion-collapse collapse" aria-labelledby="dsHeadingCore" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>DevSecOps integrates security into DevOps lifecycle (shift-left security).</li>
+          <li>Automate security in build, test, deploy, and operations phases.</li>
+          <li>Key pillars: People, Process, Technology; Culture of shared responsibility.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CI/CD Pipeline -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingCICD">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsCICD" aria-expanded="false" aria-controls="dsCICD">
+        2. CI/CD Pipeline
+      </button>
+    </h2>
+    <div id="dsCICD" class="accordion-collapse collapse" aria-labelledby="dsHeadingCICD" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Stages: Source → Build → Test → Security Scans → Package → Deploy → Verify.</li>
+          <li>Common tools: GitHub Actions, GitLab CI, Jenkins, Azure DevOps.</li>
+          <li>Security gates: SAST, SCA, Secrets scan, DAST, IaC scan, Container scan.</li>
+        </ul>
+
+        <pre><code class="language-yaml"># Example: GitHub Actions with SAST + SCA gates
+name: ci
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci
+      - run: npm test -- --ci
+      - name: SAST
+        uses: github/codeql-action/analyze@v3
+      - name: SCA (npm audit)
+        run: npm audit --audit-level=high
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Security in CI/CD -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingPipelineSec">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsPipelineSec" aria-expanded="false" aria-controls="dsPipelineSec">
+        3. Security in CI/CD
+      </button>
+    </h2>
+    <div id="dsPipelineSec" class="accordion-collapse collapse" aria-labelledby="dsHeadingPipelineSec" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>SAST (Static App Security Testing): code-level issues early.</li>
+          <li>DAST (Dynamic App Security Testing): runtime behavior, OWASP Top 10.</li>
+          <li>SCA (Software Composition Analysis): vulnerable dependencies and licenses.</li>
+          <li>Secret scanning: detect keys/tokens before merge.</li>
+          <li>Policy as Code: OPA/Conftest to enforce standards.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Secrets Management -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingSecrets">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsSecrets" aria-expanded="false" aria-controls="dsSecrets">
+        4. Secrets Management
+      </button>
+    </h2>
+    <div id="dsSecrets" class="accordion-collapse collapse" aria-labelledby="dsHeadingSecrets" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Use managed secret stores: Azure Key Vault, AWS Secrets Manager, HashiCorp Vault.</li>
+          <li>Avoid storing secrets in code or CI variables in plaintext.</li>
+          <li>Rotate credentials; use short-lived tokens and workload identities.</li>
+          <li>Encrypt at rest and in transit; audit access.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Container Security -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingContainers">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsContainers" aria-expanded="false" aria-controls="dsContainers">
+        5. Container Security
+      </button>
+    </h2>
+    <div id="dsContainers" class="accordion-collapse collapse" aria-labelledby="dsHeadingContainers" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Use minimal base images, pin versions, and scan images (Trivy, Grype).</li>
+          <li>Run as non-root; drop capabilities; use read-only file systems.</li>
+          <li>Sign images (Sigstore cosign) and enforce admission policies (OPA/Gatekeeper, Kyverno).</li>
+        </ul>
+
+        <pre><code class="language-dockerfile">FROM node:20-alpine
+USER node
+WORKDIR /app
+COPY --chown=node:node package*.json ./
+RUN npm ci --omit=dev
+COPY --chown=node:node . .
+CMD ["node", "server.js"]
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Supply Chain Security -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingSupplyChain">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsSupplyChain" aria-expanded="false" aria-controls="dsSupplyChain">
+        6. Supply Chain Security
+      </button>
+    </h2>
+    <div id="dsSupplyChain" class="accordion-collapse collapse" aria-labelledby="dsHeadingSupplyChain" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Pin dependencies; verify provenance (SLSA levels), SBOM generation (CycloneDX, SPDX).</li>
+          <li>Sign artifacts (cosign, GPG) and enforce signature verification.</li>
+          <li>Use registries with malware scanning and access control.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. IaC Security -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingIaC">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsIaC" aria-expanded="false" aria-controls="dsIaC">
+        7. Infrastructure as Code (IaC) Security
+      </button>
+    </h2>
+    <div id="dsIaC" class="accordion-collapse collapse" aria-labelledby="dsHeadingIaC" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Scan Terraform/CloudFormation/K8s manifests with tools like Checkov, tfsec, kube-score.</li>
+          <li>Enforce least privilege in IAM policies; avoid wildcards.</li>
+          <li>Use drift detection and immutable infra patterns.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Monitoring & Compliance -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingMonitoring">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsMonitoring" aria-expanded="false" aria-controls="dsMonitoring">
+        8. Monitoring & Compliance
+      </button>
+    </h2>
+    <div id="dsMonitoring" class="accordion-collapse collapse" aria-labelledby="dsHeadingMonitoring" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Centralized logging (ELK, Loki), metrics (Prometheus), traces (OpenTelemetry).</li>
+          <li>Compliance frameworks: SOC2, ISO 27001, PCI-DSS, HIPAA; automate evidence collection.</li>
+          <li>Alerting and runbooks for incident response; security SLIs/SLOs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Vulnerability Management -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingVuln">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsVuln" aria-expanded="false" aria-controls="dsVuln">
+        9. Vulnerability Management
+      </button>
+    </h2>
+    <div id="dsVuln" class="accordion-collapse collapse" aria-labelledby="dsHeadingVuln" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Continuous scanning of code, dependencies, images, and infra.</li>
+          <li>Prioritize by CVSS, exploitability, and asset criticality; track SLAs.</li>
+          <li>Automate patching/updates; verify fixes in CI/CD.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Incident Response & Threat Modeling -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingIR">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsIR" aria-expanded="false" aria-controls="dsIR">
+        10. Incident Response & Threat Modeling
+      </button>
+    </h2>
+    <div id="dsIR" class="accordion-collapse collapse" aria-labelledby="dsHeadingIR" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>IR phases: Preparation → Detection → Containment → Eradication → Recovery → Lessons learned.</li>
+          <li>Threat modeling: STRIDE, attack trees; identify trust boundaries and mitigations.</li>
+          <li>Tabletop exercises and postmortems to improve resilience.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Interview Scenarios & Best Practices -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingScenarios">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsScenarios" aria-expanded="false" aria-controls="dsScenarios">
+        11. Interview Scenarios & Best Practices
+      </button>
+    </h2>
+    <div id="dsScenarios" class="accordion-collapse collapse" aria-labelledby="dsHeadingScenarios" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Secure a CI pipeline: add SAST, SCA, secrets scan, IaC scan, signed artifacts.</li>
+          <li>Respond to Log4Shell: identify affected services, patch/upgrade, deploy quickly, add WAF rules, monitor.</li>
+          <li>Kubernetes hardening: NetworkPolicies, PodSecurity, RBAC least privilege, image policies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Resources -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="dsHeadingResources">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsResources" aria-expanded="false" aria-controls="dsResources">
+        12. Resources
+      </button>
+    </h2>
+    <div id="dsResources" class="accordion-collapse collapse" aria-labelledby="dsHeadingResources" data-bs-parent="#devsecopsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a></li>
+          <li><a href="https://slsa.dev/" target="_blank" rel="noopener">SLSA Framework</a></li>
+          <li><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener">OWASP Cheat Sheet Series</a></li>
+          <li><a href="https://github.com/ossf/scorecard" target="_blank" rel="noopener">OpenSSF Scorecard</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
