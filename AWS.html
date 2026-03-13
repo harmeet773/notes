@@ -76,12 +76,26 @@ title: AWS
   platforms automatically handle server provisioning, scaling, maintenance, and fault tolerance.
 
   In this model, developers only focus on writing the application logic while the cloud provider manages the
-  underlying infrastructure. Serverless services automatically scale based on demand and charge users only
-  for the actual execution time of the code rather than for idle server capacity. This makes serverless
+  underlying infrastructure. <strong> services automatically scale based on demand and charge users only
+  for the actual execution time of the code rather than for idle server capacity.</strong> This makes serverless
   architectures cost-efficient, highly scalable, and easier to maintain.
 
   Common use cases of serverless computing include building APIs, automating workflows, processing files,
   real-time data processing, and backend services for web and mobile applications.
+  Services like AWS Lambda are stateless, meaning:
+<ul>
+    <li>
+        The function does not permanently store data between executions.
+    </li>
+    <li>
+        Each request is treated independently.
+    </li>
+    <li>The runtime environment may be destroyed after execution</li>
+</ul>
+
+The session data must be stored in amazon DynamoDB, amazon Elastic search and amazon RDS.
+
+
 
   <ul>
     <li>
