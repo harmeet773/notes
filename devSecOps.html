@@ -8,97 +8,317 @@ title: DevSecOps
 
 <div class="accordion" id="devsecopsMainAccordion">
   <!-- 1. Core Concepts -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="dsHeadingCore">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsCore" aria-expanded="false" aria-controls="dsCore">
-        1. Core Concepts
-      </button>
-    </h2>
-    <div id="dsCore" class="accordion-collapse collapse" aria-labelledby="dsHeadingCore" data-bs-parent="#devsecopsMainAccordion">
-      <div class="accordion-body">
-        <ul>
-          <li>DevSecOps integrates security into DevOps lifecycle (shift-left security).</li>
-          <li>Automate security in build, test, deploy, and operations phases.</li>
-          <li>Key pillars: People, Process, Technology; Culture of shared responsibility.</li>
-        </ul>
-      </div>
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingOne">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#coreConcepts"
+      aria-expanded="false" aria-controls="coreConcepts">
+      1. Core Concepts
+    </button>
+  </h2>
+
+  <div id="coreConcepts" class="accordion-collapse collapse" aria-labelledby="headingOne"
+    data-bs-parent="#devsecopsMainAccordion">
+    
+    <div class="accordion-body">
+      <ul>
+
+        <li>
+          <strong>Shift-Left Security:</strong>  
+          DevSecOps promotes the idea of integrating security practices at the earliest stages of the 
+          software development lifecycle (SDLC). Instead of addressing security vulnerabilities only 
+          after the application is built, developers, security teams, and operations teams collaborate 
+          from the beginning. This early involvement allows potential threats, coding flaws, and design 
+          vulnerabilities to be identified and resolved during development, reducing risks and lowering 
+          the cost of fixing issues later in production.
+        </li>
+
+        <li>
+          <strong>Automation of Security Processes:</strong>  
+          DevSecOps emphasizes the use of automation tools to continuously scan and monitor applications 
+          for security vulnerabilities throughout the development pipeline. Automated security checks can 
+          be integrated into CI/CD pipelines to perform activities such as static code analysis, dependency 
+          scanning, vulnerability assessment, and compliance verification. Automation ensures that security 
+          testing happens consistently during development, testing, deployment, and operational stages 
+          without slowing down the delivery process.
+        </li>
+
+        <li>
+          <strong>Collaboration and Shared Responsibility:</strong>  
+          A fundamental principle of DevSecOps is that security is not the sole responsibility of a dedicated 
+          security team. Instead, it becomes a shared responsibility among developers, operations engineers, 
+          and security professionals. By fostering collaboration and communication across teams, organizations 
+          create a culture where security is embedded into every phase of development and deployment.
+        </li>
+
+        <li>
+          <strong>Integration of People, Processes, and Technology:</strong>  
+          DevSecOps relies on the effective coordination of three key elements: people, processes, and 
+          technology. Skilled professionals work together using well-defined processes and advanced 
+          security tools to maintain secure development practices. This integrated approach ensures that 
+          security policies are implemented effectively while maintaining the speed and agility of DevOps.
+        </li>
+
+      </ul>
     </div>
+
   </div>
+</div>
 
-  <!-- 2. CI/CD Pipeline -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="dsHeadingCICD">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsCICD" aria-expanded="false" aria-controls="dsCICD">
-        2. CI/CD Pipeline
-      </button>
-    </h2>
-    <div id="dsCICD" class="accordion-collapse collapse" aria-labelledby="dsHeadingCICD" data-bs-parent="#devsecopsMainAccordion">
-      <div class="accordion-body">
-        <ul>
-          <li>Stages: Source → Build → Test → Security Scans → Package → Deploy → Verify.</li>
-          <li>Common tools: GitHub Actions, GitLab CI, Jenkins, Azure DevOps.</li>
-          <li>Security gates: SAST, SCA, Secrets scan, DAST, IaC scan, Container scan.</li>
-        </ul>
+ <!-- 2. CI/CD Pipeline -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="dsHeadingCICD">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsCICD" aria-expanded="false" aria-controls="dsCICD">
+      2. CI/CD Pipeline
+    </button>
+  </h2>
 
-        <pre><code class="language-yaml"># Example: GitHub Actions with SAST + SCA gates
+  <div id="dsCICD" class="accordion-collapse collapse" aria-labelledby="dsHeadingCICD" data-bs-parent="#devsecopsMainAccordion">
+    <div class="accordion-body">
+
+      <p>
+        The Continuous Integration and Continuous Deployment (CI/CD) pipeline is a fundamental component of 
+        DevSecOps that automates the process of building, testing, securing, and deploying software applications. 
+        By integrating security checks directly into the pipeline, organizations ensure that vulnerabilities are 
+        detected and resolved early in the development lifecycle. This approach improves software quality, 
+        accelerates delivery, and reduces security risks in production environments.
+      </p>
+
+      <h6><strong>CI/CD Pipeline Stages</strong></h6>
+      <ul>
+        <li>
+          <strong>Source:</strong>  
+          Developers commit code to a version control system such as Git. Every change triggers the pipeline 
+          automatically, ensuring that all code updates are tracked, reviewed, and tested.
+        </li>
+
+        <li>
+          <strong>Build:</strong>  
+          The application source code is compiled and dependencies are installed. Build tools prepare the 
+          software into an executable format such as binaries, packages, or containers.
+        </li>
+
+        <li>
+          <strong>Test:</strong>  
+          Automated testing frameworks run unit tests, integration tests, and functional tests to verify 
+          that the application behaves as expected and that recent changes do not introduce errors.
+        </li>
+
+        <li>
+          <strong>Security Scanning:</strong>  
+          Security tools automatically scan the codebase and dependencies for vulnerabilities. These scans 
+          help detect coding flaws, outdated libraries, exposed secrets, and insecure configurations before 
+          deployment.
+        </li>
+
+        <li>
+          <strong>Package:</strong>  
+          The validated application is packaged into deployable artifacts such as Docker containers, 
+          ZIP files, or application bundles. These artifacts are stored in repositories for deployment.
+        </li>
+
+        <li>
+          <strong>Deploy:</strong>  
+          The application is automatically deployed to staging or production environments using deployment 
+          tools. Infrastructure automation ensures consistency across different environments.
+        </li>
+
+        <li>
+          <strong>Verify and Monitor:</strong>  
+          After deployment, monitoring tools check the application for performance issues, security 
+          vulnerabilities, and operational stability. Feedback from this stage helps improve future builds.
+        </li>
+      </ul>
+
+      <h6><strong>Common CI/CD Tools</strong></h6>
+      <ul>
+        <li><strong>GitHub Actions:</strong> A cloud-based automation tool integrated with GitHub repositories for building and testing applications.</li>
+        <li><strong>GitLab CI/CD:</strong> Provides a complete DevOps platform with built-in CI/CD pipelines and security scanning features.</li>
+        <li><strong>Jenkins:</strong> A widely used open-source automation server that supports customizable pipelines and plugin integrations.</li>
+        <li><strong>Azure DevOps:</strong> A Microsoft platform that offers CI/CD pipelines, repository management, testing tools, and project tracking.</li>
+      </ul>
+
+      <h6><strong>Security Gates in the Pipeline</strong></h6>
+      <ul>
+        <li><strong>SAST (Static Application Security Testing):</strong> Analyzes source code to detect vulnerabilities such as SQL injection, cross-site scripting, and insecure coding practices.</li>
+        <li><strong>SCA (Software Composition Analysis):</strong> Scans third-party libraries and dependencies to identify known vulnerabilities.</li>
+        <li><strong>Secrets Scanning:</strong> Detects accidentally exposed credentials such as API keys, passwords, and tokens within the codebase.</li>
+        <li><strong>DAST (Dynamic Application Security Testing):</strong> Tests running applications to identify vulnerabilities during runtime.</li>
+        <li><strong>IaC Scanning:</strong> Evaluates Infrastructure as Code templates (e.g., Terraform, CloudFormation) to detect insecure configurations.</li>
+        <li><strong>Container Security Scanning:</strong> Analyzes container images to detect vulnerabilities, misconfigurations, and outdated packages.</li>
+      </ul>
+
+      <pre><code class="language-yaml"># Example: GitHub Actions with SAST + SCA gates
 name: ci
 on: [push, pull_request]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: 20 }
+        with:
+          node-version: 20
+
       - run: npm ci
+
       - run: npm test -- --ci
+
       - name: SAST
         uses: github/codeql-action/analyze@v3
+
       - name: SCA (npm audit)
         run: npm audit --audit-level=high
 </code></pre>
-      </div>
-    </div>
-  </div>
 
-  <!-- 3. Security in CI/CD -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="dsHeadingPipelineSec">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsPipelineSec" aria-expanded="false" aria-controls="dsPipelineSec">
-        3. Security in CI/CD
-      </button>
-    </h2>
-    <div id="dsPipelineSec" class="accordion-collapse collapse" aria-labelledby="dsHeadingPipelineSec" data-bs-parent="#devsecopsMainAccordion">
-      <div class="accordion-body">
-        <ul>
-          <li>SAST (Static App Security Testing): code-level issues early.</li>
-          <li>DAST (Dynamic App Security Testing): runtime behavior, OWASP Top 10.</li>
-          <li>SCA (Software Composition Analysis): vulnerable dependencies and licenses.</li>
-          <li>Secret scanning: detect keys/tokens before merge.</li>
-          <li>Policy as Code: OPA/Conftest to enforce standards.</li>
-        </ul>
-      </div>
     </div>
   </div>
+</div>
+
+ <!-- 3. Security in CI/CD -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="dsHeadingPipelineSec">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsPipelineSec" aria-expanded="false" aria-controls="dsPipelineSec">
+      3. Security in CI/CD
+    </button>
+  </h2>
+
+  <div id="dsPipelineSec" class="accordion-collapse collapse" aria-labelledby="dsHeadingPipelineSec" data-bs-parent="#devsecopsMainAccordion">
+    <div class="accordion-body">
+
+      <p>
+        Security in the CI/CD pipeline is a key principle of DevSecOps. Instead of treating security as a 
+        separate stage at the end of development, security checks are integrated throughout the pipeline. 
+        Automated security testing tools continuously scan the source code, dependencies, infrastructure 
+        configurations, and running applications to identify vulnerabilities early. This approach helps 
+        organizations detect and fix security issues before software is deployed to production, reducing 
+        the risk of cyberattacks and security breaches.
+      </p>
+
+      <ul>
+
+        <li>
+          <strong>SAST (Static Application Security Testing):</strong>  
+          Static Application Security Testing analyzes the source code, bytecode, or binaries without 
+          executing the program. It identifies vulnerabilities such as SQL injection, cross-site scripting 
+          (XSS), insecure authentication mechanisms, and improper input validation. Since SAST is performed 
+          during the early stages of development, developers can fix issues quickly before the application 
+          progresses further in the pipeline. Popular SAST tools include CodeQL, SonarQube, and Checkmarx.
+        </li>
+
+        <li>
+          <strong>DAST (Dynamic Application Security Testing):</strong>  
+          Dynamic Application Security Testing evaluates the application while it is running. Unlike SAST, 
+          which analyzes code statically, DAST simulates real-world attacks against a deployed application 
+          to identify vulnerabilities such as authentication flaws, server misconfigurations, and injection 
+          attacks. DAST tools are commonly used to detect vulnerabilities listed in the 
+          OWASP Top 10 security risks. Examples include OWASP ZAP and Burp Suite.
+        </li>
+
+        <li>
+          <strong>SCA (Software Composition Analysis):</strong>  
+          Modern applications rely heavily on third-party libraries and open-source components. 
+          Software Composition Analysis tools scan these dependencies to detect known vulnerabilities, 
+          outdated packages, and licensing issues. By identifying insecure or unsupported libraries, 
+          organizations can update or replace them before deployment. Tools such as Snyk, Dependabot, 
+          and WhiteSource are commonly used for SCA.
+        </li>
+
+        <li>
+          <strong>Secret Scanning:</strong>  
+          Developers sometimes accidentally commit sensitive information such as API keys, passwords, 
+          tokens, or private certificates to version control repositories. Secret scanning tools analyze 
+          code commits and pull requests to detect exposed credentials before they are merged into the 
+          main branch. This helps prevent unauthorized access to systems, databases, and cloud services.
+        </li>
+
+        <li>
+          <strong>Policy as Code:</strong>  
+          Policy as Code allows organizations to define security and compliance rules in a machine-readable 
+          format that can be automatically enforced within the CI/CD pipeline. Tools such as Open Policy 
+          Agent (OPA) and Conftest evaluate infrastructure configurations, container images, and deployment 
+          templates against predefined security policies. If a configuration violates the policy, the 
+          pipeline can automatically fail the build, ensuring that only secure and compliant applications 
+          are deployed.
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</div>
 
   <!-- 4. Secrets Management -->
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="dsHeadingSecrets">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsSecrets" aria-expanded="false" aria-controls="dsSecrets">
-        4. Secrets Management
-      </button>
-    </h2>
-    <div id="dsSecrets" class="accordion-collapse collapse" aria-labelledby="dsHeadingSecrets" data-bs-parent="#devsecopsMainAccordion">
-      <div class="accordion-body">
-        <ul>
-          <li>Use managed secret stores: Azure Key Vault, AWS Secrets Manager, HashiCorp Vault.</li>
-          <li>Avoid storing secrets in code or CI variables in plaintext.</li>
-          <li>Rotate credentials; use short-lived tokens and workload identities.</li>
-          <li>Encrypt at rest and in transit; audit access.</li>
-        </ul>
-      </div>
+<div class="accordion-item">
+  <h2 class="accordion-header" id="dsHeadingSecrets">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dsSecrets" aria-expanded="false" aria-controls="dsSecrets">
+      4. Secrets Management
+    </button>
+  </h2>
+
+  <div id="dsSecrets" class="accordion-collapse collapse" aria-labelledby="dsHeadingSecrets" data-bs-parent="#devsecopsMainAccordion">
+    <div class="accordion-body">
+
+      <p>
+        Secrets management is a critical component of DevSecOps that focuses on securely storing, accessing, 
+        and managing sensitive information used by applications and infrastructure. Secrets typically include 
+        passwords, API keys, encryption keys, tokens, database credentials, and certificates. If these secrets 
+        are exposed or improperly managed, attackers may gain unauthorized access to systems, data, and services. 
+        Therefore, organizations must implement secure mechanisms to protect secrets throughout the software 
+        development and deployment lifecycle.
+      </p>
+
+      <ul>
+
+        <li>
+          <strong>Use Managed Secret Stores:</strong>  
+          Instead of storing credentials directly in code repositories or configuration files, organizations 
+          should use dedicated secret management services. Tools such as Azure Key Vault, AWS Secrets Manager, 
+          and HashiCorp Vault provide secure storage for sensitive information. These platforms offer features 
+          like encryption, access control, automatic rotation, and audit logging to ensure that secrets remain 
+          protected and accessible only to authorized users or services.
+        </li>
+
+        <li>
+          <strong>Avoid Storing Secrets in Source Code:</strong>  
+          Storing secrets directly in application code, configuration files, or CI/CD environment variables 
+          in plaintext can lead to accidental exposure through version control systems. Developers should 
+          follow best practices such as retrieving secrets dynamically from secure vaults during runtime. 
+          This prevents sensitive data from being stored permanently in repositories or build artifacts.
+        </li>
+
+        <li>
+          <strong>Credential Rotation and Short-Lived Tokens:</strong>  
+          Regularly rotating credentials helps reduce the risk of long-term exposure if a secret is compromised. 
+          Organizations should implement automated credential rotation policies and use short-lived access 
+          tokens whenever possible. Workload identities and temporary credentials allow applications to access 
+          resources securely without relying on permanent secrets.
+        </li>
+
+        <li>
+          <strong>Encryption and Secure Transmission:</strong>  
+          Secrets must always be encrypted both at rest and in transit. Encryption at rest protects stored 
+          credentials in secret management systems, while encryption in transit ensures that sensitive data 
+          cannot be intercepted during communication between services. Secure protocols such as HTTPS and 
+          TLS are commonly used to safeguard this communication.
+        </li>
+
+        <li>
+          <strong>Access Control and Auditing:</strong>  
+          Proper access control mechanisms should be implemented to ensure that only authorized users, 
+          applications, or services can retrieve specific secrets. Role-based access control (RBAC) and 
+          least-privilege principles help limit exposure. Additionally, secret management platforms maintain 
+          audit logs that track when secrets are accessed, modified, or rotated, enabling organizations to 
+          detect suspicious activities and maintain compliance with security standards.
+        </li>
+
+      </ul>
+
     </div>
   </div>
+</div>
 
   <!-- 5. Container Security -->
   <div class="accordion-item">
