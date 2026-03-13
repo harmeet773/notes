@@ -1,0 +1,282 @@
+---
+layout: default
+title: AWS
+---
+
+<h2 class="mb-3">AWS</h2>
+<h3 class="mb-4">Interview Questions & Preparation Notes</h3>
+
+<div class="accordion" id="awsMainAccordion">
+  <!-- 1. Core AWS Concepts -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingCore">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsCore" aria-expanded="false" aria-controls="awsCore">
+        1. Core AWS Concepts
+      </button>
+    </h2>
+    <div id="awsCore" class="accordion-collapse collapse" aria-labelledby="awsHeadingCore" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Global infrastructure: Regions, Availability Zones (AZs), Edge locations.</li>
+          <li>Shared Responsibility Model: AWS secures the cloud; customers secure what they put in the cloud.</li>
+          <li>Well-Architected Framework: Operational Excellence, Security, Reliability, Performance, Cost Optimization, Sustainability.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Compute (EC2, Lambda, ECS, EKS) -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingCompute">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsCompute" aria-expanded="false" aria-controls="awsCompute">
+        2. Compute (EC2, Lambda, ECS, EKS)
+      </button>
+    </h2>
+    <div id="awsCompute" class="accordion-collapse collapse" aria-labelledby="awsHeadingCompute" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>EC2: VM instances; families (General, Compute, Memory, GPU), purchase options (On-Demand, Reserved, Savings Plans, Spot).</li>
+          <li>Lambda: Serverless functions; triggers (API Gateway, S3, EventBridge), cold starts, concurrency, layers.</li>
+          <li>ECS/EKS: Container orchestration; ECS with Fargate; EKS (managed Kubernetes).</li>
+          <li>Auto Scaling Groups (ASG) with Launch Templates for elasticity.</li>
+        </ul>
+
+        <pre><code class="language-bash"># Example: start/stop EC2 via CLI
+aws ec2 start-instances --instance-ids i-0123456789abcdef0
+aws ec2 stop-instances --instance-ids i-0123456789abcdef0
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Networking (VPC, Subnets, SG/NACL) -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingNetwork">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsNetwork" aria-expanded="false" aria-controls="awsNetwork">
+        3. Networking (VPC, Subnets, Security Groups, NACLs)
+      </button>
+    </h2>
+    <div id="awsNetwork" class="accordion-collapse collapse" aria-labelledby="awsHeadingNetwork" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>VPC: logically isolated network; CIDR; public/private subnets.</li>
+          <li>Security Groups: stateful instance-level firewalls; NACLs: stateless subnet-level rules.</li>
+          <li>Internet/NAT Gateways, Route Tables, VPC Peering, Transit Gateway, PrivateLink.</li>
+        </ul>
+
+        <pre><code class="language-json">{
+  "CidrBlock": "10.0.0.0/16",
+  "InstanceTenancy": "default",
+  "TagSpecifications": [{ "ResourceType": "vpc", "Tags": [{ "Key": "Name", "Value": "prod-vpc" }] }]
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Storage (S3, EBS, EFS, Glacier) -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingStorage">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsStorage" aria-expanded="false" aria-controls="awsStorage">
+        4. Storage (S3, EBS, EFS, Glacier)
+      </button>
+    </h2>
+    <div id="awsStorage" class="accordion-collapse collapse" aria-labelledby="awsHeadingStorage" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>S3: Object storage; classes (Standard, IA, One Zone-IA, Intelligent-Tiering, Glacier).</li>
+          <li>EBS: Block storage for EC2; gp3/io1/io2; snapshots.</li>
+          <li>EFS: Managed NFS file system; multi-AZ; throughput/bursting.</li>
+          <li>Lifecycle policies, versioning, replication (CRR/SRR), bucket policies, encryption (SSE-S3, SSE-KMS).</li>
+        </ul>
+
+        <pre><code class="language-bash"># Upload to S3
+aws s3 cp file.txt s3://my-bucket/path/file.txt --sse AES256
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Databases -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingDB">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsDB" aria-expanded="false" aria-controls="awsDB">
+        5. Databases
+      </button>
+    </h2>
+    <div id="awsDB" class="accordion-collapse collapse" aria-labelledby="awsHeadingDB" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>RDS (MySQL, PostgreSQL, SQL Server, Oracle), Aurora (MySQL/Postgres-compatible), DynamoDB (NoSQL), ElastiCache (Redis/Memcached), OpenSearch.</li>
+          <li>Backups, multi-AZ, read replicas, Global Tables (DynamoDB).</li>
+          <li>Serverless options: Aurora Serverless v2, DynamoDB on-demand.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. IAM & Security -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingIAM">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsIAM" aria-expanded="false" aria-controls="awsIAM">
+        6. IAM & Security
+      </button>
+    </h2>
+    <div id="awsIAM" class="accordion-collapse collapse" aria-labelledby="awsHeadingIAM" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Principals: Users, Roles, Federated identities; Policies (identity, resource-based).</li>
+          <li>Least privilege, permission boundaries, SCPs (AWS Organizations), MFA, access analyzer.</li>
+          <li>KMS for encryption keys; CloudTrail for auditing API calls.</li>
+        </ul>
+
+        <pre><code class="language-json">{
+  "Version": "2012-10-17",
+  "Statement": [{ "Effect": "Allow", "Action": ["s3:*"], "Resource": ["arn:aws:s3:::my-bucket/*"] }]
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Monitoring & Logging -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingMonitoring">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsMonitoring" aria-expanded="false" aria-controls="awsMonitoring">
+        7. Monitoring & Logging
+      </button>
+    </h2>
+    <div id="awsMonitoring" class="accordion-collapse collapse" aria-labelledby="awsHeadingMonitoring" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>CloudWatch metrics/logs/alarms/dashboards; X-Ray tracing.</li>
+          <li>CloudTrail for API logs; Config for resource state/history and rules.</li>
+          <li>GuardDuty, Security Hub, Inspector for threat detection and posture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Scaling & High Availability -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingHA">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsHA" aria-expanded="false" aria-controls="awsHA">
+        8. Scaling & High Availability
+      </button>
+    </h2>
+    <div id="awsHA" class="accordion-collapse collapse" aria-labelledby="awsHeadingHA" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Load balancing with ALB/NLB/GLB; multi-AZ architectures.</li>
+          <li>Auto Scaling Groups; health checks; blue/green and canary deployments.</li>
+          <li>Disaster recovery strategies: Backup/Restore, Pilot Light, Warm Standby, Multi-site.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Cost Optimization -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingCost">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsCost" aria-expanded="false" aria-controls="awsCost">
+        9. Cost Optimization
+      </button>
+    </h2>
+    <div id="awsCost" class="accordion-collapse collapse" aria-labelledby="awsHeadingCost" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Use Cost Explorer, Budgets, Trusted Advisor checks.</li>
+          <li>Right-size instances, pick storage classes, use Savings Plans/Reserved Instances, Spot where appropriate.</li>
+          <li>Turn off idle resources; use lifecycle policies and data tiering.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. CI/CD on AWS -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingCICD">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsCICD" aria-expanded="false" aria-controls="awsCICD">
+        10. CI/CD on AWS
+      </button>
+    </h2>
+    <div id="awsCICD" class="accordion-collapse collapse" aria-labelledby="awsHeadingCICD" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>CodeCommit, CodeBuild, CodeDeploy, CodePipeline; integrate with GitHub and 3rd parties.</li>
+          <li>Security: build-time scans (SAST/SCA), container/image scans, secrets from Parameter Store/Secrets Manager.</li>
+          <li>Deploy to Lambda, ECS/EKS, EC2, or Elastic Beanstalk.</li>
+        </ul>
+
+        <pre><code class="language-yaml"># CodeBuild buildspec snippet
+version: 0.2
+phases:
+  install:
+    runtime-versions: { nodejs: 20 }
+  build:
+    commands:
+      - npm ci
+      - npm test -- --ci
+artifacts:
+  files:
+    - '**/*'
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Architecture & Best Practices -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingArchitecture">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsArchitecture" aria-expanded="false" aria-controls="awsArchitecture">
+        11. Architecture & Best Practices
+      </button>
+    </h2>
+    <div id="awsArchitecture" class="accordion-collapse collapse" aria-labelledby="awsHeadingArchitecture" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Decouple with SQS/SNS/EventBridge; cache with CloudFront/ElastiCache.</li>
+          <li>Use multi-account strategy with AWS Organizations and SCPs.</li>
+          <li>Design for failure; apply least privilege; encrypt everywhere.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Interview Scenarios -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingScenarios">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsScenarios" aria-expanded="false" aria-controls="awsScenarios">
+        12. Interview Scenarios
+      </button>
+    </h2>
+    <div id="awsScenarios" class="accordion-collapse collapse" aria-labelledby="awsHeadingScenarios" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Design a highly available web app across multiple AZs with ALB, ASG, RDS Multi-AZ, S3 static assets, CloudFront.</li>
+          <li>Migrate on-prem app to AWS: landing zone, networking (VPC/Direct Connect/VPN), data migration (DMS/Snowball), cutover plan.</li>
+          <li>Secure serverless API: API Gateway + Lambda + Cognito, WAF, logging/metrics, throttling, and IAM authorizers.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Resources -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingResources">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsResources" aria-expanded="false" aria-controls="awsResources">
+        13. Resources
+      </button>
+    </h2>
+    <div id="awsResources" class="accordion-collapse collapse" aria-labelledby="awsHeadingResources" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener">AWS Well-Architected Framework</a></li>
+          <li><a href="https://docs.aws.amazon.com/" target="_blank" rel="noopener">AWS Documentation</a></li>
+          <li><a href="https://explore.skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder</a></li>
+          <li><a href="https://github.com/s12v/aws-encryption-sdk" target="_blank" rel="noopener">AWS Security SDKs and samples</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
