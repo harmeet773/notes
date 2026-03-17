@@ -32,35 +32,124 @@ title: SDE Level 2
   </div>
 
   <!-- 2. Data Structures & Algorithms -->
-  <div class="accordion-item">
+<div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#dsa">
-        2. Data Structures & Algorithms
-      </button>
+        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#dsa">
+            2. Data Structures & Algorithms
+        </button>
     </h2>
     <div id="dsa" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
-      <div class="accordion-body">
-        <h5>Topics</h5>
-        <ul>
-          <li>Arrays, Strings</li>
-          <li>Linked List</li>
-          <li>Stack & Queue</li>
-          <li>Trees (BST, AVL)</li>
-          <li>Graphs (BFS, DFS)</li>
-          <li>Heap / Priority Queue</li>
-          <li>Dynamic Programming</li>
-        </ul>
+        <div class="accordion-body">
+            <h5>Topics</h5>
+            <ul>
+                <li>Arrays, Strings</li>
+                <li>Linked List</li>
+                <li>Stack & Queue</li>
+                <li>Trees (BST, AVL)</li>
+                <li>Graphs (BFS, DFS)</li>
+                <li>Heap / Priority Queue</li>
+                <li>Dynamic Programming</li>
+            </ul>
 
-        <h5>Notes</h5>
-        <ul>
-          <li><b>Time Complexity:</b> Always optimize brute force → O(n log n) or O(n)</li>
-          <li><b>Heap Usage:</b> Use for Top K problems, priority-based selection</li>
-          <li><b>Graph:</b> BFS → shortest path, DFS → traversal</li>
-          <li><b>DP:</b> Identify overlapping subproblems + memoization</li>
-        </ul>
-      </div>
+            <h5>Notes</h5>
+            <ul>
+                <li><b>Time Complexity:</b> Always optimize brute force → O(n log n) or O(n)</li>
+                <li><b>Heap Usage:</b> Use for Top K problems, priority-based selection</li>
+                <li><b>Graph:</b> BFS → shortest path, DFS → traversal</li>
+                <li><b>DP:</b> Identify overlapping subproblems + memoization</li>
+            </ul>
+
+            <hr>
+
+            <h5>Important Problem: Top K Frequent Elements</h5>
+
+            <p><b>Problem:</b> Given an array of integers, return the k most frequent elements.</p>
+
+            <h6>Key Points</h6>
+            <ul>
+                <li>Order does not matter</li>
+                <li>Focus on frequency, not value</li>
+                <li>Works with duplicates and negative numbers</li>
+            </ul>
+
+            <h6>Approach 1: Sorting (O(n log n))</h6>
+            <ol>
+                <li>Count frequency using HashMap</li>
+                <li>Convert map → array</li>
+                <li>Sort by frequency (descending)</li>
+                <li>Return first k elements</li>
+            </ol>
+
+            <pre><code>
+function topKFrequent(nums, k) {
+    const freqMap = new Map();
+
+    for (let num of nums) {
+        freqMap.set(num, (freqMap.get(num) || 0) + 1);
+    }
+
+    const arr = Array.from(freqMap.entries());
+    arr.sort((a, b) => b[1] - a[1]);
+
+    return arr.slice(0, k).map(item => item[0]);
+}
+      </code></pre>
+
+            <p><b>Time:</b> O(n log n)</p>
+
+            <h6>Approach 2: Min Heap (O(n log k))</h6>
+            <ul>
+                <li>Use a min heap of size k</li>
+                <li>Remove smallest frequency when size exceeds k</li>
+                <li>Keeps only top k elements</li>
+            </ul>
+
+            <p><b>Time:</b> O(n log k)</p>
+
+            <h6>Approach 3: Bucket Sort (O(n))</h6>
+            <ol>
+                <li>Build frequency map</li>
+                <li>Create buckets (index = frequency)</li>
+                <li>Store elements in buckets</li>
+                <li>Traverse from highest frequency</li>
+            </ol>
+
+            <pre><code>
+function topKFrequent(nums, k) {
+    const freqMap = new Map();
+
+    for (let num of nums) {
+        freqMap.set(num, (freqMap.get(num) || 0) + 1);
+    }
+
+    const buckets = Array(nums.length + 1).fill().map(() => []);
+
+    for (let [num, freq] of freqMap.entries()) {
+        buckets[freq].push(num);
+    }
+
+    const result = [];
+
+    for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+        result.push(...buckets[i]);
+    }
+
+    return result.slice(0, k);
+}
+      </code></pre>
+
+            <p><b>Time:</b> O(n)</p>
+
+            <h6>Interview Tip</h6>
+            <ul>
+                <li>Start with sorting (baseline)</li>
+                <li>Optimize using heap</li>
+                <li>Mention bucket sort for best answer</li>
+            </ul>
+
+        </div>
     </div>
-  </div>
+</div>
 
   <!-- 3. System Design -->
   <div class="accordion-item">
