@@ -1,0 +1,222 @@
+---
+layout: default
+title: SDE Level 2
+---
+
+<h2 class="mb-3">SDE Level 2</h2>
+<h3 class="mb-4">Syllabus & Detailed Notes</h3>
+
+<div class="accordion" id="sdeLevel2MainAccordion">
+
+  <!-- 1. Syllabus Overview -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSyllabus">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#syllabus" aria-expanded="true">
+        1. Syllabus Overview
+      </button>
+    </h2>
+    <div id="syllabus" class="accordion-collapse collapse show" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Data Structures & Algorithms</li>
+          <li>System Design (LLD + HLD)</li>
+          <li>Concurrency & Multithreading</li>
+          <li>Database Systems</li>
+          <li>Operating Systems</li>
+          <li>Networking Basics</li>
+          <li>Software Engineering Practices</li>
+          <li>Behavioral & Leadership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Data Structures & Algorithms -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#dsa">
+        2. Data Structures & Algorithms
+      </button>
+    </h2>
+    <div id="dsa" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <h5>Topics</h5>
+        <ul>
+          <li>Arrays, Strings</li>
+          <li>Linked List</li>
+          <li>Stack & Queue</li>
+          <li>Trees (BST, AVL)</li>
+          <li>Graphs (BFS, DFS)</li>
+          <li>Heap / Priority Queue</li>
+          <li>Dynamic Programming</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li><b>Time Complexity:</b> Always optimize brute force → O(n log n) or O(n)</li>
+          <li><b>Heap Usage:</b> Use for Top K problems, priority-based selection</li>
+          <li><b>Graph:</b> BFS → shortest path, DFS → traversal</li>
+          <li><b>DP:</b> Identify overlapping subproblems + memoization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. System Design -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#systemDesign">
+        3. System Design
+      </button>
+    </h2>
+    <div id="systemDesign" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body"> 
+        <h5>Topics</h5>
+        <ul>
+          <li>Scalability (Horizontal vs Vertical)</li>
+          <li>Load Balancers</li>
+          <li>Caching (Redis, CDN)</li>
+          <li>Database Scaling (Sharding, Replication)</li>
+          <li>Microservices</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li><b>CAP Theorem:</b> Choose between Consistency, Availability, Partition tolerance</li>
+          <li><b>Caching:</b> Reduces DB load, improves latency</li>
+          <li><b>Rate Limiter:</b> Token bucket / sliding window</li>
+          <li><b>Design Tip:</b> Always start with requirements → scale later</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Concurrency -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#concurrency">
+        4. Concurrency & Multithreading
+      </button>
+    </h2>
+    <div id="concurrency" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <h5>Topics</h5>
+        <ul>
+          <li>Threads vs Processes</li>
+          <li>Synchronization (Mutex, Semaphore)</li>
+          <li>Deadlocks</li>
+          <li>Race Conditions</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li><b>Race Condition:</b> Multiple threads modifying shared data</li>
+          <li><b>Deadlock:</b> Circular wait → avoid using ordering</li>
+          <li><b>Thread Pool:</b> Improves performance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Database -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#database">
+        5. Database Systems
+      </button>
+    </h2>
+    <div id="database" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <h5>Topics</h5>
+        <ul>
+          <li>SQL vs NoSQL</li>
+          <li>Indexing</li>
+          <li>Transactions (ACID)</li>
+          <li>Normalization</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li><b>Index:</b> Improves read performance but slows writes</li>
+          <li><b>ACID:</b> Atomicity, Consistency, Isolation, Durability</li>
+          <li><b>NoSQL:</b> Use for scalability and flexible schema</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Operating System -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#os">
+        6. Operating Systems
+      </button>
+    </h2>
+    <div id="os" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Process Scheduling (FCFS, Round Robin)</li>
+          <li>Memory Management</li>
+          <li>Paging & Segmentation</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li><b>Context Switching:</b> CPU switching between processes</li>
+          <li><b>Virtual Memory:</b> Uses disk as RAM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Networking -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#networking">
+        7. Networking Basics
+      </button>
+    </h2>
+    <div id="networking" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>HTTP / HTTPS</li>
+          <li>TCP vs UDP</li>
+          <li>DNS</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li><b>TCP:</b> Reliable but slower</li>
+          <li><b>UDP:</b> Faster but unreliable</li>
+          <li><b>HTTPS:</b> Secure using SSL/TLS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Behavioral -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#behavioral">
+        8. Behavioral & Leadership
+      </button>
+    </h2>
+    <div id="behavioral" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Ownership & Responsibility</li>
+          <li>Handling Production Issues</li>
+          <li>Mentoring Juniors</li>
+          <li>Conflict Resolution</li>
+        </ul>
+
+        <h5>Notes</h5>
+        <ul>
+          <li>Use <b>STAR method</b> (Situation, Task, Action, Result)</li>
+          <li>Focus on real production experience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
