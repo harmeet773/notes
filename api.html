@@ -1,0 +1,105 @@
+---
+layout: default
+title: Api
+---
+
+<h1>API Notes</h1>
+<p>Detailed notes on REST APIs with additional comparison info and examples.</p>
+
+<div class="accordion" id="restApiAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOverview">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOverview" aria-expanded="true" aria-controls="collapseOverview">
+        REST API Overview
+      </button>
+    </h2>
+    <div id="collapseOverview" class="accordion-collapse collapse show" aria-labelledby="headingOverview" data-bs-parent="#restApiAccordion">
+      <div class="accordion-body">
+        <p><strong>REST (Representational State Transfer)</strong> is an architectural style for distributed hypermedia systems. It uses standard HTTP methods and stateless communication.</p>
+        <ul>
+          <li>HTTP methods: GET, POST, PUT, PATCH, DELETE, OPTIONS</li>
+          <li>Resources are identified by URLs (endpoints)</li>
+          <li>Use JSON (or XML) for request/response payloads</li>
+          <li>Statelessness: each request contains all context</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingDesign">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+        REST API Design Best Practices
+      </button>
+    </h2>
+    <div id="collapseDesign" class="accordion-collapse collapse" aria-labelledby="headingDesign" data-bs-parent="#restApiAccordion">
+      <div class="accordion-body">
+        <ol>
+          <li>Use plural nouns for resource names (e.g., <code>/users</code>, <code>/orders</code>).</li>
+          <li>Use HTTP status codes correctly (200, 201, 400, 401, 403, 404, 409, 500, etc.).</li>
+          <li>Support filtering, sorting, paging via query params (e.g., <code>?page=1&amp;per_page=25&amp;sort=-createdAt</code>).</li>
+          <li>Version APIs using path or headers (e.g., <code>/v1/users</code>).</li>
+          <li>Keep APIs stateless and document with Swagger/OpenAPI.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSecurity">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSecurity" aria-expanded="false" aria-controls="collapseSecurity">
+        Security and Auth
+      </button>
+    </h2>
+    <div id="collapseSecurity" class="accordion-collapse collapse" aria-labelledby="headingSecurity" data-bs-parent="#restApiAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Use HTTPS only.</li>
+          <li>Authenticate via OAuth 2.0, JWT, API keys, or Basic Auth over TLS.</li>
+          <li>Authorize using RBAC/ABAC rules and least privilege.</li>
+          <li>Validate and sanitize all input; avoid injection attacks.</li>
+          <li>Rate-limit abusive clients and log requests for auditing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingExamples">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExamples" aria-expanded="false" aria-controls="collapseExamples">
+        Example CRUD Endpoints
+      </button>
+    </h2>
+    <div id="collapseExamples" class="accordion-collapse collapse" aria-labelledby="headingExamples" data-bs-parent="#restApiAccordion">
+      <div class="accordion-body">
+        <pre><code>GET /api/v1/products              # list products
+GET /api/v1/products/{id}         # get product
+POST /api/v1/products             # create product
+PUT /api/v1/products/{id}         # update product
+PATCH /api/v1/products/{id}       # partial update
+DELETE /api/v1/products/{id}      # delete product
+</code></pre>
+        <p>Use consistent request/response schemas with a top-level object (e.g., <code>{"data": ...}</code>, <code>{"error": ...}</code>).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingCompare">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompare" aria-expanded="false" aria-controls="collapseCompare">
+        REST vs SOAP vs GraphQL
+      </button>
+    </h2>
+    <div id="collapseCompare" class="accordion-collapse collapse" aria-labelledby="headingCompare" data-bs-parent="#restApiAccordion">
+      <div class="accordion-body">
+        <p>REST is resource-centric and flexible, SOAP is protocol-heavy with strict XML envelope, GraphQL is query-centric and allows clients to select fields.</p>
+        <ul>
+          <li>REST: easy caching, ideal for standard CRUD, widely supported.</li>
+          <li>SOAP: strong contracts (WSDL), built-in security (WS-Security), more complex.</li>
+          <li>GraphQL: single endpoint, avoids over-fetching, but requires careful query complexity management.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
