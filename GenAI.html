@@ -3,4 +3,231 @@ layout: default
 title: Gen AI
 ---
 
+<h2 class="mb-3">Gen AI</h2>
+<h3 class="mb-4">AI concepts</h3>
 
+<div class="accordion" id="aiConceptsAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#aiConceptsSection"
+      >
+        AI Concepts
+      </button>
+    </h2>
+
+    <div
+      id="aiConceptsSection"
+      class="accordion-collapse collapse"
+      data-bs-parent="#aiConceptsAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="aiConceptsNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mlDlAi"
+              >
+                1. AI vs ML vs Deep Learning
+              </button>
+            </h2>
+
+            <div
+              id="mlDlAi"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>Artificial Intelligence</strong> is the broad field of building systems that perform tasks requiring human-like intelligence.</li>
+                  <li><strong>Machine Learning</strong> is a subset of AI where systems learn patterns from data instead of being explicitly programmed.</li>
+                  <li><strong>Deep Learning</strong> is a subset of ML that uses multi-layer neural networks to learn complex representations.</li>
+                  <li>Relationship: AI &gt; ML &gt; Deep Learning.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#supervisedUnsupervised"
+              >
+                2. Supervised, Unsupervised, and Reinforcement Learning
+              </button>
+            </h2>
+
+            <div
+              id="supervisedUnsupervised"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>Supervised learning</strong> uses labeled data. Example: spam detection, house price prediction.</li>
+                  <li><strong>Unsupervised learning</strong> uses unlabeled data to find hidden structure. Example: clustering customers.</li>
+                  <li><strong>Reinforcement learning</strong> learns by reward and punishment through interaction with an environment.</li>
+                  <li>Use supervised for prediction, unsupervised for discovery, and reinforcement for sequential decision-making.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#neuralNetworks"
+              >
+                3. Neural Networks and Transformers
+              </button>
+            </h2>
+
+            <div
+              id="neuralNetworks"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li>A <strong>neural network</strong> is made of layers of connected nodes that learn weights from data.</li>
+                  <li>Input layers receive data, hidden layers learn features, and output layers produce predictions.</li>
+                  <li><strong>Transformers</strong> are deep learning architectures designed to process sequences efficiently.</li>
+                  <li>They rely on <strong>self-attention</strong> to understand relationships between tokens in a sequence.</li>
+                  <li>Transformers power modern LLMs because they scale well and capture long-range context better than older sequence models.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#llmTokens"
+              >
+                4. LLMs, Tokens, Context Window, and Prompting
+              </button>
+            </h2>
+
+            <div
+              id="llmTokens"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li>An <strong>LLM</strong> is a large language model trained on massive text data to predict the next token.</li>
+                  <li><strong>Tokens</strong> are chunks of text processed by the model. A word may be one token or several tokens.</li>
+                  <li>The <strong>context window</strong> is the amount of input and output text a model can handle in one request.</li>
+                  <li><strong>Prompting</strong> means giving instructions, context, constraints, and examples to guide model output.</li>
+                  <li>Better prompts improve relevance, structure, and accuracy, but they do not guarantee correctness.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#ragFineTuning"
+              >
+                5. RAG vs Fine-Tuning
+              </button>
+            </h2>
+
+            <div
+              id="ragFineTuning"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>RAG</strong> stands for Retrieval-Augmented Generation. It fetches relevant external information before generating an answer.</li>
+                  <li>RAG is useful when knowledge changes often or must come from private documents.</li>
+                  <li><strong>Fine-tuning</strong> updates model behavior by training it further on task-specific examples.</li>
+                  <li>Use RAG to improve factual grounding and access current data. Use fine-tuning to improve style, format, or repeated task behavior.</li>
+                  <li>They solve different problems and are often combined in production systems.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hallucinationEmbeddings"
+              >
+                6. Hallucinations, Embeddings, and Vector Databases
+              </button>
+            </h2>
+
+            <div
+              id="hallucinationEmbeddings"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>Hallucination</strong> means the model generates confident but incorrect or unsupported information.</li>
+                  <li><strong>Embeddings</strong> convert text into numeric vectors that capture semantic meaning.</li>
+                  <li><strong>Vector databases</strong> store embeddings and allow similarity search for related content.</li>
+                  <li>Embeddings and vector search are commonly used in semantic search and RAG pipelines.</li>
+                  <li>Hallucinations can be reduced with better prompts, retrieval, verification, and narrower task scope.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#evaluationSafety"
+              >
+                7. Model Evaluation, Bias, and AI Safety
+              </button>
+            </h2>
+
+            <div
+              id="evaluationSafety"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiConceptsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>Evaluation</strong> measures how well a model performs on quality, accuracy, latency, cost, and reliability.</li>
+                  <li><strong>Bias</strong> occurs when model behavior unfairly favors or disadvantages certain groups or viewpoints.</li>
+                  <li><strong>AI safety</strong> focuses on reducing harmful, insecure, or misleading outputs.</li>
+                  <li>Common controls include guardrails, human review, content filters, and domain-specific validation.</li>
+                  <li>In real systems, model quality is not enough. Safety, monitoring, and fallback handling matter just as much.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
