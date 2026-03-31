@@ -246,82 +246,83 @@ title: Gen AI
       <div class="accordion-body">
 
         <div class="accordion" id="innerAccordion">
-          <!-- 0 -->
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term0">
-      0. Pre-requisite
-    </button>
-  </h2>
-
-  <div id="term0" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
-    <div class="accordion-body">
-
-      <!-- Nested Accordion Start -->
-      <div class="accordion" id="prerequisiteAccordion">
-
-        <!-- Sub Item 1 -->
+                  <!-- 0 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre1">
-              Text
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term0">
+              0. Pre-requisite
             </button>
           </h2>
-          <div id="pre1" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
+
+          <div id="term0" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
             <div class="accordion-body">
-              Text is a sequence of words or sentences used as input for models.
+
+              <!-- Nested Accordion Start -->
+              <div class="accordion" id="prerequisiteAccordion">
+
+                <!-- Sub Item 1 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre1">
+                      Text
+                    </button>
+                  </h2>
+                  <div id="pre1" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
+                    <div class="accordion-body">
+                      Text is a sequence of words or sentences used as input for models.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sub Item 2 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre2">
+                      Tokens
+                    </button>
+                  </h2>
+                  <div id="pre2" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
+                    <div class="accordion-body">
+                      Tokens are smaller units of text (words, subwords, or characters).
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sub Item 3 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre3">
+                      Probability
+                    </button>
+                  </h2>
+                  <div id="pre3" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
+                    <div class="accordion-body">
+                      Probability represents how likely a term is to appear next.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sub Item 4 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre4">
+                      Neural Networks
+                    </button>
+                  </h2>
+                  <div id="pre4" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
+                    <div class="accordion-body">
+                      Neural networks learn patterns from data to make predictions.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Nested Accordion End -->
+
             </div>
           </div>
         </div>
 
-        <!-- Sub Item 2 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre2">
-              Tokens
-            </button>
-          </h2>
-          <div id="pre2" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
-            <div class="accordion-body">
-              Tokens are smaller units of text (words, subwords, or characters).
-            </div>
-          </div>
-        </div>
-
-        <!-- Sub Item 3 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre3">
-              Probability
-            </button>
-          </h2>
-          <div id="pre3" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
-            <div class="accordion-body">
-              Probability represents how likely a term is to appear next.
-            </div>
-          </div>
-        </div>
-
-        <!-- Sub Item 4 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pre4">
-              Neural Networks
-            </button>
-          </h2>
-          <div id="pre4" class="accordion-collapse collapse" data-bs-parent="#prerequisiteAccordion">
-            <div class="accordion-body">
-              Neural networks learn patterns from data to make predictions.
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- Nested Accordion End -->
-
-    </div>
-  </div>
-</div>
           <!-- 1 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
@@ -486,7 +487,8 @@ title: Gen AI
             </h2>
             <div id="term12" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
-                <strong>Context Engineering</strong> is the discipline of managing the information sent to an LLM, including RAG, MCP, and <strong>user preferences</strong>. It also involves <strong>context summarization</strong> techniques, such as using a "sliding window" to summarize long chat histories to fit within the model's token limits.
+                <strong>Context Engineering</strong> is the discipline of managing the information sent to an LLM, including Few-Shot-Prompting, RAG, MCP, and <strong>user preferences</strong>. It also involves <strong>context summarization</strong> techniques, such as using a "sliding window" to summarize long chat histories to fit within the model's token limits.
+                New challenges faced by context Engineers are -user preferences and context summarization . For example - to solve context summarization , we might sent last 100 chats as well as summarry of previous chats .
               </div>
             </div>
           </div>
@@ -515,6 +517,8 @@ title: Gen AI
             <div id="term14" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
                 <strong>Reinforcement Learning</strong> is a training method where models learn to follow <strong>optimal paths</strong> in a vector space to maximize a reward score. While powerful for optimizing behavior based on outcomes, it does not necessarily build a <strong>mental model</strong> or a physical understanding of how the world works.
+                RL fails in following scenario - suppose we have a fair coin , and it have only given heads on all the time it was tossed. then RL would say it will give head the next time because it has learned from previous outcomes but since it is an unbiased coin then outcome shoud be 50-50 percent of head and tail.
+                because human brain have mental model of coin works.
               </div>
             </div>
           </div>
@@ -543,6 +547,8 @@ title: Gen AI
             <div id="term16" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
                 <strong>Chain of Thought</strong> involves training or prompting a model to <strong>break a problem down step-by-step</strong>. By explaining the reasoning process rather than providing a direct answer, the model can solve more complex problems with <strong>higher accuracy</strong>.
+                <strong>Reasoning models</strong>, such as those from DeepSeek or OpenAI, are designed to solve difficult problems by adding more <strong>reasoning steps</strong> as the task complexity increases. These models can figure out how to solve a problem step-by-step using various algorithms.
+                Tree of though and graph of though also exists . examples include o1 and o3 of OpenAI.
               </div>
             </div>
           </div>
@@ -551,12 +557,12 @@ title: Gen AI
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term17">
-                17. Reasoning Models (LOMs)
+                17. Multimodal Models
               </button>
             </h2>
             <div id="term17" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
-                <strong>Reasoning models</strong>, such as those from DeepSeek or OpenAI, are designed to solve difficult problems by adding more <strong>reasoning steps</strong> as the task complexity increases. These models can figure out how to solve a problem step-by-step using various algorithms.
+                <strong>Multimodal models</strong> can process and generate multiple types of data, including <strong>text, images, and video</strong>. These models often perform better than text-only models because they gain a <strong>deeper understanding of objects</strong> by analyzing them across different formats.
               </div>
             </div>
           </div>
@@ -565,12 +571,12 @@ title: Gen AI
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term18">
-                18. Multimodal Models
+                18. Small Language Models (SLMs)
               </button>
             </h2>
             <div id="term18" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
-                <strong>Multimodal models</strong> can process and generate multiple types of data, including <strong>text, images, and video</strong>. These models often perform better than text-only models because they gain a <strong>deeper understanding of objects</strong> by analyzing them across different formats.
+                <strong>SLMs</strong> are smaller neural networks (3M to 300M parameters) trained for <strong>task-specific use cases</strong> to reduce costs and keep data private. They are often created through <strong>distillation</strong>, where a smaller "student" model is trained to mimic the output of a larger "teacher" LLM.
               </div>
             </div>
           </div>
@@ -579,12 +585,12 @@ title: Gen AI
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term19">
-                19. Small Language Models (SLMs) &amp; Distillation
+                19. Distillation
               </button>
             </h2>
             <div id="term19" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
-                <strong>SLMs</strong> are smaller neural networks (3M to 300M parameters) trained for <strong>task-specific use cases</strong> to reduce costs and keep data private. They are often created through <strong>distillation</strong>, where a smaller "student" model is trained to mimic the output of a larger "teacher" LLM.
+                <strong>distillation</strong>, where a smaller "student" model is trained to mimic the output of a larger "teacher" LLM.
               </div>
             </div>
           </div>
