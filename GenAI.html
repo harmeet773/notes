@@ -232,6 +232,308 @@ title: Gen AI
   </div>
 </div>
 
+
+
+<div class="accordion mt-4" id="aiTerminologiesAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#mainSection">
+        Learning Ai through Terminologies
+      </button>
+    </h2>
+
+    <div id="mainSection" class="accordion-collapse collapse" data-bs-parent="#aiTerminologiesAccordion">
+      <div class="accordion-body">
+
+        <div class="accordion" id="innerAccordion">
+
+          <!-- 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term1">
+                1. Large Language Model (LLM)
+              </button>
+            </h2>
+            <div id="term1" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                An **LLM** is a **neural network** specifically trained to **predict the next term** in an input sequence. For instance, if provided with the phrase "all that glitters," the model predicts and returns the completion "is not gold".
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term2">
+                2. Tokenization
+              </button>
+            </h2>
+            <div id="term2" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Tokenization** is the initial processing step where input text is broken into **discrete tokens**. This process goes beyond simple space-based splitting; it identifies **meaningful suffixes** like "-ing" or "-ers" (e.g., "glitters," "eating"), which helps the model understand that a specific action is being performed by an object.
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term3">
+                3. Vectors
+              </button>
+            </h2>
+            <div id="term3" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Vectors** are mathematical **coordinates in an n-dimensional space** used to represent the **inherent meaning** of tokens. Words with similar semantic meanings are clustered close together, while words with opposite meanings are placed far apart, allowing the model to construct sentences effectively.
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term4">
+                4. Attention
+              </button>
+            </h2>
+            <div id="term4" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Attention** is a mechanism that allows a model to derive **contextual meaning** by looking at nearby words. It solves the problem of **ambiguity** (e.g., distinguishing "apple" the fruit from "Apple" the company) by pushing a word's vector toward its relevant context based on surrounding terms like "tasty" or "revenue".
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term5">
+                5. Self-Supervised Learning
+              </button>
+            </h2>
+            <div id="term5" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                This training method uses the **inherent structure of data**—such as predicting blanked-out words in a sentence or patches in an image—to learn without human-labeled data. This approach is **highly scalable** and makes acquiring training data significantly cheaper because it can be scraped directly from existing sources like the internet.
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term6">
+                6. Transformer
+              </button>
+            </h2>
+            <div id="term6" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                A **Transformer** is a specific **algorithm or engine** used within an LLM to predict the next token. It utilizes **stacked layers** of attention mechanisms and feed-forward neural networks to extract, manipulate, and refine the meaning of input tokens.
+              </div>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term7">
+                7. Fine-Tuning
+              </button>
+            </h2>
+            <div id="term7" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Fine-tuning** is the process of taking a base model and training it on a specific set of **questions and answers** to specialize it for a particular domain, such as **medicine or finance**. This step ensures the model provides **helpful and desirable** responses while penalizing incorrect or unhelpful behavior.
+              </div>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term8">
+                8. Few-Shot Prompting
+              </button>
+            </h2>
+            <div id="term8" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                This technique involves **augmenting a query** during inference time by including **examples** within the prompt. Providing these examples helps the model understand the desired context and format, thereby increasing the **quality of the response**.
+              </div>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term9">
+                9. Retrieval-Augmented Generation (RAG)
+              </button>
+            </h2>
+            <div id="term9" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **RAG** enhances responses by fetching **relevant documents** (like company policies or terms and conditions) in real-time and adding them to the model's context. This allows the LLM to provide high-quality, **company-specific answers** without having that data in its original training set.
+              </div>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term10">
+                10. Vector Database
+              </button>
+            </h2>
+            <div id="term10" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                A **Vector Database** is used to store documents and perform **similarity searches** efficiently. It identifies which stored documents are semantically closest to a user's query—even if they don't share exact keywords—by comparing their **vector coordinates**.
+              </div>
+            </div>
+          </div>
+
+          <!-- 11 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term11">
+                11. Model Context Protocol (MCP)
+              </button>
+            </h2>
+            <div id="term11" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **MCP** is a standardized protocol that allows an LLM to connect with **external tools and databases**. This enables the model to retrieve **real-time information** (like flight details) and even **execute actions** (like booking a flight) through an MCP client.
+              </div>
+            </div>
+          </div>
+
+          <!-- 12 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term12">
+                12. Context Engineering
+              </button>
+            </h2>
+            <div id="term12" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Context Engineering** is the discipline of managing the information sent to an LLM, including RAG, MCP, and **user preferences**. It also involves **context summarization** techniques, such as using a "sliding window" to summarize long chat histories to fit within the model's token limits.
+              </div>
+            </div>
+          </div>
+
+          <!-- 13 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term13">
+                13. Agents
+              </button>
+            </h2>
+            <div id="term13" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Agents** are long-running processes capable of querying LLMs, external systems, and other agents to **autonomously execute complex requirements**. For example, a travel agent could monitor flight prices and book a trip based on a user's pre-defined preferences.
+              </div>
+            </div>
+          </div>
+
+          <!-- 14 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term14">
+                14. Reinforcement Learning (RL)
+              </button>
+            </h2>
+            <div id="term14" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Reinforcement Learning** is a training method where models learn to follow **optimal paths** in a vector space to maximize a reward score. While powerful for optimizing behavior based on outcomes, it does not necessarily build a **mental model** or a physical understanding of how the world works.
+              </div>
+            </div>
+          </div>
+
+          <!-- 15 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term15">
+                15. Reinforcement Learning with Human Feedback (RLHF)
+              </button>
+            </h2>
+            <div id="term15" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **RLHF** uses **human preferences** (e.g., choosing which of two responses is better) to assign positive or negative scores to the model's output paths. This feedback helps **reinforce good outputs**, training the model to prioritize responses that make the end user happy.
+              </div>
+            </div>
+          </div>
+
+          <!-- 16 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term16">
+                16. Chain of Thought (CoT)
+              </button>
+            </h2>
+            <div id="term16" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Chain of Thought** involves training or prompting a model to **break a problem down step-by-step**. By explaining the reasoning process rather than providing a direct answer, the model can solve more complex problems with **higher accuracy**.
+              </div>
+            </div>
+          </div>
+
+          <!-- 17 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term17">
+                17. Reasoning Models (LOMs)
+              </button>
+            </h2>
+            <div id="term17" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Reasoning models**, such as those from DeepSeek or OpenAI, are designed to solve difficult problems by adding more **reasoning steps** as the task complexity increases. These models can figure out how to solve a problem step-by-step using various algorithms.
+              </div>
+            </div>
+          </div>
+
+          <!-- 18 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term18">
+                18. Multimodal Models
+              </button>
+            </h2>
+            <div id="term18" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Multimodal models** can process and generate multiple types of data, including **text, images, and video**. These models often perform better than text-only models because they gain a **deeper understanding of objects** by analyzing them across different formats.
+              </div>
+            </div>
+          </div>
+
+          <!-- 19 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term19">
+                19. Small Language Models (SLMs) & Distillation
+              </button>
+            </h2>
+            <div id="term19" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **SLMs** are smaller neural networks (3M to 300M parameters) trained for **task-specific use cases** to reduce costs and keep data private. They are often created through **distillation**, where a smaller "student" model is trained to mimic the output of a larger "teacher" LLM.
+              </div>
+            </div>
+          </div>
+
+          <!-- 20 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#term20">
+                20. Quantization
+              </button>
+            </h2>
+            <div id="term20" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
+              <div class="accordion-body">
+                **Quantization** is a post-training technique used to **reduce inference costs** by compressing model weights (e.g., from 32-bit to 8-bit numbers). This process saves significant memory, making the models **easier to host** and faster to run in production.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="accordion mt-4" id="resourcesAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header" id="resourcesHeading">
