@@ -1,0 +1,116 @@
+---
+layout: default
+title: GIT
+---
+
+<h2 class="mb-4">Resources to Learn GIT</h2>
+
+<div class="accordion" id="gitResourcesAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#gitResources"
+      >
+        Resources to Learn GIT
+      </button>
+    </h2>
+
+    <div
+      id="gitResources"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <ul>
+          <li>
+            <a href="https://github.com/skills" target="_blank" rel="noopener noreferrer">
+              GitHub Skills
+            </a>
+          </li>
+          <li>
+            <a href="https://learn.github.com/" target="_blank" rel="noopener noreferrer">
+              Learn GitHub
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#twoGithubAccounts"
+      >
+        How to Setup 2 GitHub Accounts
+      </button>
+    </h2>
+
+    <div
+      id="twoGithubAccounts"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          Use separate SSH keys and a dedicated SSH config so Git can decide
+          which GitHub account to use for each repository.
+        </p>
+
+        <h3>1. Create 2 SSH keys</h3>
+        <pre><code>ssh-keygen -t ed25519 -C "personal@example.com"
+ssh-keygen -t ed25519 -C "work@example.com"</code></pre>
+        <p>
+          Save them with different names such as
+          <code>id_ed25519_personal</code> and <code>id_ed25519_work</code>.
+        </p>
+
+        <h3>2. Add the keys to the SSH agent</h3>
+        <pre><code>ssh-add ~/.ssh/id_ed25519_personal
+ssh-add ~/.ssh/id_ed25519_work</code></pre>
+
+        <h3>3. Add both public keys to GitHub</h3>
+        <p>
+          Copy each <code>.pub</code> file and add it to the correct GitHub
+          account from <strong>Settings &gt; SSH and GPG keys</strong>.
+        </p>
+
+        <h3>4. Configure SSH aliases</h3>
+        <p>Create or update <code>~/.ssh/config</code>:</p>
+        <pre><code>Host github-personal
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_personal
+
+Host github-work
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_work</code></pre>
+
+        <h3>5. Clone repositories with the correct alias</h3>
+        <pre><code>git clone git@github-personal:your-personal-username/repo-name.git
+git clone git@github-work:your-work-username/repo-name.git</code></pre>
+
+        <h3>6. Set the right Git identity per repository</h3>
+        <pre><code>git config user.name "Your Personal Name"
+git config user.email "personal@example.com"</code></pre>
+        <pre><code>git config user.name "Your Work Name"
+git config user.email "work@example.com"</code></pre>
+
+        <h3>7. Test both accounts</h3>
+        <pre><code>ssh -T git@github-personal
+ssh -T git@github-work</code></pre>
+        <p>
+          Each command should confirm authentication for the matching GitHub
+          account.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
