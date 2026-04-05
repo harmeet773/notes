@@ -90,65 +90,128 @@ git config --list --show-origin</code></pre>
         </p>
 
         <h3>4. Common ways to manage identity</h3>
-        <h4>Option A: Global only</h4>
-        <p>
-          Use this when you want one identity for every repository on your
-          machine.
-        </p>
-        <p>Setup:</p>
-        <pre><code>git config --global user.name "Your Name"
+        <div class="accordion" id="gitIdentityOptionsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#gitIdentityGlobalOnly"
+              >
+                Option A: Global only
+              </button>
+            </h2>
+
+            <div
+              id="gitIdentityGlobalOnly"
+              class="accordion-collapse collapse"
+              data-bs-parent="#gitIdentityOptionsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Use this when you want one identity for every repository on
+                  your machine.
+                </p>
+                <p>Setup:</p>
+                <pre><code>git config --global user.name "Your Name"
 git config --global user.email "you@example.com"</code></pre>
-        <p>Manage or update it later:</p>
-        <pre><code>git config --global user.name "Updated Name"
+                <p>Manage or update it later:</p>
+                <pre><code>git config --global user.name "Updated Name"
 git config --global user.email "updated@example.com"</code></pre>
-        <p>Check the current global identity:</p>
-        <pre><code>git config --global user.name
+                <p>Check the current global identity:</p>
+                <pre><code>git config --global user.name
 git config --global user.email</code></pre>
+              </div>
+            </div>
+          </div>
 
-        <h4>Option B: Global default + local override</h4>
-        <p>
-          Use this when most repositories use one identity, but some projects
-          need a different one.
-        </p>
-        <p>Setup the default identity first:</p>
-        <pre><code>git config --global user.name "Your Default Name"
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#gitIdentityGlobalLocal"
+              >
+                Option B: Global default + local override
+              </button>
+            </h2>
+
+            <div
+              id="gitIdentityGlobalLocal"
+              class="accordion-collapse collapse"
+              data-bs-parent="#gitIdentityOptionsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Use this when most repositories use one identity, but some
+                  projects need a different one.
+                </p>
+                <p>Setup the default identity first:</p>
+                <pre><code>git config --global user.name "Your Default Name"
 git config --global user.email "default@example.com"</code></pre>
-        <p>Then override it inside a specific repository:</p>
-        <pre><code>git config user.name "Work Name"
+                <p>Then override it inside a specific repository:</p>
+                <pre><code>git config user.name "Work Name"
 git config user.email "work@example.com"</code></pre>
-        <p>Manage the repository-specific identity:</p>
-        <pre><code>git config user.name "New Repo Name"
+                <p>Manage the repository-specific identity:</p>
+                <pre><code>git config user.name "New Repo Name"
 git config user.email "new-repo@example.com"</code></pre>
-        <p>Remove the local override and go back to the global identity:</p>
-        <pre><code>git config --unset user.name
+                <p>Remove the local override and go back to the global identity:</p>
+                <pre><code>git config --unset user.name
 git config --unset user.email</code></pre>
-        <p>Check whether the repository is using local or global values:</p>
-        <pre><code>git config --list --show-origin</code></pre>
+                <p>Check whether the repository is using local or global values:</p>
+                <pre><code>git config --list --show-origin</code></pre>
+              </div>
+            </div>
+          </div>
 
-        <h4>Option C: Conditional config with includeIf</h4>
-        <p>
-          Use this when repositories are grouped into folders such as
-          <code>work</code> and <code>personal</code>, and you want Git to pick
-          the correct identity automatically.
-        </p>
-        <p>Add conditional rules in your global config:</p>
-        <pre><code>git config --global includeIf.gitdir:~/work/.path ~/.gitconfig-work
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#gitIdentityConditional"
+              >
+                Option C: Conditional config with includeIf
+              </button>
+            </h2>
+
+            <div
+              id="gitIdentityConditional"
+              class="accordion-collapse collapse"
+              data-bs-parent="#gitIdentityOptionsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Use this when repositories are grouped into folders such as
+                  <code>work</code> and <code>personal</code>, and you want Git
+                  to pick the correct identity automatically.
+                </p>
+                <p>Add conditional rules in your global config:</p>
+                <pre><code>git config --global includeIf.gitdir:~/work/.path ~/.gitconfig-work
 git config --global includeIf.gitdir:~/personal/.path ~/.gitconfig-personal</code></pre>
-        <p>Create the identity file for work:</p>
-        <pre><code>[user]
+                <p>Create the identity file for work:</p>
+                <pre><code>[user]
   name = Your Work Name
   email = work@example.com</code></pre>
-        <p>Create the identity file for personal repositories:</p>
-        <pre><code>[user]
+                <p>Create the identity file for personal repositories:</p>
+                <pre><code>[user]
   name = Your Personal Name
   email = personal@example.com</code></pre>
-        <p>Manage these identities by editing the matching config file later.</p>
-        <p>Check that Git is loading the correct file:</p>
-        <pre><code>git config --list --show-origin</code></pre>
-        <p>
-          If a repository is in the wrong folder, move it to the correct folder
-          or add a local override inside that repository.
-        </p>
+                <p>Manage these identities by editing the matching config file later.</p>
+                <p>Check that Git is loading the correct file:</p>
+                <pre><code>git config --list --show-origin</code></pre>
+                <p>
+                  If a repository is in the wrong folder, move it to the
+                  correct folder or add a local override inside that
+                  repository.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <h3>5. Good practice</h3>
         <p>
