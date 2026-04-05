@@ -46,6 +46,96 @@ title: GIT
         class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
+        data-bs-target="#gitIdentity"
+      >
+        How to Setup Git Identity
+      </button>
+    </h2>
+
+    <div
+      id="gitIdentity"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          Git identity is the name and email attached to your commits. This is
+          different from authentication. Identity controls how your commits
+          appear in Git history and on GitHub.
+        </p>
+
+        <h3>1. Set identity for all repositories on your machine</h3>
+        <p>
+          Use global config when you want the same identity everywhere by
+          default.
+        </p>
+        <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+
+        <h3>2. Set identity only for the current repository</h3>
+        <p>
+          Use local config when one repository should use a different name or
+          email.
+        </p>
+        <pre><code>git config user.name "Project Specific Name"
+git config user.email "project@example.com"</code></pre>
+
+        <h3>3. Check which identity is active</h3>
+        <pre><code>git config user.name
+git config user.email
+git config --list --show-origin</code></pre>
+        <p>
+          <code>--show-origin</code> helps you see whether the value comes from
+          the system, global, or local configuration file.
+        </p>
+
+        <h3>4. Common ways to manage identity</h3>
+        <ul>
+          <li>
+            <strong>Global only:</strong> best when you use one name and email
+            for all repositories.
+          </li>
+          <li>
+            <strong>Global + local override:</strong> best when most
+            repositories use one identity, but a few need a different one.
+          </li>
+          <li>
+            <strong>Conditional config with includeIf:</strong> useful when
+            work and personal repositories are stored in different folders.
+          </li>
+        </ul>
+
+        <h3>5. Example of conditional identity setup</h3>
+        <p>
+          This approach automatically applies a different identity based on the
+          folder where the repository is located.
+        </p>
+        <pre><code>git config --global includeIf.gitdir:~/work/.path ~/.gitconfig-work
+git config --global includeIf.gitdir:~/personal/.path ~/.gitconfig-personal</code></pre>
+        <p>Example config files:</p>
+        <pre><code>[user]
+  name = Your Work Name
+  email = work@example.com</code></pre>
+        <pre><code>[user]
+  name = Your Personal Name
+  email = personal@example.com</code></pre>
+
+        <h3>6. Good practice</h3>
+        <p>
+          Set a global default first, then override it locally for repositories
+          that need a different identity. If you regularly switch between work
+          and personal repositories, conditional config is cleaner.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
         data-bs-target="#twoGithubAccounts"
       >
         How to Setup 2 GitHub Accounts
