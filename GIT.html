@@ -90,37 +90,67 @@ git config --list --show-origin</code></pre>
         </p>
 
         <h3>4. Common ways to manage identity</h3>
-        <ul>
-          <li>
-            <strong>Global only:</strong> best when you use one name and email
-            for all repositories.
-          </li>
-          <li>
-            <strong>Global + local override:</strong> best when most
-            repositories use one identity, but a few need a different one.
-          </li>
-          <li>
-            <strong>Conditional config with includeIf:</strong> useful when
-            work and personal repositories are stored in different folders.
-          </li>
-        </ul>
-
-        <h3>5. Example of conditional identity setup</h3>
+        <h4>Option A: Global only</h4>
         <p>
-          This approach automatically applies a different identity based on the
-          folder where the repository is located.
+          Use this when you want one identity for every repository on your
+          machine.
         </p>
+        <p>Setup:</p>
+        <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+        <p>Manage or update it later:</p>
+        <pre><code>git config --global user.name "Updated Name"
+git config --global user.email "updated@example.com"</code></pre>
+        <p>Check the current global identity:</p>
+        <pre><code>git config --global user.name
+git config --global user.email</code></pre>
+
+        <h4>Option B: Global default + local override</h4>
+        <p>
+          Use this when most repositories use one identity, but some projects
+          need a different one.
+        </p>
+        <p>Setup the default identity first:</p>
+        <pre><code>git config --global user.name "Your Default Name"
+git config --global user.email "default@example.com"</code></pre>
+        <p>Then override it inside a specific repository:</p>
+        <pre><code>git config user.name "Work Name"
+git config user.email "work@example.com"</code></pre>
+        <p>Manage the repository-specific identity:</p>
+        <pre><code>git config user.name "New Repo Name"
+git config user.email "new-repo@example.com"</code></pre>
+        <p>Remove the local override and go back to the global identity:</p>
+        <pre><code>git config --unset user.name
+git config --unset user.email</code></pre>
+        <p>Check whether the repository is using local or global values:</p>
+        <pre><code>git config --list --show-origin</code></pre>
+
+        <h4>Option C: Conditional config with includeIf</h4>
+        <p>
+          Use this when repositories are grouped into folders such as
+          <code>work</code> and <code>personal</code>, and you want Git to pick
+          the correct identity automatically.
+        </p>
+        <p>Add conditional rules in your global config:</p>
         <pre><code>git config --global includeIf.gitdir:~/work/.path ~/.gitconfig-work
 git config --global includeIf.gitdir:~/personal/.path ~/.gitconfig-personal</code></pre>
-        <p>Example config files:</p>
+        <p>Create the identity file for work:</p>
         <pre><code>[user]
   name = Your Work Name
   email = work@example.com</code></pre>
+        <p>Create the identity file for personal repositories:</p>
         <pre><code>[user]
   name = Your Personal Name
   email = personal@example.com</code></pre>
+        <p>Manage these identities by editing the matching config file later.</p>
+        <p>Check that Git is loading the correct file:</p>
+        <pre><code>git config --list --show-origin</code></pre>
+        <p>
+          If a repository is in the wrong folder, move it to the correct folder
+          or add a local override inside that repository.
+        </p>
 
-        <h3>6. Good practice</h3>
+        <h3>5. Good practice</h3>
         <p>
           Set a global default first, then override it locally for repositories
           that need a different identity. If you regularly switch between work
