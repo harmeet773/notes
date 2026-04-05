@@ -1,0 +1,167 @@
+---
+layout: default
+title: Technological Concepts
+---
+
+<h1 class="mb-4">Technological Concepts</h1>
+
+<h2>Webhooks</h2>
+
+<p>
+  A webhook is a mechanism that allows one application to automatically send
+  data to another application when a specific event happens. Instead of asking
+  a server again and again whether something changed, the receiving system
+  gives the sending system a URL, and the sending system calls that URL when
+  the event occurs.
+</p>
+
+<p>
+  In simple terms, polling means "keep checking for updates," while a webhook
+  means "notify me immediately when an update happens." This makes webhooks
+  useful for event-driven communication between systems.
+</p>
+
+<h3>Why webhooks are used</h3>
+<p>
+  Webhooks are used when one system needs to react quickly to changes in
+  another system. They reduce unnecessary network requests and help keep
+  systems synchronized in near real time.
+</p>
+
+<p>Common examples:</p>
+<ul>
+  <li>GitHub sends a webhook when code is pushed to a repository.</li>
+  <li>A payment gateway sends a webhook when a payment succeeds or fails.</li>
+  <li>An e-commerce platform sends a webhook when an order is created.</li>
+  <li>A messaging platform sends a webhook when a new message arrives.</li>
+</ul>
+
+<h3>How webhooks work</h3>
+<ol>
+  <li>An application exposes an HTTP endpoint such as <code>/webhooks/github</code>.</li>
+  <li>The endpoint URL is registered in another system.</li>
+  <li>An event happens in the source system.</li>
+  <li>The source system sends an HTTP request, usually <code>POST</code>, to the registered URL.</li>
+  <li>The destination system validates the request and processes the payload.</li>
+  <li>The destination system returns an HTTP response code to acknowledge receipt.</li>
+</ol>
+
+<p>
+  The payload often contains structured JSON data describing the event, such as
+  event type, timestamp, object identifiers, and related metadata.
+</p>
+
+<h3>Main components of a webhook</h3>
+<ul>
+  <li><strong>Event source:</strong> The system that generates the event.</li>
+  <li><strong>Webhook URL:</strong> The endpoint that receives the notification.</li>
+  <li><strong>Event payload:</strong> The data sent with the webhook request.</li>
+  <li><strong>Headers:</strong> Metadata such as content type, signature, or event name.</li>
+  <li><strong>Receiver logic:</strong> The code that validates and handles the incoming request.</li>
+</ul>
+
+<h3>Webhook example flow</h3>
+<p>
+  Assume GitHub is connected to a deployment service. When a developer pushes
+  code to the main branch, GitHub triggers a webhook and sends repository and
+  commit details to the deployment service. The deployment service verifies the
+  request, checks the branch, and starts the deployment pipeline automatically.
+</p>
+
+<h3>Webhook payload example</h3>
+<pre><code>{
+  "event": "push",
+  "repository": "sample-project",
+  "branch": "main",
+  "pushed_by": "developer1",
+  "timestamp": "2026-04-05T10:30:00Z"
+}</code></pre>
+
+<p>
+  Real payloads are usually larger and include IDs, URLs, sender information,
+  and detailed object data.
+</p>
+
+<h3>Webhook vs API polling</h3>
+<ul>
+  <li>
+    <strong>Polling:</strong> The client repeatedly asks the server whether new
+    data is available.
+  </li>
+  <li>
+    <strong>Webhook:</strong> The server pushes data to the client when an
+    event occurs.
+  </li>
+</ul>
+
+<p>Comparison:</p>
+<ul>
+  <li>Polling can waste requests if nothing changes.</li>
+  <li>Webhooks are more efficient for event-based updates.</li>
+  <li>Polling is simpler when the receiver cannot expose a public endpoint.</li>
+  <li>Webhooks are better when timely updates are important.</li>
+</ul>
+
+<h3>Advantages of webhooks</h3>
+<ul>
+  <li>Near real-time event delivery.</li>
+  <li>Less unnecessary traffic compared to frequent polling.</li>
+  <li>Good fit for automation workflows.</li>
+  <li>Useful for integrating independent services.</li>
+</ul>
+
+<h3>Challenges and risks</h3>
+<ul>
+  <li>The receiving endpoint must be available and reachable.</li>
+  <li>Requests can be retried, so duplicate processing must be handled safely.</li>
+  <li>Payloads must be validated because the endpoint is exposed over HTTP.</li>
+  <li>Failures in downstream systems can delay or block processing.</li>
+  <li>Order of events is not always guaranteed.</li>
+</ul>
+
+<h3>Security best practices</h3>
+<ul>
+  <li>Use HTTPS so payloads are encrypted in transit.</li>
+  <li>Verify signatures or shared secrets sent in request headers.</li>
+  <li>Validate the payload schema before processing it.</li>
+  <li>Authenticate the event source whenever the provider supports it.</li>
+  <li>Log requests and failures for debugging and auditing.</li>
+  <li>Protect against replay attacks when timestamps or delivery IDs are available.</li>
+</ul>
+
+<h3>Reliability best practices</h3>
+<ul>
+  <li>Return a fast success response after basic validation.</li>
+  <li>Process heavy work asynchronously through queues or background jobs.</li>
+  <li>Store delivery IDs to detect duplicate events.</li>
+  <li>Implement idempotent handlers so repeated deliveries do not break data.</li>
+  <li>Keep retry handling in mind because many providers retry failed deliveries.</li>
+</ul>
+
+<h3>Typical HTTP response codes</h3>
+<ul>
+  <li><code>200 OK</code>: Event received and accepted.</li>
+  <li><code>202 Accepted</code>: Event received and queued for processing.</li>
+  <li><code>400 Bad Request</code>: Invalid payload or missing required data.</li>
+  <li><code>401 Unauthorized</code> or <code>403 Forbidden</code>: Authentication or signature validation failed.</li>
+  <li><code>500 Internal Server Error</code>: Receiver failed to process the event.</li>
+</ul>
+
+<h3>Where webhooks are commonly used</h3>
+<ul>
+  <li>CI/CD pipelines</li>
+  <li>Payment status updates</li>
+  <li>CRM and marketing automation</li>
+  <li>Chat and notification systems</li>
+  <li>Inventory and order management</li>
+  <li>Third-party SaaS integrations</li>
+</ul>
+
+<h3>Summary</h3>
+<p>
+  A webhook is an event notification mechanism in which one system sends an
+  HTTP request to another system when something important happens. It is widely
+  used for automation, integrations, and real-time updates. To use webhooks
+  effectively, focus on security, validation, retry handling, and idempotent
+  processing.
+</p>
