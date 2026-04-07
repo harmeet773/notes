@@ -46,6 +46,91 @@ title: GIT
         class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
+        data-bs-target="#gitConcepts"
+      >
+        Git Concepts
+      </button>
+    </h2>
+
+    <div
+      id="gitConcepts"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          This section groups common Git concepts you use while working with
+          local changes, branches, and commit history.
+        </p>
+
+        <div class="accordion" id="gitConceptsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#gitConceptStash"
+              >
+                Stash
+              </button>
+            </h2>
+
+            <div
+              id="gitConceptStash"
+              class="accordion-collapse collapse"
+              data-bs-parent="#gitConceptsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  <code>git stash</code> temporarily saves your uncommitted
+                  changes so you can switch branches or pull updates without
+                  committing unfinished work.
+                </p>
+
+                <h3>When stash is useful</h3>
+                <ul>
+                  <li>You need to change branches quickly.</li>
+                  <li>You want to pull the latest code without mixing local edits.</li>
+                  <li>You are experimenting and do not want to commit partial work.</li>
+                </ul>
+
+                <h3>Common stash commands</h3>
+                <pre><code>git stash
+git stash push -m "work in progress"
+git stash list
+git stash apply
+git stash pop
+git stash drop</code></pre>
+
+                <h3>How it works</h3>
+                <p>
+                  Git stores the current tracked changes in a hidden stack-like
+                  list. You can reapply them later with
+                  <code>apply</code> or restore and remove them using
+                  <code>pop</code>.
+                </p>
+
+                <h3>Example flow</h3>
+                <pre><code>git stash push -m "login form changes"
+git switch main
+git pull
+git switch feature/login
+git stash pop</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
         data-bs-target="#gitIdentity"
       >
         How to Setup Git Identity
