@@ -472,11 +472,75 @@ artifacts:
     </div>
   </div>
 
-  <!-- 13. Resources -->
+  <!-- 13. AWS CDK -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingCDK">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsCDK" aria-expanded="false" aria-controls="awsCDK">
+        13. AWS CDK
+      </button>
+    </h2>
+    <div id="awsCDK" class="accordion-collapse collapse" aria-labelledby="awsHeadingCDK" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <p>
+          AWS CDK (Cloud Development Kit) is an Infrastructure as Code (IaC) framework
+          that lets you define AWS infrastructure using programming languages such as
+          TypeScript, JavaScript, Python, Java, and C#. CDK code is synthesized into
+          AWS CloudFormation templates and then deployed through CloudFormation.
+        </p>
+
+        <ul>
+          <li><strong>Core idea:</strong> Model infrastructure as reusable constructs instead of writing raw JSON or YAML templates.</li>
+          <li><strong>Constructs:</strong> CDK provides L1, L2, and L3 constructs. L1 maps closely to CloudFormation resources, L2 offers higher-level APIs, and L3 provides opinionated patterns.</li>
+          <li><strong>Stacks:</strong> A stack is the deployment unit in CDK. Each stack becomes a CloudFormation stack.</li>
+          <li><strong>App:</strong> A CDK app is the root container that groups one or more stacks.</li>
+          <li><strong>Synthesis:</strong> <code>cdk synth</code> generates the CloudFormation template from your code.</li>
+          <li><strong>Deployment:</strong> <code>cdk deploy</code> provisions or updates resources in your AWS account.</li>
+          <li><strong>Diff:</strong> <code>cdk diff</code> shows infrastructure changes before deployment, which is useful in CI/CD reviews.</li>
+        </ul>
+
+        <h4>Why teams use AWS CDK</h4>
+        <ul>
+          <li>Infrastructure can be version-controlled alongside application code.</li>
+          <li>Reusable constructs reduce duplication across environments and services.</li>
+          <li>Developers can use familiar programming language features such as loops, conditions, and abstractions.</li>
+          <li>It integrates well with CI/CD pipelines for repeatable deployments.</li>
+        </ul>
+
+        <h4>Common workflow</h4>
+        <pre><code class="language-bash">npm install -g aws-cdk
+cdk init app --language typescript
+cdk synth
+cdk diff
+cdk deploy</code></pre>
+
+        <h4>Simple example</h4>
+        <pre><code class="language-typescript">import * as cdk from 'aws-cdk-lib';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+
+export class StorageStack extends cdk.Stack {
+  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    new s3.Bucket(this, 'NotesBucket', {
+      versioned: true
+    });
+  }
+}</code></pre>
+
+        <p>
+          For interviews, a common comparison is <strong>CDK vs CloudFormation</strong>:
+          CDK improves developer productivity and reuse, while CloudFormation remains
+          the underlying AWS-native deployment engine.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Resources -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="awsHeadingResources">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsResources" aria-expanded="false" aria-controls="awsResources">
-        13. Resources
+        14. Resources
       </button>
     </h2>
     <div id="awsResources" class="accordion-collapse collapse" aria-labelledby="awsHeadingResources" data-bs-parent="#awsMainAccordion">
