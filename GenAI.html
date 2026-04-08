@@ -640,93 +640,35 @@ title: Gen AI
     >
       <div class="accordion-body">
         <p class="mb-3">Use this learning path to move from AI basics to GenAI systems and agent-based workflows.</p>
-
-        <div class="accordion" id="coursesNestedAccordion">
+        <div class="accordion" id="coursesInnerAccordion">
           <div class="accordion-item">
-            <h2 class="accordion-header">
+            <h2 class="accordion-header" id="courseHeading1">
               <button
                 class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#courseTrackBeginner"
+                data-bs-target="#courseSection1"
+                aria-expanded="false"
+                aria-controls="courseSection1"
               >
-                1. Beginner track
+                AI Agents in LangGraph
               </button>
             </h2>
-
             <div
-              id="courseTrackBeginner"
+              id="courseSection1"
               class="accordion-collapse collapse"
-              data-bs-parent="#coursesNestedAccordion"
+              aria-labelledby="courseHeading1"
+              data-bs-parent="#coursesInnerAccordion"
             >
               <div class="accordion-body">
-                <ul class="mb-0">
-                  <li>Start with AI fundamentals, machine learning basics, and simple neural network concepts.</li>
-                  <li>Focus on understanding supervised learning, unsupervised learning, and model evaluation before moving into LLM-specific topics.</li>
-                  <li>Recommended outcome: you should be able to explain how AI, ML, and deep learning relate to each other.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#courseTrackGenAI"
-              >
-                2. Generative AI track
-              </button>
-            </h2>
-
-            <div
-              id="courseTrackGenAI"
-              class="accordion-collapse collapse"
-              data-bs-parent="#coursesNestedAccordion"
-            >
-              <div class="accordion-body">
-                <ul class="mb-0">
-                  <li>Study prompt design, tokens, context windows, transformers, and LLM limitations such as hallucinations.</li>
-                  <li>Choose courses that include hands-on examples for prompt engineering, summarization, chat applications, and document Q&amp;A.</li>
-                  <li>Recommended outcome: you should be able to build and test a basic GenAI workflow with prompts and retrieved context.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#courseTrackAgents"
-              >
-                3. Agents and orchestration track
-              </button>
-            </h2>
-
-            <div
-              id="courseTrackAgents"
-              class="accordion-collapse collapse"
-              data-bs-parent="#coursesNestedAccordion"
-            >
-              <div class="accordion-body">
-                <ul class="mb-0">
-                  <li>
-                    <a href="https://learn.deeplearning.ai/courses/functions-tools-agents-langchain/" target="_blank" rel="noopener noreferrer">
-                      Functions, Tools &amp; Agents with LangChain
-                    </a>
-                  </li>
-                  <li>Study tool calling, memory, retrieval pipelines, and multi-step task execution.</li>
-                  <li>Recommended outcome: you should understand how to design an AI assistant that uses external tools and structured workflows.</li>
-                </ul>
+                <a href="https://learn.deeplearning.ai/courses/ai-agents-in-langgraph/information" target="_blank" rel="noopener noreferrer">
+                  AI Agents in LangGraph
+                </a>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
