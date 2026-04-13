@@ -704,7 +704,483 @@ watched til 12 minutes , rewatch from 13 th
     </div>
   </div>
 </div>
+<div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#aiEvals"
+      >
+        AI Evals
+      </button>
+    </h2>
 
+    <div
+      id="aiEvals"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          These notes are based on the
+          <strong>Introduction To Arize AX Evals</strong> presentation by Shri
+          from the Arize AI DevRel team.
+        </p>
+
+        <div class="accordion" id="aiEvalsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvalsWhat"
+              >
+                1. What Are Evaluations?
+              </button>
+            </h2>
+
+            <div
+              id="aiEvalsWhat"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiEvalsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Evaluations are a <strong>structured measurement of system
+                  behavior</strong> against specific, defined criteria.
+                </p>
+                <p>For LLM systems, common metrics include:</p>
+                <ul>
+                  <li>Correctness and groundedness.</li>
+                  <li>Instruction following and tool correctness.</li>
+                  <li>Hallucinations and helpfulness.</li>
+                  <li>Session-level coherence for multi-turn interactions.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvalsTypes"
+              >
+                2. The Three Types of Evaluation
+              </button>
+            </h2>
+
+            <div
+              id="aiEvalsTypes"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiEvalsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Strong systems usually combine deterministic checks, human
+                  review, and model-based judging.
+                </p>
+
+                <div class="accordion" id="aiEvalsTypesAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsCodeBased"
+                      >
+                        Code-Based Evaluation
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsCodeBased"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsTypesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Deterministic tests such as regex checks, unit tests,
+                          latency checks, and schema validation.
+                        </p>
+                        <p><strong>Pros:</strong> Fast, stable, and cheap.</p>
+                        <p>
+                          <strong>Cons:</strong> Often fails to capture nuance.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsHuman"
+                      >
+                        Human Evaluation
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsHuman"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsTypesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Manual annotation and intervention by domain experts.
+                        </p>
+                        <p>
+                          <strong>Pros:</strong> Gold standard that can detect
+                          subtle hallucinations and logic errors.
+                        </p>
+                        <p>
+                          <strong>Cons:</strong> Expensive, slow, and can be
+                          inconsistent across annotators.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsJudge"
+                      >
+                        LLM as a Judge
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsJudge"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsTypesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          A model is used to simulate human judgment and score
+                          system behavior.
+                        </p>
+                        <p>
+                          <strong>Pros:</strong> Scalable, powerful, and able
+                          to handle nuanced judgments.
+                        </p>
+                        <p>
+                          <strong>Cons:</strong> Can still be imperfect or
+                          unruly.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvalsWorkflow"
+              >
+                3. The 4-Step Eval Workflow
+              </button>
+            </h2>
+
+            <div
+              id="aiEvalsWorkflow"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiEvalsAccordion"
+            >
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    <strong>Look at your data:</strong> Use real traces rather
+                    than only synthetic examples. Identify where the system
+                    fails or behaves unexpectedly, then build a manually
+                    annotated golden data set.
+                  </li>
+                  <li>
+                    <strong>Define metrics:</strong> Metrics should be
+                    application-specific, answerable, and actionable.
+                  </li>
+                  <li>
+                    <strong>Prompt and model:</strong> Build the eval prompt and
+                    choose the judge model.
+                  </li>
+                  <li>
+                    <strong>Meta-evaluation:</strong> Compare judge outputs
+                    against human gold labels to verify the judge is reliable.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvalsComponents"
+              >
+                4. Components of LLM as a Judge
+              </button>
+            </h2>
+
+            <div
+              id="aiEvalsComponents"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiEvalsAccordion"
+            >
+              <div class="accordion-body">
+                <div class="accordion" id="aiEvalsComponentsAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsPrompt"
+                      >
+                        Eval Prompt
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsPrompt"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsComponentsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          The prompt defines the task, rubric, and constraints.
+                        </p>
+                        <p>
+                          Example: for an answer to be considered correct, it
+                          may need to include a specific set of required facts
+                          or financial metrics.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsModel"
+                      >
+                        Eval Model
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsModel"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsComponentsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          The choice of judge model, such as GPT-4, Claude, or
+                          Gemini, affects cost, latency, and consistency.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsSchema"
+                      >
+                        Scoring Schema
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsSchema"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsComponentsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Structured outputs should include:
+                        </p>
+                        <ul>
+                          <li>A label for the metric.</li>
+                          <li>A score.</li>
+                          <li>An explanation, which is critical for debugging.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvalsBestPractices"
+              >
+                5. Best Practices and Pitfalls
+              </button>
+            </h2>
+
+            <div
+              id="aiEvalsBestPractices"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiEvalsAccordion"
+            >
+              <div class="accordion-body">
+                <div class="accordion" id="aiEvalsBestPracticesAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsPromptingTips"
+                      >
+                        Prompting Tips
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsPromptingTips"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsBestPracticesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>
+                            Write the prompt as if you are instructing a human
+                            who knows nothing about your app.
+                          </li>
+                          <li>
+                            Avoid generic AI roles. Instead of saying "you are
+                            an AI evaluator," frame the judge as an expert in a
+                            specific topic.
+                          </li>
+                          <li>
+                            Start simple. Avoid overcomplicating the initial
+                            setup with chain-of-thought or few-shot prompting.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aiEvalsModelSelection"
+                      >
+                        Model Selection
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aiEvalsModelSelection"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#aiEvalsBestPracticesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <ul>
+                          <li>
+                            Use model diversity. Do not use the same model for
+                            both the application and the judge because that can
+                            create self-grading bias.
+                          </li>
+                          <li>
+                            Skip heavy reasoning models such as O3 or R1 unless
+                            you have a strong reason. They often add cost and
+                            latency without enough evaluation benefit.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvalsPlatform"
+              >
+                6. Arize AX Platform Overview
+              </button>
+            </h2>
+
+            <div
+              id="aiEvalsPlatform"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiEvalsAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <li>
+                    Supports both online and offline evals on production traces
+                    and historical data.
+                  </li>
+                  <li>
+                    Provides visualization through trace trees and agent graphs
+                    for multi-agent workflows.
+                  </li>
+                  <li>
+                    Includes built-in templates such as Q&amp;A correctness that
+                    can be customized with judge models and rubrics.
+                  </li>
+                  <li>
+                    Returns explanations with labels so developers can filter
+                    failing cases and iterate faster.
+                  </li>
+                </ul>
+
+                <p>
+                  The presentation also references meta-evaluation resources,
+                  but the notes here focus on the main conceptual and technical
+                  details from the talk.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="accordion mt-4" id="resourcesAccordion">
   <div class="accordion-item">
