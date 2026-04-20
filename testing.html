@@ -1,0 +1,209 @@
+---
+layout: default
+title: Testing
+---
+
+<section class="container py-4">
+  <div class="mb-4">
+    <h2 class="mb-3">Software Testing</h2>
+    <p class="lead">
+      Testing validates that software behaves as expected, prevents regressions, and improves confidence during delivery.
+    </p>
+    <p>
+      The sections below use nested accordions so you can expand from broad testing concepts into techniques, execution types,
+      and practical best practices.
+    </p>
+  </div>
+
+  <div class="accordion" id="testingAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTypes">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTypes" aria-expanded="true" aria-controls="collapseTypes">
+          Types of Testing
+        </button>
+      </h2>
+      <div id="collapseTypes" class="accordion-collapse collapse show" aria-labelledby="headingTypes" data-bs-parent="#testingAccordion">
+        <div class="accordion-body">
+          <p>Testing can be grouped by technical scope, business purpose, and execution style.</p>
+
+          <div class="accordion" id="typesNestedAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingLevels">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLevels" aria-expanded="true" aria-controls="collapseLevels">
+                  Testing Levels
+                </button>
+              </h2>
+              <div id="collapseLevels" class="accordion-collapse collapse show" aria-labelledby="headingLevels" data-bs-parent="#typesNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Unit Testing:</strong> Verifies small isolated units such as functions, classes, or methods.</li>
+                    <li><strong>Integration Testing:</strong> Validates interaction between modules, services, databases, or APIs.</li>
+                    <li><strong>System Testing:</strong> Checks the complete application as an integrated whole.</li>
+                    <li><strong>Acceptance Testing:</strong> Confirms the product meets business needs and release criteria.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingPurpose">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePurpose" aria-expanded="false" aria-controls="collapsePurpose">
+                  Testing by Purpose
+                </button>
+              </h2>
+              <div id="collapsePurpose" class="accordion-collapse collapse" aria-labelledby="headingPurpose" data-bs-parent="#typesNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Functional Testing:</strong> Confirms features behave according to requirements.</li>
+                    <li><strong>Regression Testing:</strong> Ensures existing features still work after code changes.</li>
+                    <li><strong>Smoke Testing:</strong> Performs a quick high-level validation on major flows.</li>
+                    <li><strong>Sanity Testing:</strong> Narrowly checks a specific fix or updated area.</li>
+                    <li><strong>Exploratory Testing:</strong> Uses human investigation to uncover unexpected issues.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingNonFunctional">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNonFunctional" aria-expanded="false" aria-controls="collapseNonFunctional">
+                  Non-Functional Testing
+                </button>
+              </h2>
+              <div id="collapseNonFunctional" class="accordion-collapse collapse" aria-labelledby="headingNonFunctional" data-bs-parent="#typesNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Performance Testing:</strong> Measures response time, throughput, and system stability.</li>
+                    <li><strong>Security Testing:</strong> Finds vulnerabilities, access issues, and data exposure risks.</li>
+                    <li><strong>Usability Testing:</strong> Evaluates how easily users can complete tasks.</li>
+                    <li><strong>Compatibility Testing:</strong> Validates behavior across devices, browsers, and environments.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingApproaches">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApproaches" aria-expanded="false" aria-controls="collapseApproaches">
+          Testing Approaches
+        </button>
+      </h2>
+      <div id="collapseApproaches" class="accordion-collapse collapse" aria-labelledby="headingApproaches" data-bs-parent="#testingAccordion">
+        <div class="accordion-body">
+          <div class="accordion" id="approachNestedAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingExecution">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExecution" aria-expanded="true" aria-controls="collapseExecution">
+                  Manual vs Automation
+                </button>
+              </h2>
+              <div id="collapseExecution" class="accordion-collapse collapse show" aria-labelledby="headingExecution" data-bs-parent="#approachNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Manual Testing:</strong> Best for exploratory, usability, and rapidly changing features.</li>
+                    <li><strong>Automated Testing:</strong> Best for repeatable validations, regression coverage, and CI pipelines.</li>
+                    <li><strong>Balanced Strategy:</strong> Automate stable and repetitive checks, keep human effort for discovery and UX judgment.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingDesign">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                  Test Design Techniques
+                </button>
+              </h2>
+              <div id="collapseDesign" class="accordion-collapse collapse" aria-labelledby="headingDesign" data-bs-parent="#approachNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Equivalence Partitioning:</strong> Divide inputs into meaningful groups and test one value from each.</li>
+                    <li><strong>Boundary Value Analysis:</strong> Focus on edges where defects often occur.</li>
+                    <li><strong>Decision Table Testing:</strong> Validate combinations of rules and outcomes.</li>
+                    <li><strong>State Transition Testing:</strong> Verify behavior when moving between states.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingLifecycle">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLifecycle" aria-expanded="false" aria-controls="collapseLifecycle">
+          Testing Lifecycle and Best Practices
+        </button>
+      </h2>
+      <div id="collapseLifecycle" class="accordion-collapse collapse" aria-labelledby="headingLifecycle" data-bs-parent="#testingAccordion">
+        <div class="accordion-body">
+          <div class="accordion" id="lifecycleNestedAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingSteps">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSteps" aria-expanded="true" aria-controls="collapseSteps">
+                  Core Lifecycle Steps
+                </button>
+              </h2>
+              <div id="collapseSteps" class="accordion-collapse collapse show" aria-labelledby="headingSteps" data-bs-parent="#lifecycleNestedAccordion">
+                <div class="accordion-body">
+                  <ol>
+                    <li>Understand requirements and identify risks.</li>
+                    <li>Plan the test scope, environments, and strategy.</li>
+                    <li>Design test cases and prepare test data.</li>
+                    <li>Execute tests and document actual results.</li>
+                    <li>Log defects, retest fixes, and run regression checks.</li>
+                    <li>Summarize coverage, quality status, and release readiness.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingPractices">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePractices" aria-expanded="false" aria-controls="collapsePractices">
+                  Recommended Best Practices
+                </button>
+              </h2>
+              <div id="collapsePractices" class="accordion-collapse collapse" aria-labelledby="headingPractices" data-bs-parent="#lifecycleNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li>Write clear, independent, and repeatable test cases.</li>
+                    <li>Prioritize high-risk and business-critical flows first.</li>
+                    <li>Keep test data realistic and environment setup stable.</li>
+                    <li>Integrate automated tests into CI/CD pipelines.</li>
+                    <li>Review flaky tests quickly to preserve trust in automation.</li>
+                    <li>Track both defect counts and escaped production issues.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTools">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
+                  Common Tools
+                </button>
+              </h2>
+              <div id="collapseTools" class="accordion-collapse collapse" aria-labelledby="headingTools" data-bs-parent="#lifecycleNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Unit:</strong> JUnit, NUnit, Jest, xUnit</li>
+                    <li><strong>UI Automation:</strong> Selenium, Playwright, Cypress</li>
+                    <li><strong>API Testing:</strong> Postman, Rest Assured, Newman</li>
+                    <li><strong>Performance:</strong> JMeter, k6, Gatling</li>
+                    <li><strong>Defect Tracking:</strong> Jira, Azure DevOps</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
