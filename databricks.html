@@ -263,7 +263,28 @@ title: DataBricks
                         <p>
                           In reasoning models the , the act of reasoning is
                           included in the overall number of outout tokens .
-                          start from @ 6:13 pm
+                          
+                          Context window : works as working memory , it is the maximum token limit a model can remember at any given time .when the limit is exceeded, the model drops the earliest information.
+                          Consequesnces include: loss of initial instruction , logic gaps and increased risk of hallucinations .
+
+                          In summary, there are three key elements of a model that determine performance, cost, latency, and the amount of information a model can consider:
+
+- Number of Parameters
+- Tokenization
+- Context window
+
+
+# Effective Prompt Engineering
+
+- **Grounding**: Providing the specific context and background data the model needs to anchor its response  
+- **Organization**: Structuring instructions logically to reduce ambiguity  . how you ask is as critical as what you ask .
+- **Token Efficiency**: Being concise yet comprehensive to maximize the model's context window
+
+
+MCP (model Context protocol) : Open-standard for integration between Al models and data sources.
+
+Non agentic vs agentic AI 
+
                         </p>
                       </div>
                     </div>
