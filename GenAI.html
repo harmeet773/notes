@@ -1264,20 +1264,38 @@ watched til 12 minutes , rewatch from 13 th
     </div>
   </div>
 
-<div class="mt-4">
-  <h3 class="mb-3">Learn by Q and A</h3>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">What is the difference between prompt token and completion token?</h5>
-      <p class="card-text mb-2">
-        <strong>Prompt tokens</strong> are the tokens you send to the model as input.
-        These include your question, instructions, system message, and any context.
-      </p>
-      <p class="card-text mb-0">
-        <strong>Completion tokens</strong> are the tokens the model generates as output
-        in response to your prompt. In simple terms, prompt tokens go <strong>into</strong>
-        the model, and completion tokens come <strong>out of</strong> the model.
-      </p>
+<div class="accordion mt-4" id="qaAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="qaHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#qaSection"
+        aria-expanded="false"
+        aria-controls="qaSection"
+      >
+        Learn by Q and A
+      </button>
+    </h2>
+    <div
+      id="qaSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="qaHeading"
+      data-bs-parent="#qaAccordion"
+    >
+      <div class="accordion-body">
+        <h5 class="card-title">What is the difference between prompt token and completion token?</h5>
+        <p class="card-text mb-2">
+          <strong>Prompt tokens</strong> are the tokens you send to the model as input.
+          These include your question, instructions, system message, and any context.
+        </p>
+        <p class="card-text mb-0">
+          <strong>Completion tokens</strong> are the tokens the model generates as output
+          in response to your prompt. In simple terms, prompt tokens go <strong>into</strong>
+          the model, and completion tokens come <strong>out of</strong> the model.
+        </p>
+      </div>
     </div>
   </div>
 </div>
