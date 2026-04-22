@@ -144,6 +144,177 @@ git stash pop</code></pre>
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#gitFindFileCreation"
+              >
+                How can we find who created a file in a Git or GitHub repository
+                with multiple branches?
+              </button>
+            </h2>
+
+            <div
+              id="gitFindFileCreation"
+              class="accordion-collapse collapse"
+              data-bs-parent="#gitConceptsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Git does not store a separate "file created at" field. The
+                  practical way is to find the first commit where that file path
+                  was added.
+                </p>
+
+                <div class="accordion" id="gitFindFileCreationAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#gitFindFileCreationCommand"
+                      >
+                        Which command should we use?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="gitFindFileCreationCommand"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#gitFindFileCreationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>Run this from the repository root:</p>
+                        <pre><code>git log --all --diff-filter=A -- path/to/file</code></pre>
+                        <p>
+                          <code>--all</code> searches across all branches,
+                          <code>--diff-filter=A</code> shows only commits where
+                          the file was added, and the path limits the search to
+                          one file.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#gitFindFileCreationOldest"
+                      >
+                        How do we find the oldest add commit first?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="gitFindFileCreationOldest"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#gitFindFileCreationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <pre><code>git log --all --diff-filter=A --reverse -- path/to/file</code></pre>
+                        <p>
+                          <code>--reverse</code> shows the oldest matching
+                          commit first, which is usually the commit that
+                          originally introduced the file.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#gitFindFileCreationAuthor"
+                      >
+                        How do we see only the commit, author, and date?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="gitFindFileCreationAuthor"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#gitFindFileCreationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <pre><code>git log --all --diff-filter=A --reverse --format="%H %an %ad" -- path/to/file</code></pre>
+                        <p>
+                          This helps identify who added the file and when,
+                          without printing the full commit message body.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#gitFindFileCreationBranches"
+                      >
+                        How do we check which branches contain that commit?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="gitFindFileCreationBranches"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#gitFindFileCreationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <pre><code>git branch --contains &lt;commit-hash&gt;</code></pre>
+                        <p>
+                          Use this after finding the add commit if you want to
+                          know which local branches include that commit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#gitFindFileCreationGithubUi"
+                      >
+                        Can we reliably find this from the GitHub UI?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="gitFindFileCreationGithubUi"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#gitFindFileCreationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Not reliably across all branches. GitHub normally
+                          shows file history for the currently selected branch.
+                          For repositories with multiple branches, local Git
+                          commands such as <code>git log --all</code> are the
+                          more reliable option.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -411,7 +582,11 @@ ssh -T git@github-work</code></pre>
 Merge made by the 'ort' strategy. what is it ?
 
 
-</div>
 
+
+
+
+
+</div>
 
 
