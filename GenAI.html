@@ -1382,6 +1382,87 @@ watched til 12 minutes , rewatch from 13 th
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading3">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse3"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse3"
+              >
+                Why is it important to define personas when creating a chatbot?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse3"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading3"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  Defining personas is important because it makes the chatbot's behavior more
+                  consistent, relevant, and useful for a specific audience. A persona gives the
+                  chatbot a clear role, tone, level of expertise, and communication style, which
+                  helps it respond in a way that matches user expectations.
+                </p>
+                <p class="card-text mb-2">
+                  For example, a chatbot designed for students should explain concepts simply and
+                  patiently, while a chatbot for software engineers can use more technical language
+                  and assume background knowledge. Without a defined persona, responses may feel too
+                  generic, inconsistent, or poorly suited to the user's needs.
+                </p>
+                <p class="card-text mb-0">
+                  In practice, personas improve user experience, build trust, and make the chatbot
+                  better aligned with the purpose of the application, whether that is teaching,
+                  customer support, coaching, or professional assistance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading4">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse4"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse4"
+              >
+                span vs traces ?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse4"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading4"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  A <strong>trace</strong> is the full end-to-end record of one request or workflow execution.
+                  It shows the complete journey, such as a user request entering a system, passing through
+                  retrieval, tool calls, model responses, and finally returning an answer.
+                </p>
+                <p class="card-text mb-2">
+                  A <strong>span</strong> is one individual step or operation inside that trace. For example,
+                  one span may represent a database query, another may represent an LLM call, and another
+                  may represent a tool execution.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: <strong>a trace is the whole story</strong>, while <strong>a span is one event
+                  or chapter inside that story</strong>. A single trace usually contains multiple spans arranged
+                  in parent-child relationships so developers can inspect where time was spent, where errors
+                  happened, and which component produced a result.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
