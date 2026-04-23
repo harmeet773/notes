@@ -82,7 +82,34 @@ title: LeetCode & DSA
                           <li>Time complexity: usually O(n).</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="hashingTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#hashingTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="hashingTemplates" class="accordion-collapse collapse" data-bs-parent="#hashingTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="hashingCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#hashingJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="hashingJsTemplate" class="accordion-collapse collapse" data-bs-parent="#hashingCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function solve(nums) {
   const map = new Map();
 
@@ -98,8 +125,22 @@ title: LeetCode & DSA
 
   return /* fallback */;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#hashingCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="hashingCppTemplate" class="accordion-collapse collapse" data-bs-parent="#hashingCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>int solve(vector&lt;int&gt;&amp; nums) {
   unordered_map&lt;int, int&gt; mp;
 
@@ -115,6 +156,14 @@ title: LeetCode & DSA
 
   return -1;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -149,7 +198,34 @@ title: LeetCode & DSA
                           <li>Common forms: opposite-direction pointers, slow-fast pointers, read-write pointers.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="twoPointersTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#twoPointersTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="twoPointersTemplates" class="accordion-collapse collapse" data-bs-parent="#twoPointersTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="twoPointersCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#twoPointersJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="twoPointersJsTemplate" class="accordion-collapse collapse" data-bs-parent="#twoPointersCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function solve(arr) {
   let left = 0;
   let right = arr.length - 1;
@@ -164,8 +240,22 @@ title: LeetCode & DSA
 
   return [-1, -1];
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#twoPointersCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="twoPointersCppTemplate" class="accordion-collapse collapse" data-bs-parent="#twoPointersCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>vector&lt;int&gt; solve(vector&lt;int&gt;&amp; arr, int target) {
   int left = 0, right = (int)arr.size() - 1;
 
@@ -179,6 +269,14 @@ title: LeetCode & DSA
 
   return {-1, -1};
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -213,7 +311,34 @@ title: LeetCode & DSA
                           <li>Keep expanding the right side and shrink from the left when the window becomes invalid.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="slidingWindowTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#slidingWindowTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="slidingWindowTemplates" class="accordion-collapse collapse" data-bs-parent="#slidingWindowTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="slidingWindowCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#slidingWindowJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="slidingWindowJsTemplate" class="accordion-collapse collapse" data-bs-parent="#slidingWindowCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function solve(s) {
   let left = 0;
   let best = 0;
@@ -233,8 +358,22 @@ title: LeetCode & DSA
 
   return best;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#slidingWindowCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="slidingWindowCppTemplate" class="accordion-collapse collapse" data-bs-parent="#slidingWindowCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>int solve(string s) {
   int left = 0, best = 0;
   unordered_map&lt;char, int&gt; freq;
@@ -253,6 +392,14 @@ title: LeetCode & DSA
 
   return best;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -287,7 +434,34 @@ title: LeetCode & DSA
                           <li>Variants: exact search, lower bound, upper bound, binary search on answer.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="binarySearchTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#binarySearchTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="binarySearchTemplates" class="accordion-collapse collapse" data-bs-parent="#binarySearchTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="binarySearchCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#binarySearchJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="binarySearchJsTemplate" class="accordion-collapse collapse" data-bs-parent="#binarySearchCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function binarySearch(nums, target) {
   let left = 0;
   let right = nums.length - 1;
@@ -302,8 +476,22 @@ title: LeetCode & DSA
 
   return -1;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#binarySearchCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="binarySearchCppTemplate" class="accordion-collapse collapse" data-bs-parent="#binarySearchCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>int binarySearch(vector&lt;int&gt;&amp; nums, int target) {
   int left = 0, right = (int)nums.size() - 1;
 
@@ -317,6 +505,14 @@ title: LeetCode & DSA
 
   return -1;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -351,7 +547,34 @@ title: LeetCode & DSA
                           <li>Combine with a hash map when you need to count previous prefix values quickly.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="prefixSumTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#prefixSumTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="prefixSumTemplates" class="accordion-collapse collapse" data-bs-parent="#prefixSumTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="prefixSumCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#prefixSumJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="prefixSumJsTemplate" class="accordion-collapse collapse" data-bs-parent="#prefixSumCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function solve(nums, k) {
   let prefix = 0;
   let answer = 0;
@@ -365,8 +588,22 @@ title: LeetCode & DSA
 
   return answer;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#prefixSumCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="prefixSumCppTemplate" class="accordion-collapse collapse" data-bs-parent="#prefixSumCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>int solve(vector&lt;int&gt;&amp; nums, int k) {
   int prefix = 0, answer = 0;
   unordered_map&lt;int, int&gt; count;
@@ -380,6 +617,14 @@ title: LeetCode & DSA
 
   return answer;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -414,7 +659,34 @@ title: LeetCode & DSA
                           <li>Monotonic stack stores indices or values in increasing or decreasing order.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="stackTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#stackTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="stackTemplates" class="accordion-collapse collapse" data-bs-parent="#stackTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="stackCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#stackJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="stackJsTemplate" class="accordion-collapse collapse" data-bs-parent="#stackCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function solve(nums) {
   const stack = [];
   const answer = Array(nums.length).fill(-1);
@@ -429,8 +701,22 @@ title: LeetCode & DSA
 
   return answer;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#stackCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="stackCppTemplate" class="accordion-collapse collapse" data-bs-parent="#stackCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>vector&lt;int&gt; solve(vector&lt;int&gt;&amp; nums) {
   stack&lt;int&gt; st;
   vector&lt;int&gt; answer(nums.size(), -1);
@@ -445,6 +731,14 @@ title: LeetCode & DSA
 
   return answer;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -479,7 +773,34 @@ title: LeetCode & DSA
                           <li>Move <code>slow</code> by 1 step and <code>fast</code> by 2 steps.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="fastSlowTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#fastSlowTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="fastSlowTemplates" class="accordion-collapse collapse" data-bs-parent="#fastSlowTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="fastSlowCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#fastSlowJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="fastSlowJsTemplate" class="accordion-collapse collapse" data-bs-parent="#fastSlowCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function hasCycle(head) {
   let slow = head;
   let fast = head;
@@ -492,8 +813,22 @@ title: LeetCode & DSA
 
   return false;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#fastSlowCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="fastSlowCppTemplate" class="accordion-collapse collapse" data-bs-parent="#fastSlowCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>bool hasCycle(ListNode* head) {
   ListNode* slow = head;
   ListNode* fast = head;
@@ -506,6 +841,14 @@ title: LeetCode & DSA
 
   return false;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -540,7 +883,34 @@ title: LeetCode & DSA
                           <li><strong>BFS:</strong> visit level by level using a queue.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript DFS template:</strong></p>
+                        <div class="accordion mt-3" id="graphTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#graphTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="graphTemplates" class="accordion-collapse collapse" data-bs-parent="#graphTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="graphCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#graphJsTemplate"
+                                      >
+                                        JavaScript DFS
+                                      </button>
+                                    </h2>
+                                    <div id="graphJsTemplate" class="accordion-collapse collapse" data-bs-parent="#graphCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function dfs(node, visited, graph) {
   if (visited.has(node)) return;
   visited.add(node);
@@ -549,8 +919,22 @@ title: LeetCode & DSA
     dfs(nei, visited, graph);
   }
 }</code></pre>
-
-                        <p><strong>Generic C++ BFS template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#graphCppTemplate"
+                                      >
+                                        C++ BFS
+                                      </button>
+                                    </h2>
+                                    <div id="graphCppTemplate" class="accordion-collapse collapse" data-bs-parent="#graphCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>void bfs(int start, vector&lt;vector&lt;int&gt;&gt;&amp; graph, vector&lt;bool&gt;&amp; visited) {
   queue&lt;int&gt; q;
   q.push(start);
@@ -568,6 +952,14 @@ title: LeetCode & DSA
     }
   }
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -602,8 +994,35 @@ title: LeetCode & DSA
                           <li>Min-heap for smallest-first, max-heap for largest-first.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
-                        <p>In interviews, JavaScript often needs a custom heap class. The core loop usually looks like this:</p>
+                        <div class="accordion mt-3" id="heapTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#heapTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="heapTemplates" class="accordion-collapse collapse" data-bs-parent="#heapTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="heapCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#heapJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="heapJsTemplate" class="accordion-collapse collapse" data-bs-parent="#heapCodeAccordion">
+                                      <div class="accordion-body">
+                                        <p>In interviews, JavaScript often needs a custom heap class. The core loop usually looks like this:</p>
 <pre><code>function process(values, heap) {
   for (const value of values) {
     heap.push(value);
@@ -611,8 +1030,22 @@ title: LeetCode & DSA
   }
   return heap.peek();
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#heapCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="heapCppTemplate" class="accordion-collapse collapse" data-bs-parent="#heapCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>int solve(vector&lt;int&gt;&amp; nums, int k) {
   priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;
 
@@ -623,6 +1056,14 @@ title: LeetCode & DSA
 
   return pq.top();
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -657,7 +1098,34 @@ title: LeetCode & DSA
                           <li>Core idea: choose, recurse, un-choose.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="backtrackingTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#backtrackingTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="backtrackingTemplates" class="accordion-collapse collapse" data-bs-parent="#backtrackingTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="backtrackingCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#backtrackingJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="backtrackingJsTemplate" class="accordion-collapse collapse" data-bs-parent="#backtrackingCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function backtrack(start, path, result, nums) {
   result.push([...path]);
 
@@ -667,8 +1135,22 @@ title: LeetCode & DSA
     path.pop();
   }
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#backtrackingCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="backtrackingCppTemplate" class="accordion-collapse collapse" data-bs-parent="#backtrackingCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>void backtrack(int start, vector&lt;int&gt;&amp; path, vector&lt;vector&lt;int&gt;&gt;&amp; result, vector&lt;int&gt;&amp; nums) {
   result.push_back(path);
 
@@ -678,6 +1160,14 @@ title: LeetCode & DSA
     path.pop_back();
   }
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -712,7 +1202,34 @@ title: LeetCode & DSA
                           <li>First define the state, then transition, then base case.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="dpTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dpTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="dpTemplates" class="accordion-collapse collapse" data-bs-parent="#dpTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="dpCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#dpJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="dpJsTemplate" class="accordion-collapse collapse" data-bs-parent="#dpCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function solve(nums) {
   const n = nums.length;
   const dp = Array(n + 1).fill(0);
@@ -727,8 +1244,22 @@ title: LeetCode & DSA
 
   return dp[n];
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#dpCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="dpCppTemplate" class="accordion-collapse collapse" data-bs-parent="#dpCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>int solve(vector&lt;int&gt;&amp; nums) {
   int n = nums.size();
   vector&lt;int&gt; dp(n + 1, 0);
@@ -742,6 +1273,14 @@ title: LeetCode & DSA
 
   return dp[n];
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
@@ -776,7 +1315,34 @@ title: LeetCode & DSA
                           <li>Standard move: sort first, then merge greedily.</li>
                         </ul>
 
-                        <p><strong>Generic JavaScript template:</strong></p>
+                        <div class="accordion mt-3" id="intervalTemplatesAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#intervalTemplates"
+                              >
+                                Generic Templates
+                              </button>
+                            </h2>
+                            <div id="intervalTemplates" class="accordion-collapse collapse" data-bs-parent="#intervalTemplatesAccordion">
+                              <div class="accordion-body">
+                                <div class="accordion" id="intervalCodeAccordion">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#intervalJsTemplate"
+                                      >
+                                        JavaScript
+                                      </button>
+                                    </h2>
+                                    <div id="intervalJsTemplate" class="accordion-collapse collapse" data-bs-parent="#intervalCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>function merge(intervals) {
   intervals.sort((a, b) =&gt; a[0] - b[0]);
   const result = [];
@@ -791,8 +1357,22 @@ title: LeetCode & DSA
 
   return result;
 }</code></pre>
-
-                        <p><strong>Generic C++ template:</strong></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#intervalCppTemplate"
+                                      >
+                                        C++
+                                      </button>
+                                    </h2>
+                                    <div id="intervalCppTemplate" class="accordion-collapse collapse" data-bs-parent="#intervalCodeAccordion">
+                                      <div class="accordion-body">
 <pre><code>vector&lt;vector&lt;int&gt;&gt; merge(vector&lt;vector&lt;int&gt;&gt;&amp; intervals) {
   sort(intervals.begin(), intervals.end());
   vector&lt;vector&lt;int&gt;&gt; result;
@@ -807,6 +1387,14 @@ title: LeetCode & DSA
 
   return result;
 }</code></pre>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <p><strong>Examples:</strong></p>
                         <ul>
