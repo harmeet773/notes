@@ -491,11 +491,54 @@ artifacts:
     </div>
   </div>
 
-  <!-- 13. AWS CDK -->
+  <!-- 13. AWS Bedrock -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="awsHeadingBedrock">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsBedrock" aria-expanded="false" aria-controls="awsBedrock">
+        13. AWS Bedrock
+      </button>
+    </h2>
+    <div id="awsBedrock" class="accordion-collapse collapse" aria-labelledby="awsHeadingBedrock" data-bs-parent="#awsMainAccordion">
+      <div class="accordion-body">
+        <p>
+          Amazon Bedrock is a fully managed AWS service for building generative AI applications
+          using foundation models through APIs without managing the underlying infrastructure.
+          It is commonly used to create chat applications, summarization workflows, knowledge
+          assistants, content generation systems, and agent-based automation.
+        </p>
+
+        <ul>
+          <li><strong>Foundation models:</strong> Bedrock gives access to multiple models for text generation, summarization, embeddings, image generation, and conversational AI.</li>
+          <li><strong>Serverless experience:</strong> AWS manages scaling, provisioning, and availability, so teams focus on prompts, application logic, and integration.</li>
+          <li><strong>Knowledge bases:</strong> Bedrock can connect LLM applications with enterprise data for retrieval-augmented generation (RAG).</li>
+          <li><strong>Agents:</strong> Bedrock Agents can orchestrate multi-step tasks, call APIs, and combine model reasoning with backend actions.</li>
+          <li><strong>Guardrails:</strong> Teams can define content filters, topic restrictions, and safety controls for model responses.</li>
+          <li><strong>Security:</strong> It integrates with IAM, KMS, VPC controls, logging, and AWS governance patterns used across the platform.</li>
+        </ul>
+
+        <h4>Common interview points</h4>
+        <ul>
+          <li>Bedrock is an API-based managed service, while SageMaker is broader for training, tuning, and full ML lifecycle management.</li>
+          <li>Use embeddings plus a vector store for semantic search and RAG workflows.</li>
+          <li>Prompt engineering, grounding on trusted data, and output safety are key design concerns.</li>
+          <li>Latency, token usage, and model choice directly affect cost and performance.</li>
+        </ul>
+
+        <pre><code class="language-bash"># Example concept: invoke a Bedrock model from an AWS application
+aws bedrock-runtime invoke-model \
+  --model-id example-model-id \
+  --body fileb://request.json \
+  --content-type application/json \
+  --accept application/json</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. AWS CDK -->
   <div class="accordion-item">
     <h2 class="accordion-header" id="awsHeadingCDK">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#awsCDK" aria-expanded="false" aria-controls="awsCDK">
-        13. AWS CDK
+        14. AWS CDK
       </button>
     </h2>
     <div id="awsCDK" class="accordion-collapse collapse" aria-labelledby="awsHeadingCDK" data-bs-parent="#awsMainAccordion">
