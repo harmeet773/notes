@@ -43,7 +43,782 @@ title: LeetCode & DSA
               class="accordion-collapse collapse"
               data-bs-parent="#leetcodeSubAccordion"
             >
-              <div class="accordion-body"></div>
+              <div class="accordion-body">
+                <p>
+                  Pattern recognition matters more than memorizing isolated solutions. Most interview problems reduce to a
+                  small set of repeatable moves: tracking state, shrinking a window, splitting a search space, traversing a
+                  graph, or building an answer from smaller subproblems.
+                </p>
+
+                <p><strong>Quick interview workflow:</strong></p>
+                <ul>
+                  <li>Identify input type: array, string, linked list, tree, graph, matrix, interval, or DP state.</li>
+                  <li>Ask what repeats: contiguous range, sorted order, revisits, choices, or optimal substructure.</li>
+                  <li>Choose the smallest fitting pattern before coding.</li>
+                  <li>Write the template first, then plug in problem-specific conditions.</li>
+                </ul>
+
+                <div class="accordion" id="leetcodePatternsAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternHashing"
+                      >
+                        1. Hash Map / Hash Set Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternHashing"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> You need O(1) average lookup, counting, frequency tracking, or seen-before checks.</p>
+                        <ul>
+                          <li>Typical signals: duplicates, complements, counts, grouping, membership.</li>
+                          <li>Time complexity: usually O(n).</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function solve(nums) {
+  const map = new Map();
+
+  for (let i = 0; i &lt; nums.length; i++) {
+    const value = nums[i];
+
+    if (map.has(/* target lookup */)) {
+      return /* answer */;
+    }
+
+    map.set(value, i); // or increment frequency
+  }
+
+  return /* fallback */;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>int solve(vector&lt;int&gt;&amp; nums) {
+  unordered_map&lt;int, int&gt; mp;
+
+  for (int i = 0; i &lt; (int)nums.size(); i++) {
+    int value = nums[i];
+
+    if (mp.count(/* target lookup */)) {
+      return /* answer */;
+    }
+
+    mp[value] = i;
+  }
+
+  return -1;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></li>
+                          <li><a href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="noopener">217. Contains Duplicate</a></li>
+                          <li><a href="https://leetcode.com/problems/group-anagrams/" target="_blank" rel="noopener">49. Group Anagrams</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternTwoPointers"
+                      >
+                        2. Two Pointers Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternTwoPointers"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> You process a sequence from both ends or maintain two moving positions.</p>
+                        <ul>
+                          <li>Typical signals: sorted array, palindrome, pair sum, partitioning, in-place overwrite.</li>
+                          <li>Common forms: opposite-direction pointers, slow-fast pointers, read-write pointers.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function solve(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left &lt; right) {
+    const sum = arr[left] + arr[right];
+
+    if (sum === /* target */) return [left, right];
+    if (sum &lt; /* target */) left++;
+    else right--;
+  }
+
+  return [-1, -1];
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>vector&lt;int&gt; solve(vector&lt;int&gt;&amp; arr, int target) {
+  int left = 0, right = (int)arr.size() - 1;
+
+  while (left &lt; right) {
+    int sum = arr[left] + arr[right];
+
+    if (sum == target) return {left, right};
+    if (sum &lt; target) left++;
+    else right--;
+  }
+
+  return {-1, -1};
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a></li>
+                          <li><a href="https://leetcode.com/problems/valid-palindrome/" target="_blank" rel="noopener">125. Valid Palindrome</a></li>
+                          <li><a href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="noopener">11. Container With Most Water</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternSlidingWindow"
+                      >
+                        3. Sliding Window Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternSlidingWindow"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> The answer depends on a contiguous subarray or substring.</p>
+                        <ul>
+                          <li>Typical signals: longest, shortest, at most k, exact k, distinct characters, running sum in a range.</li>
+                          <li>Keep expanding the right side and shrink from the left when the window becomes invalid.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function solve(s) {
+  let left = 0;
+  let best = 0;
+  const freq = new Map();
+
+  for (let right = 0; right &lt; s.length; right++) {
+    freq.set(s[right], (freq.get(s[right]) || 0) + 1);
+
+    while (/* window invalid */) {
+      freq.set(s[left], freq.get(s[left]) - 1);
+      if (freq.get(s[left]) === 0) freq.delete(s[left]);
+      left++;
+    }
+
+    best = Math.max(best, right - left + 1);
+  }
+
+  return best;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>int solve(string s) {
+  int left = 0, best = 0;
+  unordered_map&lt;char, int&gt; freq;
+
+  for (int right = 0; right &lt; (int)s.size(); right++) {
+    freq[s[right]]++;
+
+    while (/* window invalid */) {
+      freq[s[left]]--;
+      if (freq[s[left]] == 0) freq.erase(s[left]);
+      left++;
+    }
+
+    best = max(best, right - left + 1);
+  }
+
+  return best;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">3. Longest Substring Without Repeating Characters</a></li>
+                          <li><a href="https://leetcode.com/problems/permutation-in-string/" target="_blank" rel="noopener">567. Permutation in String</a></li>
+                          <li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="noopener">209. Minimum Size Subarray Sum</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternBinarySearch"
+                      >
+                        4. Binary Search Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternBinarySearch"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> The search space is sorted or the answer is monotonic: false false false true true true.</p>
+                        <ul>
+                          <li>Typical signals: sorted array, first/last position, minimum valid answer, capacity/speed/days.</li>
+                          <li>Variants: exact search, lower bound, upper bound, binary search on answer.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function binarySearch(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left &lt;= right) {
+    const mid = left + Math.floor((right - left) / 2);
+
+    if (nums[mid] === target) return mid;
+    if (nums[mid] &lt; target) left = mid + 1;
+    else right = mid - 1;
+  }
+
+  return -1;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>int binarySearch(vector&lt;int&gt;&amp; nums, int target) {
+  int left = 0, right = (int)nums.size() - 1;
+
+  while (left &lt;= right) {
+    int mid = left + (right - left) / 2;
+
+    if (nums[mid] == target) return mid;
+    if (nums[mid] &lt; target) left = mid + 1;
+    else right = mid - 1;
+  }
+
+  return -1;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/binary-search/" target="_blank" rel="noopener">704. Binary Search</a></li>
+                          <li><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. Search in Rotated Sorted Array</a></li>
+                          <li><a href="https://leetcode.com/problems/koko-eating-bananas/" target="_blank" rel="noopener">875. Koko Eating Bananas</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternPrefixSum"
+                      >
+                        5. Prefix Sum Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternPrefixSum"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> Many queries or decisions depend on sums/counts of subarrays.</p>
+                        <ul>
+                          <li>Typical signals: range sum, subarray count, sum equals k, cumulative balance.</li>
+                          <li>Combine with a hash map when you need to count previous prefix values quickly.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function solve(nums, k) {
+  let prefix = 0;
+  let answer = 0;
+  const count = new Map([[0, 1]]);
+
+  for (const num of nums) {
+    prefix += num;
+    answer += count.get(prefix - k) || 0;
+    count.set(prefix, (count.get(prefix) || 0) + 1);
+  }
+
+  return answer;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>int solve(vector&lt;int&gt;&amp; nums, int k) {
+  int prefix = 0, answer = 0;
+  unordered_map&lt;int, int&gt; count;
+  count[0] = 1;
+
+  for (int num : nums) {
+    prefix += num;
+    answer += count[prefix - k];
+    count[prefix]++;
+  }
+
+  return answer;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener">303. Range Sum Query - Immutable</a></li>
+                          <li><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">560. Subarray Sum Equals K</a></li>
+                          <li><a href="https://leetcode.com/problems/continuous-subarray-sum/" target="_blank" rel="noopener">523. Continuous Subarray Sum</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternStack"
+                      >
+                        6. Stack / Monotonic Stack Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternStack"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> You need nearest greater/smaller values, undo nesting, or process elements in order with delayed resolution.</p>
+                        <ul>
+                          <li>Typical signals: next greater element, valid parentheses, histogram, daily temperatures.</li>
+                          <li>Monotonic stack stores indices or values in increasing or decreasing order.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function solve(nums) {
+  const stack = [];
+  const answer = Array(nums.length).fill(-1);
+
+  for (let i = 0; i &lt; nums.length; i++) {
+    while (stack.length &amp;&amp; nums[stack[stack.length - 1]] &lt; nums[i]) {
+      const idx = stack.pop();
+      answer[idx] = nums[i];
+    }
+    stack.push(i);
+  }
+
+  return answer;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>vector&lt;int&gt; solve(vector&lt;int&gt;&amp; nums) {
+  stack&lt;int&gt; st;
+  vector&lt;int&gt; answer(nums.size(), -1);
+
+  for (int i = 0; i &lt; (int)nums.size(); i++) {
+    while (!st.empty() &amp;&amp; nums[st.top()] &lt; nums[i]) {
+      answer[st.top()] = nums[i];
+      st.pop();
+    }
+    st.push(i);
+  }
+
+  return answer;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. Valid Parentheses</a></li>
+                          <li><a href="https://leetcode.com/problems/daily-temperatures/" target="_blank" rel="noopener">739. Daily Temperatures</a></li>
+                          <li><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">84. Largest Rectangle in Histogram</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternLinkedList"
+                      >
+                        7. Fast and Slow Pointer Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternLinkedList"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> Linked lists or arrays require cycle detection, midpoint finding, or relative pointer movement.</p>
+                        <ul>
+                          <li>Typical signals: detect cycle, middle node, happy number, reorder list, palindrome list.</li>
+                          <li>Move <code>slow</code> by 1 step and <code>fast</code> by 2 steps.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function hasCycle(head) {
+  let slow = head;
+  let fast = head;
+
+  while (fast &amp;&amp; fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) return true;
+  }
+
+  return false;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>bool hasCycle(ListNode* head) {
+  ListNode* slow = head;
+  ListNode* fast = head;
+
+  while (fast &amp;&amp; fast-&gt;next) {
+    slow = slow-&gt;next;
+    fast = fast-&gt;next-&gt;next;
+    if (slow == fast) return true;
+  }
+
+  return false;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="noopener">141. Linked List Cycle</a></li>
+                          <li><a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">876. Middle of the Linked List</a></li>
+                          <li><a href="https://leetcode.com/problems/happy-number/" target="_blank" rel="noopener">202. Happy Number</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternTreeGraph"
+                      >
+                        8. DFS / BFS for Trees and Graphs
+                      </button>
+                    </h2>
+                    <div
+                      id="patternTreeGraph"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> You need traversal, component counting, shortest path in unweighted graphs, or level-order processing.</p>
+                        <ul>
+                          <li><strong>DFS:</strong> explore completely before backtracking.</li>
+                          <li><strong>BFS:</strong> visit level by level using a queue.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript DFS template:</strong></p>
+<pre><code>function dfs(node, visited, graph) {
+  if (visited.has(node)) return;
+  visited.add(node);
+
+  for (const nei of graph[node]) {
+    dfs(nei, visited, graph);
+  }
+}</code></pre>
+
+                        <p><strong>Generic C++ BFS template:</strong></p>
+<pre><code>void bfs(int start, vector&lt;vector&lt;int&gt;&gt;&amp; graph, vector&lt;bool&gt;&amp; visited) {
+  queue&lt;int&gt; q;
+  q.push(start);
+  visited[start] = true;
+
+  while (!q.empty()) {
+    int node = q.front();
+    q.pop();
+
+    for (int nei : graph[node]) {
+      if (!visited[nei]) {
+        visited[nei] = true;
+        q.push(nei);
+      }
+    }
+  }
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">102. Binary Tree Level Order Traversal</a></li>
+                          <li><a href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="noopener">200. Number of Islands</a></li>
+                          <li><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">133. Clone Graph</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternHeap"
+                      >
+                        9. Heap / Priority Queue Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternHeap"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> You repeatedly need the smallest or largest element while the data keeps changing.</p>
+                        <ul>
+                          <li>Typical signals: top k, kth largest, merge sorted lists, scheduling, streaming median.</li>
+                          <li>Min-heap for smallest-first, max-heap for largest-first.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+                        <p>In interviews, JavaScript often needs a custom heap class. The core loop usually looks like this:</p>
+<pre><code>function process(values, heap) {
+  for (const value of values) {
+    heap.push(value);
+    if (heap.size() &gt; /* k */) heap.pop();
+  }
+  return heap.peek();
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>int solve(vector&lt;int&gt;&amp; nums, int k) {
+  priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;
+
+  for (int num : nums) {
+    pq.push(num);
+    if ((int)pq.size() &gt; k) pq.pop();
+  }
+
+  return pq.top();
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a></li>
+                          <li><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a></li>
+                          <li><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternBacktracking"
+                      >
+                        10. Backtracking Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternBacktracking"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> You must try all valid choices and undo them while exploring combinations or permutations.</p>
+                        <ul>
+                          <li>Typical signals: subsets, combinations, permutations, n-queens, word search.</li>
+                          <li>Core idea: choose, recurse, un-choose.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function backtrack(start, path, result, nums) {
+  result.push([...path]);
+
+  for (let i = start; i &lt; nums.length; i++) {
+    path.push(nums[i]);
+    backtrack(i + 1, path, result, nums);
+    path.pop();
+  }
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>void backtrack(int start, vector&lt;int&gt;&amp; path, vector&lt;vector&lt;int&gt;&gt;&amp; result, vector&lt;int&gt;&amp; nums) {
+  result.push_back(path);
+
+  for (int i = start; i &lt; (int)nums.size(); i++) {
+    path.push_back(nums[i]);
+    backtrack(i + 1, path, result, nums);
+    path.pop_back();
+  }
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/subsets/" target="_blank" rel="noopener">78. Subsets</a></li>
+                          <li><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="noopener">39. Combination Sum</a></li>
+                          <li><a href="https://leetcode.com/problems/word-search/" target="_blank" rel="noopener">79. Word Search</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternDP"
+                      >
+                        11. Dynamic Programming Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternDP"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> A problem has overlapping subproblems and an optimal answer can be built from smaller states.</p>
+                        <ul>
+                          <li>Typical signals: count ways, minimum cost, maximum profit, decision at each index.</li>
+                          <li>First define the state, then transition, then base case.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function solve(nums) {
+  const n = nums.length;
+  const dp = Array(n + 1).fill(0);
+  dp[0] = 0;
+
+  for (let i = 1; i &lt;= n; i++) {
+    dp[i] = Math.max(
+      dp[i - 1],
+      (i &gt;= 2 ? dp[i - 2] : 0) + nums[i - 1]
+    );
+  }
+
+  return dp[n];
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>int solve(vector&lt;int&gt;&amp; nums) {
+  int n = nums.size();
+  vector&lt;int&gt; dp(n + 1, 0);
+
+  for (int i = 1; i &lt;= n; i++) {
+    dp[i] = max(
+      dp[i - 1],
+      (i &gt;= 2 ? dp[i - 2] : 0) + nums[i - 1]
+    );
+  }
+
+  return dp[n];
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener">70. Climbing Stairs</a></li>
+                          <li><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener">198. House Robber</a></li>
+                          <li><a href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener">322. Coin Change</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#patternIntervals"
+                      >
+                        12. Interval Merging Pattern
+                      </button>
+                    </h2>
+                    <div
+                      id="patternIntervals"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#leetcodePatternsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p><strong>Use when:</strong> Ranges overlap, need consolidation, or scheduling depends on sorted start/end times.</p>
+                        <ul>
+                          <li>Typical signals: merge intervals, meeting rooms, insert interval, overlap detection.</li>
+                          <li>Standard move: sort first, then merge greedily.</li>
+                        </ul>
+
+                        <p><strong>Generic JavaScript template:</strong></p>
+<pre><code>function merge(intervals) {
+  intervals.sort((a, b) =&gt; a[0] - b[0]);
+  const result = [];
+
+  for (const interval of intervals) {
+    if (!result.length || result[result.length - 1][1] &lt; interval[0]) {
+      result.push(interval);
+    } else {
+      result[result.length - 1][1] = Math.max(result[result.length - 1][1], interval[1]);
+    }
+  }
+
+  return result;
+}</code></pre>
+
+                        <p><strong>Generic C++ template:</strong></p>
+<pre><code>vector&lt;vector&lt;int&gt;&gt; merge(vector&lt;vector&lt;int&gt;&gt;&amp; intervals) {
+  sort(intervals.begin(), intervals.end());
+  vector&lt;vector&lt;int&gt;&gt; result;
+
+  for (auto&amp; interval : intervals) {
+    if (result.empty() || result.back()[1] &lt; interval[0]) {
+      result.push_back(interval);
+    } else {
+      result.back()[1] = max(result.back()[1], interval[1]);
+    }
+  }
+
+  return result;
+}</code></pre>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                          <li><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener">56. Merge Intervals</a></li>
+                          <li><a href="https://leetcode.com/problems/insert-interval/" target="_blank" rel="noopener">57. Insert Interval</a></li>
+                          <li><a href="https://leetcode.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener">435. Non-overlapping Intervals</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
