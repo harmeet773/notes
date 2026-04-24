@@ -1463,6 +1463,85 @@ watched til 12 minutes , rewatch from 13 th
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading5">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse5"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse5"
+              >
+                What occurs when a model reaches the limit of its context window?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse5"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading5"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  When a model reaches the limit of its <strong>context window</strong>, it cannot
+                  consider any more tokens in the same request. The context window includes
+                  the system message, user prompt, retrieved context, conversation history,
+                  and the model's generated output.
+                </p>
+                <p class="card-text mb-2">
+                  If the total token count goes beyond that limit, one of two things usually
+                  happens: either the API rejects the request with a token-limit error, or the
+                  application must remove or truncate some earlier content to make the request fit.
+                </p>
+                <p class="card-text mb-0">
+                  In practice, this means the model may lose access to older parts of the conversation,
+                  miss important details, or produce weaker answers if useful context has been dropped.
+                  That is why long chats often use summarization, chunking, or retrieval to keep only
+                  the most relevant information inside the context window.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading6">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse6"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse6"
+              >
+                How can you find the context window size of a model?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse6"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading6"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  The most reliable way is to check the model's official documentation or API reference,
+                  because the <strong>context window size</strong> is defined by the model provider.
+                  It is usually listed as the maximum number of tokens the model can handle in one request.
+                </p>
+                <p class="card-text mb-2">
+                  You can also estimate whether you are approaching the limit by using a tokenizer or a
+                  token-counting tool. These tools convert text into tokens and help you measure how many
+                  tokens are used by the prompt, conversation history, retrieved documents, and expected output.
+                </p>
+                <p class="card-text mb-0">
+                  In short: <strong>check the docs for the official limit</strong>, and use token counting
+                  tools to monitor how much of that limit your request is consuming in practice.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
