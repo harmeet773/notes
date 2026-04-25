@@ -141,6 +141,19 @@ git switch main
 git pull
 git switch feature/login
 git stash pop</code></pre>
+
+                <h3>Example flow for untracked files in PowerShell</h3>
+                <p>
+                  Use <code>-u</code> (same as
+                  <code>--include-untracked</code>) when you also want to stash
+                  new files that Git is not tracking yet.
+                </p>
+                <pre><code>git status
+git stash push -u -m "stash tracked and untracked files"
+git stash list
+git status
+git stash pop
+git status</code></pre>
               </div>
             </div>
           </div>
@@ -588,5 +601,4 @@ Merge made by the 'ort' strategy. what is it ?
 
 
 </div>
-
 
