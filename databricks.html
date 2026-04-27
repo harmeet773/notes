@@ -149,160 +149,7 @@ title: DataBricks
           </a>
         </p>
 
-        <div class="accordion" id="genAiCourseAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#genAiModule1"
-              >
-                module 1 - what is Gen AI ?
-              </button>
-            </h2>
-
-            <div
-              id="genAiModule1"
-              class="accordion-collapse collapse"
-              data-bs-parent="#genAiCourseAccordion"
-            >
-              <div class="accordion-body">
-                <p>
-                  At core Gen AI is prediction engine , which is calculating
-                  the probability of next token . It is non - deterministic
-                  hence it might generate another token when it is ran next
-                  time , this triggers cascade of new words.
-                </p>
-
-                <div class="gen-ai-module1-sections">
-                  <div class="mb-4">
-                    <h2>what is foundation model ?</h2>
-                    <div>
-                      <p>what is foundation model ?</p>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <h2>gen ai opportunites</h2>
-                    <div>
-                      <p>gen ai opportunites</p>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <h2>model specialiazation</h2>
-                    <div>
-                      <p>
-                        model specialiazation - some are good at intruction
-                        following, some at reasoning , some are good at fine
-                        tuning
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <h2> How Large Language Models Work ?</h2>
-                    <div>
-                        <p>
-                          the Large in LLM refers to large number of parameters
-                          in the neural network as well as large dataset used
-                          to train the model. these models are built on
-                          architecture that allows it to keep rememberance of
-                          large string of text.
-                        </p>
-
-                        <p>
-                          it helps in maintaing coherence. Not all LLMs
-                          tokenize in the same way , it depends on the
-                          algorithm . it has been realized that start from
-                          using SLM for speicialized task is good as compare to
-                          LLM.
-                        </p>
-
-                        <p>
-                          In reasoning models the , the act of reasoning is
-                          included in the overall number of outout tokens .
-                          
-                          Context window : works as working memory , it is the maximum token limit a model can remember at any given time .when the limit is exceeded, the model drops the earliest information.
-                          Consequesnces include: loss of initial instruction , logic gaps and increased risk of hallucinations .
-
-                          In summary, there are three key elements of a model that determine performance, cost, latency, and the amount of information a model can consider:
-
-- Number of Parameters
-- Tokenization
-- Context window
-
-
-# Effective Prompt Engineering
-
-- **Grounding**: Providing the specific context and background data the model needs to anchor its response  
-- **Organization**: Structuring instructions logically to reduce ambiguity  . how you ask is as critical as what you ask .
-- **Token Efficiency**: Being concise yet comprehensive to maximize the model's context window
-
-
-MCP (model Context protocol) : Open-standard for integration between Al models and data sources.
-
-Non agentic vs agentic AI 
- <div class="table-responsive">
-    <table class="table table-bordered table-striped align-middle">
-      <thead class="table-danger text-center">
-        <tr>
-          <th>Category</th>
-          <th>Non-Agentic</th>
-          <th>Agentic</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Core Philosophy</th>
-          <td>Linear, human-led, and highly predictable.</td>
-          <td>Non-linear, goal-oriented, and iterative.</td>
-        </tr>
-
-        <tr>
-          <th>Best For</th>
-          <td>"If-This-Then-That" tasks with a stable, predefined logic.</td>
-          <td>Open-ended objectives requiring the <strong>Reason–Act–Observe</strong> loop.</td>
-        </tr>
-
-        <tr>
-          <th>Key Advantages</th>
-          <td>
-            <ul class="mb-0">
-              <li><strong>Low Cost & High Speed:</strong> Minimal computational overhead.</li>
-              <li><strong>Consistency:</strong> Guaranteed to follow the same path every time.</li>
-              <li><strong>Ease of Governance:</strong> Simple to debug and audit.</li>
-            </ul>
-          </td>
-          <td>
-            <ul class="mb-0">
-              <li><strong>Reasoning Capability:</strong> Can adjust its strategy based on real-world feedback.</li>
-              <li><strong>Tool Integration:</strong> Can autonomously use APIs, search the web, and query databases.</li>
-              <li><strong>Proactive Action:</strong> Moves toward a goal with minimal human intervention.</li>
-            </ul>
-          </td>
-        </tr>
-
-        <tr>
-          <th>Typical Tasks</th>
-          <td>Summarizing a single file, language translation, or generating content from a structured template.</td>
-          <td>Writing a Python script to analyze a dataset, identifying outliers, and generating a visual report with strategic recommendations.</td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-                        </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
+        
 
         <div class="accordion mt-4" id="genAiPathwayAccordion">
           <div class="accordion-item">
@@ -335,6 +182,251 @@ Non agentic vs agentic AI
                         Generative Al Fundamentals
                       </button>
                     </h2>
+
+                    <div class="accordion mt-3" id="genAiCourseAccordion">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#genAiModule1"
+                          >
+                            module 1 - what is Gen AI ?
+                          </button>
+                        </h2>
+
+                        <div
+                          id="genAiModule1"
+                          class="accordion-collapse collapse"
+                          data-bs-parent="#genAiCourseAccordion"
+                        >
+                          <div class="accordion-body">
+                            <p>
+                              At core Gen AI is prediction engine , which is
+                              calculating the probability of next token . It is
+                              non - deterministic hence it might generate
+                              another token when it is ran next time , this
+                              triggers cascade of new words.
+                            </p>
+
+                            <div class="gen-ai-module1-sections">
+                              <div class="mb-4">
+                                <h2>what is foundation model ?</h2>
+                                <div>
+                                  <p>what is foundation model ?</p>
+                                </div>
+                              </div>
+
+                              <div class="mb-4">
+                                <h2>gen ai opportunites</h2>
+                                <div>
+                                  <p>gen ai opportunites</p>
+                                </div>
+                              </div>
+
+                              <div class="mb-4">
+                                <h2>model specialiazation</h2>
+                                <div>
+                                  <p>
+                                    model specialiazation - some are good at
+                                    intruction following, some at reasoning ,
+                                    some are good at fine tuning
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="mb-4">
+                                <h2> How Large Language Models Work ?</h2>
+                                <div>
+                                  <p>
+                                    the Large in LLM refers to large number of
+                                    parameters in the neural network as well as
+                                    large dataset used to train the model.
+                                    these models are built on architecture that
+                                    allows it to keep rememberance of large
+                                    string of text.
+                                  </p>
+
+                                  <p>
+                                    it helps in maintaing coherence. Not all
+                                    LLMs tokenize in the same way , it depends
+                                    on the algorithm . it has been realized
+                                    that start from using SLM for speicialized
+                                    task is good as compare to LLM.
+                                  </p>
+
+                                  <p>
+                                    In reasoning models the , the act of
+                                    reasoning is included in the overall number
+                                    of outout tokens .
+                                  </p>
+
+                                  <p>
+                                    Context window : works as working memory ,
+                                    it is the maximum token limit a model can
+                                    remember at any given time .when the limit
+                                    is exceeded, the model drops the earliest
+                                    information. Consequesnces include: loss of
+                                    initial instruction , logic gaps and
+                                    increased risk of hallucinations .
+                                  </p>
+
+                                  <p>
+                                    In summary, there are three key elements of
+                                    a model that determine performance, cost,
+                                    latency, and the amount of information a
+                                    model can consider:
+                                  </p>
+
+                                  <ul>
+                                    <li>Number of Parameters</li>
+                                    <li>Tokenization</li>
+                                    <li>Context window</li>
+                                  </ul>
+
+                                  <h3>Effective Prompt Engineering</h3>
+
+                                  <ul>
+                                    <li>
+                                      <strong>Grounding</strong>: Providing the
+                                      specific context and background data the
+                                      model needs to anchor its response
+                                    </li>
+                                    <li>
+                                      <strong>Organization</strong>:
+                                      Structuring instructions logically to
+                                      reduce ambiguity . how you ask is as
+                                      critical as what you ask .
+                                    </li>
+                                    <li>
+                                      <strong>Token Efficiency</strong>: Being
+                                      concise yet comprehensive to maximize the
+                                      model's context window
+                                    </li>
+                                  </ul>
+
+                                  <p>
+                                    MCP (model Context protocol) : Open-standard
+                                    for integration between Al models and data
+                                    sources.
+                                  </p>
+
+                                  <p>Non agentic vs agentic AI</p>
+
+                                  <div class="table-responsive">
+                                    <table
+                                      class="table table-bordered table-striped align-middle"
+                                    >
+                                      <thead class="table-danger text-center">
+                                        <tr>
+                                          <th>Category</th>
+                                          <th>Non-Agentic</th>
+                                          <th>Agentic</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <th>Core Philosophy</th>
+                                          <td>
+                                            Linear, human-led, and highly
+                                            predictable.
+                                          </td>
+                                          <td>
+                                            Non-linear, goal-oriented, and
+                                            iterative.
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <th>Best For</th>
+                                          <td>
+                                            "If-This-Then-That" tasks with a
+                                            stable, predefined logic.
+                                          </td>
+                                          <td>
+                                            Open-ended objectives requiring the
+                                            <strong>Reason–Act–Observe</strong>
+                                            loop.
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <th>Key Advantages</th>
+                                          <td>
+                                            <ul class="mb-0">
+                                              <li>
+                                                <strong
+                                                  >Low Cost & High
+                                                  Speed:</strong
+                                                >
+                                                Minimal computational overhead.
+                                              </li>
+                                              <li>
+                                                <strong>Consistency:</strong>
+                                                Guaranteed to follow the same
+                                                path every time.
+                                              </li>
+                                              <li>
+                                                <strong
+                                                  >Ease of Governance:</strong
+                                                >
+                                                Simple to debug and audit.
+                                              </li>
+                                            </ul>
+                                          </td>
+                                          <td>
+                                            <ul class="mb-0">
+                                              <li>
+                                                <strong
+                                                  >Reasoning Capability:</strong
+                                                >
+                                                Can adjust its strategy based
+                                                on real-world feedback.
+                                              </li>
+                                              <li>
+                                                <strong
+                                                  >Tool Integration:</strong
+                                                >
+                                                Can autonomously use APIs,
+                                                search the web, and query
+                                                databases.
+                                              </li>
+                                              <li>
+                                                <strong
+                                                  >Proactive Action:</strong
+                                                >
+                                                Moves toward a goal with
+                                                minimal human intervention.
+                                              </li>
+                                            </ul>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <th>Typical Tasks</th>
+                                          <td>
+                                            Summarizing a single file, language
+                                            translation, or generating content
+                                            from a structured template.
+                                          </td>
+                                          <td>
+                                            Writing a Python script to analyze
+                                            a dataset, identifying outliers,
+                                            and generating a visual report with
+                                            strategic recommendations.
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
                     <div
                       id="genAiEvaluationGovernance"
