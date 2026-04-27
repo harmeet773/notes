@@ -149,9 +149,11 @@ git stash pop</code></pre>
                   new files that Git is not tracking yet.
                 </p>
                 <pre><code>git status
-git stash push -u -m "stash tracked and untracked files"
+# Any time you want “all untracked, nothing else” (PowerShell) use below:                  
+git stash push -u -m "untracked only" -- @(git ls-files --others --exclude-standard)
 git stash list
 git status
+git stash apply "stash@{0}"
 git stash pop
 git status</code></pre>
               </div>
