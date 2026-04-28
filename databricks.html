@@ -510,11 +510,7 @@ title: DataBricks
                     >
                       <div class="accordion-body">
         
-                        
-                        <hr><hr>
-                        <hr><br>  
-
-
+       
                         <p>
                           When evaluating a system, the first step is to look at
                           data, since data quality impacts performance and
@@ -612,6 +608,22 @@ title: DataBricks
                           significantly enhance the safety of human-Al
                           conversations.
                         </p>
+
+                        <p>LLMs are deep learning models that need massive data and computing
+resources—far more than classical machine learning models. While classical models
+use clear metrics like accuracy or F1 score, evaluating LLMs is tougher because their
+output is language.
+</p>
+<p>
+  When evaluating LLMs, the first metric used is loss. During training, the model tries to
+guess missing words in sentences, and as it improves, the loss value decreases. This
+means the model becomes better at predicting the next word and understanding
+grammar. However, just like with phone autocomplete, the model may generate
+grammatically correct words that don’t always make sense. Loss measures word
+prediction accuracy but doesn’t guarantee truly coherent or meaningful sentences, so
+more advanced evaluation methods are needed to overcome these limitations.
+
+</p>
                       </div>
                     </div>
                   </div>
