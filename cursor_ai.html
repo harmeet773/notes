@@ -1,0 +1,596 @@
+---
+layout: default
+title: Cursor AI
+---
+
+<h2 class="mb-3">Cursor AI</h2>
+<p class="mb-4">
+  Cursor AI is most effective when you treat it like a fast engineering assistant: give it narrow context,
+  a concrete objective, and a clear definition of done.
+</p>
+
+<div class="accordion" id="cursorAiAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="cursorBasicsHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#cursorBasicsSection"
+        aria-expanded="false"
+        aria-controls="cursorBasicsSection"
+      >
+        1. How to Use Cursor AI
+      </button>
+    </h2>
+    <div
+      id="cursorBasicsSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="cursorBasicsHeading"
+      data-bs-parent="#cursorAiAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="cursorBasicsNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorStart"
+              >
+                1.1 Start with a precise task
+              </button>
+            </h2>
+            <div
+              id="cursorStart"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorBasicsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>State the file, feature, bug, or refactor target explicitly.</li>
+                  <li>Tell it what success looks like: code change, explanation, test, or review.</li>
+                  <li>Good prompt example: <strong>"Update `authService.js` to refresh tokens on 401 and add unit tests."</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorModes"
+              >
+                1.2 Use it for the right job
+              </button>
+            </h2>
+            <div
+              id="cursorModes"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorBasicsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Use chat for explanation, planning, debugging hypotheses, and review.</li>
+                  <li>Use inline editing when you already know the exact block that must change.</li>
+                  <li>Use codebase-aware prompts when the task depends on multiple files or architecture.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorWorkflow"
+              >
+                1.3 Follow an efficient workflow
+              </button>
+            </h2>
+            <div
+              id="cursorWorkflow"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorBasicsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ol class="mb-0">
+                  <li>Ask Cursor to inspect the relevant files first.</li>
+                  <li>Have it explain the current behavior in short form.</li>
+                  <li>Then ask for a focused patch instead of a broad rewrite.</li>
+                  <li>Review the diff and run tests before accepting the result.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorExamples"
+              >
+                1.4 Good prompt patterns
+              </button>
+            </h2>
+            <div
+              id="cursorExamples"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorBasicsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li><strong>Bug fix:</strong> "Find why form submission fails after page refresh and patch only the root cause."</li>
+                  <li><strong>Refactor:</strong> "Extract repeated API error handling into one helper without changing behavior."</li>
+                  <li><strong>Review:</strong> "Review this file for bugs, edge cases, and missing tests."</li>
+                  <li><strong>Learning:</strong> "Explain this function line by line and identify the risky parts."</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="cursorEffectiveHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#cursorEffectiveSection"
+        aria-expanded="false"
+        aria-controls="cursorEffectiveSection"
+      >
+        2. How to Use It Effectively
+      </button>
+    </h2>
+    <div
+      id="cursorEffectiveSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="cursorEffectiveHeading"
+      data-bs-parent="#cursorAiAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="cursorEffectiveNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorScope"
+              >
+                2.1 Keep scope narrow
+              </button>
+            </h2>
+            <div
+              id="cursorScope"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorEffectiveNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Do not ask for "fix the whole app" when the issue is in one module.</li>
+                  <li>Point to the file, error message, or failing behavior.</li>
+                  <li>Narrow prompts reduce irrelevant output and improve patch quality.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorConstraints"
+              >
+                2.2 Give constraints early
+              </button>
+            </h2>
+            <div
+              id="cursorConstraints"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorEffectiveNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Specify framework, coding style, libraries, and files that must not change.</li>
+                  <li>Say whether you want minimal edits, no new dependencies, or test coverage.</li>
+                  <li>Clear constraints prevent large, expensive, low-signal responses.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorIterate"
+              >
+                2.3 Iterate instead of dumping everything at once
+              </button>
+            </h2>
+            <div
+              id="cursorIterate"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorEffectiveNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>First ask for analysis.</li>
+                  <li>Then ask for a small code change.</li>
+                  <li>Then ask for tests or cleanup if needed.</li>
+                  <li>This stepwise flow improves control and reduces wasted tokens.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorVerify"
+              >
+                2.4 Always verify the result
+              </button>
+            </h2>
+            <div
+              id="cursorVerify"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorEffectiveNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Read the diff instead of accepting changes blindly.</li>
+                  <li>Ask Cursor to explain why each change is necessary.</li>
+                  <li>Run tests, linters, or the app itself before merging.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorContext"
+              >
+                2.5 Supply context selectively
+              </button>
+            </h2>
+            <div
+              id="cursorContext"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorEffectiveNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Share only the functions, logs, or files that matter.</li>
+                  <li>Summarize long history instead of pasting entire conversations.</li>
+                  <li>Relevant context improves answer quality more than large context.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="cursorTokensHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#cursorTokensSection"
+        aria-expanded="false"
+        aria-controls="cursorTokensSection"
+      >
+        3. How to Save Tokens
+      </button>
+    </h2>
+    <div
+      id="cursorTokensSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="cursorTokensHeading"
+      data-bs-parent="#cursorAiAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="cursorTokensNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorTokenRule1"
+              >
+                3.1 Ask for short outputs by default
+              </button>
+            </h2>
+            <div
+              id="cursorTokenRule1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorTokensNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Say: <strong>"Answer in 5 bullets"</strong> or <strong>"Give only the patch."</strong></li>
+                  <li>Ask for detailed explanations only when you need them.</li>
+                  <li>Short outputs directly reduce token usage.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorTokenRule2"
+              >
+                3.2 Reuse context instead of repeating it
+              </button>
+            </h2>
+            <div
+              id="cursorTokenRule2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorTokensNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Do not restate the same project background in every prompt.</li>
+                  <li>Reference the earlier instruction and add only the delta.</li>
+                  <li>Example: <strong>"Use the same file and continue from the previous fix, now add tests."</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorTokenRule3"
+              >
+                3.3 Paste less code
+              </button>
+            </h2>
+            <div
+              id="cursorTokenRule3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorTokensNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Share only the relevant function, component, stack trace, or error log.</li>
+                  <li>If a file is large, identify the section and summarize the rest.</li>
+                  <li>Large pasted files often increase cost without increasing accuracy.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorTokenRule4"
+              >
+                3.4 Split complex tasks into smaller prompts
+              </button>
+            </h2>
+            <div
+              id="cursorTokenRule4"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorTokensNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>One huge prompt often produces a huge answer.</li>
+                  <li>Break the work into inspect, patch, test, and review stages.</li>
+                  <li>Smaller rounds usually cost fewer tokens and are easier to control.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorTokenRule5"
+              >
+                3.5 Ask for diffs, summaries, and decisions
+              </button>
+            </h2>
+            <div
+              id="cursorTokenRule5"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorTokensNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Prefer "show the exact changed lines" over "rewrite the whole file."</li>
+                  <li>Prefer "summarize the bug in 3 lines" over long narrative analysis.</li>
+                  <li>Ask for options only when a decision is actually needed.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorTokenRule6"
+              >
+                3.6 Maintain a compact working style
+              </button>
+            </h2>
+            <div
+              id="cursorTokenRule6"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorTokensNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="mb-2">A practical low-token formula:</p>
+                <ul class="mb-0">
+                  <li><strong>Task:</strong> one sentence</li>
+                  <li><strong>Context:</strong> one short paragraph or one file reference</li>
+                  <li><strong>Constraints:</strong> 2 to 4 bullets</li>
+                  <li><strong>Output format:</strong> patch, bullets, or short explanation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="cursorMistakesHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#cursorMistakesSection"
+        aria-expanded="false"
+        aria-controls="cursorMistakesSection"
+      >
+        4. Common Mistakes to Avoid
+      </button>
+    </h2>
+    <div
+      id="cursorMistakesSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="cursorMistakesHeading"
+      data-bs-parent="#cursorAiAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="cursorMistakesNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorMistake1"
+              >
+                4.1 Being too vague
+              </button>
+            </h2>
+            <div
+              id="cursorMistake1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorMistakesNestedAccordion"
+            >
+              <div class="accordion-body">
+                Prompts like <strong>"improve this"</strong> or <strong>"fix my project"</strong> force the model
+                to guess your intent, which usually wastes tokens and produces weak results.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorMistake2"
+              >
+                4.2 Requesting full rewrites too early
+              </button>
+            </h2>
+            <div
+              id="cursorMistake2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorMistakesNestedAccordion"
+            >
+              <div class="accordion-body">
+                Full rewrites are expensive, risky, and harder to review. Ask for a minimal patch first unless the code is truly beyond repair.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorMistake3"
+              >
+                4.3 Asking for explanation and implementation in one giant prompt
+              </button>
+            </h2>
+            <div
+              id="cursorMistake3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorMistakesNestedAccordion"
+            >
+              <div class="accordion-body">
+                Split it into two steps: first understand the issue, then request the code change. This keeps both the input and output compact.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#cursorMistake4"
+              >
+                4.4 Trusting generated code without review
+              </button>
+            </h2>
+            <div
+              id="cursorMistake4"
+              class="accordion-collapse collapse"
+              data-bs-parent="#cursorMistakesNestedAccordion"
+            >
+              <div class="accordion-body">
+                Cursor speeds up implementation, but correctness still depends on reviewing the diff, validating behavior, and running tests.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

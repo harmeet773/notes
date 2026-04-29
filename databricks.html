@@ -657,6 +657,29 @@ challenges.
 </p>
 To efficiently implement these LLM-as-a-Judge techniques, we turn to MLflow
 Evaluation. MLflow is a key tool for efficiently evaluating both retrievers and LLMs.
+
+
+<p> we can create new metric using mlflow.metrics.genai.make_genai_metric</p>
+
+<strong>End to end application Evaluation </strong><br>
+
+
+
+
+<p>When evaluating RAG solutions, we need to
+evaluate each component separately and
+together.
+The RAG architecture, as a compound Al system, has several key components we
+need to evaluate:
+* Chunking: The method and size used to split source documents.
+* Embedding model: The model used to convert text into vectors.
+* Vector store: This includes the performance of the retrieval mechanism and any
+re-ranker components used to refine results.
+» Generator: The final LLM used to synthesize the response based on the retrieved
+context.
+</p>
+
+continue from slide no. 5
                       </div>
                     </div>
                   </div>
