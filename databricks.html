@@ -624,6 +624,39 @@ prediction accuracy but doesn’t guarantee truly coherent or meaningful sentenc
 more advanced evaluation methods are needed to overcome these limitations.
 
 </p>
+<p>
+  To improve evaluation beyond just loss, another metric used is perplexity. Perplexity
+measures how confident a model is in picking a particular word from all possible
+choices— lower perplexity means the model is more certain. This helps produce more
+fluent sentences because the model is better at choosing words that fit together, so
+the text flows more naturally. However, even with low perplexity, the model might still
+generate sentences that sound good but aren’t actually relevant to the task or
+question. So, while perplexity is a step up from just measuring loss, it still doesn’t
+guarantee meaningful or accurate answers for specific tasks.
+
+</p>
+<p>As discussed, LLMs can generate harmful
+output
+We can compute toxicity to measure the
+harmfulness:
+o Used to identify and flag harmful,
+offensive, or inappropriate language
+o Low toxicity = low harm
+</p>
+<p>These metrics, while broadly useful, aren’t task specific—they don’t show how well a
+model does at things like question answering, summarization, or product
+recommendations. Metrics like loss, perplexity, and toxicity focus mainly on grammar
+and fluency, not on whether the sentences are actually useful for a particular task.
+This is a core challenge in Al system evaluation, since real-world tasks—like
+translation, code writing, or passing exams—require different benchmarks. That's why
+tools such as MLflow now support more specialized evaluation for tasks like question
+answering and text summarization, giving us better metrics tailored to those specific
+challenges.
+</p>
+<p>Mosaic Al Gauntlet - is a Well-curated set of benchmarks, it Encompasses 35 different benchmarks
+</p>
+To efficiently implement these LLM-as-a-Judge techniques, we turn to MLflow
+Evaluation. MLflow is a key tool for efficiently evaluating both retrievers and LLMs.
                       </div>
                     </div>
                   </div>
