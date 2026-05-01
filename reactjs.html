@@ -879,6 +879,47 @@ sagaMiddleware.run(usersSaga);
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#reactAdditionalQuestions"
+              >
+                7. Additional React.js Specific Interview Questions
+              </button>
+            </h2>
+
+            <div
+              id="reactAdditionalQuestions"
+              class="accordion-collapse collapse"
+              data-bs-parent="#reactSubAccordion"
+            >
+              <div class="accordion-body">
+                <h6>why do we need react ?</h6>
+                <p>react uses diffing algorithm , it is easy to use</p>
+
+                <h6>what is virtual dom ?</h6>
+
+                <h6>how virtual dom looks like ?</h6>
+
+                <h6>why do react uses 2 virtual dom and 1 real DOM and not 1 virtual dom and 1 real dom ?</h6>
+
+                <h6>whenever a state changes in react component the component re-renders .</h6>
+
+                <h6>what is useContext ? can use we dispatch actions also ? can we use it with useReducer ?</h6>
+
+                <h6>why is vite faster than CRA ? CRA uses webpack and babel ?</h6>
+                <p>compiling takes time .</p>
+
+                <p>vite does not bundle while development , it bundle only at time of deployment , during bundle it uses ES6 modules to serve all the 10 files . Vite is new style , CRA is old style, at time of CRA ES6 was not there .</p>
+
+                <h6>what is source map ? helpful for debugging</h6>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

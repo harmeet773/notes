@@ -691,3 +691,85 @@ continue from slide no. 5
         </div>
 
 </div>
+
+
+heading - Building Retrieval Agents On Databricks
+
+ Reasoning vs. Non-Reasoning Models
+Effective prompting requires understanding the capabilities of the underlying model. Let's examine the two primary categories:
+
+Non-Reasoning Models (e.g., Llama 3, GPT-4o): These models predict the next token based on statistical likelihood. They require explicit guidance, such as Chain of Thought (CoT) prompting ("Think step-by-step"), to break down complex logic and avoid rushing to incorrect conclusions.
+
+Reasoning Models (e.g., OpenAI o1): These models are trained to generate their own internal chain of thought before producing a final answer. For these models, manual CoT prompting is often redundant or counterproductive. Context engineering for reasoning models focuses on defining the goal and constraints rather than the thinking process.
+
+RAG vs. Retrieval Agent: RAG refers to the architectural pattern of coupling retrieval with generation, independent of any specific tooling or agent logic. Retrieval agents, by contrast, are concrete implementations that operationalize this pattern—handling query routing, retrieval orchestration, and context assembly within real systems.
+
+To solve the knowledge boundaries we defined earlier, we shift from a memory-based approach to a context-based architecture known as Retrieval Augmented Generation (RAG). RAG injects proprietary or real-time data into the prompt, enabling the model to respond based on provided facts rather than its internal memory.
+
+The RAG process consists of three key stages:
+
+Retrieval: The system searches a knowledge base (indexed via Mosaic AI Vector Search) for relevant data chunks
+Augmentation: The system injects these chunks into the context window
+Generation: The model synthesizes an answer using only the injected data
+
+
+
+<br>
+<hr>
+<h3>Principles of Context Engineering - </h3>
+Simply retrieving data is not enough; dumping raw information into a prompt often leads to confusion rather than clarity. As we move from basic RAG to production-grade systems, we must treat the context window not as a passive container, but as an engineered environment that actively shapes model behavior. 
+
+Context Engineering is the strategic design of the entire input window. It moves beyond writing a single instruction to managing the complete system state. We orchestrate the interplay between the System Instructions, Conversation History, Retrieved Data, and User Constraints to ensure the model has exactly the signal it needs to perform the task effectively.
+
+
+Key components of an effective system prompt include:
+
+Role Definition: Explicitly define the persona (e.g., "You are a Databricks Security Architect")
+Negative Constraints: Define what the model cannot do (e.g., "Do not mention competitor products" or "Do not provide code unless explicitly requested")
+Output Formatting: Enforce structured outputs (e.g., JSON, YAML, or Markdown tables) to ensure downstream applications can parse the response deterministically
+
+<h3>Strict Grounding and Chunking</h3>
+Retrieval must be strictly governed to prevent hallucinations and ensure accuracy.
+
+Key strategies include:
+
+Grounding Instructions: Use explicit instructions to bind the model to the retrieved context. For example: "Answer using ONLY the provided context chunks. If the answer is not present, state 'I do not have that information.'"
+Metadata Filtering: Utilize Unity Catalog metadata to filter retrieval before it reaches the model. For example, if a user asks about "2024 Revenue," the system should filter chunks where year=2024 to prevent the model from seeing outdated 2023 data
+<h3> Managing Multi-Turn State</h3>
+For applications involving long conversations (such as Agents), the context window will eventually fill up. Context Engineering requires strategic approaches to manage this state:
+
+Summarization: Periodically compress the conversation history into a summary of key decisions and facts
+Moving Window: Discard the oldest messages to free up token space for new retrieval
+Selective Persistence: Determine which pieces of information (e.g., user name, current project ID) must remain in the context permanently versus what can be discarded
+These strategies ensure that we maintain relevant context while staying within token limits.
+
+<h3>Context Constraints: Token Budgets and Window Limits</h3>
+Even the most elegantly engineered context is subject to the hard constraints of compute resources and model architecture. As we scale our applications, we must balance the desire for comprehensive context against the realities of token limits, latency, and operational costs.
+
+Every model has a Context Window Limit (e.g., 8k, 32k, or 128k tokens). This represents the hard limit of working memory available to the model.
+
+The context window consists of:
+
+Input Tokens: The text we send to the model (instructions + retrieved documents + history)
+Output Tokens: The text the model generates
+The Trade-off: As we fill the window with more retrieved data, the model's ability to reason degrades (the "Lost in the Middle" phenomenon), and latency increases significantly. Strategic context management is essential for maintaining performance.
+
+Key considerations:
+Cost Management: A naive RAG system that retrieves 50 documents for every query will burn through token budgets rapidly
+Optimization Strategies:
+
+Just-in-Time Retrieval: Instead of loading a full manual at the start of a chat, give the Agent a tool to retrieve specific sections only when the user asks a relevant question
+Reranking: Use a reranker model to score the top 50 retrieved chunks and only inject the top 3-5 most relevant ones into the final context window
+These strategies help us balance comprehensive context with cost efficiency and performance.
+
+Key Takeaways:
+
+Retrieval Agent Architecture: Use retrieval components to bridge knowledge gaps, and apply Context Engineering to optimize retrieval agents for performance, reliability, and cost.
+Context is Finite: Manage the context window like a budget. Use filtering and reranking to maximize the value of every token.
+Grounding is Mandatory: Strictly instruct the model to use only retrieved data and leverage Unity Catalog metadata to ensure that data is relevant and secure.
+
+
+When evaluating an entire Al system, there are usually two main concerns: cost metrics and performance metrics. Cost metrics cover things like how much infrastructure is needed and how much time processing takes, while performance metrics measure the actual value delivered to customers, such as how useful or frequently used the product is. Often, teams create custom metrics tailored to their specific use cases to get a clearer sense of the system’s total impact.
+
+
+start from page  7 of the pdf. 
