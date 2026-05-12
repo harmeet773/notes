@@ -486,6 +486,7 @@ title: DataBricks
                               </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
@@ -844,19 +845,25 @@ Mosaic AI Vector Search is governed by Unity Catalog, providing a unified securi
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-</div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#declarativeVsCodeFirstMethods"
+                              >
+                                Agent Bricks
+                              </button>
+                            </h2>
 
-<heading>Building Retrieval Agents On Databricks</heading>
+                            <div
+                              id="declarativeVsCodeFirstMethods"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#vectorSearchAccordion"
+                            >
+                              <div class="accordion-body">
 Agent Bricks provides pre-configured architectures ("bricks") for common enterprise patterns. Each brick is specialized for a specific mode of interaction and data processing.
 
 Declarative vs. Code-First Methods
@@ -874,3 +881,17 @@ This is the "outcome-oriented" approach. The developer declares what the agent s
 Workflow: The developer selects "Knowledge Assistant," points it to a Unity Catalog Volume containing PDFs, and provides a text description of the persona. Agent Bricks handles the parsing, indexing, and prompt engineering.
 Pros: Fastest time-to-value. The system creates synthetic data to test itself and auto-optimizes based on feedback.
 Cons: Less granular control over the low-level execution logic compared to pure code.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+</div>
