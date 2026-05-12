@@ -1009,6 +1009,11 @@ Cons: Less granular control over the low-level execution logic compared to pure 
                         this is the content of 
 
                         not all LLMs have the tool-calling capability.
+                        Currently, there are three options for creating agent tools:
+
+Unity Catalog function tools: This is the primary focus of this course. Your tools are defined as UC UDFs and are managed in UC as a central registry for your agent's tools. This allows for built-in security and compliance features while granting easier discoverability and reuse.
+Agent-code tools: These are tools defined directly in an agent's code. This is best for calling REST APIs, running arbitrary code, or running low-latency tools. However, this approach lacks built-in governance and discoverability that UC brings to the table.
+Model Context Protocol (MCP) tools: These are tools that follow the MCP standard for tool interoperability. Databricks-managed MCP servers are currently available and you can check the release status here.
 
                         continue from reading from B3. Tool Selection and Orchestration
                       </div>

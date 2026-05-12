@@ -51,9 +51,43 @@ title: Blogging
         class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
+        data-bs-target="#privateGitRepoBlogging"
+      >
+        2. Private Git Repository Blog
+      </button>
+    </h2>
+
+    <div
+      id="privateGitRepoBlogging"
+      class="accordion-collapse collapse"
+      data-bs-parent="#bloggingAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          You can write and manage a blog from a private Git repository while
+          publishing only the generated website to the internet.
+        </p>
+        <ul>
+          <li>Keep the source code, drafts, notes, and commit history in a private GitHub, GitLab, or Bitbucket repository.</li>
+          <li>Use a static site generator such as Jekyll, Hugo, Eleventy, Astro, Next.js, or plain HTML.</li>
+          <li>Connect the private repository to a hosting platform such as Netlify, Vercel, Cloudflare Pages, Render, or a VPS deployment pipeline.</li>
+          <li>The hosting platform builds the site from the private repo and publishes only the final HTML, CSS, JavaScript, and assets.</li>
+          <li>This is useful when you want version control and deployment automation, but do not want your source files or unpublished drafts to be public.</li>
+          <li>Avoid committing passwords, API keys, personal data, or private notes that should never be deployed; use environment variables or secret settings instead.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
         data-bs-target="#hostedPlatformsBlogging"
       >
-        2. Hosted Blogging Platforms
+        3. Hosted Blogging Platforms
       </button>
     </h2>
 
@@ -86,7 +120,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#cmsBlogging"
       >
-        3. Content Management Systems
+        4. Content Management Systems
       </button>
     </h2>
 
@@ -119,7 +153,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#staticSiteBlogging"
       >
-        4. Static Site Generators
+        5. Static Site Generators
       </button>
     </h2>
 
@@ -152,7 +186,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#headlessBlogging"
       >
-        5. Headless CMS Blogging
+        6. Headless CMS Blogging
       </button>
     </h2>
 
@@ -184,7 +218,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#newsletterBlogging"
       >
-        6. Newsletter Blogging
+        7. Newsletter Blogging
       </button>
     </h2>
 
@@ -217,7 +251,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#developerBlogging"
       >
-        7. Developer and Technical Blogging Sites
+        8. Developer and Technical Blogging Sites
       </button>
     </h2>
 
@@ -251,7 +285,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#socialBlogging"
       >
-        8. Social and Microblogging
+        9. Social and Microblogging
       </button>
     </h2>
 
@@ -284,7 +318,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#selfHostedBlogging"
       >
-        9. Fully Self-Hosted Blog
+        10. Fully Self-Hosted Blog
       </button>
     </h2>
 
@@ -316,7 +350,7 @@ title: Blogging
         data-bs-toggle="collapse"
         data-bs-target="#bloggingChoice"
       >
-        10. How to Choose
+        11. How to Choose
       </button>
     </h2>
 
@@ -328,6 +362,7 @@ title: Blogging
       <div class="accordion-body">
         <ul>
           <li>Choose <strong>GitHub Pages</strong> for a free developer-friendly blog.</li>
+          <li>Choose a <strong>private Git repository with static hosting</strong> when the blog source, drafts, and history should stay private.</li>
           <li>Choose <strong>Medium, Blogger, or WordPress.com</strong> for the easiest start.</li>
           <li>Choose <strong>Substack or Beehiiv</strong> when email subscribers are the main goal.</li>
           <li>Choose <strong>self-hosted WordPress or Ghost</strong> for ownership with a writing-focused admin panel.</li>
