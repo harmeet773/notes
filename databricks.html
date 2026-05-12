@@ -563,12 +563,10 @@ title: DataBricks
 
                         <p>
                           we can implement guardrails using databrics' safety
-                          filter feature
+                          filter feature , this will enable guardrail provided by platform , we can also implement using code approach using LlamaGuard 
                         </p>
 
-                        <p>start from Demo: Implementing AI Guardrails</p>
-
-                        <p>what is lineage , ?</p>
+                        
                         <p>Model tracking, evaluation, and audit ?</p>
                         <p>Harmful acts like poisoning and injection ?</p>
 
@@ -680,8 +678,130 @@ re-ranker components used to refine results.
 context.
 </p>
 <hr><hr><hr><hr><hr><hr>
+
+Evaluation Metrics
+1) context precision - Our first metric, Context Precision, is retrieval-related and measures the
+signal-to-noise ratio of the retrieved context.
+
+It is based on the relationship between the Query and the retrieved Context(s).
+Context Precision assesses whether the highly ranked chunks or nodes in the
+retrieval context are more relevant than irrelevant ones.
+
+For example, if your query is about Einstein's role in quantum mechanics, a high
+precision context would specifically mention his contributions to quantum theory, while
+a low precision context might broadly discuss his life and achievements without
+focusing on the query's specific technical area.
+
+2) Context Relevancy - Context Relevancy is another retrieval-related metric that measures the relevancy of
+the retrieved context.
+Like precision, it is based on the Query and the Context(s).
+However, relevancy does not necessarily consider factual accuracy. Instead, it
+focuses on how well the retrieved context addresses the posed question.
+For example, if the query is about Einstein and quantum mechanics, context that
+details his initial challenges to quantum theory or his foundational ideas would be
+highly relevant, even if it doesn't represent the 'ground truth' of his final accepted
+contributions. Conversely, context about his pacifist views or citizenship status would
+be low relevancy.
+
+3)Context Recall -  Our third retrieval metric is Context Recall.
+Recall measures the extent to which all relevant entities and information are retrieved
+and mentioned in the context provided.
+This metric is based on comparing the Ground Truth against the retrieved Context(s).
+If the ground truth about Einstein mentions both his contributions to relativity and
+insights into quantum mechanics, a high-recall context will retrieve and mention both
+of those key facts. A low-recall context might only retrieve information about relativity,
+missing the quantum mechanics aspect entirely.
+
+4)Faithfulness - Shifting now to generation-related metrics, we look at Faithfulness. This metric
+assesses the quality of the final generated response.
+Faithfulness measures the factual accuracy of the generated answer in relation to the
+provided context.
+It is specifically based on the relationship between the Response and the retrieved
+Context(s).
+A high faithfulness answer is supported by the context; for instance, if the context
+says Einstein was born on March 14th, a faithful answer will state March 14th. If the
+response provides an answer that contradicts the context—say, stating March 20th, it
+shows low faithfulness, regardless of whether March 20th might be factually correct
+outside of that specific context.
+
+5) Answer Relevancy - it assesses how pertinent and applicable the generated response is
+to the user’s initial query.
+It is based on the alignment of the Response with the user's intent or the specific
+details of the Query.
+For example, if the query asks what Einstein is known for, a high relevancy answer
+will specifically mention his major theoretical achievements, such as developing the
+theory of relativity. A low relevancy answer might simply state he was a scientist,
+which is true but doesn't fully address the intent of the question.
+
+6)Answer Correctness.- 
+This metric measures the accuracy of the generated answer when compared directly
+to the ground truth.
+It is based on the Ground Truth and the Response.
+Answer Correctness encompasses both semantic and factual similarity with the
+ground truth. If the ground truth states Einstein won the Nobel Prize in Physics in
+1921 for his work on the photoelectric effect, a high correctness answer will match
+those facts. A low correctness answer might misstate the year or mention a different
+theory, like relativity in the 1930s.
+
+
+It's important to understand the difference between online and offline evaluation.
+Everything discussed so far—like benchmark testing or using LLMs as judges—falls
+under offline evaluation, which happens before releasing a product to users, to ensure
+the system works as expected. But the most important feedback comes from online
+evaluation, which means observing real users in production and tracking how they
+interact with the system’s outputs. This live data shows whether people actually use
+and like the results, and it guides improvements for future offline evaluations and
+model development, creating a valuable feedback loop.
+
+Human feedback can be categorized as:
+* Explicit feedback: This is direct and intentional input from users, such as ratings,
+comments, and reviews.
+« Implicit feedback: This is gathered indirectly by observing user behavior and
+interactions, such as engagement metrics or other behavioral data.
+
+To bring together all these evaluation needs, from model security to component
+quality and human feedback—Databricks offers specific tools within the Mosaic Al
+Agent Framework. This framework is explicitly designed to handle the complexity of
+compound Al systems, including RAG and agent-based chains.
+
+Mosaic Al Agent Framework - A framework for creating, deploying and evaluating agents
+
+The Agent Evaluation features within the framework provide crucial visibility and
+control:
+First, they allow you to trace agent behavior in each step, which is vital for debugging
+complex workflows.
+Second, they let you quickly evaluate chain quality using RAG-specific metrics,
+unifying the offline development loop with online monitoring.
+Third, the framework includes an easy-to-use Review App to efficiently collect human
+feedback.
+And finally, it leverages Databricks LLM Judges, which are proprietary models used to
+assess RAG quality and help identify the root cause of any low-quality performance.
+
+
 continue from slide no. 5
 <hr><hr><hr><hr>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#buildingSingleAgentApplicationsOnDatabricks"
+                      >
+                        Building Single-Agent Applications on the Databricks "Generative AI Engineering Pathway"
+                      </button>
+                    </h2>
+
+                    <div
+                      id="buildingSingleAgentApplicationsOnDatabricks"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiEngineeringPathwayAccordion"
+                    >
+                      <div class="accordion-body">
                       </div>
                     </div>
                   </div>
