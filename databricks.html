@@ -996,7 +996,7 @@ Cons: Less granular control over the low-level execution logic compared to pure 
                         data-bs-toggle="collapse"
                         data-bs-target="#buildingSingleAgentApplicationsOnDatabricks"
                       >
-                        Building Single-Agent Applications on the Databricks "Generative AI Engineering Pathway"
+                        Building Single-Agent Applications on the Databricks
                       </button>
                     </h2>
 
@@ -1006,7 +1006,6 @@ Cons: Less granular control over the low-level execution logic compared to pure 
                       data-bs-parent="#genAiEngineeringPathwayAccordion"
                     >
                       <div class="accordion-body">
-                        this is the content of 
 
                         not all LLMs have the tool-calling capability.
                         Currently, there are three options for creating agent tools:
@@ -1015,7 +1014,39 @@ Unity Catalog function tools: This is the primary focus of this course. Your too
 Agent-code tools: These are tools defined directly in an agent's code. This is best for calling REST APIs, running arbitrary code, or running low-latency tools. However, this approach lacks built-in governance and discoverability that UC brings to the table.
 Model Context Protocol (MCP) tools: These are tools that follow the MCP standard for tool interoperability. Databricks-managed MCP servers are currently available and you can check the release status here.
 
-                        continue from reading from B3. Tool Selection and Orchestration
+Traditional tool calling lacks comprehensive governance. With Unity Catalog, users can build tools for retrieving structured and unstructured data and test those tools in the AI Playground. When connecting external tools (such as Slack, Google Calendar, or any API service) via Unity Catalog connections, the management of credentials and authentication is governed by Unity Catalog policies. This means you can ensure secure, auditable access and apply organization-wide governance for integrations with external services
+
+Unity Catalog provides the foundation for agent tool management with enterprise-grade capabilities:
+
+Centralized Governance
+Unified object model and three-level namespace for data and AI assets, including functions, across all UC-enabled workspaces.
+Built-in auditing and lineage, with system tables to simplify access and analysis.
+Consistent metadata and discoverability via Catalog Explorer and search.
+Governed tools: functions registered in UC can be used as agent tools, enabling reuse and control.
+Security and Access Control
+Fine-grained permissions (ANSI GRANTs), including EXECUTE on functions/tools.
+Centralized identity integration (SCIM, account-level identities) for consistent access across workspaces.
+Secure, isolated execution for Python UDFs; governed access to external connections and locations.
+Python UDFs require Unity Catalog and either a serverless/pro SQL warehouse, or UC-enabled clusters.
+Role-based hierarchical privileges aligned to catalogs → schemas → objects (tables, views, volumes, models, functions).
+Discoverability and Documentation
+Searchable catalog with rich metadata (function and parameter comments), lineage, and browse capabilities.
+Recommended docstrings for functions (purpose, parameters, return value, examples, change log) to aid tool calling.
+Platform support for AI-powered documentation to accelerate discovery for governed assets.
+Scalability and Performance
+UC‑governed tools run via Databricks compute; agent tool execution uses serverless generic compute (Spark Connect serverless). Some integrations can execute UC functions via SQL Warehouses (uc_function).
+Scaling and concurrency controls on SQL Warehouses; autoscaling on clusters to match workload demand.
+External Tool Support
+When connecting external tools (such as Slack, Google Calendar, or any API service) via Unity Catalog connections, the management of credentials and authentication is governed by Unity Catalog policies. This means you can ensure secure, auditable access and apply organization-wide governance for integrations with external services.
+
+
+Model Context Protocol (MCP)
+The main benefit of MCP is standardization. You can create a tool once and use it with any agent—whether it's one you've built or a third-party agent. Similarly, you can use tools developed by others, either from your team or from outside your organization.
+Mosaic AI Vector Search
+Mosaic AI Vector Search is a vector search solution that is built into the Databricks Data Intelligence Platform and integrated with its governance and productivity tools. Vector search is a type of search optimized for retrieving embeddings.
+
+
+                        continue from reading from searching last line
                       </div>
                     </div>
                   </div>
