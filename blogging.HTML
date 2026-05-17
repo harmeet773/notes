@@ -72,6 +72,8 @@ title: Blogging
           <li>Use a static site generator such as Jekyll, Hugo, Eleventy, Astro, Next.js, or plain HTML.</li>
           <li>Connect the private repository to a hosting platform such as Netlify, Vercel, Cloudflare Pages, Render, or a VPS deployment pipeline.</li>
           <li>The hosting platform builds the site from the private repo and publishes only the final HTML, CSS, JavaScript, and assets.</li>
+          <li>To password protect the published content, add access control at the hosting layer, such as Netlify password protection, Cloudflare Access, Vercel authentication middleware, HTTP basic authentication on a VPS, or a members-only CMS setup.</li>
+          <li>Remember that a private repository protects your source files, but it does not automatically make the live website private.</li>
           <li>This is useful when you want version control and deployment automation, but do not want your source files or unpublished drafts to be public.</li>
           <li>Avoid committing passwords, API keys, personal data, or private notes that should never be deployed; use environment variables or secret settings instead.</li>
         </ul>
