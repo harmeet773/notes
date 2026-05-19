@@ -404,6 +404,50 @@ title: Lovable.dev
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="lovableCopyProjectHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableCopyProjectSection"
+                aria-expanded="false"
+                aria-controls="lovableCopyProjectSection"
+              >
+                How to create a copy of a Lovable project?
+              </button>
+            </h2>
+            <div
+              id="lovableCopyProjectSection"
+              class="accordion-collapse collapse"
+              aria-labelledby="lovableCopyProjectHeading"
+              data-bs-parent="#lovableQaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  In Lovable, creating a copy of a project is called remixing.
+                  A remix creates a separate copy in the currently selected
+                  workspace, while the original project stays unchanged.
+                </p>
+
+                <ol class="mb-3">
+                  <li>Open the Lovable project you want to copy.</li>
+                  <li>Click the project name at the top left of the editor.</li>
+                  <li>Open Project Settings.</li>
+                  <li>Select Remix.</li>
+                  <li>Choose the workspace where the copied project should be created.</li>
+                </ol>
+
+                <ul class="mb-0">
+                  <li>You can remix your own projects or projects you have access to.</li>
+                  <li>Other users can remix your project only if remixing/access is enabled for them.</li>
+                  <li>If the project uses Lovable Cloud backend, backend structure like tables and edge functions can be copied, but existing data and manually added secrets are not copied.</li>
+                  <li>Projects connected to Supabase may have remix limitations, especially when remixing projects owned by other users.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
