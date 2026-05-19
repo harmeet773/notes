@@ -306,6 +306,62 @@ title: Lovable.dev
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="lovableSupabaseHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableSupabaseSection"
+                aria-expanded="false"
+                aria-controls="lovableSupabaseSection"
+              >
+                How to connect Lovable with Supabase backend and database?
+              </button>
+            </h2>
+            <div
+              id="lovableSupabaseSection"
+              class="accordion-collapse collapse"
+              aria-labelledby="lovableSupabaseHeading"
+              data-bs-parent="#lovableQaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Lovable can connect to Supabase to use PostgreSQL database,
+                  authentication, storage, real-time updates, and backend edge
+                  functions. You can also use Lovable Cloud, which provides a
+                  built-in backend based on Supabase without separate setup.
+                </p>
+
+                <ol class="mb-3">
+                  <li>Create or sign in to your Supabase account.</li>
+                  <li>Create a Supabase project, or let Lovable guide you while connecting.</li>
+                  <li>In Lovable, open the project editor and go to Integrations or project settings.</li>
+                  <li>Select Supabase, click Connect Supabase, sign in, and authorize Lovable.</li>
+                  <li>Choose the Supabase organization and project to link with your Lovable app.</li>
+                  <li>Wait until Lovable confirms that Supabase is connected.</li>
+                </ol>
+
+                <p>
+                  To connect app screens with database tables, describe the data
+                  feature in Lovable chat. For example: "Create a feedback form
+                  and save name, email, rating, and message in Supabase."
+                  Lovable can suggest the table structure and SQL. Run the SQL
+                  in Supabase SQL Editor, then confirm in Lovable so it can wire
+                  the UI to the database.
+                </p>
+
+                <ul class="mb-0">
+                  <li>Use Supabase Table Editor to view and edit rows.</li>
+                  <li>Use SQL Editor for table creation, schema updates, and custom queries.</li>
+                  <li>Use Authentication for users and login flows.</li>
+                  <li>Use Storage for files such as images and documents.</li>
+                  <li>Use Edge Functions when the app needs secure backend logic or API secrets.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
