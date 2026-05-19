@@ -270,7 +270,44 @@ title: Lovable.dev
       aria-labelledby="lovableQaHeading"
       data-bs-parent="#lovableDevAccordion"
     >
-      <div class="accordion-body"></div>
+      <div class="accordion-body">
+        <div class="accordion" id="lovableQaNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="lovableRunLocallyHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableRunLocallySection"
+                aria-expanded="false"
+                aria-controls="lovableRunLocallySection"
+              >
+                Can we run Lovable locally?
+              </button>
+            </h2>
+            <div
+              id="lovableRunLocallySection"
+              class="accordion-collapse collapse"
+              aria-labelledby="lovableRunLocallyHeading"
+              data-bs-parent="#lovableQaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Lovable itself runs as a cloud platform, but the generated
+                  project code can be worked on locally after connecting the
+                  project to GitHub.
+                </p>
+                <ul class="mb-0">
+                  <li>Connect the Lovable project to GitHub.</li>
+                  <li>Clone the GitHub repository to your machine.</li>
+                  <li>Install dependencies and run the app locally based on the generated project's README or package scripts.</li>
+                  <li>Push commits back to GitHub so changes can sync with Lovable.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
