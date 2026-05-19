@@ -448,6 +448,42 @@ title: Lovable.dev
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="lovableRemixDatabaseHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableRemixDatabaseSection"
+                aria-expanded="false"
+                aria-controls="lovableRemixDatabaseSection"
+              >
+                When we create a copy using Remix, does it copy the database also?
+              </button>
+            </h2>
+            <div
+              id="lovableRemixDatabaseSection"
+              class="accordion-collapse collapse"
+              aria-labelledby="lovableRemixDatabaseHeading"
+              data-bs-parent="#lovableQaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Remix copies the project code and app structure, but it does
+                  not copy the actual database rows or user data.
+                </p>
+
+                <ul class="mb-0">
+                  <li>If the project uses Lovable Cloud backend, the backend structure such as tables and edge functions can be copied, but the data inside those tables is not copied.</li>
+                  <li>Automatically generated keys are recreated for the copied project.</li>
+                  <li>Manually added secrets or keys are not copied.</li>
+                  <li>If the project is connected to Supabase, you may need to connect the remixed project to its own Supabase project and recreate or migrate the database schema/data manually.</li>
+                  <li>For production data, export and import the database separately using Supabase tools or SQL backups.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
