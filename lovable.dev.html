@@ -1,0 +1,291 @@
+---
+layout: default
+title: Lovable.dev
+---
+
+<h2 class="mb-3">Lovable.dev</h2>
+<p class="mb-4">
+  Lovable is a full-stack AI development platform for building, iterating, and deploying web applications from natural language prompts.
+</p>
+
+<div class="accordion" id="lovableDevAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="lovableOverviewHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#lovableOverviewSection"
+        aria-expanded="false"
+        aria-controls="lovableOverviewSection"
+      >
+        1. What is Lovable.dev?
+      </button>
+    </h2>
+    <div
+      id="lovableOverviewSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="lovableOverviewHeading"
+      data-bs-parent="#lovableDevAccordion"
+    >
+      <div class="accordion-body">
+        <ul class="mb-0">
+          <li>Lovable helps create web apps and websites by describing the desired product in plain language.</li>
+          <li>It can generate frontend, backend, database, authentication, and integrations depending on the project needs.</li>
+          <li>The output is real editable code, so developers can inspect, change, and connect it to normal engineering workflows.</li>
+          <li>It is useful for prototypes, internal tools, MVPs, landing pages, and fast product experiments.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="lovableWorkflowHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#lovableWorkflowSection"
+        aria-expanded="false"
+        aria-controls="lovableWorkflowSection"
+      >
+        2. Basic Workflow
+      </button>
+    </h2>
+    <div
+      id="lovableWorkflowSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="lovableWorkflowHeading"
+      data-bs-parent="#lovableDevAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="lovableWorkflowNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableStartPrompt"
+              >
+                2.1 Start with a clear prompt
+              </button>
+            </h2>
+            <div
+              id="lovableStartPrompt"
+              class="accordion-collapse collapse"
+              data-bs-parent="#lovableWorkflowNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Describe the app goal, target users, main pages, data model, and expected actions.</li>
+                  <li>Mention the visual style only after the core workflow is clear.</li>
+                  <li>Attach screenshots or references when you want Lovable to match an existing interface.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableIterate"
+              >
+                2.2 Iterate in small steps
+              </button>
+            </h2>
+            <div
+              id="lovableIterate"
+              class="accordion-collapse collapse"
+              data-bs-parent="#lovableWorkflowNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Ask for one feature or fix at a time instead of rewriting the whole app repeatedly.</li>
+                  <li>Review the preview after each change and name exactly what should be different.</li>
+                  <li>Keep accepted behavior stable by saying what should not change.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableShip"
+              >
+                2.3 Connect, test, and deploy
+              </button>
+            </h2>
+            <div
+              id="lovableShip"
+              class="accordion-collapse collapse"
+              data-bs-parent="#lovableWorkflowNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Use GitHub integration when you want source control, manual review, or team collaboration.</li>
+                  <li>Test authentication, database rules, payments, forms, and edge cases before treating the app as production-ready.</li>
+                  <li>Keep secrets, API keys, and permissions out of generated client-side code.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="lovablePromptingHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#lovablePromptingSection"
+        aria-expanded="false"
+        aria-controls="lovablePromptingSection"
+      >
+        3. Prompting Tips
+      </button>
+    </h2>
+    <div
+      id="lovablePromptingSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="lovablePromptingHeading"
+      data-bs-parent="#lovableDevAccordion"
+    >
+      <div class="accordion-body">
+        <ul class="mb-0">
+          <li><strong>Good first prompt:</strong> "Build a task management app for a small team with login, projects, task status, due dates, and a dashboard."</li>
+          <li><strong>Good edit prompt:</strong> "On the task detail page, add comments with author name and timestamp. Do not change the dashboard layout."</li>
+          <li><strong>Good debug prompt:</strong> "The save button shows success, but refreshed data is missing. Inspect the database write path and fix the root cause."</li>
+          <li><strong>Good design prompt:</strong> "Make the table denser for daily use, keep the current colors, and add clear empty and loading states."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="lovableStrengthsHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#lovableStrengthsSection"
+        aria-expanded="false"
+        aria-controls="lovableStrengthsSection"
+      >
+        4. Strengths and Watchouts
+      </button>
+    </h2>
+    <div
+      id="lovableStrengthsSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="lovableStrengthsHeading"
+      data-bs-parent="#lovableDevAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="lovableStrengthsNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableStrengths"
+              >
+                4.1 Strengths
+              </button>
+            </h2>
+            <div
+              id="lovableStrengths"
+              class="accordion-collapse collapse"
+              data-bs-parent="#lovableStrengthsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Fast path from idea to working app preview.</li>
+                  <li>Helpful for non-boilerplate UI generation and quick iteration.</li>
+                  <li>Supports a conversational workflow for adding features and fixing issues.</li>
+                  <li>GitHub integration can bring generated code into a normal repository workflow.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#lovableWatchouts"
+              >
+                4.2 Watchouts
+              </button>
+            </h2>
+            <div
+              id="lovableWatchouts"
+              class="accordion-collapse collapse"
+              data-bs-parent="#lovableStrengthsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Generated code still needs developer review for security, performance, accessibility, and maintainability.</li>
+                  <li>AI may make assumptions about business rules unless the prompt is specific.</li>
+                  <li>Production apps need real testing around auth, data access, payments, and failure states.</li>
+                  <li>Keep a habit of committing useful milestones so you can recover from unwanted changes.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="lovableReferencesHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#lovableReferencesSection"
+        aria-expanded="false"
+        aria-controls="lovableReferencesSection"
+      >
+        5. Useful Links
+      </button>
+    </h2>
+    <div
+      id="lovableReferencesSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="lovableReferencesHeading"
+      data-bs-parent="#lovableDevAccordion"
+    >
+      <div class="accordion-body">
+        <ul class="mb-0">
+          <li>
+            <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer">Lovable official website</a>
+          </li>
+          <li>
+            <a href="https://docs.lovable.dev" target="_blank" rel="noopener noreferrer">Lovable documentation</a>
+          </li>
+          <li>
+            <a href="https://docs.lovable.dev/introduction/getting-started" target="_blank" rel="noopener noreferrer">Getting started guide</a>
+          </li>
+          <li>
+            <a href="https://docs.lovable.dev/integrations/git-integration" target="_blank" rel="noopener noreferrer">GitHub integration guide</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
