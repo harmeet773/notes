@@ -1,0 +1,153 @@
+---
+layout: default
+title: Techi Tech
+---
+
+<h2 class="mb-3">Techi Tech</h2>
+
+<div class="accordion" id="techiTechAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="supabaseHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#supabaseSection"
+        aria-expanded="false"
+        aria-controls="supabaseSection"
+      >
+        Supabase
+      </button>
+    </h2>
+    <div
+      id="supabaseSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="supabaseHeading"
+      data-bs-parent="#techiTechAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="supabaseNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="supabaseOverviewHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#supabaseOverview"
+                aria-expanded="false"
+                aria-controls="supabaseOverview"
+              >
+                What is Supabase?
+              </button>
+            </h2>
+            <div
+              id="supabaseOverview"
+              class="accordion-collapse collapse"
+              aria-labelledby="supabaseOverviewHeading"
+              data-bs-parent="#supabaseNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Supabase is an open-source backend platform built around PostgreSQL.</li>
+                  <li>It provides database, authentication, storage, real-time subscriptions, and serverless edge functions.</li>
+                  <li>It is commonly used as a backend for web apps, mobile apps, prototypes, and AI-generated applications.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="supabaseFeaturesHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#supabaseFeatures"
+                aria-expanded="false"
+                aria-controls="supabaseFeatures"
+              >
+                Key Features
+              </button>
+            </h2>
+            <div
+              id="supabaseFeatures"
+              class="accordion-collapse collapse"
+              aria-labelledby="supabaseFeaturesHeading"
+              data-bs-parent="#supabaseNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li><strong>Database:</strong> Managed PostgreSQL with tables, SQL editor, relationships, and policies.</li>
+                  <li><strong>Auth:</strong> User sign-up, login, OAuth providers, magic links, and session handling.</li>
+                  <li><strong>Storage:</strong> File buckets for images, documents, and user-uploaded assets.</li>
+                  <li><strong>Realtime:</strong> Listen to database changes and update the UI instantly.</li>
+                  <li><strong>Edge Functions:</strong> Run secure backend logic close to users.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="supabaseUseCasesHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#supabaseUseCases"
+                aria-expanded="false"
+                aria-controls="supabaseUseCases"
+              >
+                Common Use Cases
+              </button>
+            </h2>
+            <div
+              id="supabaseUseCases"
+              class="accordion-collapse collapse"
+              aria-labelledby="supabaseUseCasesHeading"
+              data-bs-parent="#supabaseNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Adding login and user profiles to an application.</li>
+                  <li>Saving form submissions, dashboard data, or app records in PostgreSQL.</li>
+                  <li>Building admin panels, internal tools, SaaS apps, and MVPs.</li>
+                  <li>Connecting generated apps from tools like Lovable to a real backend.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="supabaseWatchoutsHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#supabaseWatchouts"
+                aria-expanded="false"
+                aria-controls="supabaseWatchouts"
+              >
+                Important Watchouts
+              </button>
+            </h2>
+            <div
+              id="supabaseWatchouts"
+              class="accordion-collapse collapse"
+              aria-labelledby="supabaseWatchoutsHeading"
+              data-bs-parent="#supabaseNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Always configure Row Level Security policies before exposing tables to users.</li>
+                  <li>Never place service role keys in frontend code.</li>
+                  <li>Use migrations or SQL scripts to track important schema changes.</li>
+                  <li>Test authentication, permissions, and file access before production use.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
