@@ -1,0 +1,60 @@
+---
+layout: default
+title: Database
+---
+
+<h2 class="mb-3">Database</h2>
+
+<div class="accordion" id="databaseAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="rlsHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#rlsSection"
+        aria-expanded="false"
+        aria-controls="rlsSection"
+      >
+        RSL - row level security
+      </button>
+    </h2>
+    <div
+      id="rlsSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="rlsHeading"
+      data-bs-parent="#databaseAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          Row level security controls which rows a user can read, insert,
+          update, or delete from a database table. Instead of protecting only
+          the whole table, access rules are applied row by row.
+        </p>
+
+        <h5>Why It Is Used</h5>
+        <ul>
+          <li>To ensure users can access only their own records.</li>
+          <li>To isolate tenant data in multi-tenant applications.</li>
+          <li>To enforce security rules directly inside the database.</li>
+          <li>To reduce the risk of accidental data exposure from application code.</li>
+        </ul>
+
+        <h5>Common Example</h5>
+        <p>
+          In a notes application, every note may have a <code>user_id</code>.
+          A row level security policy can allow a logged-in user to view only
+          rows where <code>user_id</code> matches their own user id.
+        </p>
+
+        <h5>Important Points</h5>
+        <ul class="mb-0">
+          <li>Enable row level security on tables that store user-specific or sensitive data.</li>
+          <li>Create separate policies for read, insert, update, and delete actions.</li>
+          <li>Test policies with different user roles before moving to production.</li>
+          <li>Do not rely only on frontend checks for data protection.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
