@@ -158,7 +158,7 @@ title: DataBricks
                 data-bs-toggle="collapse"
                 data-bs-target="#genAiSelfStudyResources"
               >
-                salf study and other resources
+                self study and other resources
               </button>
             </h2>
 
@@ -167,7 +167,295 @@ title: DataBricks
               class="accordion-collapse collapse"
               data-bs-parent="#genAiPathwayAccordion"
             >
-              <div class="accordion-body"></div>
+              <div class="accordion-body">
+                <div class="accordion" id="genAiSelfStudyResourcesAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#aspectBasedSentimentAnalysis"
+                      >
+                        Aspect-Based Sentiment Analysis
+                      </button>
+                    </h2>
+
+                    <div
+                      id="aspectBasedSentimentAnalysis"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Aspect-Based Sentiment Analysis, or ABSA, is a more
+                          detailed form of sentiment analysis. Instead of only
+                          deciding whether the whole text is positive, negative,
+                          or neutral, ABSA identifies specific aspects mentioned
+                          in the text and finds the sentiment for each aspect.
+                        </p>
+
+                        <p>
+                          For example, in the review "The model response was
+                          accurate, but the answer was too slow", normal
+                          sentiment analysis may mark the review as mixed.
+                          ABSA breaks it into aspects: accuracy is positive,
+                          while latency is negative.
+                        </p>
+
+                        <p>
+                          In Gen AI applications, ABSA is useful for analyzing
+                          user feedback at a finer level. Teams can understand
+                          whether users are unhappy with answer correctness,
+                          response speed, tone, formatting, hallucinations,
+                          retrieval quality, or safety behavior. This makes it
+                          easier to improve the right part of the AI system
+                          instead of treating all negative feedback the same.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Aspect extraction: find the specific topic or
+                            feature mentioned in the feedback.
+                          </li>
+                          <li>
+                            Sentiment classification: classify sentiment for
+                            each aspect as positive, negative, or neutral.
+                          </li>
+                          <li>
+                            Root cause analysis: connect negative aspects to
+                            system components such as retrieval, generation,
+                            latency, grounding, or guardrails.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#promptCoverage"
+                      >
+                        Prompt Coverage
+                      </button>
+                    </h2>
+
+                    <div
+                      id="promptCoverage"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Prompt Coverage measures whether a prompt fully covers
+                          the important instructions, constraints, data
+                          requirements, and output expectations needed for the
+                          task. It helps check if the prompt gives the model
+                          enough guidance to answer correctly and consistently.
+                        </p>
+
+                        <p>
+                          For example, if a support chatbot prompt says "answer
+                          customer questions" but does not mention tone,
+                          grounding, escalation rules, safety restrictions, or
+                          the expected response format, then prompt coverage is
+                          low. A high-coverage prompt clearly defines the role,
+                          allowed data sources, refusal behavior, formatting,
+                          and edge cases.
+                        </p>
+
+                        <p>
+                          In Gen AI evaluation, prompt coverage is useful for
+                          finding gaps before production. Poor coverage can
+                          cause hallucinations, inconsistent answers, unsafe
+                          responses, or outputs that downstream systems cannot
+                          parse.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Instruction coverage: checks whether the task, role,
+                            and goal are clearly defined.
+                          </li>
+                          <li>
+                            Constraint coverage: checks whether rules such as
+                            grounding, safety, privacy, and refusal behavior are
+                            included.
+                          </li>
+                          <li>
+                            Output coverage: checks whether format, structure,
+                            length, and required fields are specified.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#beamSearchDecoder"
+                      >
+                        Beam Search Decoder
+                      </button>
+                    </h2>
+
+                    <div
+                      id="beamSearchDecoder"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Beam Search Decoder is a decoding strategy used by
+                          language models to choose output text. Instead of
+                          always selecting only the single most likely next
+                          token, beam search keeps multiple possible sequences
+                          at each step and continues expanding the best
+                          candidates.
+                        </p>
+
+                        <p>
+                          The number of candidate sequences kept is called the
+                          beam width. For example, if the beam width is 3, the
+                          decoder tracks the top three possible output paths,
+                          scores them, and finally returns the sequence with the
+                          best overall score.
+                        </p>
+
+                        <p>
+                          Beam search can produce more coherent and optimized
+                          answers than greedy decoding because it considers
+                          future token combinations, not just the best immediate
+                          token. However, it can also reduce creativity and may
+                          produce repetitive or overly safe text if the search
+                          is too narrow or the scoring favors common phrases.
+                        </p>
+
+                        <p>
+                          Beam search can be used in AI applications like QA
+                          bots, summarizers, and support assistants when the
+                          goal is to produce stable and high-confidence answers.
+                          It is useful when consistency matters more than
+                          creativity. However, for real-time QA bots, beam
+                          search may increase latency because the model has to
+                          evaluate multiple candidate sequences. Many modern
+                          chatbot applications instead use sampling settings
+                          like temperature and top-p, or lower-temperature
+                          decoding, depending on the required balance between
+                          speed, accuracy, and response variety.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Greedy decoding: selects the best next token at each
+                            step.
+                          </li>
+                          <li>
+                            Beam search: keeps several likely sequences and
+                            chooses the best full sequence.
+                          </li>
+                          <li>
+                            Higher beam width: explores more options but
+                            increases compute cost and latency.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#topPAndTopK"
+                      >
+                        Top P and Top K
+                      </button>
+                    </h2>
+
+                    <div
+                      id="topPAndTopK"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Top P and Top K are decoding parameters used to
+                          control how a language model selects the next token.
+                          They are commonly used in AI applications like QA
+                          bots, chatbots, summarizers, and content generation
+                          tools to balance accuracy, creativity, and
+                          consistency.
+                        </p>
+
+                        <p>
+                          Top K limits the model to choosing from only the K
+                          most likely next tokens. For example, if top_k is 50,
+                          the model only considers the top 50 candidate tokens
+                          and ignores the rest. A lower Top K makes responses
+                          more focused and predictable, while a higher Top K
+                          allows more variety.
+                        </p>
+
+                        <p>
+                          Top P, also called nucleus sampling, selects from the
+                          smallest group of tokens whose combined probability
+                          reaches the value of P. For example, if top_p is 0.9,
+                          the model considers only the most likely tokens that
+                          together cover 90% of the probability mass. This makes
+                          Top P dynamic because the number of candidate tokens
+                          can change at each generation step.
+                        </p>
+
+                        <p>
+                          In a QA bot, use lower randomness when the answer must
+                          be factual and grounded. A common setup is low
+                          temperature, top_p around 0.8 to 0.95, and a moderate
+                          top_k such as 40 or 50 if the serving API supports it.
+                          For creative writing or brainstorming, increase
+                          temperature and allow a higher top_p so the model can
+                          explore more varied answers.
+                        </p>
+
+                        <p>Example generation settings:</p>
+
+                        <pre><code>{
+  "temperature": 0.2,
+  "top_p": 0.9,
+  "top_k": 50,
+  "max_tokens": 500
+}</code></pre>
+
+                        <ul>
+                          <li>
+                            Use lower Top P or Top K for more deterministic and
+                            safer answers.
+                          </li>
+                          <li>
+                            Use higher Top P or Top K when you want more diverse
+                            wording or creative output.
+                          </li>
+                          <li>
+                            Do not increase all randomness settings together for
+                            factual QA, because it can increase hallucination
+                            risk.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -617,219 +905,6 @@ title: DataBricks
                           filter feature , this will enable guardrail provided by platform , we can also implement using code approach using LlamaGuard 
                         </p>
 
-                        <h3>Aspect-Based Sentiment Analysis</h3>
-
-                        <p>
-                          Aspect-Based Sentiment Analysis, or ABSA, is a more
-                          detailed form of sentiment analysis. Instead of only
-                          deciding whether the whole text is positive, negative,
-                          or neutral, ABSA identifies specific aspects mentioned
-                          in the text and finds the sentiment for each aspect.
-                        </p>
-
-                        <p>
-                          For example, in the review "The model response was
-                          accurate, but the answer was too slow", normal
-                          sentiment analysis may mark the review as mixed.
-                          ABSA breaks it into aspects: accuracy is positive,
-                          while latency is negative.
-                        </p>
-
-                        <p>
-                          In Gen AI applications, ABSA is useful for analyzing
-                          user feedback at a finer level. Teams can understand
-                          whether users are unhappy with answer correctness,
-                          response speed, tone, formatting, hallucinations,
-                          retrieval quality, or safety behavior. This makes it
-                          easier to improve the right part of the AI system
-                          instead of treating all negative feedback the same.
-                        </p>
-
-                        <ul>
-                          <li>
-                            Aspect extraction: find the specific topic or feature
-                            mentioned in the feedback.
-                          </li>
-                          <li>
-                            Sentiment classification: classify sentiment for
-                            each aspect as positive, negative, or neutral.
-                          </li>
-                          <li>
-                            Root cause analysis: connect negative aspects to
-                            system components such as retrieval, generation,
-                            latency, grounding, or guardrails.
-                          </li>
-                        </ul>
-
-                        <h3>Prompt Coverage</h3>
-
-                        <p>
-                          Prompt Coverage measures whether a prompt fully
-                          covers the important instructions, constraints, data
-                          requirements, and output expectations needed for the
-                          task. It helps check if the prompt gives the model
-                          enough guidance to answer correctly and consistently.
-                        </p>
-
-                        <p>
-                          For example, if a support chatbot prompt says "answer
-                          customer questions" but does not mention tone,
-                          grounding, escalation rules, safety restrictions, or
-                          the expected response format, then prompt coverage is
-                          low. A high-coverage prompt clearly defines the role,
-                          allowed data sources, refusal behavior, formatting,
-                          and edge cases.
-                        </p>
-
-                        <p>
-                          In Gen AI evaluation, prompt coverage is useful for
-                          finding gaps before production. Poor coverage can
-                          cause hallucinations, inconsistent answers, unsafe
-                          responses, or outputs that downstream systems cannot
-                          parse.
-                        </p>
-
-                        <ul>
-                          <li>
-                            Instruction coverage: checks whether the task,
-                            role, and goal are clearly defined.
-                          </li>
-                          <li>
-                            Constraint coverage: checks whether rules such as
-                            grounding, safety, privacy, and refusal behavior are
-                            included.
-                          </li>
-                          <li>
-                            Output coverage: checks whether format, structure,
-                            length, and required fields are specified.
-                          </li>
-                        </ul>
-
-                        <h3>Beam Search Decoder</h3>
-
-                        <p>
-                          Beam Search Decoder is a decoding strategy used by
-                          language models to choose output text. Instead of
-                          always selecting only the single most likely next
-                          token, beam search keeps multiple possible sequences
-                          at each step and continues expanding the best
-                          candidates.
-                        </p>
-
-                        <p>
-                          The number of candidate sequences kept is called the
-                          beam width. For example, if the beam width is 3, the
-                          decoder tracks the top three possible output paths,
-                          scores them, and finally returns the sequence with
-                          the best overall score.
-                        </p>
-
-                        <p>
-                          Beam search can produce more coherent and optimized
-                          answers than greedy decoding because it considers
-                          future token combinations, not just the best immediate
-                          token. However, it can also reduce creativity and may
-                          produce repetitive or overly safe text if the search
-                          is too narrow or the scoring favors common phrases.
-                        </p>
-
-                        <p>
-                          Beam search can be used in AI applications like QA
-                          bots, summarizers, and support assistants when the
-                          goal is to produce stable and high-confidence answers.
-                          It is useful when consistency matters more than
-                          creativity. However, for real-time QA bots, beam
-                          search may increase latency because the model has to
-                          evaluate multiple candidate sequences. Many modern
-                          chatbot applications instead use sampling settings
-                          like temperature and top-p, or lower-temperature
-                          decoding, depending on the required balance between
-                          speed, accuracy, and response variety.
-                        </p>
-
-                        <ul>
-                          <li>
-                            Greedy decoding: selects the best next token at each
-                            step.
-                          </li>
-                          <li>
-                            Beam search: keeps several likely sequences and
-                            chooses the best full sequence.
-                          </li>
-                          <li>
-                            Higher beam width: explores more options but
-                            increases compute cost and latency.
-                          </li>
-                        </ul>
-
-                        <h3>Top P and Top K</h3>
-
-                        <p>
-                          Top P and Top K are decoding parameters used to
-                          control how a language model selects the next token.
-                          They are commonly used in AI applications like QA
-                          bots, chatbots, summarizers, and content generation
-                          tools to balance accuracy, creativity, and
-                          consistency.
-                        </p>
-
-                        <p>
-                          Top K limits the model to choosing from only the K
-                          most likely next tokens. For example, if top_k is 50,
-                          the model only considers the top 50 candidate tokens
-                          and ignores the rest. A lower Top K makes responses
-                          more focused and predictable, while a higher Top K
-                          allows more variety.
-                        </p>
-
-                        <p>
-                          Top P, also called nucleus sampling, selects from the
-                          smallest group of tokens whose combined probability
-                          reaches the value of P. For example, if top_p is 0.9,
-                          the model considers only the most likely tokens that
-                          together cover 90% of the probability mass. This makes
-                          Top P dynamic because the number of candidate tokens
-                          can change at each generation step.
-                        </p>
-
-                        <p>
-                          In a QA bot, use lower randomness when the answer must
-                          be factual and grounded. A common setup is low
-                          temperature, top_p around 0.8 to 0.95, and a moderate
-                          top_k such as 40 or 50 if the serving API supports it.
-                          For creative writing or brainstorming, increase
-                          temperature and allow a higher top_p so the model can
-                          explore more varied answers.
-                        </p>
-
-                        <p>
-                          Example generation settings:
-                        </p>
-
-                        <pre><code>{
-  "temperature": 0.2,
-  "top_p": 0.9,
-  "top_k": 50,
-  "max_tokens": 500
-}</code></pre>
-
-                        <ul>
-                          <li>
-                            Use lower Top P or Top K for more deterministic and
-                            safer answers.
-                          </li>
-                          <li>
-                            Use higher Top P or Top K when you want more diverse
-                            wording or creative output.
-                          </li>
-                          <li>
-                            Do not increase all randomness settings together for
-                            factual QA, because it can increase hallucination
-                            risk.
-                          </li>
-                        </ul>
-
-                        
                         <p>Model tracking, evaluation, and audit ?</p>
                         <p>Harmful acts like poisoning and injection ?</p>
 
