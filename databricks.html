@@ -762,6 +762,73 @@ title: DataBricks
                           </li>
                         </ul>
 
+                        <h3>Top P and Top K</h3>
+
+                        <p>
+                          Top P and Top K are decoding parameters used to
+                          control how a language model selects the next token.
+                          They are commonly used in AI applications like QA
+                          bots, chatbots, summarizers, and content generation
+                          tools to balance accuracy, creativity, and
+                          consistency.
+                        </p>
+
+                        <p>
+                          Top K limits the model to choosing from only the K
+                          most likely next tokens. For example, if top_k is 50,
+                          the model only considers the top 50 candidate tokens
+                          and ignores the rest. A lower Top K makes responses
+                          more focused and predictable, while a higher Top K
+                          allows more variety.
+                        </p>
+
+                        <p>
+                          Top P, also called nucleus sampling, selects from the
+                          smallest group of tokens whose combined probability
+                          reaches the value of P. For example, if top_p is 0.9,
+                          the model considers only the most likely tokens that
+                          together cover 90% of the probability mass. This makes
+                          Top P dynamic because the number of candidate tokens
+                          can change at each generation step.
+                        </p>
+
+                        <p>
+                          In a QA bot, use lower randomness when the answer must
+                          be factual and grounded. A common setup is low
+                          temperature, top_p around 0.8 to 0.95, and a moderate
+                          top_k such as 40 or 50 if the serving API supports it.
+                          For creative writing or brainstorming, increase
+                          temperature and allow a higher top_p so the model can
+                          explore more varied answers.
+                        </p>
+
+                        <p>
+                          Example generation settings:
+                        </p>
+
+                        <pre><code>{
+  "temperature": 0.2,
+  "top_p": 0.9,
+  "top_k": 50,
+  "max_tokens": 500
+}</code></pre>
+
+                        <ul>
+                          <li>
+                            Use lower Top P or Top K for more deterministic and
+                            safer answers.
+                          </li>
+                          <li>
+                            Use higher Top P or Top K when you want more diverse
+                            wording or creative output.
+                          </li>
+                          <li>
+                            Do not increase all randomness settings together for
+                            factual QA, because it can increase hallucination
+                            risk.
+                          </li>
+                        </ul>
+
                         
                         <p>Model tracking, evaluation, and audit ?</p>
                         <p>Harmful acts like poisoning and injection ?</p>
