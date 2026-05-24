@@ -661,6 +661,107 @@ title: DataBricks
                           </li>
                         </ul>
 
+                        <h3>Prompt Coverage</h3>
+
+                        <p>
+                          Prompt Coverage measures whether a prompt fully
+                          covers the important instructions, constraints, data
+                          requirements, and output expectations needed for the
+                          task. It helps check if the prompt gives the model
+                          enough guidance to answer correctly and consistently.
+                        </p>
+
+                        <p>
+                          For example, if a support chatbot prompt says "answer
+                          customer questions" but does not mention tone,
+                          grounding, escalation rules, safety restrictions, or
+                          the expected response format, then prompt coverage is
+                          low. A high-coverage prompt clearly defines the role,
+                          allowed data sources, refusal behavior, formatting,
+                          and edge cases.
+                        </p>
+
+                        <p>
+                          In Gen AI evaluation, prompt coverage is useful for
+                          finding gaps before production. Poor coverage can
+                          cause hallucinations, inconsistent answers, unsafe
+                          responses, or outputs that downstream systems cannot
+                          parse.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Instruction coverage: checks whether the task,
+                            role, and goal are clearly defined.
+                          </li>
+                          <li>
+                            Constraint coverage: checks whether rules such as
+                            grounding, safety, privacy, and refusal behavior are
+                            included.
+                          </li>
+                          <li>
+                            Output coverage: checks whether format, structure,
+                            length, and required fields are specified.
+                          </li>
+                        </ul>
+
+                        <h3>Beam Search Decoder</h3>
+
+                        <p>
+                          Beam Search Decoder is a decoding strategy used by
+                          language models to choose output text. Instead of
+                          always selecting only the single most likely next
+                          token, beam search keeps multiple possible sequences
+                          at each step and continues expanding the best
+                          candidates.
+                        </p>
+
+                        <p>
+                          The number of candidate sequences kept is called the
+                          beam width. For example, if the beam width is 3, the
+                          decoder tracks the top three possible output paths,
+                          scores them, and finally returns the sequence with
+                          the best overall score.
+                        </p>
+
+                        <p>
+                          Beam search can produce more coherent and optimized
+                          answers than greedy decoding because it considers
+                          future token combinations, not just the best immediate
+                          token. However, it can also reduce creativity and may
+                          produce repetitive or overly safe text if the search
+                          is too narrow or the scoring favors common phrases.
+                        </p>
+
+                        <p>
+                          Beam search can be used in AI applications like QA
+                          bots, summarizers, and support assistants when the
+                          goal is to produce stable and high-confidence answers.
+                          It is useful when consistency matters more than
+                          creativity. However, for real-time QA bots, beam
+                          search may increase latency because the model has to
+                          evaluate multiple candidate sequences. Many modern
+                          chatbot applications instead use sampling settings
+                          like temperature and top-p, or lower-temperature
+                          decoding, depending on the required balance between
+                          speed, accuracy, and response variety.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Greedy decoding: selects the best next token at each
+                            step.
+                          </li>
+                          <li>
+                            Beam search: keeps several likely sequences and
+                            chooses the best full sequence.
+                          </li>
+                          <li>
+                            Higher beam width: explores more options but
+                            increases compute cost and latency.
+                          </li>
+                        </ul>
+
                         
                         <p>Model tracking, evaluation, and audit ?</p>
                         <p>Harmful acts like poisoning and injection ?</p>
