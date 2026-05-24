@@ -617,6 +617,50 @@ title: DataBricks
                           filter feature , this will enable guardrail provided by platform , we can also implement using code approach using LlamaGuard 
                         </p>
 
+                        <h3>Aspect-Based Sentiment Analysis</h3>
+
+                        <p>
+                          Aspect-Based Sentiment Analysis, or ABSA, is a more
+                          detailed form of sentiment analysis. Instead of only
+                          deciding whether the whole text is positive, negative,
+                          or neutral, ABSA identifies specific aspects mentioned
+                          in the text and finds the sentiment for each aspect.
+                        </p>
+
+                        <p>
+                          For example, in the review "The model response was
+                          accurate, but the answer was too slow", normal
+                          sentiment analysis may mark the review as mixed.
+                          ABSA breaks it into aspects: accuracy is positive,
+                          while latency is negative.
+                        </p>
+
+                        <p>
+                          In Gen AI applications, ABSA is useful for analyzing
+                          user feedback at a finer level. Teams can understand
+                          whether users are unhappy with answer correctness,
+                          response speed, tone, formatting, hallucinations,
+                          retrieval quality, or safety behavior. This makes it
+                          easier to improve the right part of the AI system
+                          instead of treating all negative feedback the same.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Aspect extraction: find the specific topic or feature
+                            mentioned in the feedback.
+                          </li>
+                          <li>
+                            Sentiment classification: classify sentiment for
+                            each aspect as positive, negative, or neutral.
+                          </li>
+                          <li>
+                            Root cause analysis: connect negative aspects to
+                            system components such as retrieval, generation,
+                            latency, grounding, or guardrails.
+                          </li>
+                        </ul>
+
                         
                         <p>Model tracking, evaluation, and audit ?</p>
                         <p>Harmful acts like poisoning and injection ?</p>
