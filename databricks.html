@@ -1505,6 +1505,21 @@ Cons: Less granular control over the low-level execution logic compared to pure 
                           productivity tools. Vector search is a type of search
                           optimized for retrieving embeddings.
                         </p>
+
+<br>
+<hr>
+Before getting started, it's important to keep in mind what UC functions are. Unity Catalog tools are really just Unity Catalog user-defined functions (UDFs) under the hood. When you define a Unity Catalog tool, you're registering a function in Unity Catalog. To learn more about Unity Catalog UDFs, see this documentation.
+
+What's a UDF? User-defined functions (UDFs) in Unity Catalog extend SQL and Python capabilities within Databricks. They allow custom functions to be defined, used, and securely shared and governed across computing environments.
+
+Unity Catalog Functions as Agent Tools are Unity Catalog functions written in either SQL or Python that can be dynamically discovered, selected, and executed by AI agents to perform data operations and business logic. Unlike traditional functions that require manual programming to call, Unity Catalog Functions as Agent Tools are designed to be:
+
+Self-describing through comprehensive metadata and documentation
+Contextually appropriate for specific business or analytical tasks
+Governable through Unity Catalog's security and access control mechanisms
+
+
+
                       </div>
                     </div>
                   </div>
