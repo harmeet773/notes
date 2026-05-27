@@ -1506,55 +1506,164 @@ Cons: Less granular control over the low-level execution logic compared to pure 
                           optimized for retrieving embeddings.
                         </p>
 
-<br>
-<hr>
-Before getting started, it's important to keep in mind what UC functions are. Unity Catalog tools are really just Unity Catalog user-defined functions (UDFs) under the hood. When you define a Unity Catalog tool, you're registering a function in Unity Catalog. To learn more about Unity Catalog UDFs, see this documentation.
+                        <br />
+                        <hr />
 
-What's a UDF? User-defined functions (UDFs) in Unity Catalog extend SQL and Python capabilities within Databricks. They allow custom functions to be defined, used, and securely shared and governed across computing environments.
+                        <p>
+                          Before getting started, it's important to keep in mind
+                          what UC functions are. Unity Catalog tools are really
+                          just Unity Catalog user-defined functions (UDFs) under
+                          the hood. When you define a Unity Catalog tool, you're
+                          registering a function in Unity Catalog. To learn more
+                          about Unity Catalog UDFs, see this documentation.
+                        </p>
 
-Unity Catalog Functions as Agent Tools are Unity Catalog functions written in either SQL or Python that can be dynamically discovered, selected, and executed by AI agents to perform data operations and business logic. Unlike traditional functions that require manual programming to call, Unity Catalog Functions as Agent Tools are designed to be:
+                        <p>
+                          What's a UDF? User-defined functions (UDFs) in Unity
+                          Catalog extend SQL and Python capabilities within
+                          Databricks. They allow custom functions to be defined,
+                          used, and securely shared and governed across
+                          computing environments.
+                        </p>
 
-Self-describing through comprehensive metadata and documentation
-Contextually appropriate for specific business or analytical tasks
-Governable through Unity Catalog's security and access control mechanisms
+                        <p>
+                          Unity Catalog Functions as Agent Tools are Unity
+                          Catalog functions written in either SQL or Python that
+                          can be dynamically discovered, selected, and executed
+                          by AI agents to perform data operations and business
+                          logic. Unlike traditional functions that require
+                          manual programming to call, Unity Catalog Functions as
+                          Agent Tools are designed to be:
+                        </p>
 
-we can use /doc command to create documentation ( add comments ) in the code .
-in in playground , we also get an option named - create agent workbook, this will create a workbook to create , register the agent 
+                        <ul>
+                          <li>
+                            Self-describing through comprehensive metadata and
+                            documentation
+                          </li>
+                          <li>
+                            Contextually appropriate for specific business or
+                            analytical tasks
+                          </li>
+                          <li>
+                            Governable through Unity Catalog's security and
+                            access control mechanisms
+                          </li>
+                        </ul>
 
-The Databricks Mosaic AI Agent Framework provides a unified platform for authoring, deploying, and monitoring AI agents. This framework supports multiple popular agent development libraries including LangChain, LangGraph, DSPy, and OpenAI, while providing native integration with Databricks services like Vector Search, Model Serving, and MLflow.
+                        <p>
+                          we can use /doc command to create documentation ( add
+                          comments ) in the code .
+                        </p>
+                        <p>
+                          in in playground , we also get an option named -
+                          create agent workbook, this will create a workbook to
+                          create , register the agent
+                        </p>
 
-The framework emphasizes production readiness through features like automatic tracing, comprehensive evaluation capabilities, and seamless deployment to Mosaic AI Model Serving. Whether you're building simple chat agents or complex multi-agent systems, Databricks provides the tools and infrastructure needed for enterprise-scale AI applications.
-for tracing , we will use databrics mlflow.
+                        <p>
+                          The Databricks Mosaic AI Agent Framework provides a
+                          unified platform for authoring, deploying, and
+                          monitoring AI agents. This framework supports multiple
+                          popular agent development libraries including
+                          LangChain, LangGraph, DSPy, and OpenAI, while
+                          providing native integration with Databricks services
+                          like Vector Search, Model Serving, and MLflow.
+                        </p>
 
-use ResponsesAgent interface instead of ChatAgent
-with databrics mlflow we can create a agent end to end , it is built specifically to support agent development end-to-end, from prototyping through evaluation to production deployment.
+                        <p>
+                          The framework emphasizes production readiness through
+                          features like automatic tracing, comprehensive
+                          evaluation capabilities, and seamless deployment to
+                          Mosaic AI Model Serving. Whether you're building
+                          simple chat agents or complex multi-agent systems,
+                          Databricks provides the tools and infrastructure
+                          needed for enterprise-scale AI applications.
+                        </p>
+                        <p>for tracing , we will use databrics mlflow.</p>
 
+                        <p>
+                          use ResponsesAgent interface instead of ChatAgent
+                        </p>
+                        <p>
+                          with databrics mlflow we can create a agent end to end
+                          , it is built specifically to support agent
+                          development end-to-end, from prototyping through
+                          evaluation to production deployment.
+                        </p>
 
+                        <p>we can tag agents also</p>
 
+                        <p>
+                          Agent Bricks provides a high-level abstraction
+                          designed to help technical users quickly build and
+                          optimize production-ready, domain-specific AI agents,
+                          focusing on automatic evaluation and optimization,
+                          including Agent Learning on Human Feedback (ALHF), to
+                          maximize quality while balancing cost considerations.
+                        </p>
+                        <p>
+                          Agent Bricks supports four primary agent types, each
+                          designed for specific enterprise use cases and
+                          operational patterns. Understanding these distinctions
+                          is crucial for selecting the appropriate agent type for
+                          your specific requirements.
+                        </p>
 
-we can tag agents also 
+                        <p>The Four Agent Types:</p>
 
+                        <ol>
+                          <li>
+                            Information Extraction (IE): Automated extraction of
+                            structured data from unstructured sources such as
+                            documents, PDFs, emails, and images
+                          </li>
+                          <li>
+                            Custom LLM (CLLM): Domain-specific language models
+                            fine-tuned and optimized for particular tasks and
+                            datasets
+                          </li>
+                          <li>
+                            Knowledge Assistant (KA): Interactive agents that
+                            provide question-answering capabilities over
+                            knowledge bases using retrieval-augmented
+                            generation. That is, KA is a single agent where
+                            tool-calling capabilities are restricted to RAG
+                            applications.
+                          </li>
+                          <li>
+                            Multi-Agent Supervisor (MAS): Coordination systems
+                            that manage and orchestrate multiple specialized
+                            agents to complete complex, multi-step tasks. For
+                            example, we can equip an MAS with a set of tools and
+                            no additional agents and have it act as a single
+                            agent with a toolkit.
+                          </li>
+                        </ol>
 
-Agent Bricks provides a high-level abstraction designed to help technical users quickly build and optimize production-ready, domain-specific AI agents, focusing on automatic evaluation and optimization, including Agent Learning on Human Feedback (ALHF), to maximize quality while balancing cost considerations.
-Agent Bricks supports four primary agent types, each designed for specific enterprise use cases and operational patterns. Understanding these distinctions is crucial for selecting the appropriate agent type for your specific requirements.
+                        <p>
+                          Agents are organized into two operational models based
+                          on their intended use patterns:
+                        </p>
 
-The Four Agent Types:
-
-Information Extraction (IE): Automated extraction of structured data from unstructured sources such as documents, PDFs, emails, and images
-Custom LLM (CLLM): Domain-specific language models fine-tuned and optimized for particular tasks and datasets
-Knowledge Assistant (KA): Interactive agents that provide question-answering capabilities over knowledge bases using retrieval-augmented generation. That is, KA is a single agent where tool-calling capabilities are restricted to RAG applications.
-Multi-Agent Supervisor (MAS): Coordination systems that manage and orchestrate multiple specialized agents to complete complex, multi-step tasks. For example, we can equip an MAS with a set of tools and no additional agents and have it act as a single agent with a toolkit.
-
-Agents are organized into two operational models based on their intended use patterns:
-
-Automated Bricks (Information Extraction and Custom LLM): Optimized for high-scale, batch processing scenarios with minimal human intervention. These agents prioritize cost-performance optimization and throughput.
-
-Interactive Bricks (Knowledge Assistant, Multi-Agent Supervisor, and Genie): Designed for human-in-the-loop experiences and real-time interaction scenarios. These agents focus on conversational interfaces and dynamic response generation.
-
-
-
-
-</div>
+                        <ul>
+                          <li>
+                            Automated Bricks (Information Extraction and Custom
+                            LLM): Optimized for high-scale, batch processing
+                            scenarios with minimal human intervention. These
+                            agents prioritize cost-performance optimization and
+                            throughput.
+                          </li>
+                          <li>
+                            Interactive Bricks (Knowledge Assistant,
+                            Multi-Agent Supervisor, and Genie): Designed for
+                            human-in-the-loop experiences and real-time
+                            interaction scenarios. These agents focus on
+                            conversational interfaces and dynamic response
+                            generation.
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
