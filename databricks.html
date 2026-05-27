@@ -1530,10 +1530,31 @@ use ResponsesAgent interface instead of ChatAgent
 with databrics mlflow we can create a agent end to end , it is built specifically to support agent development end-to-end, from prototyping through evaluation to production deployment.
 
 
-completed - Demo: Tracing Single Agents with MLflow, 
-cntinue afer it
 
-                      </div>
+
+we can tag agents also 
+
+
+Agent Bricks provides a high-level abstraction designed to help technical users quickly build and optimize production-ready, domain-specific AI agents, focusing on automatic evaluation and optimization, including Agent Learning on Human Feedback (ALHF), to maximize quality while balancing cost considerations.
+Agent Bricks supports four primary agent types, each designed for specific enterprise use cases and operational patterns. Understanding these distinctions is crucial for selecting the appropriate agent type for your specific requirements.
+
+The Four Agent Types:
+
+Information Extraction (IE): Automated extraction of structured data from unstructured sources such as documents, PDFs, emails, and images
+Custom LLM (CLLM): Domain-specific language models fine-tuned and optimized for particular tasks and datasets
+Knowledge Assistant (KA): Interactive agents that provide question-answering capabilities over knowledge bases using retrieval-augmented generation. That is, KA is a single agent where tool-calling capabilities are restricted to RAG applications.
+Multi-Agent Supervisor (MAS): Coordination systems that manage and orchestrate multiple specialized agents to complete complex, multi-step tasks. For example, we can equip an MAS with a set of tools and no additional agents and have it act as a single agent with a toolkit.
+
+Agents are organized into two operational models based on their intended use patterns:
+
+Automated Bricks (Information Extraction and Custom LLM): Optimized for high-scale, batch processing scenarios with minimal human intervention. These agents prioritize cost-performance optimization and throughput.
+
+Interactive Bricks (Knowledge Assistant, Multi-Agent Supervisor, and Genie): Designed for human-in-the-loop experiences and real-time interaction scenarios. These agents focus on conversational interfaces and dynamic response generation.
+
+
+
+
+</div>
                     </div>
                   </div>
                 </div>
@@ -1543,3 +1564,5 @@ cntinue afer it
         </div>
 
 </div>
+others - 
+we can use Attribute-Based Access Control (ABAC) in Unity Catalog helps protect sensitive data using row filters and column mask policies.
