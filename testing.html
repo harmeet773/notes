@@ -207,5 +207,81 @@ title: Testing
         </div>
       </div>
     </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingABTesting">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseABTesting" aria-expanded="false" aria-controls="collapseABTesting">
+          A/B Testing
+        </button>
+      </h2>
+      <div id="collapseABTesting" class="accordion-collapse collapse" aria-labelledby="headingABTesting" data-bs-parent="#testingAccordion">
+        <div class="accordion-body">
+          <p>
+            A/B testing compares two or more versions of a product experience with real users to learn which version performs better against a measurable goal.
+          </p>
+
+          <div class="accordion" id="abTestingNestedAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingABConcepts">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseABConcepts" aria-expanded="true" aria-controls="collapseABConcepts">
+                  Core Concepts
+                </button>
+              </h2>
+              <div id="collapseABConcepts" class="accordion-collapse collapse show" aria-labelledby="headingABConcepts" data-bs-parent="#abTestingNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li><strong>Control:</strong> The existing version used as the baseline.</li>
+                    <li><strong>Variant:</strong> The changed version being tested against the control.</li>
+                    <li><strong>Random Assignment:</strong> Users are split into groups to reduce selection bias.</li>
+                    <li><strong>Primary Metric:</strong> The main success measure, such as conversion rate, sign-ups, revenue, or click-through rate.</li>
+                    <li><strong>Guardrail Metrics:</strong> Safety checks that ensure the change does not harm latency, errors, retention, support tickets, or user satisfaction.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingABProcess">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseABProcess" aria-expanded="false" aria-controls="collapseABProcess">
+                  Experiment Process
+                </button>
+              </h2>
+              <div id="collapseABProcess" class="accordion-collapse collapse" aria-labelledby="headingABProcess" data-bs-parent="#abTestingNestedAccordion">
+                <div class="accordion-body">
+                  <ol>
+                    <li>Define a clear hypothesis and business objective.</li>
+                    <li>Select the target audience, traffic split, and experiment duration.</li>
+                    <li>Choose primary, secondary, and guardrail metrics before launch.</li>
+                    <li>Run the test long enough to collect reliable data.</li>
+                    <li>Analyze results for practical impact, not only statistical significance.</li>
+                    <li>Ship the winning version, iterate, or stop if the result is inconclusive.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingABPractices">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseABPractices" aria-expanded="false" aria-controls="collapseABPractices">
+                  Best Practices and Pitfalls
+                </button>
+              </h2>
+              <div id="collapseABPractices" class="accordion-collapse collapse" aria-labelledby="headingABPractices" data-bs-parent="#abTestingNestedAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li>Test one meaningful change at a time when you need clear cause and effect.</li>
+                    <li>Avoid stopping early just because the result looks positive after a small sample.</li>
+                    <li>Check that user assignment is stable so the same user keeps seeing the same version.</li>
+                    <li>Segment results by device, geography, traffic source, or user type when behavior may differ.</li>
+                    <li>Watch for novelty effects, seasonality, tracking bugs, and overlapping experiments.</li>
+                    <li>Document the hypothesis, result, decision, and follow-up learning for future teams.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
