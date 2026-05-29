@@ -261,6 +261,96 @@ title: Testing
             </div>
 
             <div class="accordion-item">
+              <h2 class="accordion-header" id="headingABAssignment">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseABAssignment" aria-expanded="false" aria-controls="collapseABAssignment">
+                  User Assignment Strategies
+                </button>
+              </h2>
+              <div id="collapseABAssignment" class="accordion-collapse collapse" aria-labelledby="headingABAssignment" data-bs-parent="#abTestingNestedAccordion">
+                <div class="accordion-body">
+                  <p>
+                    Users can be divided into experiment groups in several ways, depending on how stable, controlled, and targeted the test needs to be. The goal is to make sure each user consistently sees the same version while the experiment is running, and that the assignment can be measured later in analytics.
+                  </p>
+
+                  <h6>Common Ways to Divide Users</h6>
+                  <ul>
+                    <li><strong>Random Assignment:</strong> Each eligible user is randomly placed into control or variant groups. This reduces selection bias, but the result should be stored so the user does not switch versions on every visit.</li>
+                    <li><strong>Percentage Rollout:</strong> A fixed percentage of traffic, such as 10%, 25%, or 50%, receives the new version. Teams often increase the percentage gradually after checking guardrail metrics such as errors, latency, and support tickets.</li>
+                    <li><strong>Feature Flags:</strong> A feature-flag system decides which version a user sees. The flag can be configured by percentage, country, plan, user role, or allowlist, and can be turned off quickly without redeploying code.</li>
+                    <li><strong>User ID Hashing:</strong> A stable hash of the user ID, account ID, or device ID assigns users to buckets. This is one of the safest approaches because the same input always maps to the same variant.</li>
+                    <li><strong>Cookie or Session-Based Assignment:</strong> Anonymous users are grouped using browser cookies or session identifiers. This is useful before login, but users may switch groups if cookies are cleared, browsers change, or devices change.</li>
+                    <li><strong>Cohort-Based Assignment:</strong> Users are grouped by shared traits such as region, device type, plan, signup date, or customer segment. This is helpful when testing a feature for a specific audience, but the analysis should account for the fact that cohorts may behave differently.</li>
+                    <li><strong>Geo-Based Assignment:</strong> Different countries, states, cities, or data regions receive different versions. This is useful for market-specific rollouts, but geography can introduce external factors such as language, pricing, holidays, and traffic source differences.</li>
+                    <li><strong>Account or Organization-Level Assignment:</strong> All users in the same company, workspace, tenant, or household see the same version. This avoids inconsistent experiences inside shared accounts and is common in B2B SaaS products.</li>
+                    <li><strong>Invite or Allowlist Assignment:</strong> Only selected users, beta customers, employees, or internal testers receive the variant. This is useful for early validation before a wider A/B test, but it should not be treated as unbiased experiment data.</li>
+                  </ul>
+
+                  <h6>Implementation Approach</h6>
+                  <ol>
+                    <li><strong>Define the experiment:</strong> Give the experiment a stable key such as <code>checkout_button_copy_v2</code>, define the variants such as <code>control</code> and <code>variant</code>, and decide the traffic split.</li>
+                    <li><strong>Choose the assignment unit:</strong> Decide whether assignment should happen by user ID, account ID, device ID, or anonymous cookie. Use account ID when multiple users share the same workspace or organization.</li>
+                    <li><strong>Check eligibility:</strong> Apply targeting rules before assignment, such as country, plan, platform, app version, or login status. Users who are not eligible should stay outside the experiment.</li>
+                    <li><strong>Assign a stable bucket:</strong> Convert the assignment unit and experiment key into a deterministic number, usually with a hash function. Map that number to a variant based on the traffic split.</li>
+                    <li><strong>Persist the assignment:</strong> Store the chosen variant in a database, feature-flag platform, cookie, local storage, or analytics identity profile so the user keeps seeing the same version.</li>
+                    <li><strong>Render the correct version:</strong> The application reads the assignment and shows the control or variant experience. Avoid changing the assignment midway through a user journey.</li>
+                    <li><strong>Track exposure and outcomes:</strong> Log an exposure event when the user actually sees the experiment, then track conversion, revenue, retention, errors, latency, and other success or guardrail metrics.</li>
+                    <li><strong>Analyze and decide:</strong> Compare results between groups after enough data is collected. Decide whether to ship, roll back, continue testing, or run a follow-up experiment.</li>
+                  </ol>
+
+                  <h6>Simple Bucketing Example</h6>
+                  <p>
+                    A common implementation is deterministic hashing. The same user and experiment key always produce the same bucket, so assignment stays stable across sessions.
+                  </p>
+                  <pre><code>function hashToBucket(value) {
+  let hash = 0;
+
+  for (let i = 0; i &lt; value.length; i++) {
+    hash = (hash * 31 + value.charCodeAt(i)) % 100;
+  }
+
+  return hash;
+}
+
+function getVariant(userId, experimentKey) {
+  const input = `${experimentKey}:${userId}`;
+  const bucket = hashToBucket(input); // Stable number from 0 to 99
+
+  if (bucket &lt; 50) {
+    return "control";
+  }
+
+  return "variant";
+}</code></pre>
+
+                  <p>
+                    For a 10% rollout, buckets <code>0-9</code> can receive the variant and the rest can stay in control. For a 50/50 test, buckets <code>0-49</code> can be control and <code>50-99</code> can be variant.
+                  </p>
+
+                  <h6>Feature Flag Flow</h6>
+                  <ol>
+                    <li>Create a flag for the experiment, such as <code>new_checkout_enabled</code>.</li>
+                    <li>Add targeting rules, such as only logged-in users on the latest app version.</li>
+                    <li>Configure the rollout percentage or variant split in the flag system.</li>
+                    <li>Read the flag value in the frontend or backend before rendering the feature.</li>
+                    <li>Send the assigned variant with analytics events so results can be grouped correctly.</li>
+                    <li>Increase rollout, pause the experiment, or disable the variant based on the results.</li>
+                  </ol>
+
+                  <h6>Important Implementation Notes</h6>
+                  <ul>
+                    <li><strong>Use stable assignment:</strong> A user should not see control on one visit and variant on the next unless the experiment intentionally changes.</li>
+                    <li><strong>Do not assign after conversion:</strong> Assignment should happen before the user can complete the measured action, otherwise results can be biased.</li>
+                    <li><strong>Track exposure separately:</strong> Being eligible is not the same as seeing the experiment. Measure users who were actually exposed to the tested experience.</li>
+                    <li><strong>Avoid mixed experiences:</strong> Keep assignment consistent across frontend, backend, emails, notifications, and mobile apps when they are part of the same journey.</li>
+                    <li><strong>Handle anonymous-to-logged-in users:</strong> Decide how to merge a cookie-based assignment with a logged-in user ID so the user does not unexpectedly switch versions.</li>
+                    <li><strong>Prevent overlapping conflicts:</strong> Avoid running multiple experiments that change the same screen, price, recommendation, or checkout flow at the same time.</li>
+                    <li><strong>Keep an audit trail:</strong> Store the experiment key, variant, start date, end date, targeting rules, and rollout changes so the result can be explained later.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
               <h2 class="accordion-header" id="headingABPractices">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseABPractices" aria-expanded="false" aria-controls="collapseABPractices">
                   Best Practices and Pitfalls
