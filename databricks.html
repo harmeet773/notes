@@ -127,6 +127,165 @@ title: DataBricks
         class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
+        data-bs-target="#databricsComponents"
+      >
+        Databricks components
+      </button>
+    </h2>
+
+    <div
+      id="databricsComponents"
+      class="accordion-collapse collapse"
+      data-bs-parent="#databricksAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="databricsComponentsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricsWorkspace"
+              >
+                Workspace
+              </button>
+            </h2>
+
+            <div
+              id="databricsWorkspace"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  A Databricks workspace is the collaborative environment where
+                  users create, organize, and run notebooks, jobs, queries,
+                  dashboards, and machine learning experiments.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricsCompute"
+              >
+                Compute
+              </button>
+            </h2>
+
+            <div
+              id="databricsCompute"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Compute provides the processing resources used to run
+                  notebooks, workflows, SQL warehouses, and other workloads.
+                  It includes all-purpose clusters, job clusters, and SQL
+                  warehouses.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricsDeltaLake"
+              >
+                Delta Lake
+              </button>
+            </h2>
+
+            <div
+              id="databricsDeltaLake"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Delta Lake is the storage layer used for reliable lakehouse
+                  tables. It supports ACID transactions, schema enforcement,
+                  scalable metadata handling, and time travel.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricsUnityCatalog"
+              >
+                Unity Catalog
+              </button>
+            </h2>
+
+            <div
+              id="databricsUnityCatalog"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Unity Catalog centralizes governance for data and AI assets.
+                  It manages catalogs, schemas, tables, views, volumes, models,
+                  permissions, lineage, and auditing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricsWorkflows"
+              >
+                Workflows
+              </button>
+            </h2>
+
+            <div
+              id="databricsWorkflows"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Workflows schedule and orchestrate production jobs. They can
+                  run notebooks, Python scripts, JARs, dbt tasks, Delta Live
+                  Tables pipelines, and other task types.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
         data-bs-target="#genAiCourse"
       >
         Gen AI course
