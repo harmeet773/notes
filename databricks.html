@@ -173,6 +173,105 @@ title: DataBricks
                 class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
+                data-bs-target="#learnByQa"
+              >
+                learn by QA
+              </button>
+            </h2>
+
+            <div
+              id="learnByQa"
+              class="accordion-collapse collapse"
+              data-bs-parent="#genAiPathwayAccordion"
+            >
+              <div class="accordion-body">
+                <div class="accordion" id="learnByQaAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#sequenceTruncationWithTokenReplacement"
+                      >
+                        What is Sequence Truncation with Token Replacement?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="sequenceTruncationWithTokenReplacement"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#learnByQaAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Sequence Truncation with Token Replacement is a way to
+                          handle input text that is longer than the model's
+                          maximum context window. Instead of sending the full
+                          sequence, the system shortens it and replaces the
+                          removed part with a special marker token or summary
+                          token.
+                        </p>
+
+                        <p>
+                          Normal truncation simply cuts off extra tokens. Token
+                          replacement is more informative because it leaves a
+                          signal that some content was removed. For example, a
+                          long document may be converted into an input like:
+                        </p>
+
+                        <pre><code>Introduction text ... [TRUNCATED_SECTION] ... final question</code></pre>
+
+                        <p>
+                          This helps the model understand that the sequence is
+                          incomplete. In some systems, the replacement token can
+                          be a simple placeholder such as
+                          <code>[TRUNCATED]</code>. In more advanced systems, it
+                          can be a compressed summary, metadata marker, or
+                          special token learned during model training.
+                        </p>
+
+                        <p>
+                          In Gen AI applications, this technique is useful when
+                          prompts include long conversation history, retrieved
+                          documents, logs, or user-provided files. It helps keep
+                          the input within the token budget while preserving the
+                          fact that omitted information existed.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Sequence truncation: removes tokens that exceed the
+                            model's context window or token budget.
+                          </li>
+                          <li>
+                            Token replacement: inserts a marker or compressed
+                            representation where content was removed.
+                          </li>
+                          <li>
+                            Main benefit: prevents context window overflow while
+                            reducing confusion caused by silent cuts.
+                          </li>
+                          <li>
+                            Main risk: if important details are removed, the
+                            model may still miss key facts even though a marker
+                            is present.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
                 data-bs-target="#databricsCompute"
               >
                 Compute
