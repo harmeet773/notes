@@ -346,8 +346,65 @@ title: Gen AI
             </h2>
             <div id="term2" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
-                A token is the smallest unit of text processed by a model, which may or may not represent a complete meaningful unit.
-                <strong>Tokenization</strong> is the initial processing step where input text is broken into <strong>discrete tokens</strong>. This process goes beyond simple space-based splitting; it identifies <strong>meaningful suffixes</strong> like "-ing" or "-ers" (e.g., "glitters," "eating"), which helps the model understand that a specific action is being performed by an object.
+               <p>
+    A <strong>token</strong> is the smallest unit of text that a model processes. A token may represent a whole word, part of a word, punctuation mark, or another meaningful text fragment.
+</p>
+
+<p>
+    <strong>Tokenization</strong> is the process of breaking input text into <strong>discrete tokens</strong>. Rather than simply splitting text by spaces, tokenization identifies meaningful word components such as prefixes, roots, and suffixes (for example, "-ing" in <em>eating</em> or "-ers" in <em>glitters</em>). This helps the model recognize patterns, relationships, and grammatical structures within the text.
+</p>
+
+<p>
+    It is important to use a tokenizer that is specifically designed for the language model being used (for example, BERT or GPT). Different models are trained with different tokenization strategies and vocabularies. A common misconception is that tokenization works the same way across all models, but this is not the case. To ensure accurate processing and optimal performance, the tokenizer must match the model architecture.
+</p>
+
+<p><strong>Example 1:</strong></p>
+
+<p>
+    Text: <code>"The cat is eating fish."</code>
+</p>
+
+<p>
+    Possible tokens:
+</p>
+
+<pre><code>["The", "cat", "is", "eat", "ing", "fish", "."]</code></pre>
+
+<p>
+    In this example, the word <strong>"eating"</strong> is split into the root <strong>"eat"</strong> and the suffix <strong>"ing"</strong>, helping the model understand that an eating action is taking place.
+</p>
+
+<p><strong>Example 2:</strong></p>
+
+<p>
+    Text: <code>"The stars are glittering."</code>
+</p>
+
+<p>
+    Possible tokens:
+</p>
+
+<pre><code>["The", "star", "s", "are", "glitter", "ing", "."]</code></pre>
+
+<p>
+    Here, <strong>"stars"</strong> may be split into <strong>"star"</strong> and <strong>"s"</strong>, while <strong>"glittering"</strong> may be split into <strong>"glitter"</strong> and <strong>"ing"</strong>. This enables the model to recognize the base words and their grammatical variations, improving its understanding of the sentence.
+</p>
+
+<p><strong>Example 3:</strong></p>
+
+<p>
+    Text: <code>"Unbelievable results!"</code>
+</p>
+
+<p>
+    Possible tokens:
+</p>
+
+<pre><code>["un", "believ", "able", "results", "!"]</code></pre>
+
+<p>
+    In this example, the word <strong>"unbelievable"</strong> is broken into smaller meaningful components. By recognizing prefixes such as <strong>"un"</strong> and suffixes such as <strong>"able"</strong>, the model can better understand the meaning of unfamiliar or complex words.
+</p>
               </div>
             </div>
           </div>
