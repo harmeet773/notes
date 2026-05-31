@@ -937,6 +937,44 @@ title: DataBricks
 
                                 <pre><code>Generated text + Reference text -> BLEU / ROUGE metric -> Similarity score</code></pre>
 
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Metric</th>
+                                      <th>Main idea</th>
+                                      <th>Best used for</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>BLEU</td>
+                                      <td>
+                                        Precision-oriented n-gram overlap:
+                                        how much of the generated text matches
+                                        the reference wording.
+                                      </td>
+                                      <td>
+                                        Machine translation, controlled text
+                                        generation, and regression tests where
+                                        exact phrasing matters.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>ROUGE</td>
+                                      <td>
+                                        Recall-oriented overlap: how much of the
+                                        reference answer or summary is covered
+                                        by the generated text.
+                                      </td>
+                                      <td>
+                                        Summarization, content coverage checks,
+                                        and comparing whether key points were
+                                        preserved.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
                                 <ul>
                                   <li>
                                     Use BLEU when evaluating translation or
@@ -961,6 +999,13 @@ title: DataBricks
                                     Use ROUGE-L to compare the longest matching
                                     word sequence, which helps measure sentence
                                     structure similarity.
+                                  </li>
+                                  <li>
+                                    Avoid using BLEU or ROUGE as the primary
+                                    metric for open-ended chat, reasoning,
+                                    code generation, creative writing, or
+                                    factual QA where multiple very different
+                                    answers can be correct.
                                   </li>
                                 </ul>
 
