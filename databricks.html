@@ -750,6 +750,140 @@ title: DataBricks
                               </div>
                             </div>
                           </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#aiSummarizationModelArchitecture"
+                              >
+                                What is the architecture of an AI summarization
+                                model?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="aiSummarizationModelArchitecture"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The architecture of an AI summarization model
+                                  is the set of components that convert a long
+                                  document, conversation, or set of retrieved
+                                  passages into a shorter version that preserves
+                                  the most important meaning.
+                                </p>
+
+                                <p>
+                                  Modern summarization systems are usually built
+                                  around a transformer-based language model. The
+                                  input text is first cleaned, split into
+                                  tokens, and passed through attention layers.
+                                  These layers help the model understand which
+                                  words, sentences, and sections are most
+                                  relevant to the final summary.
+                                </p>
+
+                                <p>
+                                  A common abstractive summarization flow looks
+                                  like this:
+                                </p>
+
+                                <pre><code>Source text -> Preprocessing -> Tokenizer -> Transformer encoder/decoder or LLM -> Summary decoder -> Post-processing -> Final summary</code></pre>
+
+                                <p>
+                                  In an encoder-decoder model, the encoder reads
+                                  the source text and creates contextual
+                                  representations. The decoder then generates
+                                  the summary one token at a time. In a
+                                  decoder-only LLM, the prompt contains the
+                                  source text plus summarization instructions,
+                                  and the model predicts the summary directly as
+                                  the completion.
+                                </p>
+
+                                <p>
+                                  Production summarization systems often add
+                                  extra layers around the model. For long
+                                  documents, a chunking step breaks the input
+                                  into smaller sections. Each section may be
+                                  summarized first, and then a second model call
+                                  combines those partial summaries into a final
+                                  answer. This is often called map-reduce
+                                  summarization.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Input layer: receives documents,
+                                    transcripts, chats, emails, or retrieved
+                                    passages.
+                                  </li>
+                                  <li>
+                                    Preprocessing layer: cleans text, removes
+                                    noise, splits long inputs, and keeps useful
+                                    metadata.
+                                  </li>
+                                  <li>
+                                    Tokenization layer: converts text into token
+                                    IDs that the model can process.
+                                  </li>
+                                  <li>
+                                    Model layer: uses transformer attention to
+                                    identify important context and generate or
+                                    select summary content.
+                                  </li>
+                                  <li>
+                                    Decoding layer: controls the generated text
+                                    using settings such as max tokens,
+                                    temperature, Top P, and repetition
+                                    penalties.
+                                  </li>
+                                  <li>
+                                    Post-processing layer: checks formatting,
+                                    removes duplicates, enforces length, and may
+                                    validate facts against the source.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  There are three common summarization
+                                  architecture patterns:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Extractive summarization: selects important
+                                    sentences from the original text without
+                                    rewriting them.
+                                  </li>
+                                  <li>
+                                    Abstractive summarization: generates a new,
+                                    shorter version in natural language, often
+                                    using different wording from the source.
+                                  </li>
+                                  <li>
+                                    RAG-assisted summarization: retrieves the
+                                    most relevant chunks first, then summarizes
+                                    only the grounded context.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  The main design goal is to balance
+                                  compression, factual accuracy, coverage, and
+                                  readability. A good architecture should reduce
+                                  the amount of text while keeping the key
+                                  facts, decisions, dates, metrics, and
+                                  relationships intact.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
