@@ -1912,141 +1912,267 @@ title: DataBricks
                       data-bs-parent="#genAiEngineeringPathwayAccordion"
                     >
                       <div class="accordion-body">
-                        Reasoning vs. Non-Reasoning Models Effective prompting
-                        requires understanding the capabilities of the
-                        underlying model. Let's examine the two primary
-                        categories: Non-Reasoning Models (e.g., Llama 3,
-                        GPT-4o): These models predict the next token based on
-                        statistical likelihood. They require explicit guidance,
-                        such as Chain of Thought (CoT) prompting ("Think
-                        step-by-step"), to break down complex logic and avoid
-                        rushing to incorrect conclusions. Reasoning Models
-                        (e.g., OpenAI o1): These models are trained to generate
-                        their own internal chain of thought before producing a
-                        final answer. For these models, manual CoT prompting is
-                        often redundant or counterproductive. Context
-                        engineering for reasoning models focuses on defining the
-                        goal and constraints rather than the thinking process.
-                        RAG vs. Retrieval Agent: RAG refers to the architectural
-                        pattern of coupling retrieval with generation,
-                        independent of any specific tooling or agent logic.
-                        Retrieval agents, by contrast, are concrete
-                        implementations that operationalize this
-                        pattern—handling query routing, retrieval orchestration,
-                        and context assembly within real systems. To solve the
-                        knowledge boundaries we defined earlier, we shift from a
-                        memory-based approach to a context-based architecture
-                        known as Retrieval Augmented Generation (RAG). RAG
-                        injects proprietary or real-time data into the prompt,
-                        enabling the model to respond based on provided facts
-                        rather than its internal memory. The RAG process
-                        consists of three key stages: Retrieval: The system
-                        searches a knowledge base (indexed via Mosaic AI Vector
-                        Search) for relevant data chunks Augmentation: The
-                        system injects these chunks into the context window
-                        Generation: The model synthesizes an answer using only
-                        the injected data
+                        <h3>Reasoning vs. Non-Reasoning Models</h3>
+                        <p>
+                          Effective prompting requires understanding the
+                          capabilities of the underlying model. Let's examine
+                          the two primary categories:
+                        </p>
+                        <ul>
+                          <li>
+                            <strong
+                              >Non-Reasoning Models (e.g., Llama 3,
+                              GPT-4o):</strong
+                            >
+                            These models predict the next token based on
+                            statistical likelihood. They require explicit
+                            guidance, such as Chain of Thought (CoT) prompting
+                            ("Think step-by-step"), to break down complex logic
+                            and avoid rushing to incorrect conclusions.
+                          </li>
+                          <li>
+                            <strong
+                              >Reasoning Models (e.g., OpenAI o1):</strong
+                            >
+                            These models are trained to generate their own
+                            internal chain of thought before producing a final
+                            answer. For these models, manual CoT prompting is
+                            often redundant or counterproductive. Context
+                            engineering for reasoning models focuses on defining
+                            the goal and constraints rather than the thinking
+                            process.
+                          </li>
+                        </ul>
 
-                        <br />
+                        <h3>RAG vs. Retrieval Agent</h3>
+                        <p>
+                          RAG refers to the architectural pattern of coupling
+                          retrieval with generation, independent of any specific
+                          tooling or agent logic. Retrieval agents, by contrast,
+                          are concrete implementations that operationalize this
+                          pattern—handling query routing, retrieval
+                          orchestration, and context assembly within real
+                          systems.
+                        </p>
+                        <p>
+                          To solve the knowledge boundaries we defined earlier,
+                          we shift from a memory-based approach to a
+                          context-based architecture known as Retrieval
+                          Augmented Generation (RAG). RAG injects proprietary or
+                          real-time data into the prompt, enabling the model to
+                          respond based on provided facts rather than its
+                          internal memory.
+                        </p>
+                        <p>The RAG process consists of three key stages:</p>
+                        <ul>
+                          <li>
+                            <strong>Retrieval:</strong> The system searches a
+                            knowledge base (indexed via Mosaic AI Vector Search)
+                            for relevant data chunks
+                          </li>
+                          <li>
+                            <strong>Augmentation:</strong> The system injects
+                            these chunks into the context window
+                          </li>
+                          <li>
+                            <strong>Generation:</strong> The model synthesizes
+                            an answer using only the injected data
+                          </li>
+                        </ul>
+
                         <hr />
                         <h3>Principles of Context Engineering -</h3>
-                        Simply retrieving data is not enough; dumping raw
-                        information into a prompt often leads to confusion
-                        rather than clarity. As we move from basic RAG to
-                        production-grade systems, we must treat the context
-                        window not as a passive container, but as an engineered
-                        environment that actively shapes model behavior. Context
-                        Engineering is the strategic design of the entire input
-                        window. It moves beyond writing a single instruction to
-                        managing the complete system state. We orchestrate the
-                        interplay between the System Instructions, Conversation
-                        History, Retrieved Data, and User Constraints to ensure
-                        the model has exactly the signal it needs to perform the
-                        task effectively. Key components of an effective system
-                        prompt include: Role Definition: Explicitly define the
-                        persona (e.g., "You are a Databricks Security
-                        Architect") Negative Constraints: Define what the model
-                        cannot do (e.g., "Do not mention competitor products" or
-                        "Do not provide code unless explicitly requested")
-                        Output Formatting: Enforce structured outputs (e.g.,
-                        JSON, YAML, or Markdown tables) to ensure downstream
-                        applications can parse the response deterministically
+                        <p>
+                          Simply retrieving data is not enough; dumping raw
+                          information into a prompt often leads to confusion
+                          rather than clarity. As we move from basic RAG to
+                          production-grade systems, we must treat the context
+                          window not as a passive container, but as an
+                          engineered environment that actively shapes model
+                          behavior.
+                        </p>
+                        <p>
+                          Context Engineering is the strategic design of the
+                          entire input window. It moves beyond writing a single
+                          instruction to managing the complete system state. We
+                          orchestrate the interplay between the System
+                          Instructions, Conversation History, Retrieved Data,
+                          and User Constraints to ensure the model has exactly
+                          the signal it needs to perform the task effectively.
+                        </p>
+                        <p>
+                          Key components of an effective system prompt include:
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>Role Definition:</strong> Explicitly define
+                            the persona (e.g., "You are a Databricks Security
+                            Architect")
+                          </li>
+                          <li>
+                            <strong>Negative Constraints:</strong> Define what
+                            the model cannot do (e.g., "Do not mention
+                            competitor products" or "Do not provide code unless
+                            explicitly requested")
+                          </li>
+                          <li>
+                            <strong>Output Formatting:</strong> Enforce
+                            structured outputs (e.g., JSON, YAML, or Markdown
+                            tables) to ensure downstream applications can parse
+                            the response deterministically
+                          </li>
+                        </ul>
 
                         <h3>Strict Grounding and Chunking</h3>
-                        Retrieval must be strictly governed to prevent
-                        hallucinations and ensure accuracy. Key strategies
-                        include: Grounding Instructions: Use explicit
-                        instructions to bind the model to the retrieved context.
-                        For example: "Answer using ONLY the provided context
-                        chunks. If the answer is not present, state 'I do not
-                        have that information.'" Metadata Filtering: Utilize
-                        Unity Catalog metadata to filter retrieval before it
-                        reaches the model. For example, if a user asks about
-                        "2024 Revenue," the system should filter chunks where
-                        year=2024 to prevent the model from seeing outdated 2023
-                        data
+                        <p>
+                          Retrieval must be strictly governed to prevent
+                          hallucinations and ensure accuracy. Key strategies
+                          include:
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>Grounding Instructions:</strong> Use
+                            explicit instructions to bind the model to the
+                            retrieved context. For example: "Answer using ONLY
+                            the provided context chunks. If the answer is not
+                            present, state 'I do not have that information.'"
+                          </li>
+                          <li>
+                            <strong>Metadata Filtering:</strong> Utilize Unity
+                            Catalog metadata to filter retrieval before it
+                            reaches the model. For example, if a user asks about
+                            "2024 Revenue," the system should filter chunks
+                            where year=2024 to prevent the model from seeing
+                            outdated 2023 data
+                          </li>
+                        </ul>
+
                         <h3>Managing Multi-Turn State</h3>
-                        For applications involving long conversations (such as
-                        Agents), the context window will eventually fill up.
-                        Context Engineering requires strategic approaches to
-                        manage this state: Summarization: Periodically compress
-                        the conversation history into a summary of key decisions
-                        and facts Moving Window: Discard the oldest messages to
-                        free up token space for new retrieval Selective
-                        Persistence: Determine which pieces of information
-                        (e.g., user name, current project ID) must remain in the
-                        context permanently versus what can be discarded These
-                        strategies ensure that we maintain relevant context
-                        while staying within token limits.
+                        <p>
+                          For applications involving long conversations (such as
+                          Agents), the context window will eventually fill up.
+                          Context Engineering requires strategic approaches to
+                          manage this state:
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>Summarization:</strong> Periodically
+                            compress the conversation history into a summary of
+                            key decisions and facts
+                          </li>
+                          <li>
+                            <strong>Moving Window:</strong> Discard the oldest
+                            messages to free up token space for new retrieval
+                          </li>
+                          <li>
+                            <strong>Selective Persistence:</strong> Determine
+                            which pieces of information (e.g., user name,
+                            current project ID) must remain in the context
+                            permanently versus what can be discarded
+                          </li>
+                        </ul>
+                        <p>
+                          These strategies ensure that we maintain relevant
+                          context while staying within token limits.
+                        </p>
 
                         <h3>
                           Context Constraints: Token Budgets and Window Limits
                         </h3>
-                        Even the most elegantly engineered context is subject to
-                        the hard constraints of compute resources and model
-                        architecture. As we scale our applications, we must
-                        balance the desire for comprehensive context against the
-                        realities of token limits, latency, and operational
-                        costs. Every model has a Context Window Limit (e.g., 8k,
-                        32k, or 128k tokens). This represents the hard limit of
-                        working memory available to the model. The context
-                        window consists of: Input Tokens: The text we send to
-                        the model (instructions + retrieved documents + history)
-                        Output Tokens: The text the model generates The
-                        Trade-off: As we fill the window with more retrieved
-                        data, the model's ability to reason degrades (the "Lost
-                        in the Middle" phenomenon), and latency increases
-                        significantly. Strategic context management is essential
-                        for maintaining performance. Key considerations: Cost
-                        Management: A naive RAG system that retrieves 50
-                        documents for every query will burn through token
-                        budgets rapidly Optimization Strategies: Just-in-Time
-                        Retrieval: Instead of loading a full manual at the start
-                        of a chat, give the Agent a tool to retrieve specific
-                        sections only when the user asks a relevant question
-                        Reranking: Use a reranker model to score the top 50
-                        retrieved chunks and only inject the top 3-5 most
-                        relevant ones into the final context window These
-                        strategies help us balance comprehensive context with
-                        cost efficiency and performance. Key Takeaways:
-                        Retrieval Agent Architecture: Use retrieval components
-                        to bridge knowledge gaps, and apply Context Engineering
-                        to optimize retrieval agents for performance,
-                        reliability, and cost. Context is Finite: Manage the
-                        context window like a budget. Use filtering and
-                        reranking to maximize the value of every token.
-                        Grounding is Mandatory: Strictly instruct the model to
-                        use only retrieved data and leverage Unity Catalog
-                        metadata to ensure that data is relevant and secure.
-                        When evaluating an entire Al system, there are usually
-                        two main concerns: cost metrics and performance metrics.
-                        Cost metrics cover things like how much infrastructure
-                        is needed and how much time processing takes, while
-                        performance metrics measure the actual value delivered
-                        to customers, such as how useful or frequently used the
-                        product is. Often, teams create custom metrics tailored
-                        to their specific use cases to get a clearer sense of
-                        the system’s total impact.
+                        <p>
+                          Even the most elegantly engineered context is subject
+                          to the hard constraints of compute resources and model
+                          architecture. As we scale our applications, we must
+                          balance the desire for comprehensive context against
+                          the realities of token limits, latency, and
+                          operational costs.
+                        </p>
+                        <p>
+                          Every model has a Context Window Limit (e.g., 8k, 32k,
+                          or 128k tokens). This represents the hard limit of
+                          working memory available to the model. The context
+                          window consists of:
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>Input Tokens:</strong> The text we send to
+                            the model (instructions + retrieved documents +
+                            history)
+                          </li>
+                          <li>
+                            <strong>Output Tokens:</strong> The text the model
+                            generates
+                          </li>
+                        </ul>
+                        <p>
+                          <strong>The Trade-off:</strong> As we fill the window
+                          with more retrieved data, the model's ability to
+                          reason degrades (the "Lost in the Middle"
+                          phenomenon), and latency increases significantly.
+                          Strategic context management is essential for
+                          maintaining performance.
+                        </p>
+                        <p>Key considerations:</p>
+                        <ul>
+                          <li>
+                            <strong>Cost Management:</strong> A naive RAG system
+                            that retrieves 50 documents for every query will
+                            burn through token budgets rapidly
+                          </li>
+                          <li>
+                            <strong>Optimization Strategies:</strong>
+                            <ul>
+                              <li>
+                                <strong>Just-in-Time Retrieval:</strong> Instead
+                                of loading a full manual at the start of a chat,
+                                give the Agent a tool to retrieve specific
+                                sections only when the user asks a relevant
+                                question
+                              </li>
+                              <li>
+                                <strong>Reranking:</strong> Use a reranker model
+                                to score the top 50 retrieved chunks and only
+                                inject the top 3-5 most relevant ones into the
+                                final context window
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <p>
+                          These strategies help us balance comprehensive context
+                          with cost efficiency and performance.
+                        </p>
+                        <p>Key Takeaways:</p>
+                        <ul>
+                          <li>
+                            <strong>Retrieval Agent Architecture:</strong> Use
+                            retrieval components to bridge knowledge gaps, and
+                            apply Context Engineering to optimize retrieval
+                            agents for performance, reliability, and cost.
+                          </li>
+                          <li>
+                            <strong>Context is Finite:</strong> Manage the
+                            context window like a budget. Use filtering and
+                            reranking to maximize the value of every token.
+                          </li>
+                          <li>
+                            <strong>Grounding is Mandatory:</strong> Strictly
+                            instruct the model to use only retrieved data and
+                            leverage Unity Catalog metadata to ensure that data
+                            is relevant and secure.
+                          </li>
+                        </ul>
+                        <p>
+                          When evaluating an entire Al system, there are usually
+                          two main concerns: cost metrics and performance
+                          metrics. Cost metrics cover things like how much
+                          infrastructure is needed and how much time processing
+                          takes, while performance metrics measure the actual
+                          value delivered to customers, such as how useful or
+                          frequently used the product is. Often, teams create
+                          custom metrics tailored to their specific use cases to
+                          get a clearer sense of the system’s total impact.
+                        </p>
 
                         <div class="accordion mt-4" id="vectorSearchAccordion">
                           <div class="accordion-item">
@@ -2067,141 +2193,245 @@ title: DataBricks
                               data-bs-parent="#vectorSearchAccordion"
                             >
                               <div class="accordion-body">
-                                embedding is a numerical representation of
-                                content, typically generated by a deep learning
-                                model. he key characteristic that makes
-                                embeddings powerful is their ability to map
-                                similar concepts close together in vector space.
-                                it's worth noting that embeddings extend far
-                                beyond words. Multimodal models like GPT-4o and
-                                Gemini 1.5 can process and embed images, audio,
-                                and text into a unified vector space. This
-                                capability unlocks cross-modal retrieval
-                                scenarios—imagine using a text query to find
-                                semantically relevant images, or searching audio
-                                content with written descriptions. For retrieval
-                                to work effectively, your embedding model must
-                                represent both source documents and user queries
-                                in the same vector space. If the model trained
-                                primarily on long-form documents but your
-                                application uses short, informal queries, the
-                                vector representations may not align
-                                well—leading to poor retrieval results. The best
-                                practice is straightforward: use the same
-                                embedding model for both indexing documents and
-                                processing queries. Different search methods
-                                serve different retrieval needs: Similarity
-                                Search: This method retrieves content based on
-                                semantic correlation rather than exact word
-                                matching. It enables natural language queries
-                                like "how to deal with anxiety" to surface
-                                relevant results that may use different
-                                terminology, such as "coping with PTSD" or
-                                "managing stress." Full-Text Search: This
-                                traditional approach relies on keyword matching.
-                                It excels at finding specific terms like part
-                                numbers, product codes, or proper nouns, but
-                                fails to capture semantic intent or recognize
-                                synonyms. Hybrid Search: This powerful approach
-                                combines vector similarity search with
-                                keyword-based search. By leveraging both
-                                semantic understanding and exact keyword
-                                matching, hybrid search typically delivers
-                                higher retrieval accuracy than either method
-                                alone. To determine how "similar" two vectors
-                                are, we use two main types of metrics—distance
-                                metrics and similarity metrics—each suited to
-                                different retrieval scenarios. Distance metrics
-                                are used when you want to quantify how far apart
-                                two vectors are in space—ideal for clustering,
-                                outlier detection, or when magnitude matters.
-                                Similarity metrics are used when you want to
-                                know how closely aligned two vectors are in
-                                direction—ideal for semantic search, document
-                                retrieval, and most NLP applications where
-                                meaning is more important than scale. Distance
-                                Metrics Euclidean Distance (L2): Measures the
-                                straight-line distance between two points in
-                                vector space. A lower value means vectors are
-                                more similar. Use this when you care about the
-                                absolute difference in all dimensions, such as
-                                clustering or anomaly detection. Manhattan
-                                Distance (L1): Sums the absolute differences
-                                across all dimensions. A lower value means
-                                vectors are closer. This is useful when
-                                differences along each axis are equally
-                                important, such as in grid-based or sparse data.
-                                Similarity Metrics Cosine Similarity: Measures
-                                the cosine of the angle between two vectors. A
-                                higher score means greater similarity. This is
-                                the most popular metric for text embeddings
-                                because it focuses on orientation (semantic
-                                meaning) rather than magnitude, making it robust
-                                to document length or scale differences. Search
-                                Strategies Two primary strategies balance
-                                accuracy and performance: K-Nearest Neighbors
-                                (KNN): An exact search method that calculates
-                                the distance between the query vector and every
-                                vector in the database. While highly accurate,
-                                it's computationally expensive and doesn't scale
-                                well to large datasets—imagine comparing your
-                                query against millions of documents one by one.
-                                Approximate Nearest Neighbors (ANN): A strategy
-                                that trades a small amount of accuracy for
-                                dramatic speed gains. ANN uses sophisticated
-                                indexing algorithms like HNSW (Hierarchical
-                                Navigable Small Worlds) or FAISS (Facebook AI
-                                Similarity Search) to navigate vector space
-                                efficiently, checking only a subset of vectors
-                                while still finding highly relevant results. To
-                                bridge the precision gap in initial retrieval,
-                                we add a reranker to the pipeline: Initial
-                                Retrieval: The vector store retrieves a broad
-                                set of candidate documents (typically the top 20
-                                to 50) using fast ANN algorithms. Reranking: A
-                                specialized model (often a Cross-Encoder)
-                                evaluates the actual relevance of each candidate
-                                document against the specific query, considering
-                                their relationship in detail. Reordering:
-                                Documents are re-sorted based on the reranker's
-                                relevance scores, placing the most pertinent
-                                information at the top for the language model to
-                                process. Mosaic AI Vector Search offers three
-                                flexible approaches for ingesting and managing
-                                embeddings, allowing you to choose the level of
-                                control that fits your needs: Managed Embeddings
-                                (Delta Sync): You provide a source Delta table
-                                containing raw text, and Databricks handles the
-                                rest. The system automatically computes
-                                embeddings using a configured Mosaic AI Model
-                                Serving endpoint (such as a Foundation Model
-                                API), processes new data, and updates the
-                                index—all without requiring you to manage the
-                                embedding pipeline. Self-Managed Embeddings
-                                (Delta Sync): You compute embeddings using your
-                                own custom pipelines and store them in a Delta
-                                table. The Vector Search index syncs with this
-                                table, indexing the pre-computed vectors you
-                                provide. This gives you full control over the
-                                embedding process while still benefiting from
-                                automatic synchronization. Direct Access CRUD
-                                API: You can interact directly with the Vector
-                                Search index using the REST API or Python SDK.
-                                This allows you to insert, update, or delete
-                                vectors and metadata directly without relying on
-                                an underlying Delta table sync—ideal for
-                                real-time applications or custom workflows.
-                                Mosaic AI Vector Search is governed by Unity
-                                Catalog, providing a unified security model for
-                                both data and AI assets. Indexes created in
-                                Vector Search appear as securable objects within
-                                Unity Catalog, enabling administrators to
-                                enforce granular Access Control Lists (ACLs) at
-                                the index level. This ensures that only
-                                authorized users and applications can query or
-                                modify vector data, maintaining consistent
-                                security policies across your entire data
-                                platform.
+                                <p>
+                                  embedding is a numerical representation of
+                                  content, typically generated by a deep
+                                  learning model. he key characteristic that
+                                  makes embeddings powerful is their ability to
+                                  map similar concepts close together in vector
+                                  space.
+                                </p>
+                                <p>
+                                  it's worth noting that embeddings extend far
+                                  beyond words. Multimodal models like GPT-4o
+                                  and Gemini 1.5 can process and embed images,
+                                  audio, and text into a unified vector space.
+                                  This capability unlocks cross-modal retrieval
+                                  scenarios—imagine using a text query to find
+                                  semantically relevant images, or searching
+                                  audio content with written descriptions.
+                                </p>
+                                <p>
+                                  For retrieval to work effectively, your
+                                  embedding model must represent both source
+                                  documents and user queries in the same vector
+                                  space. If the model trained primarily on
+                                  long-form documents but your application uses
+                                  short, informal queries, the vector
+                                  representations may not align well—leading to
+                                  poor retrieval results. The best practice is
+                                  straightforward: use the same embedding model
+                                  for both indexing documents and processing
+                                  queries.
+                                </p>
+
+                                <h3>Search Methods</h3>
+                                <p>
+                                  Different search methods serve different
+                                  retrieval needs:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>Similarity Search:</strong> This
+                                    method retrieves content based on semantic
+                                    correlation rather than exact word matching.
+                                    It enables natural language queries like
+                                    "how to deal with anxiety" to surface
+                                    relevant results that may use different
+                                    terminology, such as "coping with PTSD" or
+                                    "managing stress."
+                                  </li>
+                                  <li>
+                                    <strong>Full-Text Search:</strong> This
+                                    traditional approach relies on keyword
+                                    matching. It excels at finding specific
+                                    terms like part numbers, product codes, or
+                                    proper nouns, but fails to capture semantic
+                                    intent or recognize synonyms.
+                                  </li>
+                                  <li>
+                                    <strong>Hybrid Search:</strong> This
+                                    powerful approach combines vector similarity
+                                    search with keyword-based search. By
+                                    leveraging both semantic understanding and
+                                    exact keyword matching, hybrid search
+                                    typically delivers higher retrieval accuracy
+                                    than either method alone.
+                                  </li>
+                                </ul>
+
+                                <h3>Metrics</h3>
+                                <p>
+                                  To determine how "similar" two vectors are, we
+                                  use two main types of metrics—distance metrics
+                                  and similarity metrics—each suited to
+                                  different retrieval scenarios.
+                                </p>
+                                <p>
+                                  Distance metrics are used when you want to
+                                  quantify how far apart two vectors are in
+                                  space—ideal for clustering, outlier detection,
+                                  or when magnitude matters. Similarity metrics
+                                  are used when you want to know how closely
+                                  aligned two vectors are in direction—ideal for
+                                  semantic search, document retrieval, and most
+                                  NLP applications where meaning is more
+                                  important than scale.
+                                </p>
+
+                                <h4>Distance Metrics</h4>
+                                <ul>
+                                  <li>
+                                    <strong>Euclidean Distance (L2):</strong>
+                                    Measures the straight-line distance between
+                                    two points in vector space. A lower value
+                                    means vectors are more similar. Use this
+                                    when you care about the absolute difference
+                                    in all dimensions, such as clustering or
+                                    anomaly detection.
+                                  </li>
+                                  <li>
+                                    <strong>Manhattan Distance (L1):</strong>
+                                    Sums the absolute differences across all
+                                    dimensions. A lower value means vectors are
+                                    closer. This is useful when differences
+                                    along each axis are equally important, such
+                                    as in grid-based or sparse data.
+                                  </li>
+                                </ul>
+
+                                <h4>Similarity Metrics</h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cosine Similarity:</strong> Measures
+                                    the cosine of the angle between two vectors.
+                                    A higher score means greater similarity.
+                                    This is the most popular metric for text
+                                    embeddings because it focuses on orientation
+                                    (semantic meaning) rather than magnitude,
+                                    making it robust to document length or scale
+                                    differences.
+                                  </li>
+                                </ul>
+
+                                <h3>Search Strategies</h3>
+                                <p>
+                                  Two primary strategies balance accuracy and
+                                  performance:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>K-Nearest Neighbors (KNN):</strong>
+                                    An exact search method that calculates the
+                                    distance between the query vector and every
+                                    vector in the database. While highly
+                                    accurate, it's computationally expensive and
+                                    doesn't scale well to large datasets—imagine
+                                    comparing your query against millions of
+                                    documents one by one.
+                                  </li>
+                                  <li>
+                                    <strong
+                                      >Approximate Nearest Neighbors
+                                      (ANN):</strong
+                                    >
+                                    A strategy that trades a small amount of
+                                    accuracy for dramatic speed gains. ANN uses
+                                    sophisticated indexing algorithms like HNSW
+                                    (Hierarchical Navigable Small Worlds) or
+                                    FAISS (Facebook AI Similarity Search) to
+                                    navigate vector space efficiently, checking
+                                    only a subset of vectors while still finding
+                                    highly relevant results.
+                                  </li>
+                                </ul>
+
+                                <h3>Reranking Pipeline</h3>
+                                <p>
+                                  To bridge the precision gap in initial
+                                  retrieval, we add a reranker to the pipeline:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>Initial Retrieval:</strong> The
+                                    vector store retrieves a broad set of
+                                    candidate documents (typically the top 20 to
+                                    50) using fast ANN algorithms.
+                                  </li>
+                                  <li>
+                                    <strong>Reranking:</strong> A specialized
+                                    model (often a Cross-Encoder) evaluates the
+                                    actual relevance of each candidate document
+                                    against the specific query, considering
+                                    their relationship in detail.
+                                  </li>
+                                  <li>
+                                    <strong>Reordering:</strong> Documents are
+                                    re-sorted based on the reranker's relevance
+                                    scores, placing the most pertinent
+                                    information at the top for the language
+                                    model to process.
+                                  </li>
+                                </ul>
+
+                                <h3>Mosaic AI Vector Search</h3>
+                                <p>
+                                  Mosaic AI Vector Search offers three flexible
+                                  approaches for ingesting and managing
+                                  embeddings, allowing you to choose the level
+                                  of control that fits your needs:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong
+                                      >Managed Embeddings (Delta Sync):</strong
+                                    >
+                                    You provide a source Delta table containing
+                                    raw text, and Databricks handles the rest.
+                                    The system automatically computes embeddings
+                                    using a configured Mosaic AI Model Serving
+                                    endpoint (such as a Foundation Model API),
+                                    processes new data, and updates the
+                                    index—all without requiring you to manage
+                                    the embedding pipeline.
+                                  </li>
+                                  <li>
+                                    <strong
+                                      >Self-Managed Embeddings (Delta
+                                      Sync):</strong
+                                    >
+                                    You compute embeddings using your own custom
+                                    pipelines and store them in a Delta table.
+                                    The Vector Search index syncs with this
+                                    table, indexing the pre-computed vectors you
+                                    provide. This gives you full control over
+                                    the embedding process while still benefiting
+                                    from automatic synchronization.
+                                  </li>
+                                  <li>
+                                    <strong>Direct Access CRUD API:</strong> You
+                                    can interact directly with the Vector Search
+                                    index using the REST API or Python SDK. This
+                                    allows you to insert, update, or delete
+                                    vectors and metadata directly without
+                                    relying on an underlying Delta table
+                                    sync—ideal for real-time applications or
+                                    custom workflows.
+                                  </li>
+                                </ul>
+                                <p>
+                                  Mosaic AI Vector Search is governed by Unity
+                                  Catalog, providing a unified security model
+                                  for both data and AI assets. Indexes created
+                                  in Vector Search appear as securable objects
+                                  within Unity Catalog, enabling administrators
+                                  to enforce granular Access Control Lists
+                                  (ACLs) at the index level. This ensures that
+                                  only authorized users and applications can
+                                  query or modify vector data, maintaining
+                                  consistent security policies across your
+                                  entire data platform.
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -2224,47 +2454,87 @@ title: DataBricks
                               data-bs-parent="#vectorSearchAccordion"
                             >
                               <div class="accordion-body">
-                                Agent Bricks provides pre-configured
-                                architectures ("bricks") for common enterprise
-                                patterns. Each brick is specialized for a
-                                specific mode of interaction and data
-                                processing. Declarative vs. Code-First Methods
-                                When building AI agents on Databricks,
-                                developers typically choose between two primary
-                                levels of abstraction: Code-First and
-                                Declarative. C1. Code-First (Mosaic AI Agent
-                                Framework) This method offers maximum control
-                                but requires more effort. Developers write the
-                                core agent logic in code (using Python libraries
-                                like LangChain, LlamaIndex, or OpenAI SDK) and
-                                use the Mosaic AI Agent Framework for
-                                scaffolding, tracing, and governance. Workflow:
-                                The developer manually writes the retrieval
-                                logic, defines the prompt templates, selects the
-                                embedding model, and manages the vector search
-                                index synchronization. They use the Agent
-                                Framework to log traces to MLflow and deploy the
-                                agent as a Model Serving endpoint. Pros:
-                                Infinite customizability. You can implement
-                                novel reasoning loops or highly specific tool
-                                usage. Cons: The developer owns the technical
-                                debt. Optimization (chunking, prompting) is
-                                manual and if the retrieval strategy needs
-                                changing (e.g., changing chunk sizes), the code
-                                must be rewritten and redeployed. C2.
-                                Declarative (Agent Bricks) This is the
-                                "outcome-oriented" approach. The developer
-                                declares what the agent should do, not how to do
-                                it. Workflow: The developer selects "Knowledge
-                                Assistant," points it to a Unity Catalog Volume
-                                containing PDFs, and provides a text description
-                                of the persona. Agent Bricks handles the
-                                parsing, indexing, and prompt engineering. Pros:
-                                Fastest time-to-value. The system creates
-                                synthetic data to test itself and auto-optimizes
-                                based on feedback. Cons: Less granular control
-                                over the low-level execution logic compared to
-                                pure code.
+                                <p>
+                                  Agent Bricks provides pre-configured
+                                  architectures ("bricks") for common enterprise
+                                  patterns. Each brick is specialized for a
+                                  specific mode of interaction and data
+                                  processing.
+                                </p>
+
+                                <h3>Declarative vs. Code-First Methods</h3>
+                                <p>
+                                  When building AI agents on Databricks,
+                                  developers typically choose between two
+                                  primary levels of abstraction: Code-First and
+                                  Declarative.
+                                </p>
+
+                                <h4>
+                                  C1. Code-First (Mosaic AI Agent Framework)
+                                </h4>
+                                <p>
+                                  This method offers maximum control but
+                                  requires more effort. Developers write the
+                                  core agent logic in code (using Python
+                                  libraries like LangChain, LlamaIndex, or
+                                  OpenAI SDK) and use the Mosaic AI Agent
+                                  Framework for scaffolding, tracing, and
+                                  governance.
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>Workflow:</strong> The developer
+                                    manually writes the retrieval logic, defines
+                                    the prompt templates, selects the embedding
+                                    model, and manages the vector search index
+                                    synchronization. They use the Agent
+                                    Framework to log traces to MLflow and deploy
+                                    the agent as a Model Serving endpoint.
+                                  </li>
+                                  <li>
+                                    <strong>Pros:</strong> Infinite
+                                    customizability. You can implement novel
+                                    reasoning loops or highly specific tool
+                                    usage.
+                                  </li>
+                                  <li>
+                                    <strong>Cons:</strong> The developer owns
+                                    the technical debt. Optimization (chunking,
+                                    prompting) is manual and if the retrieval
+                                    strategy needs changing (e.g., changing
+                                    chunk sizes), the code must be rewritten and
+                                    redeployed.
+                                  </li>
+                                </ul>
+
+                                <h4>C2. Declarative (Agent Bricks)</h4>
+                                <p>
+                                  This is the "outcome-oriented" approach. The
+                                  developer declares what the agent should do,
+                                  not how to do it.
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>Workflow:</strong> The developer
+                                    selects "Knowledge Assistant," points it to
+                                    a Unity Catalog Volume containing PDFs, and
+                                    provides a text description of the persona.
+                                    Agent Bricks handles the parsing, indexing,
+                                    and prompt engineering.
+                                  </li>
+                                  <li>
+                                    <strong>Pros:</strong> Fastest
+                                    time-to-value. The system creates synthetic
+                                    data to test itself and auto-optimizes based
+                                    on feedback.
+                                  </li>
+                                  <li>
+                                    <strong>Cons:</strong> Less granular control
+                                    over the low-level execution logic compared
+                                    to pure code.
+                                  </li>
+                                </ul>
                               </div>
                             </div>
                           </div>
