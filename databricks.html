@@ -884,6 +884,110 @@ title: DataBricks
                               </div>
                             </div>
                           </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#bleuAndRougeEvaluationMetrics"
+                              >
+                                What are BLEU and ROUGE, and when should they
+                                be used?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="bleuAndRougeEvaluationMetrics"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  BLEU and ROUGE are automatic evaluation
+                                  metrics used to compare generated text with
+                                  one or more reference answers written by
+                                  humans. They are useful when you need a quick,
+                                  repeatable way to compare model outputs across
+                                  a test dataset.
+                                </p>
+
+                                <p>
+                                  BLEU stands for Bilingual Evaluation
+                                  Understudy. It is mostly used for machine
+                                  translation. BLEU measures how many word
+                                  sequences, called n-grams, in the generated
+                                  text also appear in the reference text. It
+                                  rewards precision, meaning the model gets a
+                                  better score when the words it produces match
+                                  the reference.
+                                </p>
+
+                                <p>
+                                  ROUGE stands for Recall-Oriented Understudy
+                                  for Gisting Evaluation. It is mostly used for
+                                  summarization. ROUGE measures how much of the
+                                  reference summary is covered by the generated
+                                  summary. It rewards recall, meaning the model
+                                  gets a better score when it includes the
+                                  important words, phrases, or sequences from
+                                  the reference.
+                                </p>
+
+                                <pre><code>Generated text + Reference text -> BLEU / ROUGE metric -> Similarity score</code></pre>
+
+                                <ul>
+                                  <li>
+                                    Use BLEU when evaluating translation or
+                                    other tasks where exact wording and phrase
+                                    matching are important.
+                                  </li>
+                                  <li>
+                                    Use ROUGE when evaluating summarization,
+                                    especially when checking whether key points
+                                    from a reference summary were included.
+                                  </li>
+                                  <li>
+                                    Use ROUGE-1 to compare individual word
+                                    overlap between generated and reference
+                                    summaries.
+                                  </li>
+                                  <li>
+                                    Use ROUGE-2 to compare two-word phrase
+                                    overlap, which is stricter than ROUGE-1.
+                                  </li>
+                                  <li>
+                                    Use ROUGE-L to compare the longest matching
+                                    word sequence, which helps measure sentence
+                                    structure similarity.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  These metrics are best for offline model
+                                  evaluation, benchmark comparisons, regression
+                                  testing, and choosing between prompt or model
+                                  versions. For example, if you change a
+                                  summarization prompt, ROUGE can help check
+                                  whether the new prompt still preserves the
+                                  same important content as the reference
+                                  summaries.
+                                </p>
+
+                                <p>
+                                  BLEU and ROUGE should not be the only way to
+                                  judge Gen AI quality. They rely heavily on
+                                  word overlap, so they can penalize a correct
+                                  answer that uses different wording and reward
+                                  an answer that copies words but misses deeper
+                                  meaning. For production systems, combine them
+                                  with human review, factuality checks, task
+                                  success metrics, and safety evaluations.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
