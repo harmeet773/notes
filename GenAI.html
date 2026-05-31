@@ -1706,6 +1706,60 @@ watched til 12 minutes , rewatch from 13 th
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading9">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse9"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse9"
+              >
+                What are embeddings?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse9"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading9"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>Embeddings</strong> are numeric representations of data such as text,
+                  images, audio, or code. They convert unstructured information into a list of
+                  numbers, also called a <strong>vector</strong>, so that computers can compare
+                  meaning mathematically.
+                </p>
+                <p class="card-text mb-2">
+                  The important idea is that similar meanings produce similar vectors. For example,
+                  the sentences <strong>"How do I reset my password?"</strong> and
+                  <strong>"I forgot my login password"</strong> should have embeddings that are close
+                  to each other, even though the exact words are different.
+                </p>
+                <p class="card-text mb-2">
+                  Embeddings are commonly used for <strong>semantic search</strong>, recommendation
+                  systems, clustering, duplicate detection, classification, and Retrieval-Augmented
+                  Generation (RAG). In a RAG system, documents are converted into embeddings and
+                  stored in a vector database. When a user asks a question, the question is also
+                  converted into an embedding, and the system retrieves the most similar document
+                  chunks as context for the model.
+                </p>
+                <p class="card-text mb-2">
+                  Distance metrics such as <strong>cosine similarity</strong>, dot product, or
+                  Euclidean distance are used to measure how close two embeddings are. A smaller
+                  distance or higher similarity score usually means the items are more related in
+                  meaning.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: embeddings turn meaning into numbers. This allows AI applications
+                  to search by intent and context instead of relying only on exact keyword matches.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
