@@ -289,4 +289,151 @@ title: Techi Tech
       </div>
     </div>
   </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sparkHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sparkSection"
+        aria-expanded="false"
+        aria-controls="sparkSection"
+      >
+        Apache Spark
+      </button>
+    </h2>
+    <div
+      id="sparkSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="sparkHeading"
+      data-bs-parent="#techiTechAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="sparkNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="sparkOverviewHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sparkOverview"
+                aria-expanded="false"
+                aria-controls="sparkOverview"
+              >
+                What is Apache Spark?
+              </button>
+            </h2>
+            <div
+              id="sparkOverview"
+              class="accordion-collapse collapse"
+              aria-labelledby="sparkOverviewHeading"
+              data-bs-parent="#sparkNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Apache Spark is an open-source distributed computing engine for processing large amounts of data.</li>
+                  <li>It can run batch jobs, streaming jobs, SQL queries, machine learning workloads, and graph processing.</li>
+                  <li>Spark is designed to split work across many machines, process data in parallel, and handle data that is too large for a single computer.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="sparkCoreIdeasHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sparkCoreIdeas"
+                aria-expanded="false"
+                aria-controls="sparkCoreIdeas"
+              >
+                Core Ideas
+              </button>
+            </h2>
+            <div
+              id="sparkCoreIdeas"
+              class="accordion-collapse collapse"
+              aria-labelledby="sparkCoreIdeasHeading"
+              data-bs-parent="#sparkNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li><strong>Cluster:</strong> A group of machines that work together to process data.</li>
+                  <li><strong>Driver:</strong> The main program that creates Spark jobs and coordinates the work.</li>
+                  <li><strong>Executors:</strong> Worker processes that run tasks and store intermediate data.</li>
+                  <li><strong>DataFrame:</strong> A table-like distributed data structure with rows and columns.</li>
+                  <li><strong>Lazy evaluation:</strong> Spark waits to run transformations until an action, such as <code>count()</code> or <code>show()</code>, is called.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="sparkComponentsHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sparkComponents"
+                aria-expanded="false"
+                aria-controls="sparkComponents"
+              >
+                Main Components
+              </button>
+            </h2>
+            <div
+              id="sparkComponents"
+              class="accordion-collapse collapse"
+              aria-labelledby="sparkComponentsHeading"
+              data-bs-parent="#sparkNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li><strong>Spark Core:</strong> Handles scheduling, memory management, fault recovery, and distributed task execution.</li>
+                  <li><strong>Spark SQL:</strong> Lets users query structured data using SQL or DataFrame APIs.</li>
+                  <li><strong>Structured Streaming:</strong> Processes real-time data streams using the same style as batch DataFrames.</li>
+                  <li><strong>MLlib:</strong> Provides common machine learning algorithms and utilities.</li>
+                  <li><strong>GraphX:</strong> Supports graph processing and graph-parallel computation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="sparkUseCasesHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sparkUseCases"
+                aria-expanded="false"
+                aria-controls="sparkUseCases"
+              >
+                Common Use Cases
+              </button>
+            </h2>
+            <div
+              id="sparkUseCases"
+              class="accordion-collapse collapse"
+              aria-labelledby="sparkUseCasesHeading"
+              data-bs-parent="#sparkNestedAccordion"
+            >
+              <div class="accordion-body">
+                <ul class="mb-0">
+                  <li>Cleaning, transforming, and joining large datasets.</li>
+                  <li>Running analytics queries on data lakes and warehouses.</li>
+                  <li>Building ETL pipelines for batch or streaming data.</li>
+                  <li>Preparing data for dashboards, reports, and machine learning models.</li>
+                  <li>Processing logs, clickstream events, sensor data, and financial records at scale.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
