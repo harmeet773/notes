@@ -1760,6 +1760,186 @@ watched til 12 minutes , rewatch from 13 th
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading10">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse10"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse10"
+              >
+                What are the different types of prompts?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse10"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading10"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  Prompts are instructions or inputs given to an AI model. They can be grouped by
+                  instruction style, prompting technique, and the purpose they serve in an application.
+                </p>
+
+                <h6 class="mt-3">1. By instruction structure</h6>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Direct instructions</strong></td>
+                        <td>Clear, specific commands such as "Summarize this article in 3 sentences."</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Open-ended instructions</strong></td>
+                        <td>Broad prompts that invite exploration, such as "What are the implications of AI in healthcare?"</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Task-specific instructions</strong></td>
+                        <td>Prompts designed for a specific task, such as translation, code generation, classification, or summarization.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h6>2. By prompting technique</h6>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>What it does</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Zero-shot prompting</strong></td>
+                        <td>Gives the task directly without examples.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Few-shot prompting</strong></td>
+                        <td>Provides a few examples before asking the model to perform the task.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Meta prompting</strong></td>
+                        <td>Asks the AI to create, rewrite, or optimize prompts themselves; it is structure-focused.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Chain-of-thought prompting</strong></td>
+                        <td>Guides the AI to work through reasoning step by step before answering.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Self-improvement loops</strong></td>
+                        <td>The AI generates a response, reviews it, identifies weaknesses, and improves it.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h6>3. By function or purpose</h6>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Use case</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>System prompts / metaprompts</strong></td>
+                        <td>Set the AI's role, behavior, rules, and constraints for the conversation.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Task prompts</strong></td>
+                        <td>Ask the AI to perform a specific task, such as write, analyze, summarize, or classify.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Question prompts</strong></td>
+                        <td>Ask for information, definitions, comparisons, or explanations.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Creative prompts</strong></td>
+                        <td>Generate stories, ideas, designs, names, scripts, or artistic concepts.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Filter / qualification prompts</strong></td>
+                        <td>Let users define how data should be filtered, such as by hierarchy, attribute, or metric qualifications.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Value prompts</strong></td>
+                        <td>Select specific values, such as dates, numbers, text strings, or category values for filtering.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h6>What is meta prompting?</h6>
+                <p class="card-text mb-2">
+                  <strong>Meta prompting</strong> means "prompting about prompting." Instead of only asking
+                  the AI for a final answer, you ask it to improve the instructions it will use. For example,
+                  the AI may rewrite a vague prompt, make it more specific, choose a better format, or ask
+                  clarifying questions before producing the final response.
+                </p>
+                <p class="card-text mb-2">
+                  Think of a metaprompt as a director's note: it sets the tone, rules, format, and strategy
+                  the AI should follow, instead of being only the line the AI should say.
+                </p>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Aspect</th>
+                        <th>What it means</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Purpose</strong></td>
+                        <td>Guide AI behavior, tone, rules, response format, and strategy.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>How it works</strong></td>
+                        <td>The AI creates or improves instructions for itself, then uses them to produce a better final answer.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Benefit</strong></td>
+                        <td>You do not need to write the perfect prompt yourself; the AI can help optimize it.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Approach</strong></td>
+                        <td>Structure-oriented: it focuses on format, pattern, and method more than specific content.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="card-text mb-2">
+                  In short, <strong>meta prompting</strong> is a higher-level technique for improving prompts
+                  themselves, while prompt types range from basic instruction styles to advanced prompting
+                  techniques such as few-shot prompting, chain-of-thought prompting, and self-improvement loops.
+                </p>
+                <p class="card-text mb-0">
+                  <strong>Resources:</strong>
+                  <a href="https://www.ibm.com/think/topics/prompt-engineering-techniques" target="_blank" rel="noopener noreferrer">IBM prompt engineering techniques</a>,
+                  <a href="https://www.promptingguide.ai/techniques/meta-prompting" target="_blank" rel="noopener noreferrer">Prompting Guide meta prompting</a>,
+                  <a href="https://portkey.ai/blog/what-is-meta-prompting" target="_blank" rel="noopener noreferrer">Portkey meta prompting</a>,
+                  <a href="https://www.linkedin.com/pulse/making-most-your-ai-prompts-metapromptcom-dharmesh-shah-b21ze" target="_blank" rel="noopener noreferrer">LinkedIn metaprompt article</a>,
+                  <a href="https://www2.strategy.com/producthelp/Current/MSTRWeb/WebHelp/Lang_1033/Content/Prompt_types.htm" target="_blank" rel="noopener noreferrer">Strategy prompt types</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
