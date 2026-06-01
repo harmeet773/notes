@@ -173,6 +173,64 @@ title: DataBricks
                 class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
+                data-bs-target="#databricsFeatureStore"
+              >
+                Feature Store
+              </button>
+            </h2>
+
+            <div
+              id="databricsFeatureStore"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  A Feature Store is a centralized place to create, discover,
+                  reuse, and govern machine learning features. Features are
+                  curated data columns, such as customer lifetime value, average
+                  transaction amount, or recent login count, that are used as
+                  inputs for model training and prediction.
+                </p>
+
+                <p>
+                  In Databricks, feature tables are usually stored as Delta
+                  tables and governed through Unity Catalog. This helps data
+                  scientists and engineers share trusted features across teams
+                  while keeping permissions, lineage, and documentation
+                  consistent.
+                </p>
+
+                <ul>
+                  <li>
+                    Training consistency: The same feature definitions can be
+                    used for model training and batch or real-time inference,
+                    reducing training-serving skew.
+                  </li>
+                  <li>
+                    Reuse: Teams can search for existing features instead of
+                    rebuilding the same transformations in multiple projects.
+                  </li>
+                  <li>
+                    Governance: Feature ownership, access control, lineage, and
+                    metadata can be managed with the rest of the lakehouse data.
+                  </li>
+                  <li>
+                    Serving support: Features can be published for low-latency
+                    online lookup when models need fresh values during
+                    prediction.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
                 data-bs-target="#databricsCompute"
               >
                 Compute
