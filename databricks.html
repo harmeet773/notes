@@ -3042,76 +3042,109 @@ title: DataBricks
                       data-bs-parent="#genAiEngineeringPathwayAccordion"
                     >
                       <div class="accordion-body">
-                        <p>
-                          Since language model applications can be complex,
-                          MLflow offers model flavors designed for generative AI.
-                          A flavor adds useful metadata, datasets, metrics,
-                          input examples, dependencies, environment settings,
-                          runtime versions, and other artifacts on top of the
-                          base model so the application can be packaged,
-                          reproduced, deployed, and monitored as a unified
-                          model.
-                        </p>
+                        <div
+                          class="accordion mt-3"
+                          id="genAiDeploymentMonitoringCourseAccordion"
+                        >
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#modelDeploymentFundamentals"
+                              >
+                                model deployment fundamentals
+                              </button>
+                            </h2>
 
-                        <p>
-                          For example, when using LangChain, MLflow can log the
-                          entire chain as a model flavor. This records all steps
-                          in the chain and the environment needed to reproduce
-                          the application, which makes it easier to manage
-                          complex generative AI logic through the full
-                          lifecycle.
-                        </p>
+                            <div
+                              id="modelDeploymentFundamentals"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#genAiDeploymentMonitoringCourseAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Since language model applications can be
+                                  complex, MLflow offers model flavors designed
+                                  for generative AI. A flavor adds useful
+                                  metadata, datasets, metrics, input examples,
+                                  dependencies, environment settings, runtime
+                                  versions, and other artifacts on top of the
+                                  base model so the application can be packaged,
+                                  reproduced, deployed, and monitored as a
+                                  unified model.
+                                </p>
 
-                        <h5>Deployment lifecycle</h5>
-                        <ul>
-                          <li>
-                            Log the application with MLflow, including code,
-                            dependencies, configuration, sample inputs, and
-                            model metadata.
-                          </li>
-                          <li>
-                            Register the model or agent in Unity Catalog using
-                            the Databricks Unity Catalog registry URI.
-                          </li>
-                          <li>
-                            Review evaluation results, traces, and governance
-                            requirements before promoting the application.
-                          </li>
-                          <li>
-                            Deploy the application to Mosaic AI Model Serving
-                            for managed, scalable inference.
-                          </li>
-                        </ul>
+                                <p>
+                                  For example, when using LangChain, MLflow can
+                                  log the entire chain as a model flavor. This
+                                  records all steps in the chain and the
+                                  environment needed to reproduce the
+                                  application, which makes it easier to manage
+                                  complex generative AI logic through the full
+                                  lifecycle.
+                                </p>
 
-                        <h5>Monitoring focus areas</h5>
-                        <ul>
-                          <li>
-                            Quality: Track answer correctness, groundedness,
-                            relevance, retrieval quality, and task success.
-                          </li>
-                          <li>
-                            Safety: Monitor prompt injection attempts, unsafe
-                            outputs, sensitive data exposure, and policy
-                            violations.
-                          </li>
-                          <li>
-                            Operations: Track latency, token usage, cost,
-                            endpoint errors, throughput, and availability.
-                          </li>
-                          <li>
-                            Feedback: Collect explicit user feedback and
-                            implicit usage signals to improve future evaluations
-                            and model iterations.
-                          </li>
-                        </ul>
+                                <h5>Deployment lifecycle</h5>
+                                <ul>
+                                  <li>
+                                    Log the application with MLflow, including
+                                    code, dependencies, configuration, sample
+                                    inputs, and model metadata.
+                                  </li>
+                                  <li>
+                                    Register the model or agent in Unity Catalog
+                                    using the Databricks Unity Catalog registry
+                                    URI.
+                                  </li>
+                                  <li>
+                                    Review evaluation results, traces, and
+                                    governance requirements before promoting the
+                                    application.
+                                  </li>
+                                  <li>
+                                    Deploy the application to Mosaic AI Model
+                                    Serving for managed, scalable inference.
+                                  </li>
+                                </ul>
 
-                        <p>
-                          Attribute-Based Access Control (ABAC) in Unity Catalog
-                          helps protect sensitive data using row filters and
-                          column mask policies. This governance layer is
-                          important when deploying generative AI applications
-                          that retrieve or reason over enterprise data.
-                        </p>
+                                <h5>Monitoring focus areas</h5>
+                                <ul>
+                                  <li>
+                                    Quality: Track answer correctness,
+                                    groundedness, relevance, retrieval quality,
+                                    and task success.
+                                  </li>
+                                  <li>
+                                    Safety: Monitor prompt injection attempts,
+                                    unsafe outputs, sensitive data exposure, and
+                                    policy violations.
+                                  </li>
+                                  <li>
+                                    Operations: Track latency, token usage,
+                                    cost, endpoint errors, throughput, and
+                                    availability.
+                                  </li>
+                                  <li>
+                                    Feedback: Collect explicit user feedback and
+                                    implicit usage signals to improve future
+                                    evaluations and model iterations.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  Attribute-Based Access Control (ABAC) in Unity
+                                  Catalog helps protect sensitive data using row
+                                  filters and column mask policies. This
+                                  governance layer is important when deploying
+                                  generative AI applications that retrieve or
+                                  reason over enterprise data.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
