@@ -3023,30 +3023,104 @@ title: DataBricks
                       </div>
                     </div>
                   </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#genAiApplicationDeploymentMonitoring"
+                      >
+                        Generative AI Application Deployment and Monitoring
+                      </button>
+                    </h2>
+
+                    <div
+                      id="genAiApplicationDeploymentMonitoring"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiEngineeringPathwayAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Since language model applications can be complex,
+                          MLflow offers model flavors designed for generative AI.
+                          A flavor adds useful metadata, datasets, metrics,
+                          input examples, dependencies, environment settings,
+                          runtime versions, and other artifacts on top of the
+                          base model so the application can be packaged,
+                          reproduced, deployed, and monitored as a unified
+                          model.
+                        </p>
+
+                        <p>
+                          For example, when using LangChain, MLflow can log the
+                          entire chain as a model flavor. This records all steps
+                          in the chain and the environment needed to reproduce
+                          the application, which makes it easier to manage
+                          complex generative AI logic through the full
+                          lifecycle.
+                        </p>
+
+                        <h5>Deployment lifecycle</h5>
+                        <ul>
+                          <li>
+                            Log the application with MLflow, including code,
+                            dependencies, configuration, sample inputs, and
+                            model metadata.
+                          </li>
+                          <li>
+                            Register the model or agent in Unity Catalog using
+                            the Databricks Unity Catalog registry URI.
+                          </li>
+                          <li>
+                            Review evaluation results, traces, and governance
+                            requirements before promoting the application.
+                          </li>
+                          <li>
+                            Deploy the application to Mosaic AI Model Serving
+                            for managed, scalable inference.
+                          </li>
+                        </ul>
+
+                        <h5>Monitoring focus areas</h5>
+                        <ul>
+                          <li>
+                            Quality: Track answer correctness, groundedness,
+                            relevance, retrieval quality, and task success.
+                          </li>
+                          <li>
+                            Safety: Monitor prompt injection attempts, unsafe
+                            outputs, sensitive data exposure, and policy
+                            violations.
+                          </li>
+                          <li>
+                            Operations: Track latency, token usage, cost,
+                            endpoint errors, throughput, and availability.
+                          </li>
+                          <li>
+                            Feedback: Collect explicit user feedback and
+                            implicit usage signals to improve future evaluations
+                            and model iterations.
+                          </li>
+                        </ul>
+
+                        <p>
+                          Attribute-Based Access Control (ABAC) in Unity Catalog
+                          helps protect sensitive data using row filters and
+                          column mask policies. This governance layer is
+                          important when deploying generative AI applications
+                          that retrieve or reason over enterprise data.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      another course - start from page 6 Since language model applications can
-      be complex, MLflow now offers new model flavors designed for generative
-      Al. A “flavor” in MLflow adds extra details—like metadata, datasets,
-      metrics, and other artifacts—on top of the original model to help track
-      its lifecycle. For example, when using LangChain, MLflow can log the
-      entire chain as a model flavor, recording all steps, dependencies,
-      environment settings, and runtime versions. This makes it easy to package,
-      reproduce, and manage even complex logic as a unified MLflow model.Because
-      generative Al logic can be complex, MLflow has introduced new model
-      flavors to handle these cases. A flavor in MLflow adds useful metadata,
-      datasets, metrics, input examples, and other artifacts on top of your base
-      model for easier lifecycle tracking. For example, if you log a chain built
-      with LangChain, MLflow tracks all steps, dependencies, environment info,
-      and even Databricks runtimes—packaging everything needed to reproduce and
-      manage the complex logic as a single MLflow model. others - we can use
-      Attribute-Based Access Control (ABAC) in Unity Catalog helps protect
-      sensitive data using row filters and column mask policies.
     </div>
   </div>
 </div>
