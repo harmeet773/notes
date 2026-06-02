@@ -577,6 +577,21 @@ title: DataBricks
                           well with large-scale document processing, which is
                           crucial given the number of PDFs you are dealing with.
                         </p>
+                        <h5>PyMuPDF (also known as fitz)</h5>
+                        <p>
+                          PyMuPDF is designed for handling PDFs, not DOCX files. While it can be effective for PDF content extraction, it is not applicable to Word document processing.
+                        </p>
+                        <h5>python-docx</h5>
+                        <p>
+                          python-docx is a Python library used for reading,
+                          creating, and updating Microsoft Word DOCX files. It
+                          is a suitable choice when the source documents are
+                          Word files because it can extract paragraphs, tables,
+                          headings, and other structured document content.
+                          However, it does not handle PDFs or scanned images, so
+                          it is best used alongside PDF-focused tools such as
+                          Tika or PyMuPDF when processing mixed document types.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -900,6 +915,80 @@ title: DataBricks
                                     Main risk: if important details are removed,
                                     the model may still miss key facts even
                                     though a marker is present.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#mlflowModelSignatureFeature"
+                              >
+                                What is MLflow's model signature feature?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="mlflowModelSignatureFeature"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  MLflow's model signature feature records the
+                                  expected input and output schema of a logged
+                                  model. It describes what kind of data the
+                                  model accepts and what kind of prediction or
+                                  response it returns.
+                                </p>
+
+                                <p>
+                                  A signature can include column names, data
+                                  types, tensor shapes, or parameter schemas,
+                                  depending on the model. For example, a
+                                  classifier might have inputs such as
+                                  <code>age</code>, <code>income</code>, and
+                                  <code>country</code>, and an output such as
+                                  <code>prediction</code>. A generative AI
+                                  application might define an input field such
+                                  as <code>question</code> and an output field
+                                  such as <code>answer</code>.
+                                </p>
+
+                                <pre><code>Input schema:  question: string
+Output schema: answer: string</code></pre>
+
+                                <p>
+                                  The signature is useful because it makes model
+                                  behavior easier to validate, serve, document,
+                                  and govern. When the model is deployed, MLflow
+                                  and Databricks can use the signature to check
+                                  whether inference requests match the expected
+                                  format before sending them to the model.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: define the model's input and
+                                    output contract.
+                                  </li>
+                                  <li>
+                                    Benefit: catches schema mismatches during
+                                    testing, deployment, and serving.
+                                  </li>
+                                  <li>
+                                    Usage: stored with the MLflow model artifact
+                                    when the model is logged.
+                                  </li>
+                                  <li>
+                                    Common source: inferred from example inputs
+                                    and outputs, or manually specified by the
+                                    developer.
                                   </li>
                                 </ul>
                               </div>

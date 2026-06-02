@@ -1940,6 +1940,56 @@ watched til 12 minutes , rewatch from 13 th
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading11">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse11"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse11"
+              >
+                What is model training loss?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse11"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading11"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>Model training loss</strong> is a number that measures how wrong a model's
+                  prediction is during training. After the model makes a prediction, the training
+                  system compares that prediction with the correct answer and calculates a loss value.
+                </p>
+                <p class="card-text mb-2">
+                  A <strong>lower loss</strong> usually means the model is making better predictions on
+                  the training data. A <strong>higher loss</strong> means the model's predictions are
+                  farther away from the expected answers.
+                </p>
+                <p class="card-text mb-2">
+                  During training, the model uses this loss to update its internal weights. The goal is
+                  to reduce the loss step by step so the model learns useful patterns from the data.
+                  For language models, a common loss function is <strong>cross-entropy loss</strong>,
+                  which measures how well the model predicted the next token.
+                </p>
+                <p class="card-text mb-2">
+                  Training loss is useful, but it should not be checked alone. If training loss keeps
+                  going down while validation loss goes up, the model may be <strong>overfitting</strong>:
+                  it is memorizing the training examples instead of generalizing well to new data.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: <strong>training loss is the model's error score while learning</strong>.
+                  The training process tries to make this score smaller, but the real test is whether
+                  the model also performs well on unseen validation or test data.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
