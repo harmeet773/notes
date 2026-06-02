@@ -927,6 +927,170 @@ title: DataBricks
                                 class="accordion-button collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
+                                data-bs-target="#whatAreDatabricksWorkflows"
+                              >
+                                What are Databricks Workflows and their use
+                                cases?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatAreDatabricksWorkflows"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Databricks Workflows are used to schedule,
+                                  run, and orchestrate production data and AI
+                                  jobs in Databricks. A workflow can contain one
+                                  or more tasks, and each task can run a
+                                  notebook, Python script, SQL query, JAR, dbt
+                                  command, Delta Live Tables pipeline, or model
+                                  training and inference step.
+                                </p>
+
+                                <p>
+                                  A workflow is useful when a process has to run
+                                  repeatedly, reliably, and in the correct
+                                  order. Instead of manually running notebooks,
+                                  you define the steps, dependencies, schedule,
+                                  compute, parameters, retries, alerts, and
+                                  failure handling.
+                                </p>
+
+                                <pre><code>Example daily sales workflow:
+1. Ingest raw sales files from cloud storage
+2. Clean and validate the data
+3. Merge records into a Delta table
+4. Refresh an aggregate reporting table
+5. Notify the team if any step fails</code></pre>
+
+                                <p>
+                                  Workflows are commonly used for ETL pipelines,
+                                  ELT pipelines, batch data processing,
+                                  streaming pipeline coordination, ML model
+                                  training, feature engineering, model scoring,
+                                  reporting refreshes, and operational
+                                  automation.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    ETL example: load customer CSV files,
+                                    transform them with Spark, and write clean
+                                    records into silver and gold Delta tables.
+                                  </li>
+                                  <li>
+                                    ML example: prepare training data, train a
+                                    model, evaluate metrics, register the model
+                                    in MLflow, and run batch predictions.
+                                  </li>
+                                  <li>
+                                    Reporting example: refresh sales summary
+                                    tables every morning before dashboards are
+                                    opened by business users.
+                                  </li>
+                                  <li>
+                                    RAG example: parse new documents, chunk the
+                                    text, create embeddings, update a vector
+                                    index, and validate search quality.
+                                  </li>
+                                  <li>
+                                    Main benefit: Databricks manages scheduling,
+                                    dependencies, retries, monitoring, alerts,
+                                    and job history in one place.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsNer"
+                              >
+                                What is NER (Named Entity Recognition)?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatIsNer"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  NER, or Named Entity Recognition, is an NLP
+                                  technique that finds important named items in
+                                  text and classifies them into predefined
+                                  categories. These categories often include
+                                  person names, organizations, locations, dates,
+                                  products, money amounts, percentages, and
+                                  other domain-specific entities.
+                                </p>
+
+                                <p>
+                                  For example, in the sentence
+                                  <code
+                                    >Databricks acquired MosaicML in 2023.</code
+                                  >,
+                                  an NER model may identify
+                                  <code>Databricks</code> and
+                                  <code>MosaicML</code> as organizations and
+                                  <code>2023</code> as a date.
+                                </p>
+
+                                <pre><code>Input:  Satya Nadella works at Microsoft in Redmond.
+Output: Satya Nadella = PERSON
+        Microsoft = ORGANIZATION
+        Redmond = LOCATION</code></pre>
+
+                                <p>
+                                  NER is useful when unstructured text needs to
+                                  be converted into structured data. In data and
+                                  AI systems, it can help extract entities from
+                                  customer messages, support tickets, contracts,
+                                  clinical notes, news articles, resumes, logs,
+                                  or documents used in search and RAG pipelines.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: detect and label meaningful named
+                                    items inside text.
+                                  </li>
+                                  <li>
+                                    Common labels: person, organization,
+                                    location, date, product, money, and
+                                    percentage.
+                                  </li>
+                                  <li>
+                                    Main benefit: turns free-form text into
+                                    structured fields that can be searched,
+                                    filtered, analyzed, or joined with other
+                                    data.
+                                  </li>
+                                  <li>
+                                    Main risk: entity boundaries and labels can
+                                    be wrong when names are ambiguous or domain
+                                    context is missing.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
                                 data-bs-target="#whatIsDeltaLake"
                               >
                                 What is Delta Lake?
