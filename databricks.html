@@ -927,6 +927,161 @@ title: DataBricks
                                 class="accordion-button collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
+                                data-bs-target="#whatIsDeltaLake"
+                              >
+                                What is Delta Lake?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatIsDeltaLake"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Delta Lake is an open storage layer that adds
+                                  reliability and database-like behavior to data
+                                  lakes. It is commonly used in Databricks to
+                                  build lakehouse tables on cloud storage such
+                                  as AWS S3, Azure Data Lake Storage, or Google
+                                  Cloud Storage.
+                                </p>
+
+                                <p>
+                                  A normal data lake may store files such as
+                                  Parquet, CSV, or JSON, but file-based storage
+                                  alone can be hard to manage when many jobs are
+                                  reading and writing at the same time. Delta
+                                  Lake solves this by adding a transaction log,
+                                  called the Delta log, that tracks table
+                                  versions and data changes.
+                                </p>
+
+                                <pre><code>Data lake files + Delta transaction log = Delta Lake table storage</code></pre>
+
+                                <p>
+                                  Because of this log, Delta Lake supports ACID
+                                  transactions, schema enforcement, schema
+                                  evolution, updates, deletes, merges, scalable
+                                  metadata, and time travel. This makes it
+                                  useful for reliable batch pipelines, streaming
+                                  pipelines, analytics, machine learning, and BI
+                                  workloads.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: make data lakes more reliable,
+                                    consistent, and easier to query.
+                                  </li>
+                                  <li>
+                                    Core idea: store data files plus a
+                                    transaction log that records every committed
+                                    change.
+                                  </li>
+                                  <li>
+                                    Main benefit: multiple readers and writers
+                                    can work with the same data safely.
+                                  </li>
+                                  <li>
+                                    Time travel: query older versions of data
+                                    for debugging, audits, or rollback.
+                                  </li>
+                                  <li>
+                                    In Databricks: Delta Lake is the default
+                                    foundation for many managed and external
+                                    lakehouse tables.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsDeltaTable"
+                              >
+                                What is a Delta table?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatIsDeltaTable"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  A Delta table is a table stored in Delta Lake
+                                  format. It keeps the actual data files,
+                                  usually Parquet files, together with a
+                                  transaction log that records every change made
+                                  to the table.
+                                </p>
+
+                                <p>
+                                  In Databricks, Delta tables are used for
+                                  reliable lakehouse data. The transaction log
+                                  makes the table behave more like a database
+                                  table than a plain folder of files. It
+                                  supports ACID transactions, schema
+                                  enforcement, updates, deletes, merges, and
+                                  time travel.
+                                </p>
+
+                                <pre><code>CREATE TABLE sales_delta (
+  order_id BIGINT,
+  customer_id BIGINT,
+  amount DOUBLE
+) USING DELTA;</code></pre>
+
+                                <p>
+                                  A simple way to remember it: Delta Lake is the
+                                  storage technology, and a Delta table is a
+                                  specific table created using that technology.
+                                  You can query it with SQL, process it with
+                                  Spark, govern it with Unity Catalog, and use
+                                  it in ETL, streaming, ML, and BI workloads.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Data files: store the table's rows, commonly
+                                    in Parquet format.
+                                  </li>
+                                  <li>
+                                    Transaction log: tracks versions, commits,
+                                    schema changes, and data modifications.
+                                  </li>
+                                  <li>
+                                    ACID support: helps reads and writes stay
+                                    consistent even when multiple jobs run
+                                    together.
+                                  </li>
+                                  <li>
+                                    Time travel: lets you query or restore older
+                                    versions of the table.
+                                  </li>
+                                  <li>
+                                    Common use: bronze, silver, and gold tables
+                                    in Databricks data pipelines.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
                                 data-bs-target="#mlflowModelSignatureFeature"
                               >
                                 What is MLflow's model signature feature?
