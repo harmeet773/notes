@@ -286,6 +286,42 @@ title: DataBricks
                   when it is not tied to a specific framework like scikit-learn
                   or TensorFlow.
                 </p>
+
+                <h6>mlflow.genai.evaluate()</h6>
+                <p>
+                  <code>mlflow.genai.evaluate()</code> is MLflow's API for
+                  systematically evaluating GenAI applications such as RAG
+                  assistants and AI agents. It runs your model against test
+                  data, applies evaluation scorers for criteria such as factual
+                  accuracy, completeness, and usefulness, and logs results so
+                  quality can be tracked over time.
+                </p>
+
+                <p>
+                  The function requires three main components: a dataset of test
+                  cases, scorers that define the evaluation criteria, and the
+                  model's <code>predict()</code> function that generates
+                  responses.
+                </p>
+
+                <p>
+                  Its key importance is support for human Subject Matter Expert
+                  (SME) feedback alongside automated evaluation. Pure
+                  LLM-as-judge approaches can miss domain-specific nuances, so
+                  MLflow lets teams integrate calibrated expert judgments
+                  directly into the evaluation workflow. SMEs can review and
+                  score responses using custom rubrics, and these human
+                  annotations are stored alongside automated metrics.
+                </p>
+
+                <p>
+                  This hybrid approach combines the scale of automation with the
+                  domain accuracy of human experts, helping evaluations capture
+                  real customer-support quality signals that automated metrics
+                  alone may miss. Teams can also validate that automated LLM
+                  judges align with expert standards by training or calibrating
+                  them against SME annotations.
+                </p>
               </div>
             </div>
           </div>
@@ -673,6 +709,127 @@ title: DataBricks
                             Root cause analysis: connect negative aspects to
                             system components such as retrieval, generation,
                             latency, grounding, or guardrails.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#overviewOfDifferentLlmModels"
+                      >
+                        overview of different LLM models
+                      </button>
+                    </h2>
+
+                    <div
+                      id="overviewOfDifferentLlmModels"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          LLMs differ in size, architecture, modality,
+                          specialization, context window, latency, cost, and
+                          deployment model. Choosing the right model is usually
+                          a trade-off between answer quality, speed, governance,
+                          and operating cost.
+                        </p>
+
+                        <h5>General-purpose chat and reasoning models</h5>
+                        <p>
+                          These models are designed for broad language tasks
+                          such as question answering, summarization, writing,
+                          planning, coding help, and multi-step reasoning. They
+                          are a good default when the task is open-ended or when
+                          users may ask many kinds of questions.
+                        </p>
+
+                        <h5>Instruction-tuned models</h5>
+                        <p>
+                          Instruction-tuned models are trained to follow natural
+                          language directions. They are useful for assistants,
+                          enterprise workflows, extraction tasks,
+                          classification, and prompt-based automation where the
+                          model must reliably follow a requested format or
+                          policy.
+                        </p>
+
+                        <h5>Code models</h5>
+                        <p>
+                          Code-focused models are optimized for generating,
+                          explaining, translating, debugging, and reviewing
+                          code. They are commonly used in developer assistants,
+                          notebook copilots, SQL generation, test generation,
+                          and migration work.
+                        </p>
+
+                        <h5>Embedding models</h5>
+                        <p>
+                          Embedding models convert text, images, or other
+                          content into vectors that capture semantic meaning.
+                          They are usually used for search, recommendation,
+                          clustering, duplicate detection, and retrieval
+                          augmented generation rather than direct chat
+                          responses.
+                        </p>
+
+                        <h5>Multimodal models</h5>
+                        <p>
+                          Multimodal models can work with more than one input
+                          type, such as text, images, audio, video, or
+                          documents. They are useful for document understanding,
+                          chart interpretation, image analysis, call analysis,
+                          and workflows where important context is not only
+                          plain text.
+                        </p>
+
+                        <h5>Small language models</h5>
+                        <p>
+                          Small language models trade some capability for lower
+                          cost, lower latency, and easier deployment. They are
+                          useful for high-volume classification, routing,
+                          extraction, summarization, edge deployment, or tasks
+                          with narrow and well-defined behavior.
+                        </p>
+
+                        <h5>Open-weight and proprietary models</h5>
+                        <p>
+                          Open-weight models can often be hosted, fine-tuned, or
+                          governed inside an organization's own environment.
+                          Proprietary hosted models often provide strong
+                          out-of-the-box quality, managed scaling, and rapid
+                          feature updates. The best choice depends on data
+                          sensitivity, compliance, customization needs, cost,
+                          and operational complexity.
+                        </p>
+
+                        <ul>
+                          <li>
+                            Use a stronger reasoning model for complex,
+                            ambiguous, or high-value tasks.
+                          </li>
+                          <li>
+                            Use a smaller or specialized model for repetitive,
+                            narrow, high-volume tasks.
+                          </li>
+                          <li>
+                            Use embedding models with a vector index when the
+                            system must search private or domain-specific
+                            knowledge.
+                          </li>
+                          <li>
+                            Use multimodal models when the answer depends on
+                            images, PDFs, screenshots, charts, audio, or video.
+                          </li>
+                          <li>
+                            Compare models using task-specific evaluation data,
+                            not only public benchmark scores.
                           </li>
                         </ul>
                       </div>
@@ -2490,6 +2647,11 @@ Output schema: answer: string</code></pre>
                         <hr />
                         <hr />
                         <hr />
+                        self notes ---
+                        
+                        MLflow documentation explicitly recommends combining AI metrics with domain expert judgment through consistent quality metrics (scorers) tuned to align with human expertise 
+
+
                       </div>
                     </div>
                   </div>
