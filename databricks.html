@@ -1639,6 +1639,220 @@ Card No. = 4111-1111-1111-1111</code></pre>
   </div>
 </div>
 
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsAutoscaling"
+    >
+      What is Autoscaling in Cloud Computing?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsAutoscaling"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Autoscaling is a cloud computing feature that automatically adjusts
+        computational resources (like CPUs, GPUs, or entire servers) based on
+        real-time system demand without manual intervention. It continuously
+        monitors metrics like CPU usage, memory, or request count, and
+        dynamically adds or removes resources to match workload requirements.
+      </p>
+
+      <p>
+        For example, during a flash sale on an e-commerce site, traffic might
+        spike 10x. Autoscaling automatically launches additional servers to
+        handle the load, then terminates them when traffic returns to normal.
+      </p>
+
+      <pre><code>Normal traffic: 2 servers running
+Flash sale starts (10x traffic): System adds 8 more servers
+Sale ends: System removes the 8 extra servers → back to 2 servers</code></pre>
+
+      <p>
+        Autoscaling is essential for running applications efficiently in the
+        cloud. For LLM inference workloads (like RAG applications), it ensures
+        sufficient GPU/compute capacity during high demand while avoiding
+        over-provisioning during low-traffic periods.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: Automatically allocate/deallocate resources based on demand
+          to maintain performance and optimize costs.
+        </li>
+        <li>
+          Two types:
+          <strong>Horizontal scaling</strong> (adds/removes entire instances)
+          and <strong>vertical scaling</strong> (increases/decreases CPU/RAM of
+          existing instances).
+        </li>
+        <li>
+          Main benefit: Prevents over-provisioning (paying for unused capacity)
+          while ensuring uptime during traffic spikes.
+        </li>
+        <li>
+          Main risk: Scaling lag (delay between detecting load and adding
+          resources) can cause temporary slowdowns if thresholds are too
+          aggressive.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#howAutoscalingAffectsLLM"
+    >
+      How Does Autoscaling Affect LLM Performance?
+    </button>
+  </h2>
+
+  <div
+    id="howAutoscalingAffectsLLM"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        When autoscaling increases resources for LLM inference, it adds more
+        GPUs or servers to handle the workload. This improves response times and
+        throughput during high demand, but it does NOT change the quality of
+        answers or reduce the per-query cost of using the LLM.
+      </p>
+
+      <p>
+        For example, with 2 GPUs processing 100 requests/sec, latency might be
+        500ms with 10 requests queued. After scaling to 8 GPUs, latency drops to
+        150ms with 0 requests queued—but each query still costs the same per
+        token.
+      </p>
+
+      <pre><code>Before scaling: 2 GPUs, 100 req/sec → 500ms latency, 10 queued
+After scaling:  8 GPUs, 100 req/sec → 150ms latency, 0 queued
+Per-query cost: Still the same (same tokens, same price per token)</code></pre>
+
+      <p>
+        This distinction is critical for RAG applications. Autoscaling optimizes
+        infrastructure utilization (not wasting idle capacity), but it doesn't
+        reduce the actual LLM inference cost, which is determined by token count
+        and number of queries.
+      </p>
+
+      <ul>
+        <li>
+          <strong>What improves:</strong> Latency (faster responses), throughput
+          (more concurrent queries), queue time (fewer waiting requests), and
+          availability during traffic spikes.
+        </li>
+        <li>
+          <strong>What stays the same:</strong> Per-query cost, model quality,
+          response accuracy, and token consumption—autoscaling doesn't make the
+          LLM cheaper or smarter.
+        </li>
+        <li>
+          <strong>Main benefit for LLMs:</strong> Maintains performance under
+          load without manual intervention, preventing dropped requests during
+          peak usage.
+        </li>
+        <li>
+          <strong>Why it doesn't solve cost problems:</strong> LLM costs are
+          driven by tokens × queries, not infrastructure. To reduce costs, you
+          need prompt optimization (fewer tokens) or caching (fewer queries),
+          not more GPUs.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#bestRAGCostControl"
+    >
+      Best Way to Control RAG Costs in Databricks (Without Losing Quality)
+    </button>
+  </h2>
+
+  <div
+    id="bestRAGCostControl"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        The most effective way to control RAG application costs in Databricks
+        without compromising response quality is to employ prompt optimization
+        techniques and cache common query results. Prompt optimization reduces
+        token usage per query, while caching eliminates redundant LLM calls for
+        repeated questions.
+      </p>
+
+      <p>
+        For example, if users frequently ask "What is the return policy?",
+        caching the response means the LLM only runs once, and subsequent
+        identical queries return the cached answer instantly at near-zero cost.
+      </p>
+
+      <pre><code>Without caching:
+User asks "Return policy?" → LLM runs → 500 tokens → $0.01
+User asks "Return policy?" → LLM runs → 500 tokens → $0.01
+User asks "Return policy?" → LLM runs → 500 tokens → $0.01
+Total: 1500 tokens, $0.03
+
+With caching:
+User asks "Return policy?" → LLM runs → 500 tokens → $0.01
+User asks "Return policy?" → Cache hit → 0 tokens → $0
+User asks "Return policy?" → Cache hit → 0 tokens → $0
+Total: 500 tokens, $0.01 (67% savings)</code></pre>
+
+      <p>
+        Unlike autoscaling (which optimizes infrastructure but not per-query
+        cost) or reducing max tokens (which risks incomplete answers), prompt
+        optimization + caching directly reduces LLM usage while maintaining full
+        response quality.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Prompt optimization:</strong> Use concise prompts, reduce
+          top-k documents, summarize retrieved chunks, and encourage brief
+          responses to cut token usage.
+        </li>
+        <li>
+          <strong>Caching:</strong> Store responses for common/similar queries
+          in Databricks Cache or MLflow to avoid redundant LLM inference.
+        </li>
+        <li>
+          <strong>Main benefit:</strong> Directly reduces LLM inference costs by
+          lowering token consumption and query count, without sacrificing
+          answer quality.
+        </li>
+        <li>
+          <strong>Why other options fail:</strong> Autoscaling doesn't reduce
+          per-query cost; checkpointing is for training (not inference);
+          reducing max tokens truncates responses and harms quality.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
