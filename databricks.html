@@ -1562,6 +1562,84 @@ Output: Satya Nadella = PERSON
                           </div>
 
                           <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#unityCatalogMasking"
+    >
+      What is Unity Catalog's role-based masking?
+    </button>
+  </h2>
+
+  <div
+    id="unityCatalogMasking"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Role-based masking in Unity Catalog is a data governance feature that
+        allows organizations to hide or partially mask sensitive data based on
+        the user's assigned role, group membership, or permissions. Instead of
+        giving every user access to the original values, Unity Catalog can
+        dynamically return masked values while still allowing authorized users
+        to view the full data.
+      </p>
+
+      <p>
+        For example, a customer table may contain email addresses and credit
+        card information. Data analysts may only see masked values, while
+        administrators or compliance teams can view the actual data.
+      </p>
+
+      <pre><code>Input Data:
+Customer = John Smith
+Email    = john.smith@example.com
+Card No. = 4111-1111-1111-1111
+
+Analyst View:
+Customer = John Smith
+Email    = j***@example.com
+Card No. = ****-****-****-1111
+
+Admin View:
+Customer = John Smith
+Email    = john.smith@example.com
+Card No. = 4111-1111-1111-1111</code></pre>
+
+      <p>
+        Role-based masking helps organizations protect personally identifiable
+        information (PII), financial records, healthcare data, and other
+        sensitive fields while enabling users to perform analytics on the same
+        datasets. Masking policies are centrally managed in Unity Catalog and
+        enforced automatically whenever users query the data.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: protect sensitive columns by showing different values to
+          different users based on their roles or permissions.
+        </li>
+        <li>
+          Common use cases: masking emails, phone numbers, credit card numbers,
+          salaries, customer identifiers, and healthcare records.
+        </li>
+        <li>
+          Main benefit: enables secure data sharing while maintaining a single
+          source of truth for governed datasets.
+        </li>
+        <li>
+          Main risk: incorrectly configured masking policies may expose
+          sensitive information or unnecessarily restrict legitimate access.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+                          <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
                                 class="accordion-button collapsed"
