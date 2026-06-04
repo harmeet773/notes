@@ -345,6 +345,10 @@ title: DataBricks
             >
               <div class="accordion-body">
                 <p>
+
+                  A Feature Store is a centralized repository that stores and manages reusable features (data attributes) used by AI, machine learning, and Generative AI applications. In Databricks, a Feature Store is typically built on top of Delta tables and provides additional capabilities such as feature discovery, governance, lineage tracking, and consistent access to features during both training and inference. For example, in a customer support chatbot, features like a user's subscription tier, preferred language, and account status can be stored in the Feature Store and retrieved to personalize prompts sent to an LLM. Similarly, in a recommendation system, features such as purchase history, average spending, and product preferences can be shared across multiple models instead of being recreated each time. In GenAI applications, the Feature Store often acts as a reliable source of structured context that complements unstructured data retrieved through RAG systems.
+                </p>
+                <p>
                   A Feature Store is a centralized place to create, discover,
                   reuse, and govern machine learning features. Features are
                   curated data columns, such as customer lifetime value, average
