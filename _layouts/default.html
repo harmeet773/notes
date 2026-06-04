@@ -69,6 +69,7 @@
     <nav>
       <a href="{{ '/' | relative_url }}">Home</a> |
       <a href="{{ '/about.html' | relative_url }}">About</a> |
+      <a href="{{ '/search.html' | relative_url }}">Search</a> |
       <a href="{{ '/contact.html' | relative_url }}">Contact</a> |
       <a href="{{ '/comparitiveStudyOfLanguages.html' | relative_url }}" > Syntax Comparision  </a> |
       <a href="{{ '/GeneralProgrammingConcepts.html' | relative_url }}" > General Programming Concepts </a> |
@@ -94,20 +95,21 @@
       <a href="{{ '/leetcode_%26_DSA.html' | relative_url }}" > LeetCode &amp; DSA </a> |
 
     </nav>
-    <div class="site-search" role="search">
+    <form id="siteSearchForm" class="site-search" role="search" action="{{ '/search.html' | relative_url }}" method="get" novalidate>
       <label class="form-label" for="siteSearchInput">Search notes</label>
       <input
         class="form-control"
         id="siteSearchInput"
+        name="q"
         type="search"
         placeholder="Search topics, concepts, code..."
         autocomplete="off"
         aria-describedby="siteSearchHelp"
         aria-controls="siteSearchResults"
       >
-      <div class="form-text" id="siteSearchHelp">Type at least two characters.</div>
+      <div class="form-text" id="siteSearchHelp">Type at least two characters or press Enter to search the full site.</div>
       <div class="site-search__results d-none" id="siteSearchResults" role="listbox" aria-label="Search results"></div>
-    </div>
+    </form>
     <hr />
   </header>
   <main>
@@ -119,8 +121,11 @@
   </footer>
   <script>
     (() => {
+      const searchForm = document.getElementById("siteSearchForm");
       const input = document.getElementById("siteSearchInput");
       const resultsEl = document.getElementById("siteSearchResults");
+      const pageSearchInfo = document.getElementById("pageSearchInfo");
+      const pageSearchResults = document.getElementById("pageSearchResults");
       const searchIndexUrl = "{{ '/search.json' | relative_url }}";
       let searchIndex = [];
       let indexReady = false;
@@ -153,17 +158,59 @@
         resultsEl.classList.add("d-none");
       };
 
+      const clearPageResults = () => {
+        if (!pageSearchInfo || !pageSearchResults) return;
+        pageSearchInfo.textContent = "";
+        pageSearchResults.innerHTML = "";
+      };
+
+      const renderPageResults = (matches, query) => {
+        if (!pageSearchInfo || !pageSearchResults) return;
+
+        if (query.length < 2) {
+          pageSearchInfo.textContent = "Enter at least two characters to search the notes.";
+          pageSearchResults.innerHTML = "";
+          return;
+        }
+
+        if (!indexReady) {
+          pageSearchInfo.textContent = "Loading search index...";
+          pageSearchResults.innerHTML = "";
+          return;
+        }
+
+        if (!matches.length) {
+          pageSearchInfo.textContent = `No notes matched “${query}”. Please try different keywords.`;
+          pageSearchResults.innerHTML = "";
+          return;
+        }
+
+        pageSearchInfo.textContent = `Showing ${matches.length} result${matches.length === 1 ? "" : "s"} for “${query}”.`;
+        pageSearchResults.innerHTML = matches.map((page) => `
+          <a class="list-group-item list-group-item-action" href="${page.url}">
+            <div class="fw-semibold">${highlight(page.title, query)}</div>
+            <div class="text-muted small">${highlight(page.snippet, query)}</div>
+          </a>
+        `).join("");
+      };
+
       const renderResults = (query) => {
         const normalizedQuery = normalize(query);
 
         if (normalizedQuery.length < 2) {
           clearResults();
+          if (pageSearchResults) {
+            renderPageResults([], query);
+          }
           return;
         }
 
         if (!indexReady) {
           resultsEl.innerHTML = '<div class="site-search__result">Loading search index...</div>';
           resultsEl.classList.remove("d-none");
+          if (pageSearchResults) {
+            renderPageResults([], query);
+          }
           return;
         }
 
@@ -185,23 +232,30 @@
             };
           })
           .filter(Boolean)
-          .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
-          .slice(0, 10);
+          .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title));
 
-        if (!matches.length) {
+        const dropdownMatches = matches.slice(0, 10);
+
+        if (!dropdownMatches.length) {
           resultsEl.innerHTML = '<div class="site-search__result">No matching notes found.</div>';
           resultsEl.classList.remove("d-none");
-          return;
+        } else {
+          resultsEl.innerHTML = dropdownMatches.map((page) => `
+            <a class="site-search__result" href="${page.url}">
+              <div class="site-search__title">${highlight(page.title, query)}</div>
+              <div class="site-search__snippet">${highlight(page.snippet, query)}</div>
+            </a>
+          `).join("");
+          resultsEl.classList.remove("d-none");
         }
 
-        resultsEl.innerHTML = matches.map((page) => `
-          <a class="site-search__result" href="${page.url}">
-            <div class="site-search__title">${highlight(page.title, query)}</div>
-            <div class="site-search__snippet">${highlight(page.snippet, query)}</div>
-          </a>
-        `).join("");
-        resultsEl.classList.remove("d-none");
+        if (pageSearchResults) {
+          renderPageResults(matches.slice(0, 20), query);
+        }
       };
+
+      const urlQuery = new URLSearchParams(window.location.search).get("q") || "";
+      input.value = urlQuery;
 
       fetch(searchIndexUrl)
         .then((response) => {
@@ -218,6 +272,7 @@
         .catch(() => {
           indexReady = true;
           searchIndex = [];
+          renderResults(input.value);
         });
 
       input.addEventListener("input", () => renderResults(input.value));
@@ -225,8 +280,20 @@
         if (event.key === "Escape") {
           input.value = "";
           clearResults();
+          clearPageResults();
         }
       });
+
+      if (searchForm) {
+        searchForm.addEventListener("submit", (event) => {
+          if (normalize(input.value).length < 2) {
+            event.preventDefault();
+            renderResults(input.value);
+            input.focus();
+          }
+        });
+      }
+
       document.addEventListener("click", (event) => {
         if (!event.target.closest(".site-search")) {
           clearResults();

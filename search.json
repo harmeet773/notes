@@ -2,7 +2,7 @@
 layout: null
 ---
 [
-  {% assign searchable_pages = site.pages | where_exp: "item", "item.ext == '.html'" | sort: "title" %}
+  {% assign searchable_pages = site.pages | where_exp: "item", "item.ext == '.html' and item.url != '/search.html'" | sort: "title" %}
   {% for item in searchable_pages %}
     {
       "title": {{ item.title | default: item.name | jsonify }},
