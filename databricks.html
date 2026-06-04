@@ -884,7 +884,26 @@ title: DataBricks
                           Tika or PyMuPDF when processing mixed document types.
                         </p>
                       </div>
+
+<h5>pytesseract</h5>
+<p>
+  pytesseract is a Python wrapper for the Tesseract OCR engine and is used
+  to extract text from images. It is particularly useful when documents are
+  scanned PDFs, screenshots, or image files that contain text but do not
+  have an underlying text layer. By converting images into machine-readable
+  text, pytesseract enables downstream NLP and GenAI workflows such as
+  document indexing, summarization, and question answering. However, it
+  focuses only on OCR and does not provide advanced document structure
+  extraction like tables, headings, or metadata. For best results, it is
+  often used together with libraries such as Tika, PyMuPDF, or python-docx
+  when processing a mix of scanned and digital documents.
+</p>
+
                     </div>
+
+
+
+                    
                   </div>
 
                   <div class="accordion-item">
