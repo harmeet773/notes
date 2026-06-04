@@ -1157,6 +1157,100 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                       <div class="accordion-body">
                         <div class="accordion" id="learnByQaAccordion">
                           <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsCreateDeltaSyncIndex"
+    >
+      What is create_delta_sync_index()?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsCreateDeltaSyncIndex"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        <code>create_delta_sync_index()</code> is a Databricks Vector Search
+        function used to create a vector index that automatically stays
+        synchronized with a Delta table. Instead of manually generating and
+        updating embeddings, Databricks continuously monitors the source Delta
+        table and updates the vector index whenever new records are added,
+        updated, or deleted.
+      </p>
+
+      <p>
+        This is commonly used in Retrieval-Augmented Generation (RAG)
+        applications where documents are stored in Delta tables and must be
+        searchable through semantic similarity search. The function creates a
+        managed pipeline that keeps the vector index and source data aligned.
+      </p>
+
+      <pre><code>Source Documents
+       ↓
+Delta Table
+       ↓
+create_delta_sync_index()
+       ↓
+Vector Search Index
+       ↓
+Similarity Search / RAG Retrieval</code></pre>
+
+      <p>
+        For example, suppose a company stores support articles in a Delta
+        table. After creating a Delta Sync Index, whenever a new article is
+        added, Databricks automatically generates embeddings and updates the
+        vector index. A chatbot can then retrieve the most relevant articles
+        using semantic search without requiring manual index refreshes.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: create a vector search index that automatically syncs with a
+          Delta table.
+        </li>
+        <li>
+          Used in: RAG applications, semantic search, document retrieval, and
+          AI assistants.
+        </li>
+        <li>
+          Benefit: eliminates manual embedding generation and index update
+          workflows.
+        </li>
+        <li>
+          Supports: continuous synchronization when source data changes.
+        </li>
+        <li>
+          Common source: Delta tables containing documents, chunks, embeddings,
+          metadata, or knowledge base content.
+        </li>
+      </ul>
+
+      <p>
+        A simplified example:
+      </p>
+
+      <pre><code>client.create_delta_sync_index(
+    endpoint_name="vs_endpoint",
+    index_name="catalog.schema.docs_index",
+    source_table_name="catalog.schema.documents",
+    pipeline_type="TRIGGERED"
+)</code></pre>
+
+      <p>
+        In a typical Databricks Gen AI workflow, documents are parsed,
+        chunked, stored in a Delta table, and then
+        <code>create_delta_sync_index()</code> is used to build a searchable
+        vector index that powers retrieval for chatbots and AI agents.
+      </p>
+    </div>
+  </div>
+</div>
+                          <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
                                 class="accordion-button collapsed"
