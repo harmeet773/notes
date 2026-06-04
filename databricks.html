@@ -388,6 +388,8 @@ title: DataBricks
                 <p>
 Databricks also supports storing vector embeddings as features. Embeddings (for example, 768‑dimensional vectors from a text encoder) can be stored in Delta tables using array or map column types, which the Feature Store treats like any other feature column. [web:11][web:12][web:15] These embedding features can then be reused across GenAI workloads (such as RAG pipelines or similarity-based recommendations) and can also be indexed with Databricks Vector Search for fast semantic lookup during inference. [web:13][web:16][web:20]
 </p>
+<p>eature stores handle tasks like feature engineering, versioning, and sharing, making them great for managing structured data. Vector databases, on the other hand, specialize in fast similarity searches for high-dimensional embeddings, offering better performance for those use cases. Each serves a distinct role in the machine learning pipeline.
+</p>
               </div>
             </div>
           </div>
