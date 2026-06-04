@@ -1762,6 +1762,89 @@ watched til 12 minutes , rewatch from 13 th
           </div>
 
           <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeadingRagCagMag">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapseRagCagMag"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapseRagCagMag"
+              >
+                What are RAG, CAG, and MAG?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapseRagCagMag"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeadingRagCagMag"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>RAG, CAG, and MAG</strong> are approaches for giving an AI model extra
+                  knowledge beyond the user's immediate question. The goal is to make answers more
+                  accurate, contextual, and useful.
+                </p>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Approach</th>
+                        <th>Meaning</th>
+                        <th>How it works</th>
+                        <th>Best for</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>RAG</strong></td>
+                        <td>Retrieval-Augmented Generation</td>
+                        <td>Searches external sources, retrieves relevant chunks, and sends them with the prompt.</td>
+                        <td>Current facts, private documents, knowledge bases, policies, and support answers.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>CAG</strong></td>
+                        <td>Cache-Augmented Generation or Context-Augmented Generation</td>
+                        <td>Uses cached or preloaded context so the model can answer without searching every time.</td>
+                        <td>Stable documents, repeated questions, low-latency apps, and content that changes rarely.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>MAG</strong></td>
+                        <td>Memory-Augmented Generation</td>
+                        <td>Uses stored memory from previous interactions, user preferences, or long-term records.</td>
+                        <td>Personalized assistants, long-running chats, coaching apps, and customer history.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="card-text mb-2">
+                  <strong>RAG example:</strong> a user asks about a company leave policy. The system
+                  searches the HR documents, retrieves the matching policy section, and the model
+                  answers using that retrieved context.
+                </p>
+                <p class="card-text mb-2">
+                  <strong>CAG example:</strong> an application keeps a product manual or FAQ already
+                  available in cache/context, so common answers can be generated faster without a fresh
+                  retrieval step for every question.
+                </p>
+                <p class="card-text mb-2">
+                  <strong>MAG example:</strong> a learning assistant remembers that a user prefers
+                  beginner-friendly explanations and is currently studying embeddings, so future
+                  answers are adapted to that history.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: <strong>RAG retrieves knowledge</strong>, <strong>CAG reuses cached
+                  context</strong>, and <strong>MAG uses memory</strong>. In real applications these
+                  patterns can also be combined.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
             <h2 class="accordion-header" id="qaNestedHeading10">
               <button
                 class="accordion-button collapsed"
