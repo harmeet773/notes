@@ -1522,6 +1522,49 @@ watched til 12 minutes , rewatch from 13 th
             </div>
           </div>
 
+
+          <div class="accordion-item">
+  <h2 class="accordion-header" id="qaNestedHeadingPrecisionRecall">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#qaNestedCollapsePrecisionRecall"
+      aria-expanded="false"
+      aria-controls="qaNestedCollapsePrecisionRecall"
+    >
+      What are precision and recall (in AI)?
+    </button>
+  </h2>
+  <div
+    id="qaNestedCollapsePrecisionRecall"
+    class="accordion-collapse collapse"
+    aria-labelledby="qaNestedHeadingPrecisionRecall"
+    data-bs-parent="#qaNestedAccordion"
+  >
+    <div class="accordion-body">
+      <p class="card-text mb-2">
+        <strong>Precision</strong> measures how many of the items the model labeled as positive are actually correct.
+        It answers: <em>“Of all predicted positives, how many are true positives?”</em> Mathematically,
+        precision = true positives / (true positives + false positives). High precision means the model makes few
+        false-positive errors.
+      </p>
+      <p class="card-text mb-2">
+        <strong>Recall</strong> (also called sensitivity) measures how many of the actual positive items the model successfully found.
+        It answers: <em>“Of all real positives, how many did the model detect?”</em> Mathematically,
+        recall = true positives / (true positives + false negatives). High recall means the model misses few real positives.
+      </p>
+      <p class="card-text mb-2">
+        These metrics trade off against each other: increasing recall often lowers precision and vice versa. Choose which to prioritize
+        based on the task—favor recall when missing positives is costly (e.g., disease screening), favor precision when false alarms are costly (e.g., spam blocking).
+      </p>
+      <p class="card-text mb-0">
+        In short: <strong>precision = correctness of positive predictions</strong>, while <strong>recall = completeness of finding all positives</strong>.
+        Together they give a fuller picture of a model’s performance.
+      </p>
+    </div>
+  </div>
+</div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="qaNestedHeading5">
               <button
