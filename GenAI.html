@@ -1522,6 +1522,53 @@ watched til 12 minutes , rewatch from 13 th
             </div>
           </div>
 
+          <div class="accordion-item">
+  <h2 class="accordion-header" id="qaNestedHeading1">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#qaNestedCollapse1"
+      aria-expanded="false"
+      aria-controls="qaNestedCollapse1"
+    >
+      What is collaborative filtering and content based filtering?
+    </button>
+  </h2>
+  <div
+    id="qaNestedCollapse1"
+    class="accordion-collapse collapse"
+    aria-labelledby="qaNestedHeading1"
+    data-bs-parent="#qaNestedAccordion"
+  >
+    <div class="accordion-body">
+      <p class="card-text mb-2">
+        <strong>Collaborative filtering</strong> is a recommendation technique that suggests items based on
+        <strong>user behavior patterns and similarities with other users</strong>. It finds users who have
+        similar preferences and recommends items those similar users liked. The key idea is:
+        <em>"People like you also enjoyed this."</em>
+      </p>
+      <p class="card-text mb-2">
+        <strong>Content-based filtering</strong> is a recommendation technique that suggests items based on
+        <strong>item characteristics and the user's past preferences</strong>. It analyzes attributes like
+        genre, keywords, or description. The key idea is:
+        <em>"More like what you already love."</em>
+      </p>
+      <p class="card-text mb-2">
+        <strong>Key differences:</strong>
+      </p>
+      <ul class="card-text mb-2">
+        <li><strong>Basis:</strong> Collaborative filtering uses user-user or item-item similarities, while content-based filtering uses item features/attributes</li>
+        <li><strong>Data needed:</strong> Collaborative filtering requires user interactions (ratings, likes), while content-based filtering needs item metadata (genre, description)</li>
+        <li><strong>Cold start:</strong> Collaborative filtering struggles with new users/items, while content-based filtering works well for new items</li>
+        <li><strong>Diversity:</strong> Collaborative filtering provides higher diversity (surprising recommendations), while content-based filtering tends toward similar items</li>
+      </ul>
+      <p class="card-text mb-0">
+        In simple terms: <strong>collaborative filtering leverages the crowd's wisdom</strong> (many users collaborating through their shared ratings), while <strong>content-based filtering focuses on what makes items similar</strong> based on their features. Many modern systems combine both approaches in hybrid recommenders for better accuracy and diversity.
+      </p>
+    </div>
+  </div>
+</div>
 
           <div class="accordion-item">
   <h2 class="accordion-header" id="qaNestedHeadingPrecisionRecall">
