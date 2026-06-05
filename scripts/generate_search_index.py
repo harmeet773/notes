@@ -70,6 +70,7 @@ def parse_html_file(path):
 
 def main():
     records = []
+    base_url = "/notes"
     for root, dirs, files in os.walk(ROOT):
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
         for name in files:
@@ -84,7 +85,7 @@ def main():
             title, content = parse_html_file(path)
             records.append({
                 "title": title,
-                "url": "/" + rel,
+                "url": base_url + "/" + rel,
                 "content": content,
             })
 

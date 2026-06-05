@@ -126,7 +126,8 @@
       const resultsEl = document.getElementById("siteSearchResults");
       const pageSearchInfo = document.getElementById("pageSearchInfo");
       const pageSearchResults = document.getElementById("pageSearchResults");
-      const searchIndexUrl = "{{ '/search.json' | relative_url }}";
+      const baseUrl = "{{ site.baseurl }}" || "";
+      const searchIndexUrl = baseUrl + "/search.json";
       let searchIndex = [];
       let indexReady = false;
 
