@@ -1563,6 +1563,129 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsVectorSearchAndMlflowSearchModel"
+    >
+      What are VECTOR_SEARCH and mlflow.search_model() in Databricks?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsVectorSearchAndMlflowSearchModel"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <h6>VECTOR_SEARCH</h6>
+
+      <p>
+        Vector Search is a Databricks capability that enables semantic search
+        over unstructured data using vector embeddings. Instead of searching
+        only for exact keywords, Vector Search finds content that is
+        semantically similar to a query by comparing embedding vectors.
+      </p>
+
+      <p>
+        It is commonly used in Retrieval-Augmented Generation (RAG)
+        applications, recommendation systems, document search, and knowledge
+        assistants where understanding meaning is more important than matching
+        exact words.
+      </p>
+
+      <pre><code>Query: "How do I reset my password?"
+
+Retrieved Documents:
+- "Steps to change account credentials"
+- "Password recovery guide"
+- "Account access troubleshooting"</code></pre>
+
+      <p>
+        In Databricks, documents are first converted into embeddings using an
+        embedding model and stored in a Vector Search Index. When a user submits
+        a query, the query is also converted into an embedding and matched
+        against stored vectors to find the most relevant results.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: perform semantic similarity search on embeddings.
+        </li>
+        <li>
+          Common use cases: RAG, document retrieval, knowledge assistants,
+          recommendations, and semantic search.
+        </li>
+        <li>
+          Main benefit: finds relevant content even when exact keywords do not
+          match.
+        </li>
+        <li>
+          Main risk: retrieval quality depends on embedding quality and index
+          configuration.
+        </li>
+      </ul>
+
+      <hr />
+
+      <h6>mlflow.search_model()</h6>
+
+      <p>
+        <code>mlflow.search_model()</code> is an MLflow function used to search
+        and discover registered models in the Databricks Unity Catalog or
+        MLflow Model Registry. It allows users to find models based on names,
+        tags, metadata, creation information, or other filtering criteria.
+      </p>
+
+      <p>
+        This function is especially useful in large organizations where many
+        machine learning and GenAI models are registered and need to be located
+        programmatically.
+      </p>
+
+      <pre><code>Example:
+Search for all models tagged as "production"
+
+Result:
+- customer-churn-model
+- fraud-detection-model
+- support-chat-assistant</code></pre>
+
+      <p>
+        Instead of manually browsing the registry UI, developers can use
+        <code>mlflow.search_model()</code> to discover available models and
+        automate model selection workflows.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: search and discover registered MLflow models.
+        </li>
+        <li>
+          Common filters: model name, tags, owner, creation date, and metadata.
+        </li>
+        <li>
+          Main benefit: simplifies model discovery and governance.
+        </li>
+        <li>
+          Main risk: incorrect filters may return incomplete or unexpected
+          results.
+        </li>
+      </ul>
+
+      <p>
+        Together, Vector Search and <code>mlflow.search_model()</code> are often
+        used in GenAI applications. Vector Search retrieves relevant knowledge
+        from documents, while MLflow helps discover and manage the models used
+        for embeddings, retrieval, evaluation, and response generation.
+      </p>
+    </div>
+  </div>
+</div>
+
                           <div class="accordion-item">
   <h2 class="accordion-header">
     <button
