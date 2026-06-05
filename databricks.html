@@ -1563,6 +1563,76 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsMrr"
+    >
+      What is MRR (Mean Reciprocal Rank)?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsMrr"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        MRR, or Mean Reciprocal Rank, is an evaluation metric used to measure
+        the quality of ranked search results or recommendations. It captures
+        how high the first relevant item appears in a list by averaging the
+        reciprocal of the rank position across multiple queries or requests.
+      </p>
+
+      <p>
+        For example, if a search system returns a list of documents and the
+        first relevant document appears at rank 2 for one query and rank 1 for
+        another, the reciprocal ranks are \(1/2\) and \(1/1\); the MRR would
+        be the average of those values.
+      </p>
+
+      <pre><code>Input (queries and ranks of first relevant result):
+Query A: first relevant at rank 3
+Query B: first relevant at rank 1
+Query C: no relevant result returned (treated as rank = ∞, reciprocal = 0)
+Output: MRR = (1/3 + 1/1 + 0) / 3 = 0.444...</code></pre>
+
+      <p>
+        MRR is commonly used in information retrieval, QA systems, and
+        recommendation evaluation where only the position of the first
+        relevant item matters. It emphasizes returning a relevant result as
+        early as possible.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: measure how quickly the first correct or relevant item is
+          retrieved in ranked lists.
+        </li>
+        <li>
+          Interpretation: values range from 0 to 1; higher is better (1 means
+          the first result is always relevant).
+        </li>
+        <li>
+          Main benefit: simple, interpretable summary of ranking quality that
+          directly rewards systems that place a correct answer at top positions.
+        </li>
+        <li>
+          Main limitation: ignores additional relevant items beyond the first;
+          it treats queries with multiple relevant results the same as those
+          with a single relevant item.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <div class="accordion-item">
   <h2 class="accordion-header">
     <button
