@@ -1542,27 +1542,73 @@ watched til 12 minutes , rewatch from 13 th
     aria-labelledby="qaNestedHeadingPrecisionRecall"
     data-bs-parent="#qaNestedAccordion"
   >
-    <div class="accordion-body">
-      <p class="card-text mb-2">
-        <strong>Precision</strong> measures how many of the items the model labeled as positive are actually correct.
-        It answers: <em>“Of all predicted positives, how many are true positives?”</em> Mathematically,
-        precision = true positives / (true positives + false positives). High precision means the model makes few
-        false-positive errors.
-      </p>
-      <p class="card-text mb-2">
-        <strong>Recall</strong> (also called sensitivity) measures how many of the actual positive items the model successfully found.
-        It answers: <em>“Of all real positives, how many did the model detect?”</em> Mathematically,
-        recall = true positives / (true positives + false negatives). High recall means the model misses few real positives.
-      </p>
-      <p class="card-text mb-2">
-        These metrics trade off against each other: increasing recall often lowers precision and vice versa. Choose which to prioritize
-        based on the task—favor recall when missing positives is costly (e.g., disease screening), favor precision when false alarms are costly (e.g., spam blocking).
-      </p>
-      <p class="card-text mb-0">
-        In short: <strong>precision = correctness of positive predictions</strong>, while <strong>recall = completeness of finding all positives</strong>.
-        Together they give a fuller picture of a model’s performance.
-      </p>
-    </div>
+  
+<div class="accordion-body">
+  <p class="card-text mb-2">
+    <strong>Precision</strong> measures how many of the items the model labeled as positive are actually correct.
+    It answers: <em>“Of all predicted positives, how many are true positives?”</em>
+    Mathematically:
+    <strong>Precision = True Positives / (True Positives + False Positives)</strong>.
+    High precision means the model makes few false-positive errors.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>General Example (Precision):</strong><br />
+    Suppose an email spam filter marks 100 emails as spam. If 90 of them are actually spam and
+    10 are legitimate emails, then:
+    <strong>Precision = 90 / (90 + 10) = 90%</strong>.
+    This means 90% of the emails flagged as spam were correctly identified.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>RAG Example (Precision):</strong><br />
+    A Retrieval-Augmented Generation (RAG) system retrieves 10 documents to answer a question.
+    If only 8 of those documents are truly relevant to the user's query while 2 are unrelated,
+    then:
+    <strong>Precision = 8 / 10 = 80%</strong>.
+    High precision ensures the retrieved context contains mostly useful information and minimizes noise for the LLM.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>Recall</strong> (also called sensitivity) measures how many of the actual positive items the model successfully found.
+    It answers: <em>“Of all real positives, how many did the model detect?”</em>
+    Mathematically:
+    <strong>Recall = True Positives / (True Positives + False Negatives)</strong>.
+    High recall means the model misses few real positives.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>General Example (Recall):</strong><br />
+    Suppose there are 120 spam emails in a mailbox. The spam filter correctly detects 90 of them
+    but misses 30. Then:
+    <strong>Recall = 90 / (90 + 30) = 75%</strong>.
+    This means the system found 75% of all spam emails.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>RAG Example (Recall):</strong><br />
+    Assume a knowledge base contains 20 documents relevant to a user's question.
+    The retriever returns only 15 of those relevant documents.
+    Then:
+    <strong>Recall = 15 / 20 = 75%</strong>.
+    High recall ensures the retriever does not miss important information that could help the LLM generate a complete and accurate answer.
+  </p>
+
+  <p class="card-text mb-2">
+    Precision and recall often trade off against each other. Retrieving more documents in a RAG system may improve recall because fewer relevant documents are missed, but it can reduce precision by bringing in more irrelevant documents. Similarly, retrieving fewer documents may increase precision but risk missing useful context.
+  </p>
+
+  <p class="card-text mb-0">
+    In summary:
+    <strong>Precision measures the quality of retrieved or predicted results</strong>,
+    while
+    <strong>Recall measures the completeness of finding all relevant results</strong>.
+    For RAG systems, both are important—high precision reduces noise, and high recall ensures critical information is not overlooked.
+  </p>
+</div>
+
+
+
   </div>
 </div>
           <div class="accordion-item">
