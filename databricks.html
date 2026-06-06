@@ -285,8 +285,12 @@ title: DataBricks
                   loaded, evaluated, registered, and deployed consistently even
                   when it is not tied to a specific framework like scikit-learn
                   or TensorFlow.In Databricks (via MLflow), pyfunc.predict is the method you call on a loaded PyFunc model to perform inference. 
-                </p>
+                </p><p>
 
+                  In pyfunc models, the predict method is responsible for the entire flow, including pre-processing of inputs, calling the model for inference, and post-processing the outputs. This ensures all the logic for transformation and prediction is self-contained within the pyfunc model.
+
+
+              </p><p>load_context is a required function in mlflow.pyfunc.PythonModel that loads artifacts (like model weights, tokenizers) once when the model is constructed, not per prediction request. This minimizes artifacts loaded during predict, speeding up inference by ensuring heavy loading happens only once at initialization.</p>
                 <h6>mlflow.genai.evaluate()</h6>
                 <p>
                   <code>mlflow.genai.evaluate()</code> is MLflow's API for
