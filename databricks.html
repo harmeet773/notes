@@ -1567,6 +1567,60 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
+                          ```html
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#canRetrieveWithoutLLM"
+    >
+      In a RAG system, can documents be retrieved without an LLM?
+    </button>
+  </h2>
+
+  <div
+    id="canRetrieveWithoutLLM"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Yes, documents can absolutely be retrieved without an LLM in a RAG (Retrieval-Augmented Generation) system. Retrieval is a separate step from generation, and many non-LLM methods can fetch candidate documents efficiently.
+      </p>
+
+      <p>
+        For example, in a RAG pipeline asking <code>"What company acquired MosaicML?"</code>, a retrieval system without an LLM can fetch documents using keyword matching or vector similarity, returning results like company news articles, press releases, or documentation pages.
+      </p>
+
+      <pre><code>Input:  Query = "What company acquired MosaicML?"
+Retrieval (no LLM): BM25 keyword search or vector similarity
+Output: [Databricks_news.pdf, MosaicML_acquisition.docx, tech_report_2023.pdf]</code></pre>
+
+      <p>
+        Non-LLM retrieval is useful because it's fast, lightweight, and cost-effective for getting initial candidate documents. The LLM typically comes in the next step for **reordering/reranking** those retrieved documents with more precise relevance scoring, or for **generating** the final answer using the retrieved content.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: fetch candidate documents quickly using simpler methods before LLM processing.
+        </li>
+        <li>
+          Common retrieval methods: keyword search (BM25), TF-IDF, vector search with embedding models + vector databases (FAISS, Pinecone, ChromaDB).
+        </li>
+        <li>
+          Main benefit: fast, inexpensive retrieval that scales well, allowing you to apply expensive LLM reranking only to a small subset of retrieved documents.
+        </li>
+        <li>
+          Main risk: non-LLM retrieval may miss semantically similar documents that don't share exact keywords, requiring a reranking step with an LLM for precision.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+```
+
 
 <div class="accordion-item">
   <h2 class="accordion-header">
