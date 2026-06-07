@@ -1689,7 +1689,70 @@ Output: MRR = (1/3 + 1/1 + 0) / 3 = 0.444...</code></pre>
     </div>
   </div>
 </div>
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#correctRagDeploymentSequence"
+    >
+      What are correct sequences of steps for deploying an endpoint for a basic Retrieval-Augmented Generation (RAG) application on Databricks?
+    </button>
+  </h2>
 
+  <div
+    id="correctRagDeploymentSequence"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Deploying a RAG endpoint on Databricks follows a specific sequence: prepare data, create embeddings, build a Vector Search index, develop the retrieval function, package with MLflow, register to Unity Catalog, and deploy to Model Serving.
+      </p>
+
+      <p>
+        For example, you first ingest documents and chunk them, then generate vector embeddings using Databricks embedding models, create a Vector Search index for fast retrieval, assemble the RAG chain with LangChain, log and package it with MLflow, register it in Unity Catalog, and finally deploy as a Model Serving endpoint.
+      </p>
+
+      <pre><code>Correct Sequence for RAG Deployment on Databricks:
+1. Prepare/ingest data (load documents, chunk text)
+2. Generate embeddings for chunks (using BGE, Ada, etc.)
+3. Create Vector Search Index (stores embeddings for retrieval)
+4. Develop the retrieval function (LangChain + LLM + prompt)
+5. Package the application (log with MLflow, include dependencies , we use log_model() method to package )
+6. Register the model with Unity Catalog (via MLflow.register_model)
+7. Deploy the endpoint (Model Serving → REST API)</code></pre>
+
+      <p>
+        This sequence is used in production RAG systems where you retrieve external knowledge and augment prompts for pre-trained LLMs. It emphasizes indexing data first, then building retrieval logic, then deploying via governed model serving.
+      
+      </p>
+<p>"Package the application" means bundling your RAG code along with all its dependencies into a self-contained, deployable unit. To package we use - log_model() method . 
+  After registering - Model Appears in Unity Catalog and it becomes a goverened asset . now we can promote the model to staging , prod etc  as well as serve it via API.
+
+</p>
+      <ul>
+        <li>
+          <b>Purpose</b>: deploy a production-ready RAG endpoint that retrieves relevant documents and generates responses using pre-trained LLMs.
+        </li>
+        <li>
+          <b>Key components</b>: data ingestion, chunking, embeddings, Vector Search index, LangChain RAG chain, MLflow packaging, Unity Catalog registration, Model Serving deployment.
+        </li>
+        <li>
+          <b>Main benefit</b>: enterprise-grade governance via Unity Catalog, scalable serving via Model Serving, reproducible deployments with MLflow.
+        </li>
+        <li>
+          <b>Main limitation</b>: requires setup of Vector Search index and embedding pipeline before retrieval can work; not suitable for simple in-memory retrieval.
+        </li>
+      </ul>
+
+      <p>
+        <b>Runtime flow</b>: User asks question → endpoint computes embeddings → searches Vector Search index for similar docs → creates augmented prompt → sends to LLM → returns response [web:3].
+      </p>
+    </div>
+  </div>
+</div>
 
 <div class="accordion-item">
   <h2 class="accordion-header">
