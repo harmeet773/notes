@@ -1568,7 +1568,63 @@ Output: Satya Nadella = PERSON
                           </div>
 
 
+<!-- Note: Multiturn vs. Single-Turn Dialogue Systems -->
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#multiturnVsSingleTurn"
+                              >
+                                What is Multiturn and how it differs from Single-Turn?
+                              </button>
+                            </h2>
 
+                            <div
+                              id="multiturnVsSingleTurn"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The fundamental difference between single-turn and multiturn systems lies in memory management—specifically, whether the system is stateless or stateful. A single-turn system treats every interaction as an isolated event, while a multiturn system tracks ongoing context over a series of exchanges.
+                                </p>
+
+                                <p>
+                                  For example, if you ask a single-turn system about Tokyo's weather and follow up with 
+                                  <code>"What about tomorrow?"</code>, it fails because it cannot link the pronoun to the previous topic. A multiturn system remembers the context of Tokyo and seamlessly processes the follow-up.
+                                </p>
+
+                                <pre><code>Single-Turn (Stateless):
+User: What's the weather in Tokyo? -> AI: It is sunny and 72°F.
+User: What about tomorrow?         -> AI: Error: Please specify a location.
+
+Multiturn (Stateful):
+User: What's the weather in Tokyo? -> AI: It is sunny and 72°F.
+User: What about tomorrow?         -> AI: Tomorrow in Tokyo, expect rain and 68°F.</code></pre>
+
+                                <p>
+                                  Multiturn systems rely on continuous context tracking to maintain a running history of the conversation slot-by-slot, making interactions feel natural and human-like rather than rigid or transactional.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Single-Turn (Stateless): Processes each query in total isolation, with zero memory of past prompts or responses.
+                                  </li>
+                                  <li>
+                                    Multiturn (Stateful): Remembers prior statements, links context across multiple back-and-forth exchanges, and handles conversational shorthand.
+                                  </li>
+                                  <li>
+                                    Main benefit: Allows users to have evolving, layered conversations without constantly restating the primary topic.
+                                  </li>
+                                  <li>
+                                    Main risk: Requires active context management; if the history grows too long or messy, the system can lose track of the core intent.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
 
 <div class="accordion-item">
   <h2 class="accordion-header">
