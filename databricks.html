@@ -1568,6 +1568,132 @@ Output: Satya Nadella = PERSON
                           </div>
 
 
+                          ```html
+                          <!-- Question 1: Best Method for Cost Control -->
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#ragCostControl"
+                              >
+                                Which method BEST controls LLM costs while maintaining performance for RAG applications on Databricks?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="ragCostControl"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The best method is to utilize <strong>Databricks Serverless endpoints</strong>. 
+                                  These endpoints automatically adjust based on the number of incoming requests, 
+                                  optimizing the cost-per-query for LLM inference while maintaining low latency 
+                                  for end-users.
+                                </p>
+
+                                <p>
+                                  Other traditional optimization methods fall short in production RAG environments:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    <strong>Response Caching:</strong> Inefficient because RAG prompts are highly 
+                                    dynamic, personalized, and context-dependent, resulting in very low cache hit rates.
+                                  </li>
+                                  <li>
+                                    <strong>Auto-Scaling Clusters:</strong> Traditional clusters take minutes to spin 
+                                    up new nodes, which is too slow to handle sudden real-time web traffic spikes without 
+                                    causing timeouts.
+                                  </li>
+                                  <li>
+                                    <strong>MLflow Tracking:</strong> Provides excellent observability and logging 
+                                    for token usage, but does not actively alter or optimize the underlying infrastructure costs.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  Main summary of Databricks Serverless benefits:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: Automatically provision and scale GPU infrastructure based on real-time query volume.
+                                  </li>
+                                  <li>
+                                    Scale-to-Zero: Completely stops infrastructure charges when there is no incoming traffic.
+                                  </li>
+                                  <li>
+                                    Main benefit: Drastically reduces the overall cost-per-query by eliminating the "idle compute tax" of 24/7 running clusters.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Question 2: Infrastructure vs Raw Inference Cost -->
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#infrastructureVsInference"
+                              >
+                                Since raw inference cost depends on the input tokens, how does changing the infrastructure lower the bill?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="infrastructureVsInference"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  While the mathematical work (FLOPs) required to process a specific prompt remains 
+                                  identical, changing the underlying infrastructure to Serverless drastically reduces the 
+                                  <em>actual billed amount</em> by eliminating waste and improving system efficiency.
+                                </p>
+
+                                <p>
+                                  On traditional provisioned hardware, you pay for the server by the hour regardless of 
+                                  whether it is processing tokens or sitting completely idle. Serverless switches the 
+                                  billing model entirely to active execution time.
+                                </p>
+
+                                <pre><code>Traditional Cost = Time Cluster is Running &times; Hourly Hardware Rate
+Serverless Cost  = Active Inference Time (Tokens) &times; Token Rate</code></pre>
+
+                                <p>
+                                  Additionally, Databricks Serverless Model Serving applies advanced native software 
+                                  optimizations directly at the hosting layer to maximize hardware utilization:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    <strong>Continuous Batching:</strong> Combines multiple distinct user queries 
+                                    into a single GPU forward pass in real-time, preventing sequential processing delays.
+                                  </li>
+                                  <li>
+                                    <strong>PagedAttention:</strong> Optimizes KV cache memory allocation during 
+                                    long RAG conversations, allowing a single GPU to support up to 4x more concurrent traffic.
+                                  </li>
+                                  <li>
+                                    <strong>Resource Pooling:</strong> Shares a massive, pre-warmed buffer of hardware 
+                                    across multiple workloads, removing the requirement for you to over-provision dedicated standby GPUs.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+```
+
+
 <!-- Note: Multiturn vs. Single-Turn Dialogue Systems -->
                           <div class="accordion-item">
                             <h2 class="accordion-header">
