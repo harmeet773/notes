@@ -587,7 +587,7 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                 data-bs-toggle="collapse"
                 data-bs-target="#databricsAiFunctions"
               >
-                Databricks AI functions
+                Databricks AI Functions
               </button>
             </h2>
 
@@ -601,18 +601,58 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                   Databricks AI functions let you call AI capabilities directly
                   from SQL or Spark workflows for tasks like document parsing,
                   extraction, classification, and preparing content for search.
+                  These functions are divided into general-purpose and task-specific categories.
                 </p>
 
+                <h5 class="mt-3">General-Purpose Functions</h5>
                 <p>
-                  <code>ai_parse_document()</code> parses binary document
-                  content such as PDFs, images, Word files, and PowerPoint files
-                  into a structured <code>VARIANT</code> result. The output can
-                  include pages, elements, text, tables, figures, layout
-                  metadata, bounding boxes, and error or run metadata.
+                  <code>ai_query()</code> is a general-purpose AI function that allows you to 
+                  query hosted foundation models, external models, or custom-trained machine learning models 
+                  deployed on Databricks Model Serving endpoints. It gives you full control over the 
+                  system prompt, model selection, parameters (like temperature), and custom output schemas.
                 </p>
+
+                <h5 class="mt-3">Task-Specific Functions</h5>
+                <p>
+                  These purpose-built, out-of-the-box functions abstract away prompt engineering and 
+                  leverage optimized, state-of-the-art models maintained by Databricks:
+                </p>
+                <ul>
+                  <li>
+                    <code>ai_parse_document()</code>: Parses binary document content such as PDFs, 
+                    images, Word files, and PowerPoint files into a structured <code>VARIANT</code> result, 
+                    including elements like text, tables, and layout metadata.
+                  </li>
+                  <li>
+                    <code>ai_extract()</code>: Extracts specific structured fields from a block of text 
+                    based on a user-defined schema.
+                  </li>
+                  <li>
+                    <code>ai_classify()</code>: Classifies unstructured input text according to a 
+                    provided array of target labels.
+                  </li>
+                  <li>
+                    <code>ai_analyze_sentiment()</code>: Automatically evaluates and returns the overall 
+                    sentiment (e.g., positive, negative, neutral) of input text.
+                  </li>
+                  <li>
+                    <code>ai_summarize()</code>: Generates a concise summary of long-form text.
+                  </li>
+                  <li>
+                    <code>ai_translate()</code>: Translates incoming text data into a specified target language.
+                  </li>
+                  <li>
+                    <code>ai_mask()</code>: Redacts or masks sensitive entities (such as PII) within text strings.
+                  </li>
+                  <li>
+                    <code>ai_prep_search()</code>: Splits and formats parsed documents into optimal, 
+                    search-ready chunks tailored for AI Search and Retrieval-Augmented Generation (RAG) pipelines.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
