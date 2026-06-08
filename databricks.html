@@ -1601,6 +1601,34 @@ Output: Satya Nadella = PERSON
       class="accordion-button collapsed"
       type="button"
       data-bs-toggle="collapse"
+      data-bs-target="#whatIsServicePrincipal"
+    >
+      What is a Service Principal in Databricks and why is it used for model serving endpoints?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsServicePrincipal"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        A <strong>Service Principal</strong> is a digital identity or "robot account" created for automated tools, applications, and CI/CD pipelines rather than a human being. 
+      </p>
+      <p>
+        Assigning a service principal the 'Can Manage' permission allows automated systems (like GitHub Actions or Azure DevOps) to securely update, configure, or restart the serving endpoint via APIs without relying on a personal user account, ensuring operational continuity even if team members leave the organization.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
       data-bs-target="#llamaIndexVsLangChain"
     >
       What is LlamaIndex and how does it differ from LangChain?
