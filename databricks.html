@@ -1567,6 +1567,34 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
+
+
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#canRegisterModelWithoutMLflow"
+    >
+      Can we register a model in Databricks Unity Catalog even when MLflow tracking is disabled?
+    </button>
+  </h2>
+
+  <div
+    id="canRegisterModelWithoutMLflow"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        No, we  cannot register a model in Databricks Unity Catalog if MLflow tracking is completely disabled. Unity Catalog's model registry is built on top of MLflow, so MLflow tracking must be enabled to register models.
+      </p>
+    </div>
+  </div>
+</div>
+
                       
 <div class="accordion-item">
   <h2 class="accordion-header">
