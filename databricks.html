@@ -1595,6 +1595,68 @@ Output: Satya Nadella = PERSON
   </div>
 </div>
 
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#llamaIndexVsLangChain"
+    >
+      What is LlamaIndex and how does it differ from LangChain?
+    </button>
+  </h2>
+
+  <div
+    id="llamaIndexVsLangChain"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        <strong>LlamaIndex</strong> is an open-source framework designed to connect Large Language Models (LLMs) with external data sources such as PDFs, databases, APIs, documents, and knowledge bases. It specializes in data ingestion, indexing, retrieval, and Retrieval-Augmented Generation (RAG) workflows.
+      </p>
+
+      <p>
+        <strong>LangChain</strong> is a broader framework for building LLM-powered applications. It provides tools for prompt management, chains, agents, memory, tool calling, workflows, and integrations with various LLM providers and data sources.
+        LangChain: great general LLM orchestration/agents, but LlamaIndex is stronger out-of-the-box for data source integration & indexing.
+
+
+      </p>
+
+      <h6 class="mt-3">Key Differences</h6>
+      <ul>
+        <li>
+          <strong>LlamaIndex:</strong> Primarily focused on data indexing and retrieval for RAG applications.
+        </li>
+        <li>
+          <strong>LangChain:</strong> Focused on orchestrating end-to-end LLM applications, including agents, tools, and workflows.
+        </li>
+        <li>
+          <strong>LlamaIndex:</strong> Provides advanced document parsing, indexing structures, and retrieval techniques out of the box.
+        </li>
+        <li>
+          <strong>LangChain:</strong> Offers a larger ecosystem for building complex multi-step AI applications.
+        </li>
+        <li>
+          <strong>LlamaIndex:</strong> Often used when efficient retrieval from enterprise knowledge sources is the primary requirement.
+        </li>
+        <li>
+          <strong>LangChain:</strong> Often used when creating agent-based systems that interact with multiple tools and services.
+        </li>
+      </ul>
+
+      <h6 class="mt-3">Can They Be Used Together?</h6>
+      <p>
+        Yes. In many GenAI applications, LlamaIndex is used for document ingestion and retrieval, while LangChain is used to orchestrate prompts, agents, and application workflows. They complement each other rather than compete directly.
+      </p>
+
+      <div class="alert alert-info mt-3 mb-0">
+        <strong>Exam Tip:</strong> Think of <strong>LlamaIndex</strong> as the data retrieval layer for RAG systems and <strong>LangChain</strong> as the application orchestration layer for building complete LLM-powered solutions.
+      </div>
+    </div>
+  </div>
+</div>
                       
 <div class="accordion-item">
   <h2 class="accordion-header">
