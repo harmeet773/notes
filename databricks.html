@@ -2258,7 +2258,7 @@ Result:
   </div>
 </div>
 
-                          <div class="accordion-item">
+ <div class="accordion-item">
   <h2 class="accordion-header">
     <button
       class="accordion-button collapsed"
@@ -2269,8 +2269,7 @@ Result:
       What is Unity Catalog's role-based masking?
     </button>
   </h2>
-
-  <div
+<div
     id="unityCatalogMasking"
     class="accordion-collapse collapse"
     data-bs-parent="#learnByQaAccordion"
@@ -2278,62 +2277,70 @@ Result:
     <div class="accordion-body">
       <p>
         Role-based masking in Unity Catalog is a data governance feature that
-        allows organizations to hide or partially mask sensitive data based on
+        allows organizations to hide, partially mask, or filter sensitive data based on
         the user's assigned role, group membership, or permissions. Instead of
         giving every user access to the original values, Unity Catalog can
-        dynamically return masked values while still allowing authorized users
+        dynamically return masked or filtered values while still allowing authorized users
         to view the full data.
       </p>
 
       <p>
-        For example, a customer table may contain email addresses and credit
-        card information. Data analysts may only see masked values, while
-        administrators or compliance teams can view the actual data.
-      </p>
-
-      <pre><code>Input Data:
-Customer = John Smith
-Email    = john.smith@example.com
-Card No. = 4111-1111-1111-1111
-
-Analyst View:
-Customer = John Smith
-Email    = j***@example.com
-Card No. = ****-****-****-1111
-
-Admin View:
-Customer = John Smith
-Email    = john.smith@example.com
-Card No. = 4111-1111-1111-1111</code></pre>
-
-      <p>
-        Role-based masking helps organizations protect personally identifiable
-        information (PII), financial records, healthcare data, and other
-        sensitive fields while enabling users to perform analytics on the same
-        datasets. Masking policies are centrally managed in Unity Catalog and
-        enforced automatically whenever users query the data.
+        <strong>Can we perform both Row-level and Column-level masking?</strong><br />
+        Yes. Unity Catalog supports both <strong>Column-Level Masking</strong> (using Row Filters and Column Masks) to secure data at a granular level based on who is querying the data:
       </p>
 
       <ul>
         <li>
-          Purpose: protect sensitive columns by showing different values to
-          different users based on their roles or permissions.
+          <strong>Column-Level Masking:</strong> Allows you to apply a masking function to a specific column. Security policies dictate whether a user sees the real data, partially masked data (e.g., credit card ends in 1111), or completely redacted data (e.g., NULL or fixed hashes), depending on their database roles or groups.
         </li>
         <li>
-          Common use cases: masking emails, phone numbers, credit card numbers,
-          salaries, customer identifiers, and healthcare records.
+          <strong>Row-Level Masking (Row Filtering):</strong> Allows you to filter out specific rows from a query result based on user privileges. For example, a regional sales manager might only see rows where the <code>Region</code> column equals 'US', while a global executive can see all rows.
+        </li>
+      </ul>
+
+      <p>
+        For example, a customer table may contain email addresses, credit
+        card information, and regional data. Data analysts may only see masked columns and filtered rows, while
+        administrators or compliance teams can view the actual, complete dataset.
+      </p>
+
+      <pre><code>Input Data:
+Customer   = John Smith  | Region = US | Card No. = 4111-1111-1111-1111
+Customer   = Yuki Tanaka | Region = JP | Card No. = 5222-2222-2222-2222
+
+Analyst View (US Region Group):
+Customer   = John Smith  | Region = US | Card No. = ****-****-****-1111
+*(Yuki Tanaka's row is completely hidden due to row filtering)*
+
+Admin View (Global Group):
+Customer   = John Smith  | Region = US | Card No. = 4111-1111-1111-1111
+Customer   = Yuki Tanaka | Region = JP | Card No. = 5222-2222-2222-2222</code></pre>
+
+      <p>
+        Role-based masking and filtering help organizations protect personally identifiable
+        information (PII), financial records, healthcare data, and other
+        sensitive fields while enabling users to perform analytics on the same
+        datasets. Masking policies are centrally managed in Unity Catalog using standard SQL functions (like <code>CASE WHEN IS_ACCOUNT_GROUP_MEMBER(...)</code>) and enforced automatically whenever users query the data.
+      </p>
+
+      <ul>
+        <li>
+          Purpose: protect sensitive columns and restrict row visibility by showing different subsets of data to different users based on their roles or permissions.
         </li>
         <li>
-          Main benefit: enables secure data sharing while maintaining a single
-          source of truth for governed datasets.
+          Common use cases: masking emails, phone numbers, credit card numbers, and filtering rows by geographic region, department, or business unit.
         </li>
         <li>
-          Main risk: incorrectly configured masking policies may expose
-          sensitive information or unnecessarily restrict legitimate access.
+          Main benefit: enables secure data sharing while maintaining a single source of truth for governed datasets without creating duplicate physical tables.
+        </li>
+        <li>
+          Main risk: incorrectly configured masking or filtering policies may expose sensitive information or unnecessarily restrict legitimate access.
         </li>
       </ul>
     </div>
   </div>
+
+
 </div>
 
 <div class="accordion-item">
