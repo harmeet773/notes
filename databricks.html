@@ -954,75 +954,90 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
     </div>
   </div>
 </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#studyOfPackagesForGenAiCertification"
-                      >
-                        study of packages to prepare for GEN AI certification
-                      </button>
-                    </h2>
+              <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#studyOfPackagesForGenAiCertification"
+    >
+      study of packages to prepare for GEN AI certification
+    </button>
+  </h2>
 
-                    <div
-                      id="studyOfPackagesForGenAiCertification"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
-                    >
-                      <div class="accordion-body">
-                        <h5>Tika</h5>
+  <div
+    id="studyOfPackagesForGenAiCertification"
+    class="accordion-collapse collapse"
+    data-bs-parent="#genAiSelfStudyResourcesAccordion"
+  >
+    <div class="accordion-body">
+      <h5>Tika</h5>
+      <p>
+        Tika is a powerful library for content extraction that supports both
+        digital PDFs and scanned image-based PDFs by integrating Optical
+        Character Recognition (OCR). This makes it the most appropriate choice
+        in this scenario where the documents vary in structure, and some are
+        scanned images. Tika is versatile and can handle complex PDF layouts
+        while extracting only the textual content. It also works well with
+        large-scale document processing, which is crucial given the number of
+        PDFs you are dealing with.
+      </p>
 
-                        <p>
-                          Tika is a powerful library for content extraction
-                          that supports both digital PDFs and scanned
-                          image-based PDFs by integrating Optical Character
-                          Recognition (OCR). This makes it the most appropriate
-                          choice in this scenario where the documents vary in
-                          structure, and some are scanned images. Tika is
-                          versatile and can handle complex PDF layouts while
-                          extracting only the textual content. It also works
-                          well with large-scale document processing, which is
-                          crucial given the number of PDFs you are dealing with.
-                        </p>
-                        <h5>PyMuPDF (also known as fitz)</h5>
-                        <p>
-                          PyMuPDF is designed for handling PDFs, not DOCX files. While it can be effective for PDF content extraction, it is not applicable to Word document processing.
-                        </p>
-                        <h5>python-docx</h5>
-                        <p>
-                          python-docx is a Python library used for reading,
-                          creating, and updating Microsoft Word DOCX files. It
-                          is a suitable choice when the source documents are
-                          Word files because it can extract paragraphs, tables,
-                          headings, and other structured document content.
-                          However, it does not handle PDFs or scanned images, so
-                          it is best used alongside PDF-focused tools such as
-                          Tika or PyMuPDF when processing mixed document types.
-                        </p>
-                      </div>
+      <h5>PyMuPDF (also known as fitz)</h5>
+      <p>
+        PyMuPDF is designed for handling PDFs, not DOCX files. While it can be
+        effective for PDF content extraction, it is not applicable to Word
+        document processing.
+      </p>
 
-<h5>pytesseract</h5>
-<p>
-  pytesseract is a Python wrapper for the Tesseract OCR engine and is used
-  to extract text from images. It is particularly useful when documents are
-  scanned PDFs, screenshots, or image files that contain text but do not
-  have an underlying text layer. By converting images into machine-readable
-  text, pytesseract enables downstream NLP and GenAI workflows such as
-  document indexing, summarization, and question answering. However, it
-  focuses only on OCR and does not provide advanced document structure
-  extraction like tables, headings, or metadata. For best results, it is
-  often used together with libraries such as Tika, PyMuPDF, or python-docx
-  when processing a mix of scanned and digital documents.
-</p>
+      <h5>pypdf</h5>
+      <p>
+        pypdf is a pure-Python library capable of splitting, merging, cropping,
+        and transforming the pages of PDF files. It can also extract text and
+        metadata from PDFs. Because it is written entirely in Python, it is highly
+        portable and easy to install, making it a go-to tool for basic PDF
+        manipulation and text extraction. However, unlike Tika, pypdf does not 
+        have built-in OCR capabilities, meaning it cannot extract text from scanned 
+        image-based PDFs unless paired with an external OCR engine.
+      </p>
 
-                    </div>
+      <h5>python-docx</h5>
+      <p>
+        python-docx is a Python library used for reading, creating, and updating
+        Microsoft Word DOCX files. It is a suitable choice when the source
+        documents are Word files because it can extract paragraphs, tables,
+        headings, and other structured document content. However, it does not
+        handle PDFs or scanned images, so it is best used alongside PDF-focused
+        tools such as Tika, PyMuPDF, or pypdf when processing mixed document types.
+      </p>
 
+      <h5>pytesseract</h5>
+      <p>
+        pytesseract is a Python wrapper for the Tesseract OCR engine and is used
+        to extract text from images. It is particularly useful when documents
+        are scanned PDFs, screenshots, or image files that contain text but do
+        not have an underlying text layer. By converting images into
+        machine-readable text, pytesseract enables downstream NLP and GenAI
+        workflows such as document indexing, summarization, and question
+        answering. However, it focuses only on OCR and does not provide advanced
+        document structure extraction like tables, headings, or metadata.
+      </p>
 
-
-                    
-                  </div>
+      <h5>easyocr</h5>
+      <p>
+        easyocr is a Python package for Optical Character Recognition (OCR) that
+        is built on deep learning frameworks (PyTorch). It supports over 80
+        languages and is highly effective at recognizing text in natural scenes
+        as well as stylized fonts. In GenAI data pipelines, easyocr is favored for
+        its ease of use and high accuracy out-of-the-box when dealing with complex
+        or noisy image data. Like pytesseract, it is used to bridge the gap for
+        scanned documents, though it generally requires a GPU to achieve optimal
+        processing speeds.
+      </p>
+    </div>
+  </div>
+</div>
 
                   <div class="accordion-item">
                     <h2 class="accordion-header">
