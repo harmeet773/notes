@@ -1570,7 +1570,7 @@ watched til 12 minutes , rewatch from 13 th
   </div>
 </div>
 
-          <div class="accordion-item">
+ <div class="accordion-item">
   <h2 class="accordion-header" id="qaNestedHeadingPrecisionRecall">
     <button
       class="accordion-button collapsed"
@@ -1580,7 +1580,7 @@ watched til 12 minutes , rewatch from 13 th
       aria-expanded="false"
       aria-controls="qaNestedCollapsePrecisionRecall"
     >
-      What are precision and recall (in AI)?
+      What are precision, recall, and F1-score (in AI)?
     </button>
   </h2>
   <div
@@ -1616,6 +1616,8 @@ watched til 12 minutes , rewatch from 13 th
     High precision ensures the retrieved context contains mostly useful information and minimizes noise for the LLM.
   </p>
 
+  <hr class="my-3" />
+
   <p class="card-text mb-2">
     <strong>Recall</strong> (also called sensitivity) measures how many of the actual positive items the model successfully found.
     It answers: <em>“Of all real positives, how many did the model detect?”</em>
@@ -1641,20 +1643,42 @@ watched til 12 minutes , rewatch from 13 th
     High recall ensures the retriever does not miss important information that could help the LLM generate a complete and accurate answer.
   </p>
 
+  <hr class="my-3" />
+
   <p class="card-text mb-2">
-    Precision and recall often trade off against each other. Retrieving more documents in a RAG system may improve recall because fewer relevant documents are missed, but it can reduce precision by bringing in more irrelevant documents. Similarly, retrieving fewer documents may increase precision but risk missing useful context.
+    <strong>F1-Score</strong> is the harmonic mean of Precision and Recall. It provides a single balanced metric that takes both false positives and false negatives into account. It is especially useful when you need to find a sweet spot between precision and recall, or when dealing with imbalanced datasets.
+    Mathematically:
+    <strong>F1-Score = 2 * (Precision * Recall) / (Precision + Recall)</strong>.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>General Example (F1-Score):</strong><br />
+    Using the spam filter metrics from above (Precision = 90%, Recall = 75%):
+    <strong>F1-Score = 2 * (0.90 * 0.75) / (0.90 + 0.75) = 1.35 / 1.65 ≈ 81.8%</strong>.
+    This single percentage gives a balanced view of the filter's overall effectiveness.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>RAG Example (F1-Score):</strong><br />
+    Using the retriever metrics from above (Precision = 80%, Recall = 75%):
+    <strong>F1-Score = 2 * (0.80 * 0.75) / (0.80 + 0.75) = 1.20 / 1.55 ≈ 77.4%</strong>.
+    A high F1-score in RAG means the system is highly efficient at retrieving the maximum amount of relevant data with the minimum amount of distracting noise.
+  </p>
+
+  <hr class="my-3" />
+
+  <p class="card-text mb-2">
+    Precision and recall often trade off against each other. Retrieving more documents in a RAG system may improve recall because fewer relevant documents are missed, but it can reduce precision by bringing in more irrelevant documents. Similarly, retrieving fewer documents may increase precision but risk missing useful context. The <strong>F1-score helps optimize this trade-off</strong> by penalizing extreme imbalances between the two.
   </p>
 
   <p class="card-text mb-0">
     In summary:
-    <strong>Precision measures the quality of retrieved or predicted results</strong>,
-    while
-    <strong>Recall measures the completeness of finding all relevant results</strong>.
-    For RAG systems, both are important—high precision reduces noise, and high recall ensures critical information is not overlooked.
+    <strong>Precision measures the quality of retrieved or predicted results</strong>, 
+    <strong>Recall measures the completeness of finding all relevant results</strong>, and the 
+    <strong>F1-Score measures the overall balance between them</strong>.
+    For RAG systems, tracking all three metrics ensures the retriever is both comprehensive and precise, leading to optimal LLM outputs.
   </p>
 </div>
-
-
 
   </div>
 </div>
