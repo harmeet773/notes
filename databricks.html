@@ -954,7 +954,7 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
     </div>
   </div>
 </div>
-              <div class="accordion-item">
+      <div class="accordion-item">
   <h2 class="accordion-header">
     <button
       class="accordion-button collapsed"
@@ -1008,8 +1008,22 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
         Microsoft Word DOCX files. It is a suitable choice when the source
         documents are Word files because it can extract paragraphs, tables,
         headings, and other structured document content. However, it does not
-        handle PDFs or scanned images, so it is best used alongside PDF-focused
-        tools such as Tika, PyMuPDF, or pypdf when processing mixed document types.
+        handle PDFs or scanned images. <strong>Crucially, python-docx does not support 
+        OCR</strong>; it cannot read or extract text embedded within images inside 
+        the Word document. It must be paired with external OCR engines if the DOCX 
+        files contain scanned elements.
+      </p>
+
+      <h5>docx2txt</h5>
+      <p>
+        docx2txt is a lightweight, specialized Python package designed strictly for 
+        extracting text and images from Microsoft Word DOCX files. Unlike python-docx, 
+        which focuses on structured document manipulation (paragraphs, tables, styling), 
+        docx2txt simply strips out the raw text content and can optionally save 
+        embedded images to a local directory. <strong>Like python-docx, docx2txt does 
+        not support OCR</strong>; it can extract the image files themselves, but it 
+        cannot read the text hidden within those images without downstream assistance 
+        from an OCR library like pytesseract.
       </p>
 
       <h5>pytesseract</h5>
