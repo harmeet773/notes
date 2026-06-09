@@ -1607,7 +1607,81 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
+<div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsPhoton"
+                              >
+                                What is Databricks Photon?
+                              </button>
+                            </h2>
 
+                            <div
+                              id="whatIsPhoton"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Photon is a high-performance, native 
+                                  vectorized query engine developed by Databricks 
+                                  to dramatically accelerate the execution of SQL 
+                                  workloads and DataFrame API calls. Written 
+                                  completely from the ground up in C++, it 
+                                  bypasses traditional Java Virtual Machine (JVM) 
+                                  bottlenecks to maximize CPU performance.
+                                </p>
+
+                                <p>
+                                  For example, when running a heavy data 
+                                  aggregation query on millions of rows, the 
+                                  Apache Spark query optimizer (Catalyst) will 
+                                  still plan the query, but 
+                                  <code>Photon</code> takes over the physical 
+                                  execution layer, processing data in fast 
+                                  columnar batches rather than row-by-row.
+                                </p>
+
+                                <pre><code>Input Query: SELECT region, SUM(sales) FROM large_table GROUP BY region;
+Execution without Photon: Processed row-by-row inside the JVM (slower, GC overhead)
+Execution with Photon:    Processed in columnar batches natively in C++ via SIMD (faster)</code></pre>
+
+                                <p>
+                                  Photon is useful for modern Lakehouse systems 
+                                  handling massive scale data. It is compatible with 
+                                  existing Apache Spark APIs, meaning it transparently 
+                                  accelerates your ETL pipelines, BI dashboards, and 
+                                  data engineering jobs without requiring you to 
+                                  rewrite any code. If it encounters an unsupported 
+                                  operation, it seamlessly falls back to the standard 
+                                  Spark runtime.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: accelerate SQL, DataFrame APIs, 
+                                    and data engineering workloads using modern hardware.
+                                  </li>
+                                  <li>
+                                    Key technologies: C++ native execution, 
+                                    vectorized columnar processing, and SIMD (Single Instruction, Multiple Data) instructions.
+                                  </li>
+                                  <li>
+                                    Main benefit: provides up to 5x better price-to-performance 
+                                    by eliminating JVM memory overhead and garbage collection pauses.
+                                  </li>
+                                  <li>
+                                    Main risk: short-running queries (under 2 
+                                    seconds) won't see meaningful benefits due to 
+                                    fixed compilation and task scheduling overhead.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
                           
                           <!-- Question 1: Best Method for Cost Control -->
                           <div class="accordion-item">
