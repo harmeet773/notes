@@ -520,6 +520,8 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
     data-bs-parent="#databricsComponentsAccordion"
   >
     <div class="accordion-body">
+      <p>While DatabricksIQ offers integration and data processing capabilities, it
+is more aligned with data analytics rather than real-time feature serving,</p>
       <p>
         DatabricksIQ is the AI-powered intelligence layer that powers many of
         the generative AI and assistant capabilities across the Databricks
@@ -1780,6 +1782,57 @@ Similarity Search / RAG Retrieval</code></pre>
                               </div>
                             </div>
                           </div>
+                          <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsFoundationModelApi"
+    >
+      What is the Foundation Model API in Databricks?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsFoundationModelApi"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        The Foundation Model API provides serverless access to large language
+        models (LLMs) and embedding models in Databricks. It allows developers
+        to use pre-hosted foundation models through simple API calls without
+        deploying or managing model infrastructure.
+      </p>
+
+      <p>
+        Foundation Model APIs are commonly used for chatbots, question
+        answering, document summarization, content generation, embeddings, and
+        Retrieval-Augmented Generation (RAG) applications.
+      </p>
+
+      <pre><code>Example:
+Application → Foundation Model API → Hosted LLM → Response</code></pre>
+
+      <p>
+        Foundation Model APIs are built on top of Databricks Model Serving.
+        Model Serving provides the infrastructure for hosting and serving
+        models, while Foundation Model APIs offer ready-to-use Databricks-managed
+        foundation models that do not require deployment by the user.
+      </p>
+
+      <ul>
+        <li>Provides serverless access to foundation models.</li>
+        <li>No endpoint deployment or GPU management required.</li>
+        <li>Supports chat, completion, and embedding use cases.</li>
+        <li>Uses Databricks Model Serving as the underlying serving layer.</li>
+        <li>Ideal for quickly building GenAI applications.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
                           <div class="accordion-item">
                             <h2 class="accordion-header">
