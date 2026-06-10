@@ -399,6 +399,107 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
           </div>
 
           <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#databricksFeatureServing"
+    >
+      Feature Serving
+    </button>
+  </h2>
+
+  <div
+    id="databricksFeatureServing"
+    class="accordion-collapse collapse"
+    data-bs-parent="#databricsComponentsAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Feature Serving is the capability that makes machine learning features
+        available to applications and models in real time with low latency.
+        While a Feature Store focuses on creating, organizing, and governing
+        features, Feature Serving focuses on delivering the latest feature
+        values during inference. This allows applications to retrieve
+        up-to-date features without directly querying large analytical tables.
+      </p>
+
+      <p>
+        In Databricks, Feature Serving enables online access to features stored
+        in feature tables managed through Unity Catalog. When a prediction
+        request arrives, the serving layer can quickly fetch the required
+        feature values and provide them to the model, ensuring that inference
+        uses the same trusted feature definitions that were used during model
+        training.
+      </p>
+
+      <p>
+        For example, an e-commerce recommendation system may need a customer's
+        latest purchase count, average order value, and loyalty status before
+        generating product recommendations. Instead of recalculating these
+        values for every request, Feature Serving retrieves the latest feature
+        values and supplies them to the model in milliseconds. Similarly, a
+        fraud detection system can use recently updated transaction statistics
+        and risk indicators to make real-time decisions.
+      </p>
+
+      <p>
+        In Generative AI applications, Feature Serving can provide structured
+        context that complements information retrieved through RAG systems. For
+        example, a customer support assistant may retrieve user-specific
+        features such as subscription level, preferred language, account
+        status, or recent activity and include them in prompts sent to an LLM,
+        enabling more personalized and context-aware responses.
+      </p>
+
+      <ul>
+        <li>
+          Low-latency access: Features can be retrieved quickly for online
+          prediction workloads and real-time applications.
+        </li>
+        <li>
+          Training-serving consistency: The same feature definitions used during
+          model training can be used during inference, reducing
+          training-serving skew.
+        </li>
+        <li>
+          Real-time decision making: Applications can use the latest available
+          feature values when generating predictions.
+        </li>
+        <li>
+          Scalability: Feature Serving is designed to handle high volumes of
+          prediction requests while maintaining performance.
+        </li>
+        <li>
+          Simplified integration: Applications and model serving endpoints can
+          retrieve features through managed APIs instead of directly accessing
+          underlying data tables.
+        </li>
+      </ul>
+
+      <p>
+        Feature Serving is commonly used alongside Model Serving. A typical
+        workflow involves an application sending a request, Feature Serving
+        retrieving the required feature values, and the model using those
+        features to generate a prediction. This architecture helps ensure that
+        production models have access to fresh, consistent, and governed data.
+      </p>
+
+      <p>
+        Although Feature Serving can deliver embedding vectors stored in feature
+        tables, it is not designed for large-scale similarity search. For
+        semantic search, retrieval-augmented generation (RAG), and nearest
+        neighbor queries, Databricks Vector Search provides specialized vector
+        indexing and retrieval capabilities. Feature Serving and Vector Search
+        often work together, with Feature Serving supplying structured features
+        while Vector Search retrieves relevant unstructured context.
+      </p>
+    </div>
+  </div>
+</div>
+
+          <div class="accordion-item">
             <h2 class="accordion-header">
               <button
                 class="accordion-button collapsed"
