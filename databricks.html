@@ -3415,8 +3415,7 @@ Output schema: answer: string</code></pre>
                               </div>
                             </div>
                           </div>
-
-                          <div class="accordion-item">
+<div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
                                 class="accordion-button collapsed"
@@ -3472,36 +3471,29 @@ Output schema: answer: string</code></pre>
                                   <thead>
                                     <tr>
                                       <th>Metric</th>
-                                      <th>Main idea</th>
-                                      <th>Best used for</th>
+                                      <th>Measures</th>
+                                      <th>Best For</th>
+                                      <th>Memory Hook</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <td>BLEU</td>
-                                      <td>
-                                        Precision-oriented n-gram overlap:
-                                        how much of the generated text matches
-                                        the reference wording.
-                                      </td>
-                                      <td>
-                                        Machine translation, controlled text
-                                        generation, and regression tests where
-                                        exact phrasing matters.
-                                      </td>
+                                      <td>ROUGE</td>
+                                      <td>Word Overlap</td>
+                                      <td>Summarization</td>
+                                      <td>ROUGE is for <span class="badge bg-warning text-dark">Recall</span></td>
                                     </tr>
                                     <tr>
-                                      <td>ROUGE</td>
-                                      <td>
-                                        Recall-oriented overlap: how much of the
-                                        reference answer or summary is covered
-                                        by the generated text.
-                                      </td>
-                                      <td>
-                                        Summarization, content coverage checks,
-                                        and comparing whether key points were
-                                        preserved.
-                                      </td>
+                                      <td>BLEU</td>
+                                      <td>Translation Quality</td>
+                                      <td>Machine Translation</td>
+                                      <td>BLEU is for <span class="badge bg-warning text-dark">Bilingual</span></td>
+                                    </tr>
+                                    <tr>
+                                      <td>BERTScore</td>
+                                      <td>Semantic Similarity</td>
+                                      <td>Paraphrasing</td>
+                                      <td>BERT is for <span class="badge bg-warning text-dark">Bonding</span></td>
                                     </tr>
                                   </tbody>
                                 </table>
