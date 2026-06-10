@@ -748,8 +748,69 @@ langGraph allows us to create cyclic graphs , and allows built-in persistence , 
 data/state - also called agent state . It is accessiable at all parts of the graph . It is local to graph . It can be stored in persistence layer.
 watched til 12 minutes , rewatch from 13 th 
 
-
-
+                <div class="accordion mt-3" id="langchainComponentsAccordion">
+                  <div class="accordion-item">
+                    <h3 class="accordion-header" id="langchainComponentsHeading">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#langchainComponentsSection"
+                        aria-expanded="false"
+                        aria-controls="langchainComponentsSection"
+                      >
+                        LangChain components
+                      </button>
+                    </h3>
+                    <div
+                      id="langchainComponentsSection"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="langchainComponentsHeading"
+                      data-bs-parent="#langchainComponentsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          <strong>LangChain components</strong> are the building blocks used to create AI applications with prompts, models, tools, and memory.
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>PromptTemplate</strong> formats input into a structured prompt for the model using variables, instructions, and examples.
+                          </li>
+                          <li>
+                            <strong>RunnableSequence</strong> chains multiple steps together so input flows from one component to the next in a predictable pipeline.
+                          </li>
+                          <li>
+                            <strong>ToolExecutor</strong> runs tools or functions invoked by the model and returns the result back into the workflow.
+                          </li>
+                          <li>
+                            <strong>AgentExecutor</strong> manages the agent loop by deciding when to call tools, how to reason, and how to return the final answer.
+                          </li>
+                          <li>
+                            <strong>AsyncRetriever</strong> fetches relevant documents asynchronously, which is useful for high-performance or non-blocking retrieval flows.
+                          </li>
+                          <li>
+                            <strong>LLM / Chat models</strong> are the core reasoning engines that generate text or decisions.
+                          </li>
+                          <li>
+                            <strong>Tools</strong> allow the model to call external functions, APIs, search engines, or databases.
+                          </li>
+                          <li>
+                            <strong>Memory</strong> keeps track of prior conversation context, user preferences, or intermediate results.
+                          </li>
+                          <li>
+                            <strong>Retrievers</strong> fetch relevant documents or knowledge from a vector store or database.
+                          </li>
+                          <li>
+                            <strong>Chains and agents</strong> connect these components into workflows that can reason, act, and respond step by step.
+                          </li>
+                        </ul>
+                        <p>
+                          In short, LangChain helps you combine these pieces to build applications that are more structured, reusable, and capable of using external knowledge or tools.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
             </div>
           </div>
