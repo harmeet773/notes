@@ -500,6 +500,192 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
   </div>
 </div>
 
+
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#databricksIQ"
+    >
+      DatabricksIQ
+    </button>
+  </h2>
+
+  <div
+    id="databricksIQ"
+    class="accordion-collapse collapse"
+    data-bs-parent="#databricsComponentsAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        DatabricksIQ is the AI-powered intelligence layer that powers many of
+        the generative AI and assistant capabilities across the Databricks
+        Data Intelligence Platform. It combines knowledge about an
+        organization's data, metadata, lineage, governance policies, and usage
+        patterns to provide more accurate, context-aware assistance to users.
+        Rather than relying only on general language model knowledge,
+        DatabricksIQ understands the structure and semantics of data stored
+        within the lakehouse.
+      </p>
+
+      <p>
+        DatabricksIQ helps users interact with data using natural language.
+        Business analysts can ask questions in plain English, data engineers
+        can receive code suggestions, and data scientists can accelerate model
+        development without manually searching through documentation or data
+        assets. The system leverages Unity Catalog metadata, table schemas,
+        relationships, permissions, and lineage information to generate more
+        relevant responses.
+      </p>
+
+      <p>
+        For example, a business user might ask, "Which products generated the
+        highest revenue last quarter?" DatabricksIQ can translate the request
+        into SQL, identify the relevant tables, and generate an appropriate
+        query. Similarly, a data engineer may receive assistance writing Spark
+        code, debugging pipelines, or understanding data dependencies across
+        the platform.
+      </p>
+
+      <p>
+        In Generative AI applications, DatabricksIQ helps provide context-aware
+        assistance by combining foundation models with enterprise metadata and
+        governance controls. This enables users to obtain answers grounded in
+        trusted organizational data while respecting security and access
+        permissions.
+      </p>
+
+      <ul>
+        <li>
+          Natural language interaction: Allows users to work with data using
+          conversational queries and prompts.
+        </li>
+        <li>
+          Context-aware assistance: Uses metadata, lineage, and governance
+          information to improve response accuracy.
+        </li>
+        <li>
+          Productivity enhancement: Assists with SQL generation, code
+          development, troubleshooting, and data exploration.
+        </li>
+        <li>
+          Governance-aware responses: Respects Unity Catalog permissions and
+          access controls.
+        </li>
+        <li>
+          Enterprise intelligence: Grounds AI responses in organizational data
+          and business context.
+        </li>
+      </ul>
+
+      <p>
+        DatabricksIQ serves as the intelligence layer behind experiences such
+        as AI/BI, conversational analytics, code assistants, and other
+        AI-powered capabilities throughout the Databricks ecosystem. Its goal
+        is to make data and AI more accessible while maintaining enterprise
+        governance and trust.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#databricksAutoML"
+    >
+      AutoML
+    </button>
+  </h2>
+
+  <div
+    id="databricksAutoML"
+    class="accordion-collapse collapse"
+    data-bs-parent="#databricsComponentsAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        AutoML (Automated Machine Learning) is a Databricks capability that
+        automates many of the repetitive tasks involved in building machine
+        learning models. Instead of manually performing data preparation,
+        feature selection, algorithm selection, hyperparameter tuning, and
+        model evaluation, users can provide a dataset and prediction target,
+        and AutoML generates multiple candidate models automatically.
+      </p>
+
+      <p>
+        Databricks AutoML helps both experienced data scientists and users with
+        limited machine learning expertise accelerate model development. It
+        leverages proven machine learning frameworks and best practices to
+        train, evaluate, and compare models while generating reproducible
+        notebooks that document the entire process.
+      </p>
+
+      <p>
+        For example, a retail company may want to predict customer churn. After
+        selecting the training dataset and target column, AutoML can
+        automatically test multiple algorithms, perform feature engineering,
+        tune model parameters, and identify the best-performing model based on
+        evaluation metrics. Similarly, a financial institution can use AutoML
+        to build models that predict loan default risk without manually
+        experimenting with numerous algorithms.
+      </p>
+
+      <p>
+        AutoML supports common machine learning tasks such as classification,
+        regression, and forecasting. The generated experiments are tracked in
+        MLflow, allowing teams to review metrics, compare runs, reproduce
+        results, and deploy selected models into production.
+      </p>
+
+      <ul>
+        <li>
+          Automated model development: Reduces manual effort required for model
+          training and optimization.
+        </li>
+        <li>
+          Hyperparameter tuning: Automatically searches for optimal parameter
+          combinations to improve model performance.
+        </li>
+        <li>
+          Multiple algorithm evaluation: Trains and compares different machine
+          learning algorithms.
+        </li>
+        <li>
+          Reproducibility: Generates notebooks and MLflow experiments that
+          document the complete workflow.
+        </li>
+        <li>
+          Faster experimentation: Helps teams build baseline models quickly and
+          iterate more efficiently.
+        </li>
+      </ul>
+
+      <p>
+        AutoML is particularly useful during the early stages of a machine
+        learning project, where teams need to quickly identify promising
+        models. While it can significantly accelerate development, data
+        scientists often further refine the generated models by incorporating
+        domain knowledge, custom features, and advanced optimization
+        techniques.
+      </p>
+
+      <p>
+        AutoML is not a replacement for feature engineering, governance, or
+        model monitoring. Instead, it complements other Databricks components
+        such as Feature Store, MLflow, Model Serving, and Unity Catalog to
+        streamline the end-to-end machine learning lifecycle.
+      </p>
+    </div>
+  </div>
+</div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button
