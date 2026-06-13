@@ -346,8 +346,65 @@ title: Gen AI
             </h2>
             <div id="term2" class="accordion-collapse collapse" data-bs-parent="#innerAccordion">
               <div class="accordion-body">
-                A token is the smallest unit of text processed by a model, which may or may not represent a complete meaningful unit.
-                <strong>Tokenization</strong> is the initial processing step where input text is broken into <strong>discrete tokens</strong>. This process goes beyond simple space-based splitting; it identifies <strong>meaningful suffixes</strong> like "-ing" or "-ers" (e.g., "glitters," "eating"), which helps the model understand that a specific action is being performed by an object.
+               <p>
+    A <strong>token</strong> is the smallest unit of text that a model processes. A token may represent a whole word, part of a word, punctuation mark, or another meaningful text fragment.
+</p>
+
+<p>
+    <strong>Tokenization</strong> is the process of breaking input text into <strong>discrete tokens</strong>. Rather than simply splitting text by spaces, tokenization identifies meaningful word components such as prefixes, roots, and suffixes (for example, "-ing" in <em>eating</em> or "-ers" in <em>glitters</em>). This helps the model recognize patterns, relationships, and grammatical structures within the text.
+</p>
+
+<p>
+    It is important to use a tokenizer that is specifically designed for the language model being used (for example, BERT or GPT). Different models are trained with different tokenization strategies and vocabularies. A common misconception is that tokenization works the same way across all models, but this is not the case. To ensure accurate processing and optimal performance, the tokenizer must match the model architecture.
+</p>
+
+<p><strong>Example 1:</strong></p>
+
+<p>
+    Text: <code>"The cat is eating fish."</code>
+</p>
+
+<p>
+    Possible tokens:
+</p>
+
+<pre><code>["The", "cat", "is", "eat", "ing", "fish", "."]</code></pre>
+
+<p>
+    In this example, the word <strong>"eating"</strong> is split into the root <strong>"eat"</strong> and the suffix <strong>"ing"</strong>, helping the model understand that an eating action is taking place.
+</p>
+
+<p><strong>Example 2:</strong></p>
+
+<p>
+    Text: <code>"The stars are glittering."</code>
+</p>
+
+<p>
+    Possible tokens:
+</p>
+
+<pre><code>["The", "star", "s", "are", "glitter", "ing", "."]</code></pre>
+
+<p>
+    Here, <strong>"stars"</strong> may be split into <strong>"star"</strong> and <strong>"s"</strong>, while <strong>"glittering"</strong> may be split into <strong>"glitter"</strong> and <strong>"ing"</strong>. This enables the model to recognize the base words and their grammatical variations, improving its understanding of the sentence.
+</p>
+
+<p><strong>Example 3:</strong></p>
+
+<p>
+    Text: <code>"Unbelievable results!"</code>
+</p>
+
+<p>
+    Possible tokens:
+</p>
+
+<pre><code>["un", "believ", "able", "results", "!"]</code></pre>
+
+<p>
+    In this example, the word <strong>"unbelievable"</strong> is broken into smaller meaningful components. By recognizing prefixes such as <strong>"un"</strong> and suffixes such as <strong>"able"</strong>, the model can better understand the meaning of unfamiliar or complex words.
+</p>
               </div>
             </div>
           </div>
@@ -696,97 +753,91 @@ watched til 12 minutes , rewatch from 13 th
 
             </div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-<div class="accordion-item">
-    <h2 class="accordion-header">
-      <button
-        class="accordion-button collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#phoenixSection"
-      >
-        Phoenix
-      </button>
-    </h2>
-
-    <div
-      id="phoenixSection"
-      class="accordion-collapse collapse"
-      data-bs-parent="#gitResourcesAccordion"
-    >
-      <div class="accordion-body">
-        <div class="accordion" id="phoenixAccordion">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#phoenixExamplesExperiments"
+                data-bs-target="#phoenixSection"
               >
-                What are Examples and Experiments in Phoenix?
+                Phoenix
               </button>
             </h2>
 
             <div
-              id="phoenixExamplesExperiments"
+              id="phoenixSection"
               class="accordion-collapse collapse"
-              data-bs-parent="#phoenixAccordion"
+              data-bs-parent="#coursesInnerAccordion"
             >
               <div class="accordion-body">
-                <p>In Phoenix:</p>
-                <ul>
-                  <li>
-                    <strong>Examples</strong> are individual data points within
-                    a dataset. Each example consists of an inputs dictionary, an
-                    optional output dictionary (often the expected/reference
-                    output), and optional metadata. They represent your test
-                    cases.
-                  </li>
-                  <li>
-                    <strong>Experiments</strong> are structured runs where you
-                    execute a task function against every example in a dataset
-                    and evaluate the results. They let you compare different
-                    versions of your application (e.g., different prompts or
-                    models) using the same set of examples and evaluation
-                    criteria.
-                  </li>
-                </ul>
-                <p>
-                  In short: examples are the data, experiments are the process
-                  of running your app on that data and measuring quality.
-                </p>
+                <div class="accordion" id="phoenixAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#phoenixExamplesExperiments"
+                      >
+                        What are Examples and Experiments in Phoenix?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="phoenixExamplesExperiments"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#phoenixAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>In Phoenix:</p>
+                        <ul>
+                          <li>
+                            <strong>Examples</strong> are individual data points within
+                            a dataset. Each example consists of an inputs dictionary, an
+                            optional output dictionary (often the expected/reference
+                            output), and optional metadata. They represent your test
+                            cases.
+                          </li>
+                          <li>
+                            <strong>Experiments</strong> are structured runs where you
+                            execute a task function against every example in a dataset
+                            and evaluate the results. They let you compare different
+                            versions of your application (e.g., different prompts or
+                            models) using the same set of examples and evaluation
+                            criteria.
+                          </li>
+                        </ul>
+                        <p>
+                          In short: examples are the data, experiments are the process
+                          of running your app on that data and measuring quality.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-<div class="accordion-item">
-    <h2 class="accordion-header">
-      <button
-        class="accordion-button collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#aiEvals"
-      >
-        AI Evals
-      </button>
-    </h2>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiEvals"
+              >
+                AI Evals
+              </button>
+            </h2>
 
-    <div
-      id="aiEvals"
-      class="accordion-collapse collapse"
-      data-bs-parent="#gitResourcesAccordion"
-    >
-      <div class="accordion-body">
+            <div
+              id="aiEvals"
+              class="accordion-collapse collapse"
+              data-bs-parent="#coursesInnerAccordion"
+            >
+              <div class="accordion-body">
         <p>
           These notes are based on the
           <strong>Introduction To Arize AX Evals</strong> presentation by Shri
@@ -1264,6 +1315,13 @@ watched til 12 minutes , rewatch from 13 th
     </div>
   </div>
 
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="accordion mt-4" id="qaAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header" id="qaHeading">
@@ -1465,6 +1523,142 @@ watched til 12 minutes , rewatch from 13 th
           </div>
 
           <div class="accordion-item">
+  <h2 class="accordion-header" id="qaNestedHeading1">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#qaNestedCollapse1"
+      aria-expanded="false"
+      aria-controls="qaNestedCollapse1"
+    >
+      What is collaborative filtering and content based filtering?
+    </button>
+  </h2>
+  <div
+    id="qaNestedCollapse1"
+    class="accordion-collapse collapse"
+    aria-labelledby="qaNestedHeading1"
+    data-bs-parent="#qaNestedAccordion"
+  >
+    <div class="accordion-body">
+      <p class="card-text mb-2">
+        <strong>Collaborative filtering</strong> is a recommendation technique that suggests items based on
+        <strong>user behavior patterns and similarities with other users</strong>. It finds users who have
+        similar preferences and recommends items those similar users liked. The key idea is:
+        <em>"People like you also enjoyed this."</em>
+      </p>
+      <p class="card-text mb-2">
+        <strong>Content-based filtering</strong> is a recommendation technique that suggests items based on
+        <strong>item characteristics and the user's past preferences</strong>. It analyzes attributes like
+        genre, keywords, or description. The key idea is:
+        <em>"More like what you already love."</em>
+      </p>
+      <p class="card-text mb-2">
+        <strong>Key differences:</strong>
+      </p>
+      <ul class="card-text mb-2">
+        <li><strong>Basis:</strong> Collaborative filtering uses user-user or item-item similarities, while content-based filtering uses item features/attributes</li>
+        <li><strong>Data needed:</strong> Collaborative filtering requires user interactions (ratings, likes), while content-based filtering needs item metadata (genre, description)</li>
+        <li><strong>Cold start:</strong> Collaborative filtering struggles with new users/items, while content-based filtering works well for new items</li>
+        <li><strong>Diversity:</strong> Collaborative filtering provides higher diversity (surprising recommendations), while content-based filtering tends toward similar items</li>
+      </ul>
+      <p class="card-text mb-0">
+        In simple terms: <strong>collaborative filtering leverages the crowd's wisdom</strong> (many users collaborating through their shared ratings), while <strong>content-based filtering focuses on what makes items similar</strong> based on their features. Many modern systems combine both approaches in hybrid recommenders for better accuracy and diversity.
+      </p>
+    </div>
+  </div>
+</div>
+
+          <div class="accordion-item">
+  <h2 class="accordion-header" id="qaNestedHeadingPrecisionRecall">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#qaNestedCollapsePrecisionRecall"
+      aria-expanded="false"
+      aria-controls="qaNestedCollapsePrecisionRecall"
+    >
+      What are precision and recall (in AI)?
+    </button>
+  </h2>
+  <div
+    id="qaNestedCollapsePrecisionRecall"
+    class="accordion-collapse collapse"
+    aria-labelledby="qaNestedHeadingPrecisionRecall"
+    data-bs-parent="#qaNestedAccordion"
+  >
+  
+<div class="accordion-body">
+  <p class="card-text mb-2">
+    <strong>Precision</strong> measures how many of the items the model labeled as positive are actually correct.
+    It answers: <em>“Of all predicted positives, how many are true positives?”</em>
+    Mathematically:
+    <strong>Precision = True Positives / (True Positives + False Positives)</strong>.
+    High precision means the model makes few false-positive errors.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>General Example (Precision):</strong><br />
+    Suppose an email spam filter marks 100 emails as spam. If 90 of them are actually spam and
+    10 are legitimate emails, then:
+    <strong>Precision = 90 / (90 + 10) = 90%</strong>.
+    This means 90% of the emails flagged as spam were correctly identified.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>RAG Example (Precision):</strong><br />
+    A Retrieval-Augmented Generation (RAG) system retrieves 10 documents to answer a question.
+    If only 8 of those documents are truly relevant to the user's query while 2 are unrelated,
+    then:
+    <strong>Precision = 8 / 10 = 80%</strong>.
+    High precision ensures the retrieved context contains mostly useful information and minimizes noise for the LLM.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>Recall</strong> (also called sensitivity) measures how many of the actual positive items the model successfully found.
+    It answers: <em>“Of all real positives, how many did the model detect?”</em>
+    Mathematically:
+    <strong>Recall = True Positives / (True Positives + False Negatives)</strong>.
+    High recall means the model misses few real positives.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>General Example (Recall):</strong><br />
+    Suppose there are 120 spam emails in a mailbox. The spam filter correctly detects 90 of them
+    but misses 30. Then:
+    <strong>Recall = 90 / (90 + 30) = 75%</strong>.
+    This means the system found 75% of all spam emails.
+  </p>
+
+  <p class="card-text mb-2">
+    <strong>RAG Example (Recall):</strong><br />
+    Assume a knowledge base contains 20 documents relevant to a user's question.
+    The retriever returns only 15 of those relevant documents.
+    Then:
+    <strong>Recall = 15 / 20 = 75%</strong>.
+    High recall ensures the retriever does not miss important information that could help the LLM generate a complete and accurate answer.
+  </p>
+
+  <p class="card-text mb-2">
+    Precision and recall often trade off against each other. Retrieving more documents in a RAG system may improve recall because fewer relevant documents are missed, but it can reduce precision by bringing in more irrelevant documents. Similarly, retrieving fewer documents may increase precision but risk missing useful context.
+  </p>
+
+  <p class="card-text mb-0">
+    In summary:
+    <strong>Precision measures the quality of retrieved or predicted results</strong>,
+    while
+    <strong>Recall measures the completeness of finding all relevant results</strong>.
+    For RAG systems, both are important—high precision reduces noise, and high recall ensures critical information is not overlooked.
+  </p>
+</div>
+
+
+
+  </div>
+</div>
+          <div class="accordion-item">
             <h2 class="accordion-header" id="qaNestedHeading5">
               <button
                 class="accordion-button collapsed"
@@ -1578,6 +1772,514 @@ watched til 12 minutes , rewatch from 13 th
                   It helps reduce hallucinations because the model is guided by actual evidence
                   rather than guessing.
                 </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading8">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse8"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse8"
+              >
+                What is inference in Gen AI?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse8"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading8"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>Inference</strong> is the process of using a trained model to generate an
+                  output for a new input. In Gen AI, this means sending a prompt, image, audio, or
+                  other input to the model and receiving generated text, code, images, embeddings,
+                  classifications, or tool-call decisions.
+                </p>
+                <p class="card-text mb-2">
+                  Training teaches the model patterns from data. Inference uses those learned patterns
+                  to answer real requests. For example, when a chatbot replies to a user question, the
+                  model is performing inference.
+                </p>
+                <p class="card-text mb-2">
+                  During an inference request, the application prepares the prompt, tokenizes the input,
+                  runs the model, decodes generated tokens, and then post-processes the response. Post-processing
+                  may include validating JSON, filtering unsafe content, calling tools, formatting the answer,
+                  or storing traces for observability.
+                </p>
+                <p class="card-text mb-2">
+                  Common inference parameters include:
+                </p>
+                <ul class="mb-2">
+                  <li><strong>Max tokens:</strong> controls the maximum length of the generated response.</li>
+                  <li><strong>Temperature:</strong> controls randomness. Lower values are more focused; higher values are more creative.</li>
+                  <li><strong>Top-p:</strong> limits generation to a probability mass of likely tokens.</li>
+                  <li><strong>Stop sequences:</strong> tell the model where to stop generating.</li>
+                  <li><strong>Structured output:</strong> asks the model to return a specific format such as JSON.</li>
+                </ul>
+                <p class="card-text mb-2">
+                  Inference cost and performance depend on input tokens, output tokens, model size,
+                  latency requirements, and hardware or API provider. Important production metrics are
+                  <strong> latency</strong>, <strong>throughput</strong>, <strong>context size</strong>,
+                  <strong>token usage</strong>, and <strong>error rate</strong>.
+                </p>
+                <p class="card-text mb-2">
+                  There are different inference patterns: <strong>online inference</strong> for real-time
+                  user requests, <strong>batch inference</strong> for processing many inputs together, and
+                  <strong>local or edge inference</strong> for privacy, offline use, or lower network dependency.
+                </p>
+                <p class="card-text mb-0">
+                  Best practices are to use clear instructions, ground answers with trusted context,
+                  keep prompts concise, validate structured outputs, log traces and token usage, and
+                  evaluate outputs before changing prompts, models, or parameters.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading9">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse9"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse9"
+              >
+                What are embeddings?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse9"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading9"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>Embeddings</strong> are numeric representations of data such as text,
+                  images, audio, or code. They convert unstructured information into a list of
+                  numbers, also called a <strong>vector</strong>, so that computers can compare
+                  meaning mathematically.
+                </p>
+                <p class="card-text mb-2">
+                  The important idea is that similar meanings produce similar vectors. For example,
+                  the sentences <strong>"How do I reset my password?"</strong> and
+                  <strong>"I forgot my login password"</strong> should have embeddings that are close
+                  to each other, even though the exact words are different.
+                </p>
+                <p class="card-text mb-2">
+                  Embeddings are commonly used for <strong>semantic search</strong>, recommendation
+                  systems, clustering, duplicate detection, classification, and Retrieval-Augmented
+                  Generation (RAG). In a RAG system, documents are converted into embeddings and
+                  stored in a vector database. When a user asks a question, the question is also
+                  converted into an embedding, and the system retrieves the most similar document
+                  chunks as context for the model.
+                </p>
+                <p class="card-text mb-2">
+                  Distance metrics such as <strong>cosine similarity</strong>, dot product, or
+                  Euclidean distance are used to measure how close two embeddings are. A smaller
+                  distance or higher similarity score usually means the items are more related in
+                  meaning.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: embeddings turn meaning into numbers. This allows AI applications
+                  to search by intent and context instead of relying only on exact keyword matches.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeadingRagCagMag">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapseRagCagMag"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapseRagCagMag"
+              >
+                What are RAG, CAG, and MAG?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapseRagCagMag"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeadingRagCagMag"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>RAG, CAG, and MAG</strong> are approaches for giving an AI model extra
+                  knowledge beyond the user's immediate question. The goal is to make answers more
+                  accurate, contextual, and useful.
+                </p>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Approach</th>
+                        <th>Meaning</th>
+                        <th>How it works</th>
+                        <th>Best for</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>RAG</strong></td>
+                        <td>Retrieval-Augmented Generation</td>
+                        <td>Searches external sources, retrieves relevant chunks, and sends them with the prompt.</td>
+                        <td>Current facts, private documents, knowledge bases, policies, and support answers.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>CAG</strong></td>
+                        <td>Cache-Augmented Generation or Context-Augmented Generation</td>
+                        <td>Uses cached or preloaded context so the model can answer without searching every time.</td>
+                        <td>Stable documents, repeated questions, low-latency apps, and content that changes rarely.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>MAG</strong></td>
+                        <td>Memory-Augmented Generation</td>
+                        <td>Uses stored memory from previous interactions, user preferences, or long-term records.</td>
+                        <td>Personalized assistants, long-running chats, coaching apps, and customer history.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="card-text mb-2">
+                  <strong>RAG example:</strong> a user asks about a company leave policy. The system
+                  searches the HR documents, retrieves the matching policy section, and the model
+                  answers using that retrieved context.
+                </p>
+                <p class="card-text mb-2">
+                  <strong>CAG example:</strong> an application keeps a product manual or FAQ already
+                  available in cache/context, so common answers can be generated faster without a fresh
+                  retrieval step for every question.
+                </p>
+                <p class="card-text mb-2">
+                  <strong>MAG example:</strong> a learning assistant remembers that a user prefers
+                  beginner-friendly explanations and is currently studying embeddings, so future
+                  answers are adapted to that history.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: <strong>RAG retrieves knowledge</strong>, <strong>CAG reuses cached
+                  context</strong>, and <strong>MAG uses memory</strong>. In real applications these
+                  patterns can also be combined.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading10">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse10"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse10"
+              >
+                What are the different types of prompts?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse10"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading10"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  Prompts are instructions or inputs given to an AI model. They can be grouped by
+                  instruction style, prompting technique, and the purpose they serve in an application.
+                </p>
+
+                <h6 class="mt-3">1. By instruction structure</h6>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Direct instructions</strong></td>
+                        <td>Clear, specific commands such as "Summarize this article in 3 sentences."</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Open-ended instructions</strong></td>
+                        <td>Broad prompts that invite exploration, such as "What are the implications of AI in healthcare?"</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Task-specific instructions</strong></td>
+                        <td>Prompts designed for a specific task, such as translation, code generation, classification, or summarization.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h6>2. By prompting technique</h6>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>What it does</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Zero-shot prompting</strong></td>
+                        <td>Gives the task directly without examples.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Few-shot prompting</strong></td>
+                        <td>Provides a few examples before asking the model to perform the task.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Meta prompting</strong></td>
+                        <td>Asks the AI to create, rewrite, or optimize prompts themselves; it is structure-focused.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Chain-of-thought prompting</strong></td>
+                        <td>Guides the AI to work through reasoning step by step before answering.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Self-improvement loops</strong></td>
+                        <td>The AI generates a response, reviews it, identifies weaknesses, and improves it.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h6>3. By function or purpose</h6>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Use case</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>System prompts / metaprompts</strong></td>
+                        <td>Set the AI's role, behavior, rules, and constraints for the conversation.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Task prompts</strong></td>
+                        <td>Ask the AI to perform a specific task, such as write, analyze, summarize, or classify.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Question prompts</strong></td>
+                        <td>Ask for information, definitions, comparisons, or explanations.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Creative prompts</strong></td>
+                        <td>Generate stories, ideas, designs, names, scripts, or artistic concepts.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Filter / qualification prompts</strong></td>
+                        <td>Let users define how data should be filtered, such as by hierarchy, attribute, or metric qualifications.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Value prompts</strong></td>
+                        <td>Select specific values, such as dates, numbers, text strings, or category values for filtering.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h6>What is meta prompting?</h6>
+                <p class="card-text mb-2">
+                  <strong>Meta prompting</strong> means "prompting about prompting." Instead of only asking
+                  the AI for a final answer, you ask it to improve the instructions it will use. For example,
+                  the AI may rewrite a vague prompt, make it more specific, choose a better format, or ask
+                  clarifying questions before producing the final response.
+                </p>
+                <p class="card-text mb-2">
+                  Think of a metaprompt as a director's note: it sets the tone, rules, format, and strategy
+                  the AI should follow, instead of being only the line the AI should say.
+                </p>
+                <div class="table-responsive mb-3">
+                  <table class="table table-bordered table-sm align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Aspect</th>
+                        <th>What it means</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Purpose</strong></td>
+                        <td>Guide AI behavior, tone, rules, response format, and strategy.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>How it works</strong></td>
+                        <td>The AI creates or improves instructions for itself, then uses them to produce a better final answer.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Benefit</strong></td>
+                        <td>You do not need to write the perfect prompt yourself; the AI can help optimize it.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Approach</strong></td>
+                        <td>Structure-oriented: it focuses on format, pattern, and method more than specific content.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="card-text mb-2">
+                  In short, <strong>meta prompting</strong> is a higher-level technique for improving prompts
+                  themselves, while prompt types range from basic instruction styles to advanced prompting
+                  techniques such as few-shot prompting, chain-of-thought prompting, and self-improvement loops.
+                </p>
+                <p class="card-text mb-0">
+                  <strong>Resources:</strong>
+                  <a href="https://www.ibm.com/think/topics/prompt-engineering-techniques" target="_blank" rel="noopener noreferrer">IBM prompt engineering techniques</a>,
+                  <a href="https://www.promptingguide.ai/techniques/meta-prompting" target="_blank" rel="noopener noreferrer">Prompting Guide meta prompting</a>,
+                  <a href="https://portkey.ai/blog/what-is-meta-prompting" target="_blank" rel="noopener noreferrer">Portkey meta prompting</a>,
+                  <a href="https://www.linkedin.com/pulse/making-most-your-ai-prompts-metapromptcom-dharmesh-shah-b21ze" target="_blank" rel="noopener noreferrer">LinkedIn metaprompt article</a>,
+                  <a href="https://www2.strategy.com/producthelp/Current/MSTRWeb/WebHelp/Lang_1033/Content/Prompt_types.htm" target="_blank" rel="noopener noreferrer">Strategy prompt types</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeading11">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapse11"
+                aria-expanded="false"
+                aria-controls="qaNestedCollapse11"
+              >
+                What is model training loss?
+              </button>
+            </h2>
+            <div
+              id="qaNestedCollapse11"
+              class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeading11"
+              data-bs-parent="#qaNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="card-text mb-2">
+                  <strong>Model training loss</strong> is a number that measures how wrong a model's
+                  prediction is during training. After the model makes a prediction, the training
+                  system compares that prediction with the correct answer and calculates a loss value.
+                </p>
+                <p class="card-text mb-2">
+                  A <strong>lower loss</strong> usually means the model is making better predictions on
+                  the training data. A <strong>higher loss</strong> means the model's predictions are
+                  farther away from the expected answers.
+                </p>
+                <p class="card-text mb-2">
+                  During training, the model uses this loss to update its internal weights. The goal is
+                  to reduce the loss step by step so the model learns useful patterns from the data.
+                  For language models, a common loss function is <strong>cross-entropy loss</strong>,
+                  which measures how well the model predicted the next token.
+                </p>
+                <p class="card-text mb-2">
+                  Training loss is useful, but it should not be checked alone. If training loss keeps
+                  going down while validation loss goes up, the model may be <strong>overfitting</strong>:
+                  it is memorizing the training examples instead of generalizing well to new data.
+                </p>
+                <p class="card-text mb-0">
+                  In simple terms: <strong>training loss is the model's error score while learning</strong>.
+                  The training process tries to make this score smaller, but the real test is whether
+                  the model also performs well on unseen validation or test data.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="accordion mt-4" id="tutorialsAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="tutorialsHeading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#tutorialsSection"
+        aria-expanded="false"
+        aria-controls="tutorialsSection"
+      >
+        Tutorials
+      </button>
+    </h2>
+    <div
+      id="tutorialsSection"
+      class="accordion-collapse collapse"
+      aria-labelledby="tutorialsHeading"
+      data-bs-parent="#tutorialsAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="tutorialsNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="runLlmsLocallyHeading">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#runLlmsLocallySection"
+                aria-expanded="false"
+                aria-controls="runLlmsLocallySection"
+              >
+                How to run LLMs locally?
+              </button>
+            </h2>
+            <div
+              id="runLlmsLocallySection"
+              class="accordion-collapse collapse"
+              aria-labelledby="runLlmsLocallyHeading"
+              data-bs-parent="#tutorialsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <a
+                  href="https://www.youtube.com/watch?v=GAyNvq6Ayps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Running LLMs Locally Just Got Way Better - Ollama + MCPWatch: How to run LLMs locally?
+                </a>
+                <br />
+                <a
+                  href="https://www.youtube.com/watch?v=km5-0jhv0JI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  How to Run LLMs Locally - Full Guide
+                </a>
+                <br />
+                <a
+                  href="https://www.youtube.com/watch?v=HDlMRaJq8FE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ollama Just Got 2x Faster on Mac (Here's How)
+                </a>
               </div>
             </div>
           </div>

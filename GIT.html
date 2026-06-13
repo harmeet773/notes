@@ -2,7 +2,7 @@
 layout: default
 title: GIT
 ---
-
+ 
 <h2 class="mb-4">Resources to Learn GIT</h2>
 
 <div class="accordion" id="gitResourcesAccordion">
@@ -151,6 +151,8 @@ git stash pop</code></pre>
                 <pre><code>git status
 # Any time you want “all untracked, nothing else” (PowerShell) use below:                  
 git stash push -u -m "untracked only" -- @(git ls-files --others --exclude-standard)
+# below command will stash all the files ( tracked anad untracked) containing harmeet keyword 
+git stash push -u -m "stash harmeet files" -- $(git ls-files -co --exclude-standard | grep -i harmeet)
 git stash list
 git status
 git stash apply "stash@{0}"
@@ -592,7 +594,43 @@ ssh -T git@github-work</code></pre>
     </div>
   </div>
 
-  
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#htdHowToDo"
+      >
+        HTD- How to do
+      </button>
+    </h2>
+
+    <div
+      id="htdHowToDo"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          Use this section for quick Git how-to guidance and useful command
+          examples.
+        </p>
+
+        <h3>Basic workflow</h3>
+        <pre><code>git status
+git add .
+git commit -m "Describe what changed"
+git push</code></pre>
+
+        <h3>Switch branch safely</h3>
+        <pre><code>git fetch origin
+git switch feature/branch-name
+# or use git checkout feature/branch-name</code></pre>
+      </div>
+    </div>
+  </div>
+
 
 Merge made by the 'ort' strategy. what is it ?
 

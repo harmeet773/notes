@@ -5,6 +5,63 @@
   <title>{{ page.title }} | {{ site.title }}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+    }
+
+    .site-search {
+      position: relative;
+      max-width: 42rem;
+      margin-top: 1rem;
+    }
+
+    .site-search__results {
+      position: absolute;
+      z-index: 1000;
+      top: calc(100% + 0.25rem);
+      left: 0;
+      right: 0;
+      max-height: 24rem;
+      overflow-y: auto;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.175);
+      border-radius: 0.375rem;
+      box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.12);
+    }
+
+    .site-search__result {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+    }
+
+    .site-search__result:last-child {
+      border-bottom: 0;
+    }
+
+    .site-search__result:hover,
+    .site-search__result:focus {
+      background: #f8f9fa;
+    }
+
+    .site-search__title {
+      font-weight: 600;
+    }
+
+    .site-search__snippet {
+      margin-top: 0.25rem;
+      color: #495057;
+      font-size: 0.925rem;
+    }
+
+    mark {
+      padding: 0;
+      background: #fff3cd;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -12,6 +69,7 @@
     <nav>
       <a href="{{ '/' | relative_url }}">Home</a> |
       <a href="{{ '/about.html' | relative_url }}">About</a> |
+      <a href="{{ '/search.html' | relative_url }}">Search</a> |
       <a href="{{ '/contact.html' | relative_url }}">Contact</a> |
       <a href="{{ '/comparitiveStudyOfLanguages.html' | relative_url }}" > Syntax Comparision  </a> |
       <a href="{{ '/GeneralProgrammingConcepts.html' | relative_url }}" > General Programming Concepts </a> |
@@ -23,16 +81,35 @@
       <a href="{{ '/devSecOps.html' | relative_url }}" > DevSecOps </a> |
       <a href="{{ '/AWS.html' | relative_url }}" > AWS </a> |
       <a href="{{ '/databricks.html' | relative_url }}" > Databricks </a> |
+      <a href="{{ '/database.html' | relative_url }}" > Database </a> |
       <a href="{{ '/SDE2.html' | relative_url }}" > SDE 2 </a> |
       <a href="{{ '/api.html' | relative_url }}" > API </a> |
       <a href="{{ '/GenAI.html' | relative_url }}" > Gen AI </a> |
       <a href="{{ '/cursor_ai.html' | relative_url }}" > Cursor AI </a> |
+      <a href="{{ '/lovable.dev.html' | relative_url }}" > Lovable.dev </a> |
+      <a href="{{ '/techi-tech.html' | relative_url }}" > Techi Tech </a> |
       <a href="{{ '/GIT.html' | relative_url }}" > GIT </a> |
       <a href="{{ '/testing.html' | relative_url }}" > Testing </a> |
       <a href="{{ '/Technological_concepts.html' | relative_url }}" > Technological Concepts </a> |
+      <a href="{{ '/blogging.HTML' | relative_url }}" > Blogging </a> |
       <a href="{{ '/leetcode_%26_DSA.html' | relative_url }}" > LeetCode &amp; DSA </a> |
 
     </nav>
+    <form id="siteSearchForm" class="site-search" role="search" action="{{ '/search.html' | relative_url }}" method="get" novalidate>
+      <label class="form-label" for="siteSearchInput">Search notes</label>
+      <input
+        class="form-control"
+        id="siteSearchInput"
+        name="q"
+        type="search"
+        placeholder="Search topics, concepts, code..."
+        autocomplete="off"
+        aria-describedby="siteSearchHelp"
+        aria-controls="siteSearchResults"
+      >
+      <div class="form-text" id="siteSearchHelp">Type at least two characters or press Enter to search the full site.</div>
+      <div class="site-search__results d-none" id="siteSearchResults" role="listbox" aria-label="Search results"></div>
+    </form>
     <hr />
   </header>
   <main>
@@ -42,5 +119,188 @@
     <hr />
     <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
   </footer>
+  <script>
+    (() => {
+      const searchForm = document.getElementById("siteSearchForm");
+      const input = document.getElementById("siteSearchInput");
+      const resultsEl = document.getElementById("siteSearchResults");
+      const pageSearchInfo = document.getElementById("pageSearchInfo");
+      const pageSearchResults = document.getElementById("pageSearchResults");
+      const baseUrl = "{{ site.baseurl }}" || "";
+      const searchIndexUrl = baseUrl + "/search.json";
+      let searchIndex = [];
+      let indexReady = false;
+
+      const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const normalize = (text) => text.toLowerCase().replace(/\s+/g, " ").trim();
+      const escapeHtml = (text) => {
+        const span = document.createElement("span");
+        span.textContent = text;
+        return span.innerHTML;
+      };
+
+      const getSnippet = (content, query) => {
+        const normalizedContent = content.replace(/\s+/g, " ").trim();
+        const matchIndex = normalizedContent.toLowerCase().indexOf(query.toLowerCase());
+        const start = Math.max(matchIndex - 70, 0);
+        const end = Math.min(start + 180, normalizedContent.length);
+        const prefix = start > 0 ? "... " : "";
+        const suffix = end < normalizedContent.length ? " ..." : "";
+        return `${prefix}${normalizedContent.slice(start, end)}${suffix}`;
+      };
+
+      const highlight = (text, query) => {
+        const pattern = new RegExp(`(${escapeRegExp(query)})`, "ig");
+        return escapeHtml(text).replace(pattern, "<mark>$1</mark>");
+      };
+
+      const clearResults = () => {
+        resultsEl.innerHTML = "";
+        resultsEl.classList.add("d-none");
+      };
+
+      const clearPageResults = () => {
+        if (!pageSearchInfo || !pageSearchResults) return;
+        pageSearchInfo.textContent = "";
+        pageSearchResults.innerHTML = "";
+      };
+
+      const renderPageResults = (matches, query) => {
+        if (!pageSearchInfo || !pageSearchResults) return;
+
+        if (query.length < 2) {
+          pageSearchInfo.textContent = "Enter at least two characters to search the notes.";
+          pageSearchResults.innerHTML = "";
+          return;
+        }
+
+        if (!indexReady) {
+          pageSearchInfo.textContent = "Loading search index...";
+          pageSearchResults.innerHTML = "";
+          return;
+        }
+
+        if (!matches.length) {
+          pageSearchInfo.textContent = `No notes matched “${query}”. Please try different keywords.`;
+          pageSearchResults.innerHTML = "";
+          return;
+        }
+
+        pageSearchInfo.textContent = `Showing ${matches.length} result${matches.length === 1 ? "" : "s"} for “${query}”.`;
+        pageSearchResults.innerHTML = matches.map((page) => `
+          <a class="list-group-item list-group-item-action" href="${page.url}">
+            <div class="fw-semibold">${highlight(page.title, query)}</div>
+            <div class="text-muted small">${highlight(page.snippet, query)}</div>
+          </a>
+        `).join("");
+      };
+
+      const renderResults = (query) => {
+        const normalizedQuery = normalize(query);
+
+        if (normalizedQuery.length < 2) {
+          clearResults();
+          if (pageSearchResults) {
+            renderPageResults([], query);
+          }
+          return;
+        }
+
+        if (!indexReady) {
+          resultsEl.innerHTML = '<div class="site-search__result">Loading search index...</div>';
+          resultsEl.classList.remove("d-none");
+          if (pageSearchResults) {
+            renderPageResults([], query);
+          }
+          return;
+        }
+
+        const matches = searchIndex
+          .map((page) => {
+            const title = normalize(page.title);
+            const content = normalize(page.content);
+            const titleMatch = title.includes(normalizedQuery);
+            const contentMatch = content.includes(normalizedQuery);
+
+            if (!titleMatch && !contentMatch) {
+              return null;
+            }
+
+            return {
+              ...page,
+              score: titleMatch ? 2 : 1,
+              snippet: getSnippet(page.content, query)
+            };
+          })
+          .filter(Boolean)
+          .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title));
+
+        const dropdownMatches = matches.slice(0, 10);
+
+        if (!dropdownMatches.length) {
+          resultsEl.innerHTML = '<div class="site-search__result">No matching notes found.</div>';
+          resultsEl.classList.remove("d-none");
+        } else {
+          resultsEl.innerHTML = dropdownMatches.map((page) => `
+            <a class="site-search__result" href="${page.url}">
+              <div class="site-search__title">${highlight(page.title, query)}</div>
+              <div class="site-search__snippet">${highlight(page.snippet, query)}</div>
+            </a>
+          `).join("");
+          resultsEl.classList.remove("d-none");
+        }
+
+        if (pageSearchResults) {
+          renderPageResults(matches.slice(0, 20), query);
+        }
+      };
+
+      const urlQuery = new URLSearchParams(window.location.search).get("q") || "";
+      input.value = urlQuery;
+
+      fetch(searchIndexUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Search index could not be loaded.");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          searchIndex = data;
+          indexReady = true;
+          renderResults(input.value);
+        })
+        .catch(() => {
+          indexReady = true;
+          searchIndex = [];
+          renderResults(input.value);
+        });
+
+      input.addEventListener("input", () => renderResults(input.value));
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          input.value = "";
+          clearResults();
+          clearPageResults();
+        }
+      });
+
+      if (searchForm) {
+        searchForm.addEventListener("submit", (event) => {
+          if (normalize(input.value).length < 2) {
+            event.preventDefault();
+            renderResults(input.value);
+            input.focus();
+          }
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest(".site-search")) {
+          clearResults();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

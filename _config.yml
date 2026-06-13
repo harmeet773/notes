@@ -1,3 +1,4 @@
 title: notes
 description: Welcome to my notes site
 theme: minima
+baseurl: /notes
