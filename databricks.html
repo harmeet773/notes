@@ -57,6 +57,37 @@ title: DataBricks
         class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
+        data-bs-target="#pointsToRememberForCertification"
+      >
+        points to remember for certification
+      </button>
+    </h2>
+
+    <div
+      id="pointsToRememberForCertification"
+      class="accordion-collapse collapse"
+      data-bs-parent="#databricksAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          Static partitioning increases setup complexity; metadata filtering is
+          preferred.
+        </p>
+        <p>
+          Pure vector similarity may not handle temporal or categorical
+          constraints effectively' . For example, searching for news on a
+          particular date
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
         data-bs-target="#databricksExamVendor"
       >
         Databricks Exam Vendor
@@ -186,13 +217,12 @@ title: DataBricks
             >
               <div class="accordion-body">
                 <p>
-                  remember that it is a framework , and not a databricks component.
-                  Mosaic AI Agent Framework is Databricks' framework for
-                  building, testing, deploying, and monitoring production AI
+                  remember that it is a framework , and not a databricks
+                  component. Mosaic AI Agent Framework is Databricks' framework
+                  for building, testing, deploying, and monitoring production AI
                   agents. It lets teams create agent applications that use LLMs,
                   tools, retrieval, and business logic while staying integrated
                   with Databricks governance and serving infrastructure.
-                  
                 </p>
 
                 <ul>
@@ -207,8 +237,8 @@ title: DataBricks
                   </li>
                   <li>
                     Use MLflow tracing and logging to capture prompts, tool
-                    calls, intermediate steps, responses, and evaluation
-                    results for debugging and auditability.
+                    calls, intermediate steps, responses, and evaluation results
+                    for debugging and auditability.
                   </li>
                   <li>
                     Evaluate agent quality with Agent Evaluation before moving
@@ -222,9 +252,9 @@ title: DataBricks
 
                 <p>
                   In short, the framework helps move an agent from notebook
-                  prototype to governed production application with traceability,
-                  evaluation, deployment, and monitoring built into the
-                  Databricks platform.
+                  prototype to governed production application with
+                  traceability, evaluation, deployment, and monitoring built
+                  into the Databricks platform.
                 </p>
               </div>
             </div>
@@ -252,28 +282,28 @@ title: DataBricks
                   MLflow is an open source platform integrated with Databricks
                   for managing the machine learning lifecycle. It helps teams
                   track experiments, package code, register models, evaluate
-                  outputs, and move models or GenAI applications into
-                  production with governance and reproducibility.
+                  outputs, and move models or GenAI applications into production
+                  with governance and reproducibility.
                 </p>
 
                 <ul>
                   <li>
-                    ® Manage end-to-end ML and GenAl workflows, from
-                    development to production.
+                    ® Manage end-to-end ML and GenAl workflows, from development
+                    to production.
                   </li>
                   <li>
                     ® Unified platform for both traditional ML and GenAl
                     applications.
                   </li>
                   <li>
-                    Track parameters, metrics, artifacts, datasets, prompts,
-                    and traces so model behavior can be compared and audited
-                    across runs.
+                    Track parameters, metrics, artifacts, datasets, prompts, and
+                    traces so model behavior can be compared and audited across
+                    runs.
                   </li>
                   <li>
                     Use the MLflow Model Registry with Databricks to manage
-                    model versions, stage transitions, approvals, and
-                    deployment readiness.
+                    model versions, stage transitions, approvals, and deployment
+                    readiness.
                   </li>
                 </ul>
 
@@ -284,13 +314,25 @@ title: DataBricks
                   <code>predict()</code> interface, so the model can be logged,
                   loaded, evaluated, registered, and deployed consistently even
                   when it is not tied to a specific framework like scikit-learn
-                  or TensorFlow.In Databricks (via MLflow), pyfunc.predict is the method you call on a loaded PyFunc model to perform inference. 
-                </p><p>
-
-                  In pyfunc models, the predict method is responsible for the entire flow, including pre-processing of inputs, calling the model for inference, and post-processing the outputs. This ensures all the logic for transformation and prediction is self-contained within the pyfunc model.
-
-
-              </p><p>load_context is a required function in mlflow.pyfunc.PythonModel that loads artifacts (like model weights, tokenizers) once when the model is constructed, not per prediction request. This minimizes artifacts loaded during predict, speeding up inference by ensuring heavy loading happens only once at initialization.</p>
+                  or TensorFlow.In Databricks (via MLflow), pyfunc.predict is
+                  the method you call on a loaded PyFunc model to perform
+                  inference.
+                </p>
+                <p>
+                  In pyfunc models, the predict method is responsible for the
+                  entire flow, including pre-processing of inputs, calling the
+                  model for inference, and post-processing the outputs. This
+                  ensures all the logic for transformation and prediction is
+                  self-contained within the pyfunc model.
+                </p>
+                <p>
+                  load_context is a required function in
+                  mlflow.pyfunc.PythonModel that loads artifacts (like model
+                  weights, tokenizers) once when the model is constructed, not
+                  per prediction request. This minimizes artifacts loaded during
+                  predict, speeding up inference by ensuring heavy loading
+                  happens only once at initialization.
+                </p>
                 <h6>mlflow.genai.evaluate()</h6>
                 <p>
                   <code>mlflow.genai.evaluate()</code> is MLflow's API for
@@ -349,8 +391,23 @@ title: DataBricks
             >
               <div class="accordion-body">
                 <p>
-
-                  A Feature Store is a centralized repository that stores and manages reusable features (data attributes) used by AI, machine learning, and Generative AI applications. In Databricks, a Feature Store is typically built on top of Delta tables and provides additional capabilities such as feature discovery, governance, lineage tracking, and consistent access to features during both training and inference. For example, in a customer support chatbot, features like a user's subscription tier, preferred language, and account status can be stored in the Feature Store and retrieved to personalize prompts sent to an LLM. Similarly, in a recommendation system, features such as purchase history, average spending, and product preferences can be shared across multiple models instead of being recreated each time. In GenAI applications, the Feature Store often acts as a reliable source of structured context that complements unstructured data retrieved through RAG systems.
+                  A Feature Store is a centralized repository that stores and
+                  manages reusable features (data attributes) used by AI,
+                  machine learning, and Generative AI applications. In
+                  Databricks, a Feature Store is typically built on top of Delta
+                  tables and provides additional capabilities such as feature
+                  discovery, governance, lineage tracking, and consistent access
+                  to features during both training and inference. For example,
+                  in a customer support chatbot, features like a user's
+                  subscription tier, preferred language, and account status can
+                  be stored in the Feature Store and retrieved to personalize
+                  prompts sent to an LLM. Similarly, in a recommendation system,
+                  features such as purchase history, average spending, and
+                  product preferences can be shared across multiple models
+                  instead of being recreated each time. In GenAI applications,
+                  the Feature Store often acts as a reliable source of
+                  structured context that complements unstructured data
+                  retrieved through RAG systems.
                 </p>
                 <p>
                   A Feature Store is a centralized place to create, discover,
@@ -390,10 +447,333 @@ title: DataBricks
                 </ul>
 
                 <p>
-Databricks also supports storing vector embeddings as features. Embeddings (for example, 768‑dimensional vectors from a text encoder) can be stored in Delta tables using array or map column types, which the Feature Store treats like any other feature column. [web:11][web:12][web:15] These embedding features can then be reused across GenAI workloads (such as RAG pipelines or similarity-based recommendations) and can also be indexed with Databricks Vector Search for fast semantic lookup during inference. [web:13][web:16][web:20]
-</p>
-<p>eature stores handle tasks like feature engineering, versioning, and sharing, making them great for managing structured data. Vector databases, on the other hand, specialize in fast similarity searches for high-dimensional embeddings, offering better performance for those use cases. Each serves a distinct role in the machine learning pipeline.
-</p>
+                  Databricks also supports storing vector embeddings as
+                  features. Embeddings (for example, 768‑dimensional vectors
+                  from a text encoder) can be stored in Delta tables using array
+                  or map column types, which the Feature Store treats like any
+                  other feature column. [web:11][web:12][web:15] These embedding
+                  features can then be reused across GenAI workloads (such as
+                  RAG pipelines or similarity-based recommendations) and can
+                  also be indexed with Databricks Vector Search for fast
+                  semantic lookup during inference. [web:13][web:16][web:20]
+                </p>
+                <p>
+                  eature stores handle tasks like feature engineering,
+                  versioning, and sharing, making them great for managing
+                  structured data. Vector databases, on the other hand,
+                  specialize in fast similarity searches for high-dimensional
+                  embeddings, offering better performance for those use cases.
+                  Each serves a distinct role in the machine learning pipeline.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricksFeatureServing"
+              >
+                Feature Serving
+              </button>
+            </h2>
+
+            <div
+              id="databricksFeatureServing"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Feature Serving allows you to expose ML features and real-time
+                  data to models via low-latency APIs.
+                </p>
+                <p>
+                  Feature Serving is the capability that makes machine learning
+                  features available to applications and models in real time
+                  with low latency. While a Feature Store focuses on creating,
+                  organizing, and governing features, Feature Serving focuses on
+                  delivering the latest feature values during inference. This
+                  allows applications to retrieve up-to-date features without
+                  directly querying large analytical tables.
+                </p>
+
+                <p>
+                  In Databricks, Feature Serving enables online access to
+                  features stored in feature tables managed through Unity
+                  Catalog. When a prediction request arrives, the serving layer
+                  can quickly fetch the required feature values and provide them
+                  to the model, ensuring that inference uses the same trusted
+                  feature definitions that were used during model training.
+                </p>
+
+                <p>
+                  For example, an e-commerce recommendation system may need a
+                  customer's latest purchase count, average order value, and
+                  loyalty status before generating product recommendations.
+                  Instead of recalculating these values for every request,
+                  Feature Serving retrieves the latest feature values and
+                  supplies them to the model in milliseconds. Similarly, a fraud
+                  detection system can use recently updated transaction
+                  statistics and risk indicators to make real-time decisions.
+                </p>
+
+                <p>
+                  In Generative AI applications, Feature Serving can provide
+                  structured context that complements information retrieved
+                  through RAG systems. For example, a customer support assistant
+                  may retrieve user-specific features such as subscription
+                  level, preferred language, account status, or recent activity
+                  and include them in prompts sent to an LLM, enabling more
+                  personalized and context-aware responses.
+                </p>
+
+                <ul>
+                  <li>
+                    Low-latency access: Features can be retrieved quickly for
+                    online prediction workloads and real-time applications.
+                  </li>
+                  <li>
+                    Training-serving consistency: The same feature definitions
+                    used during model training can be used during inference,
+                    reducing training-serving skew.
+                  </li>
+                  <li>
+                    Real-time decision making: Applications can use the latest
+                    available feature values when generating predictions.
+                  </li>
+                  <li>
+                    Scalability: Feature Serving is designed to handle high
+                    volumes of prediction requests while maintaining
+                    performance.
+                  </li>
+                  <li>
+                    Simplified integration: Applications and model serving
+                    endpoints can retrieve features through managed APIs instead
+                    of directly accessing underlying data tables.
+                  </li>
+                </ul>
+
+                <p>
+                  Feature Serving is commonly used alongside Model Serving. A
+                  typical workflow involves an application sending a request,
+                  Feature Serving retrieving the required feature values, and
+                  the model using those features to generate a prediction. This
+                  architecture helps ensure that production models have access
+                  to fresh, consistent, and governed data.
+                </p>
+
+                <p>
+                  Although Feature Serving can deliver embedding vectors stored
+                  in feature tables, it is not designed for large-scale
+                  similarity search. For semantic search, retrieval-augmented
+                  generation (RAG), and nearest neighbor queries, Databricks
+                  Vector Search provides specialized vector indexing and
+                  retrieval capabilities. Feature Serving and Vector Search
+                  often work together, with Feature Serving supplying structured
+                  features while Vector Search retrieves relevant unstructured
+                  context.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricksIQ"
+              >
+                DatabricksIQ
+              </button>
+            </h2>
+
+            <div
+              id="databricksIQ"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  While DatabricksIQ offers integration and data processing
+                  capabilities, it is more aligned with data analytics rather
+                  than real-time feature serving,
+                </p>
+                <p>
+                  DatabricksIQ is the AI-powered intelligence layer that powers
+                  many of the generative AI and assistant capabilities across
+                  the Databricks Data Intelligence Platform. It combines
+                  knowledge about an organization's data, metadata, lineage,
+                  governance policies, and usage patterns to provide more
+                  accurate, context-aware assistance to users. Rather than
+                  relying only on general language model knowledge, DatabricksIQ
+                  understands the structure and semantics of data stored within
+                  the lakehouse.
+                </p>
+
+                <p>
+                  DatabricksIQ helps users interact with data using natural
+                  language. Business analysts can ask questions in plain
+                  English, data engineers can receive code suggestions, and data
+                  scientists can accelerate model development without manually
+                  searching through documentation or data assets. The system
+                  leverages Unity Catalog metadata, table schemas,
+                  relationships, permissions, and lineage information to
+                  generate more relevant responses.
+                </p>
+
+                <p>
+                  For example, a business user might ask, "Which products
+                  generated the highest revenue last quarter?" DatabricksIQ can
+                  translate the request into SQL, identify the relevant tables,
+                  and generate an appropriate query. Similarly, a data engineer
+                  may receive assistance writing Spark code, debugging
+                  pipelines, or understanding data dependencies across the
+                  platform.
+                </p>
+
+                <p>
+                  In Generative AI applications, DatabricksIQ helps provide
+                  context-aware assistance by combining foundation models with
+                  enterprise metadata and governance controls. This enables
+                  users to obtain answers grounded in trusted organizational
+                  data while respecting security and access permissions.
+                </p>
+
+                <ul>
+                  <li>
+                    Natural language interaction: Allows users to work with data
+                    using conversational queries and prompts.
+                  </li>
+                  <li>
+                    Context-aware assistance: Uses metadata, lineage, and
+                    governance information to improve response accuracy.
+                  </li>
+                  <li>
+                    Productivity enhancement: Assists with SQL generation, code
+                    development, troubleshooting, and data exploration.
+                  </li>
+                  <li>
+                    Governance-aware responses: Respects Unity Catalog
+                    permissions and access controls.
+                  </li>
+                  <li>
+                    Enterprise intelligence: Grounds AI responses in
+                    organizational data and business context.
+                  </li>
+                </ul>
+
+                <p>
+                  DatabricksIQ serves as the intelligence layer behind
+                  experiences such as AI/BI, conversational analytics, code
+                  assistants, and other AI-powered capabilities throughout the
+                  Databricks ecosystem. Its goal is to make data and AI more
+                  accessible while maintaining enterprise governance and trust.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#databricksAutoML"
+              >
+                AutoML
+              </button>
+            </h2>
+
+            <div
+              id="databricksAutoML"
+              class="accordion-collapse collapse"
+              data-bs-parent="#databricsComponentsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  AutoML (Automated Machine Learning) is a Databricks capability
+                  that automates many of the repetitive tasks involved in
+                  building machine learning models. Instead of manually
+                  performing data preparation, feature selection, algorithm
+                  selection, hyperparameter tuning, and model evaluation, users
+                  can provide a dataset and prediction target, and AutoML
+                  generates multiple candidate models automatically.
+                </p>
+
+                <p>
+                  Databricks AutoML helps both experienced data scientists and
+                  users with limited machine learning expertise accelerate model
+                  development. It leverages proven machine learning frameworks
+                  and best practices to train, evaluate, and compare models
+                  while generating reproducible notebooks that document the
+                  entire process.
+                </p>
+
+                <p>
+                  For example, a retail company may want to predict customer
+                  churn. After selecting the training dataset and target column,
+                  AutoML can automatically test multiple algorithms, perform
+                  feature engineering, tune model parameters, and identify the
+                  best-performing model based on evaluation metrics. Similarly,
+                  a financial institution can use AutoML to build models that
+                  predict loan default risk without manually experimenting with
+                  numerous algorithms.
+                </p>
+
+                <p>
+                  AutoML supports common machine learning tasks such as
+                  classification, regression, and forecasting. The generated
+                  experiments are tracked in MLflow, allowing teams to review
+                  metrics, compare runs, reproduce results, and deploy selected
+                  models into production.
+                </p>
+
+                <ul>
+                  <li>
+                    Automated model development: Reduces manual effort required
+                    for model training and optimization.
+                  </li>
+                  <li>
+                    Hyperparameter tuning: Automatically searches for optimal
+                    parameter combinations to improve model performance.
+                  </li>
+                  <li>
+                    Multiple algorithm evaluation: Trains and compares different
+                    machine learning algorithms.
+                  </li>
+                  <li>
+                    Reproducibility: Generates notebooks and MLflow experiments
+                    that document the complete workflow.
+                  </li>
+                  <li>
+                    Faster experimentation: Helps teams build baseline models
+                    quickly and iterate more efficiently.
+                  </li>
+                </ul>
+
+                <p>
+                  AutoML is particularly useful during the early stages of a
+                  machine learning project, where teams need to quickly identify
+                  promising models. While it can significantly accelerate
+                  development, data scientists often further refine the
+                  generated models by incorporating domain knowledge, custom
+                  features, and advanced optimization techniques.
+                </p>
+
+                <p>
+                  AutoML is not a replacement for feature engineering,
+                  governance, or model monitoring. Instead, it complements other
+                  Databricks components such as Feature Store, MLflow, Model
+                  Serving, and Unity Catalog to streamline the end-to-end
+                  machine learning lifecycle.
+                </p>
               </div>
             </div>
           </div>
@@ -472,6 +852,11 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
             >
               <div class="accordion-body">
                 <p>
+                  Unity Catalog, integrated with MLflow, allows models logged in
+                  prod to be centrally managed and accessed across workspaces
+                  with fine-grained permissions (
+                </p>
+                <p>
                   Unity Catalog centralizes governance for data and AI assets.
                   It manages catalogs, schemas, tables, views, volumes, models,
                   permissions, lineage, and auditing. It allows you to apply
@@ -521,9 +906,9 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                     expose filtered or masked data to different users.
                   </li>
                   <li>
-                    Volumes: Volumes govern non-tabular files such as CSV,
-                    JSON, images, libraries, and other files stored in cloud
-                    object storage.
+                    Volumes: Volumes govern non-tabular files such as CSV, JSON,
+                    images, libraries, and other files stored in cloud object
+                    storage.
                   </li>
                   <li>
                     Fine-grained security: You can grant permissions at the
@@ -587,7 +972,7 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                 data-bs-toggle="collapse"
                 data-bs-target="#databricsAiFunctions"
               >
-                Databricks AI functions
+                Databricks AI Functions
               </button>
             </h2>
 
@@ -601,15 +986,64 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                   Databricks AI functions let you call AI capabilities directly
                   from SQL or Spark workflows for tasks like document parsing,
                   extraction, classification, and preparing content for search.
+                  These functions are divided into general-purpose and
+                  task-specific categories.
                 </p>
 
+                <h5 class="mt-3">General-Purpose Functions</h5>
                 <p>
-                  <code>ai_parse_document()</code> parses binary document
-                  content such as PDFs, images, Word files, and PowerPoint files
-                  into a structured <code>VARIANT</code> result. The output can
-                  include pages, elements, text, tables, figures, layout
-                  metadata, bounding boxes, and error or run metadata.
+                  <code>ai_query()</code> is a general-purpose AI function that
+                  allows you to query hosted foundation models, external models,
+                  or custom-trained machine learning models deployed on
+                  Databricks Model Serving endpoints. It gives you full control
+                  over the system prompt, model selection, parameters (like
+                  temperature), and custom output schemas.
                 </p>
+
+                <h5 class="mt-3">Task-Specific Functions</h5>
+                <p>
+                  These purpose-built, out-of-the-box functions abstract away
+                  prompt engineering and leverage optimized, state-of-the-art
+                  models maintained by Databricks:
+                </p>
+                <ul>
+                  <li>
+                    <code>ai_parse_document()</code>: Parses binary document
+                    content such as PDFs, images, Word files, and PowerPoint
+                    files into a structured <code>VARIANT</code> result,
+                    including elements like text, tables, and layout metadata.
+                  </li>
+                  <li>
+                    <code>ai_extract()</code>: Extracts specific structured
+                    fields from a block of text based on a user-defined schema.
+                  </li>
+                  <li>
+                    <code>ai_classify()</code>: Classifies unstructured input
+                    text according to a provided array of target labels.
+                  </li>
+                  <li>
+                    <code>ai_analyze_sentiment()</code>: Automatically evaluates
+                    and returns the overall sentiment (e.g., positive, negative,
+                    neutral) of input text.
+                  </li>
+                  <li>
+                    <code>ai_summarize()</code>: Generates a concise summary of
+                    long-form text.
+                  </li>
+                  <li>
+                    <code>ai_translate()</code>: Translates incoming text data
+                    into a specified target language.
+                  </li>
+                  <li>
+                    <code>ai_mask()</code>: Redacts or masks sensitive entities
+                    (such as PII) within text strings.
+                  </li>
+                  <li>
+                    <code>ai_prep_search()</code>: Splits and formats parsed
+                    documents into optimal, search-ready chunks tailored for AI
+                    Search and Retrieval-Augmented Generation (RAG) pipelines.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -850,70 +1284,136 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                     </div>
                   </div>
 
-
                   <div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#infoOfSomeLlm"
-    >
-      info of some LLM
-    </button>
-  </h2>
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#infoOfSomeLlm"
+                      >
+                        info of some LLM / study of some AI models to prepare
+                        for GEN AI certification
+                      </button>
+                    </h2>
 
-  <div
-    id="infoOfSomeLlm"
-    class="accordion-collapse collapse"
-    data-bs-parent="#genAiSelfStudyResourcesAccordion"
-  >
-    <div class="accordion-body">
-      <h5>A. Dolly 1.5B</h5>
-      <p>
-        Dolly 1.5B is a relatively small instruction-following language model
-        released by Databricks for research and educational purposes. It was
-        designed to demonstrate how an open model can be fine-tuned to follow
-        natural language instructions. Due to its smaller parameter count, it
-        requires fewer computational resources than larger models but offers
-        more limited reasoning and generation capabilities.
-      </p>
+                    <div
+                      id="infoOfSomeLlm"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#genAiSelfStudyResourcesAccordion"
+                    >
+                      <div class="accordion-body">
+                        <h5>A. Dolly 1.5B</h5>
 
-      <h5>B. OpenAI GPT-5</h5>
-      <p>
-        GPT-5 is a large-scale language model developed by OpenAI. It is
-        designed for advanced reasoning, content generation, coding assistance,
-        question answering, summarization, and conversational AI applications.
-        GPT-5 supports complex workflows, long-context understanding, and
-        multimodal capabilities, making it suitable for enterprise and
-        consumer-facing AI systems.
-      </p>
+                        <p>
+                          Dolly 1.5B is a relatively small instruction-following
+                          language model released by Databricks for research and
+                          educational purposes. It was designed to demonstrate
+                          how an open model can be fine-tuned to follow natural
+                          language instructions. Due to its smaller parameter
+                          count, it requires fewer computational resources than
+                          larger models but offers more limited reasoning and
+                          generation capabilities.
+                        </p>
 
-      <h5>C. BGE-large</h5>
-      <p>
-        BGE-large (BAAI General Embedding) is an embedding model developed by
-        the Beijing Academy of Artificial Intelligence (BAAI) for semantic
-        search and retrieval tasks. Instead of generating text responses, it
-        converts text into numerical vector representations that capture
-        semantic meaning. These embeddings are commonly used in vector
-        databases for similarity search, Retrieval-Augmented Generation (RAG),
-        recommendation systems, clustering, and information retrieval
-        applications. This is not commonly used for text generation.
-      </p>
+                        <h5>B. OpenAI GPT-5</h5>
 
-      <h5>D. Llama2-70B</h5>
-      <p>
-        Llama 2 70B is a large open-weight language model developed by Meta. It
-        contains approximately 70 billion parameters and is designed for
-        high-quality text generation, reasoning, summarization, coding, and
-        conversational tasks. Organizations often choose Llama 2 70B when they
-        require greater control over deployment, customization, and governance
-        compared to fully hosted proprietary models.Llama 2 70B is not strictly open source according to the strict Open Source Initiative (OSI) definition.
-         the license has restrictions (like requiring approval for users with >700M monthly active users), which disqualifies it from strict OSI open source certification.
-      </p>
-    </div>
-  </div>
-</div>
+                        <p>
+                          GPT-5 is a large-scale language model developed by
+                          OpenAI. It is designed for advanced reasoning, content
+                          generation, coding assistance, question answering,
+                          summarization, and conversational AI applications.
+                          GPT-5 supports complex workflows, long-context
+                          understanding, and multimodal capabilities, making it
+                          suitable for enterprise and consumer-facing AI
+                          systems.
+                        </p>
+
+                        <h5>C. BGE-large</h5>
+
+                        <p>
+                          BGE-large (BAAI General Embedding) is an embedding
+                          model developed by the Beijing Academy of Artificial
+                          Intelligence (BAAI) for semantic search and retrieval
+                          tasks. Instead of generating text responses, it
+                          converts text into numerical vector representations
+                          that capture semantic meaning. These embeddings are
+                          commonly used in vector databases for similarity
+                          search, Retrieval-Augmented Generation (RAG),
+                          recommendation systems, clustering, and information
+                          retrieval applications. This is not commonly used for
+                          text generation. It is fully open source , can be used
+                          for commercial purpose.
+                        </p>
+
+                        <h5>D. Llama2-70B</h5>
+
+                        <p>
+                          Llama 2 70B is a large open-weight language model
+                          developed by Meta. It contains approximately 70
+                          billion parameters and is designed for high-quality
+                          text generation, reasoning, summarization, coding, and
+                          conversational tasks. Organizations often choose Llama
+                          2 70B when they require greater control over
+                          deployment, customization, and governance compared to
+                          fully hosted proprietary models.Llama 2 70B is not
+                          strictly open source according to the strict Open
+                          Source Initiative (OSI) definition. the license has
+                          restrictions (like requiring approval for users with
+                          >700M monthly active users), which disqualifies it
+                          from strict OSI open source certification.
+                        </p>
+
+                        <h5>
+                          E. BERT (Bidirectional Encoder Representations from
+                          Transformers)
+                        </h5>
+
+                        <p>
+                          BERT is a language model developed by Google in 2018
+                          for natural language processing (NLP) tasks. It uses a
+                          **bidirectional encoder-only** Transformer
+                          architecture, meaning it reads text in both directions
+                          (left-to-right and right-to-left) to understand
+                          context from surrounding words. BERT is pre-trained
+                          using **masked language modeling**, where it predicts
+                          randomly masked words in a sentence.
+                        </p>
+
+                        <p>**Key characteristics:**</p>
+
+                        <ul>
+                          <li>
+                            <strong>Architecture:</strong> Encoder-only (no
+                            decoder) — designed for
+                            understanding/classification, not text generation
+                          </li>
+
+                          <li>
+                            <strong>Best use cases:</strong> Text classification
+                            (sentiment analysis, spam detection), question
+                            answering (QA with fixed answers), search query
+                            understanding, natural language inference
+                          </li>
+
+                          <li>
+                            <strong>Not suitable for:</strong> Conversational
+                            chatbots or open-ended text generation, as it cannot
+                            generate sequential responses like "Hi, how can I
+                            help you?"
+                          </li>
+                        </ul>
+
+                        <p>
+                          Unlike GPT models (decoder-only), BERT excels at tasks
+                          where you need to **analyze or classify** text rather
+                          than **generate** new text. For chatbot applications
+                          requiring conversational generation, decoder-only
+                          models like GPT are the appropriate choice.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                   <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button
@@ -933,23 +1433,40 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                     >
                       <div class="accordion-body">
                         <h5>Tika</h5>
-
                         <p>
-                          Tika is a powerful library for content extraction
-                          that supports both digital PDFs and scanned
-                          image-based PDFs by integrating Optical Character
-                          Recognition (OCR). This makes it the most appropriate
-                          choice in this scenario where the documents vary in
-                          structure, and some are scanned images. Tika is
-                          versatile and can handle complex PDF layouts while
-                          extracting only the textual content. It also works
-                          well with large-scale document processing, which is
-                          crucial given the number of PDFs you are dealing with.
+                          Tika is a powerful library for content extraction that
+                          supports both digital PDFs and scanned image-based
+                          PDFs by integrating Optical Character Recognition
+                          (OCR). This makes it the most appropriate choice in
+                          this scenario where the documents vary in structure,
+                          and some are scanned images. Tika is versatile and can
+                          handle complex PDF layouts while extracting only the
+                          textual content. It also works well with large-scale
+                          document processing, which is crucial given the number
+                          of PDFs you are dealing with.
                         </p>
+
                         <h5>PyMuPDF (also known as fitz)</h5>
                         <p>
-                          PyMuPDF is designed for handling PDFs, not DOCX files. While it can be effective for PDF content extraction, it is not applicable to Word document processing.
+                          PyMuPDF is designed for handling PDFs, not DOCX files.
+                          While it can be effective for PDF content extraction,
+                          it is not applicable to Word document processing.
                         </p>
+
+                        <h5>pypdf</h5>
+                        <p>
+                          pypdf is a pure-Python library capable of splitting,
+                          merging, cropping, and transforming the pages of PDF
+                          files. It can also extract text and metadata from
+                          PDFs. Because it is written entirely in Python, it is
+                          highly portable and easy to install, making it a go-to
+                          tool for basic PDF manipulation and text extraction.
+                          However, unlike Tika, pypdf does not have built-in OCR
+                          capabilities, meaning it cannot extract text from
+                          scanned image-based PDFs unless paired with an
+                          external OCR engine.
+                        </p>
+
                         <h5>python-docx</h5>
                         <p>
                           python-docx is a Python library used for reading,
@@ -957,31 +1474,64 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                           is a suitable choice when the source documents are
                           Word files because it can extract paragraphs, tables,
                           headings, and other structured document content.
-                          However, it does not handle PDFs or scanned images, so
-                          it is best used alongside PDF-focused tools such as
-                          Tika or PyMuPDF when processing mixed document types.
+                          However, it does not handle PDFs or scanned images.
+                          <strong
+                            >Crucially, python-docx does not support OCR</strong
+                          >; it cannot read or extract text embedded within
+                          images inside the Word document. It must be paired
+                          with external OCR engines if the DOCX files contain
+                          scanned elements.
+                        </p>
+
+                        <h5>docx2txt</h5>
+                        <p>
+                          docx2txt is a lightweight, specialized Python package
+                          designed strictly for extracting text and images from
+                          Microsoft Word DOCX files. Unlike python-docx, which
+                          focuses on structured document manipulation
+                          (paragraphs, tables, styling), docx2txt simply strips
+                          out the raw text content and can optionally save
+                          embedded images to a local directory.
+                          <strong
+                            >Like python-docx, docx2txt does not support
+                            OCR</strong
+                          >; it can extract the image files themselves, but it
+                          cannot read the text hidden within those images
+                          without downstream assistance from an OCR library like
+                          pytesseract.
+                        </p>
+
+                        <h5>pytesseract</h5>
+                        <p>
+                          pytesseract is a Python wrapper for the Tesseract OCR
+                          engine and is used to extract text from images. It is
+                          particularly useful when documents are scanned PDFs,
+                          screenshots, or image files that contain text but do
+                          not have an underlying text layer. By converting
+                          images into machine-readable text, pytesseract enables
+                          downstream NLP and GenAI workflows such as document
+                          indexing, summarization, and question answering.
+                          However, it focuses only on OCR and does not provide
+                          advanced document structure extraction like tables,
+                          headings, or metadata.
+                        </p>
+
+                        <h5>easyocr</h5>
+                        <p>
+                          easyocr is a Python package for Optical Character
+                          Recognition (OCR) that is built on deep learning
+                          frameworks (PyTorch). It supports over 80 languages
+                          and is highly effective at recognizing text in natural
+                          scenes as well as stylized fonts. In GenAI data
+                          pipelines, easyocr is favored for its ease of use and
+                          high accuracy out-of-the-box when dealing with complex
+                          or noisy image data. Like pytesseract, it is used to
+                          bridge the gap for scanned documents, though it
+                          generally requires a GPU to achieve optimal processing
+                          speeds.
                         </p>
                       </div>
-
-<h5>pytesseract</h5>
-<p>
-  pytesseract is a Python wrapper for the Tesseract OCR engine and is used
-  to extract text from images. It is particularly useful when documents are
-  scanned PDFs, screenshots, or image files that contain text but do not
-  have an underlying text layer. By converting images into machine-readable
-  text, pytesseract enables downstream NLP and GenAI workflows such as
-  document indexing, summarization, and question answering. However, it
-  focuses only on OCR and does not provide advanced document structure
-  extraction like tables, headings, or metadata. For best results, it is
-  often used together with libraries such as Tika, PyMuPDF, or python-docx
-  when processing a mix of scanned and digital documents.
-</p>
-
                     </div>
-
-
-
-                    
                   </div>
 
                   <div class="accordion-item">
@@ -1227,40 +1777,46 @@ Databricks also supports storing vector embeddings as features. Embeddings (for 
                       <div class="accordion-body">
                         <div class="accordion" id="learnByQaAccordion">
                           <div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#whatIsCreateDeltaSyncIndex"
-    >
-      What is create_delta_sync_index()?
-    </button>
-  </h2>
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsCreateDeltaSyncIndex"
+                              >
+                                What is create_delta_sync_index()?
+                              </button>
+                            </h2>
 
-  <div
-    id="whatIsCreateDeltaSyncIndex"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        <code>create_delta_sync_index()</code> is a Databricks Vector Search
-        function used to create a vector index that automatically stays
-        synchronized with a Delta table. Instead of manually generating and
-        updating embeddings, Databricks continuously monitors the source Delta
-        table and updates the vector index whenever new records are added,
-        updated, or deleted.
-      </p>
+                            <div
+                              id="whatIsCreateDeltaSyncIndex"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  <code>create_delta_sync_index()</code> is a
+                                  Databricks Vector Search function used to
+                                  create a vector index that automatically stays
+                                  synchronized with a Delta table. Instead of
+                                  manually generating and updating embeddings,
+                                  Databricks continuously monitors the source
+                                  Delta table and updates the vector index
+                                  whenever new records are added, updated, or
+                                  deleted.
+                                </p>
 
-      <p>
-        This is commonly used in Retrieval-Augmented Generation (RAG)
-        applications where documents are stored in Delta tables and must be
-        searchable through semantic similarity search. The function creates a
-        managed pipeline that keeps the vector index and source data aligned.
-      </p>
+                                <p>
+                                  This is commonly used in Retrieval-Augmented
+                                  Generation (RAG) applications where documents
+                                  are stored in Delta tables and must be
+                                  searchable through semantic similarity search.
+                                  The function creates a managed pipeline that
+                                  keeps the vector index and source data
+                                  aligned.
+                                </p>
 
-      <pre><code>Source Documents
+                                <pre><code>Source Documents
        ↓
 Delta Table
        ↓
@@ -1270,56 +1826,61 @@ Vector Search Index
        ↓
 Similarity Search / RAG Retrieval</code></pre>
 
-      <p>
-        For example, suppose a company stores support articles in a Delta
-        table. After creating a Delta Sync Index, whenever a new article is
-        added, Databricks automatically generates embeddings and updates the
-        vector index. A chatbot can then retrieve the most relevant articles
-        using semantic search without requiring manual index refreshes.
-      </p>
+                                <p>
+                                  For example, suppose a company stores support
+                                  articles in a Delta table. After creating a
+                                  Delta Sync Index, whenever a new article is
+                                  added, Databricks automatically generates
+                                  embeddings and updates the vector index. A
+                                  chatbot can then retrieve the most relevant
+                                  articles using semantic search without
+                                  requiring manual index refreshes.
+                                </p>
 
-      <ul>
-        <li>
-          Purpose: create a vector search index that automatically syncs with a
-          Delta table.
-        </li>
-        <li>
-          Used in: RAG applications, semantic search, document retrieval, and
-          AI assistants.
-        </li>
-        <li>
-          Benefit: eliminates manual embedding generation and index update
-          workflows.
-        </li>
-        <li>
-          Supports: continuous synchronization when source data changes.
-        </li>
-        <li>
-          Common source: Delta tables containing documents, chunks, embeddings,
-          metadata, or knowledge base content.
-        </li>
-      </ul>
+                                <ul>
+                                  <li>
+                                    Purpose: create a vector search index that
+                                    automatically syncs with a Delta table.
+                                  </li>
+                                  <li>
+                                    Used in: RAG applications, semantic search,
+                                    document retrieval, and AI assistants.
+                                  </li>
+                                  <li>
+                                    Benefit: eliminates manual embedding
+                                    generation and index update workflows.
+                                  </li>
+                                  <li>
+                                    Supports: continuous synchronization when
+                                    source data changes.
+                                  </li>
+                                  <li>
+                                    Common source: Delta tables containing
+                                    documents, chunks, embeddings, metadata, or
+                                    knowledge base content.
+                                  </li>
+                                </ul>
 
-      <p>
-        A simplified example:
-      </p>
+                                <p>A simplified example:</p>
 
-      <pre><code>client.create_delta_sync_index(
+                                <pre><code>client.create_delta_sync_index(
     endpoint_name="vs_endpoint",
     index_name="catalog.schema.docs_index",
     source_table_name="catalog.schema.documents",
     pipeline_type="TRIGGERED"
 )</code></pre>
 
-      <p>
-        In a typical Databricks Gen AI workflow, documents are parsed,
-        chunked, stored in a Delta table, and then
-        <code>create_delta_sync_index()</code> is used to build a searchable
-        vector index that powers retrieval for chatbots and AI agents.
-      </p>
-    </div>
-  </div>
-</div>
+                                <p>
+                                  In a typical Databricks Gen AI workflow,
+                                  documents are parsed, chunked, stored in a
+                                  Delta table, and then
+                                  <code>create_delta_sync_index()</code> is used
+                                  to build a searchable vector index that powers
+                                  retrieval for chatbots and AI agents.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
@@ -1342,10 +1903,10 @@ Similarity Search / RAG Retrieval</code></pre>
                                 <p>
                                   Sequence Truncation with Token Replacement is
                                   a way to handle input text that is longer than
-                                  the model's maximum context window. Instead
-                                  of sending the full sequence, the system
-                                  shortens it and replaces the removed part with
-                                  a special marker token or summary token.
+                                  the model's maximum context window. Instead of
+                                  sending the full sequence, the system shortens
+                                  it and replaces the removed part with a
+                                  special marker token or summary token.
                                 </p>
 
                                 <p>
@@ -1397,6 +1958,79 @@ Similarity Search / RAG Retrieval</code></pre>
                                     Main risk: if important details are removed,
                                     the model may still miss key facts even
                                     though a marker is present.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsFoundationModelApi"
+                              >
+                                What is the Foundation Model API in Databricks?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatIsFoundationModelApi"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The Foundation Model API provides serverless
+                                  access to large language models (LLMs) and
+                                  embedding models in Databricks. It allows
+                                  developers to use pre-hosted foundation models
+                                  through simple API calls without deploying or
+                                  managing model infrastructure.
+                                </p>
+
+                                <p>
+                                  Foundation Model APIs are commonly used for
+                                  chatbots, question answering, document
+                                  summarization, content generation, embeddings,
+                                  and Retrieval-Augmented Generation (RAG)
+                                  applications.
+                                </p>
+
+                                <pre><code>Example:
+Application → Foundation Model API → Hosted LLM → Response</code></pre>
+
+                                <p>
+                                  Foundation Model APIs are built on top of
+                                  Databricks Model Serving. Model Serving
+                                  provides the infrastructure for hosting and
+                                  serving models, while Foundation Model APIs
+                                  offer ready-to-use Databricks-managed
+                                  foundation models that do not require
+                                  deployment by the user.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Provides serverless access to foundation
+                                    models.
+                                  </li>
+                                  <li>
+                                    No endpoint deployment or GPU management
+                                    required.
+                                  </li>
+                                  <li>
+                                    Supports chat, completion, and embedding use
+                                    cases.
+                                  </li>
+                                  <li>
+                                    Uses Databricks Model Serving as the
+                                    underlying serving layer.
+                                  </li>
+                                  <li>
+                                    Ideal for quickly building GenAI
+                                    applications.
                                   </li>
                                 </ul>
                               </div>
@@ -1520,8 +2154,7 @@ Similarity Search / RAG Retrieval</code></pre>
                                   For example, in the sentence
                                   <code
                                     >Databricks acquired MosaicML in 2023.</code
-                                  >,
-                                  an NER model may identify
+                                  >, an NER model may identify
                                   <code>Databricks</code> and
                                   <code>MosaicML</code> as organizations and
                                   <code>2023</code> as a date.
@@ -1567,214 +2200,1200 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
-                          ```html
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#canRetrieveWithoutLLM"
-    >
-      In a RAG system, can documents be retrieved without an LLM?
-    </button>
-  </h2>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsPhoton"
+                              >
+                                What is Databricks Photon?
+                              </button>
+                            </h2>
 
-  <div
-    id="canRetrieveWithoutLLM"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        Yes, documents can absolutely be retrieved without an LLM in a RAG (Retrieval-Augmented Generation) system. Retrieval is a separate step from generation, and many non-LLM methods can fetch candidate documents efficiently.
-      </p>
+                            <div
+                              id="whatIsPhoton"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Photon is a high-performance, native
+                                  vectorized query engine developed by
+                                  Databricks to dramatically accelerate the
+                                  execution of SQL workloads and DataFrame API
+                                  calls. Written completely from the ground up
+                                  in C++, it bypasses traditional Java Virtual
+                                  Machine (JVM) bottlenecks to maximize CPU
+                                  performance.
+                                </p>
 
-      <p>
-        For example, in a RAG pipeline asking <code>"What company acquired MosaicML?"</code>, a retrieval system without an LLM can fetch documents using keyword matching or vector similarity, returning results like company news articles, press releases, or documentation pages.
-      </p>
+                                <p>
+                                  For example, when running a heavy data
+                                  aggregation query on millions of rows, the
+                                  Apache Spark query optimizer (Catalyst) will
+                                  still plan the query, but
+                                  <code>Photon</code> takes over the physical
+                                  execution layer, processing data in fast
+                                  columnar batches rather than row-by-row.
+                                </p>
 
-      <pre><code>Input:  Query = "What company acquired MosaicML?"
+                                <pre><code>Input Query: SELECT region, SUM(sales) FROM large_table GROUP BY region;
+Execution without Photon: Processed row-by-row inside the JVM (slower, GC overhead)
+Execution with Photon:    Processed in columnar batches natively in C++ via SIMD (faster)</code></pre>
+
+                                <p>
+                                  Photon is useful for modern Lakehouse systems
+                                  handling massive scale data. It is compatible
+                                  with existing Apache Spark APIs, meaning it
+                                  transparently accelerates your ETL pipelines,
+                                  BI dashboards, and data engineering jobs
+                                  without requiring you to rewrite any code. If
+                                  it encounters an unsupported operation, it
+                                  seamlessly falls back to the standard Spark
+                                  runtime.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: accelerate SQL, DataFrame APIs, and
+                                    data engineering workloads using modern
+                                    hardware.
+                                  </li>
+                                  <li>
+                                    Key technologies: C++ native execution,
+                                    vectorized columnar processing, and SIMD
+                                    (Single Instruction, Multiple Data)
+                                    instructions.
+                                  </li>
+                                  <li>
+                                    Main benefit: provides up to 5x better
+                                    price-to-performance by eliminating JVM
+                                    memory overhead and garbage collection
+                                    pauses.
+                                  </li>
+                                  <li>
+                                    Main risk: short-running queries (under 2
+                                    seconds) won't see meaningful benefits due
+                                    to fixed compilation and task scheduling
+                                    overhead.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Question 1: Best Method for Cost Control -->
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#ragCostControl"
+                              >
+                                Which method BEST controls LLM costs while
+                                maintaining performance for RAG applications on
+                                Databricks?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="ragCostControl"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The best method is to utilize
+                                  <strong
+                                    >Databricks Serverless endpoints</strong
+                                  >. These endpoints automatically adjust based
+                                  on the number of incoming requests, optimizing
+                                  the cost-per-query for LLM inference while
+                                  maintaining low latency for end-users.
+                                </p>
+
+                                <p>
+                                  Other traditional optimization methods fall
+                                  short in production RAG environments:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    <strong>Response Caching:</strong>
+                                    Inefficient because RAG prompts are highly
+                                    dynamic, personalized, and
+                                    context-dependent, resulting in very low
+                                    cache hit rates.
+                                  </li>
+                                  <li>
+                                    <strong>Auto-Scaling Clusters:</strong>
+                                    Traditional clusters take minutes to spin up
+                                    new nodes, which is too slow to handle
+                                    sudden real-time web traffic spikes without
+                                    causing timeouts.
+                                  </li>
+                                  <li>
+                                    <strong>MLflow Tracking:</strong> Provides
+                                    excellent observability and logging for
+                                    token usage, but does not actively alter or
+                                    optimize the underlying infrastructure
+                                    costs.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  Main summary of Databricks Serverless
+                                  benefits:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Purpose: Automatically provision and scale
+                                    GPU infrastructure based on real-time query
+                                    volume.
+                                  </li>
+                                  <li>
+                                    Scale-to-Zero: Completely stops
+                                    infrastructure charges when there is no
+                                    incoming traffic.
+                                  </li>
+                                  <li>
+                                    Main benefit: Drastically reduces the
+                                    overall cost-per-query by eliminating the
+                                    "idle compute tax" of 24/7 running clusters.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Question 2: Infrastructure vs Raw Inference Cost -->
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#infrastructureVsInference"
+                              >
+                                Since raw inference cost depends on the input
+                                tokens, how does changing the infrastructure
+                                lower the bill?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="infrastructureVsInference"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  While the mathematical work (FLOPs) required
+                                  to process a specific prompt remains
+                                  identical, changing the underlying
+                                  infrastructure to Serverless drastically
+                                  reduces the
+                                  <em>actual billed amount</em> by eliminating
+                                  waste and improving system efficiency.
+                                </p>
+
+                                <p>
+                                  On traditional provisioned hardware, you pay
+                                  for the server by the hour regardless of
+                                  whether it is processing tokens or sitting
+                                  completely idle. Serverless switches the
+                                  billing model entirely to active execution
+                                  time.
+                                </p>
+
+                                <pre><code>Traditional Cost = Time Cluster is Running &times; Hourly Hardware Rate
+Serverless Cost  = Active Inference Time (Tokens) &times; Token Rate</code></pre>
+
+                                <p>
+                                  Additionally, Databricks Serverless Model
+                                  Serving applies advanced native software
+                                  optimizations directly at the hosting layer to
+                                  maximize hardware utilization:
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    <strong>Continuous Batching:</strong>
+                                    Combines multiple distinct user queries into
+                                    a single GPU forward pass in real-time,
+                                    preventing sequential processing delays.
+                                  </li>
+                                  <li>
+                                    <strong>PagedAttention:</strong> Optimizes
+                                    KV cache memory allocation during long RAG
+                                    conversations, allowing a single GPU to
+                                    support up to 4x more concurrent traffic.
+                                  </li>
+                                  <li>
+                                    <strong>Resource Pooling:</strong> Shares a
+                                    massive, pre-warmed buffer of hardware
+                                    across multiple workloads, removing the
+                                    requirement for you to over-provision
+                                    dedicated standby GPUs.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Note: Multiturn vs. Single-Turn Dialogue Systems -->
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#multiturnVsSingleTurn"
+                              >
+                                What is Multiturn and how it differs from
+                                Single-Turn?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="multiturnVsSingleTurn"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The fundamental difference between single-turn
+                                  and multiturn systems lies in memory
+                                  management—specifically, whether the system is
+                                  stateless or stateful. A single-turn system
+                                  treats every interaction as an isolated event,
+                                  while a multiturn system tracks ongoing
+                                  context over a series of exchanges.
+                                </p>
+
+                                <p>
+                                  For example, if you ask a single-turn system
+                                  about Tokyo's weather and follow up with
+                                  <code>"What about tomorrow?"</code>, it fails
+                                  because it cannot link the pronoun to the
+                                  previous topic. A multiturn system remembers
+                                  the context of Tokyo and seamlessly processes
+                                  the follow-up.
+                                </p>
+
+                                <pre><code>Single-Turn (Stateless):
+User: What's the weather in Tokyo? -> AI: It is sunny and 72°F.
+User: What about tomorrow?         -> AI: Error: Please specify a location.
+
+Multiturn (Stateful):
+User: What's the weather in Tokyo? -> AI: It is sunny and 72°F.
+User: What about tomorrow?         -> AI: Tomorrow in Tokyo, expect rain and 68°F.</code></pre>
+
+                                <p>
+                                  Multiturn systems rely on continuous context
+                                  tracking to maintain a running history of the
+                                  conversation slot-by-slot, making interactions
+                                  feel natural and human-like rather than rigid
+                                  or transactional.
+                                </p>
+
+                                <ul>
+                                  <li>
+                                    Single-Turn (Stateless): Processes each
+                                    query in total isolation, with zero memory
+                                    of past prompts or responses.
+                                  </li>
+                                  <li>
+                                    Multiturn (Stateful): Remembers prior
+                                    statements, links context across multiple
+                                    back-and-forth exchanges, and handles
+                                    conversational shorthand.
+                                  </li>
+                                  <li>
+                                    Main benefit: Allows users to have evolving,
+                                    layered conversations without constantly
+                                    restating the primary topic.
+                                  </li>
+                                  <li>
+                                    Main risk: Requires active context
+                                    management; if the history grows too long or
+                                    messy, the system can lose track of the core
+                                    intent.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#canRegisterModelWithoutMLflow"
+                              >
+                                Can we register a model in Databricks Unity
+                                Catalog even when MLflow tracking is disabled?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="canRegisterModelWithoutMLflow"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  No, we cannot register a model in Databricks
+                                  Unity Catalog if MLflow tracking is completely
+                                  disabled. Unity Catalog's model registry is
+                                  built on top of MLflow, so MLflow tracking
+                                  must be enabled to register models.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsServicePrincipal"
+                              >
+                                What is a Service Principal in Databricks and
+                                why is it used for model serving endpoints?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatIsServicePrincipal"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  A <strong>Service Principal</strong> is a
+                                  digital identity or "robot account" created
+                                  for automated tools, applications, and CI/CD
+                                  pipelines rather than a human being.
+                                </p>
+                                <p>
+                                  Assigning a service principal the 'Can Manage'
+                                  permission allows automated systems (like
+                                  GitHub Actions or Azure DevOps) to securely
+                                  update, configure, or restart the serving
+                                  endpoint via APIs without relying on a
+                                  personal user account, ensuring operational
+                                  continuity even if team members leave the
+                                  organization.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#llamaIndexVsLangChain"
+                              >
+                                What is LlamaIndex and how does it differ from
+                                LangChain?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="llamaIndexVsLangChain"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  <strong>LlamaIndex</strong> is an open-source
+                                  framework designed to connect Large Language
+                                  Models (LLMs) with external data sources such
+                                  as PDFs, databases, APIs, documents, and
+                                  knowledge bases. It specializes in data
+                                  ingestion, indexing, retrieval, and
+                                  Retrieval-Augmented Generation (RAG)
+                                  workflows.
+                                </p>
+
+                                <p>
+                                  <strong>LangChain</strong> is a broader
+                                  framework for building LLM-powered
+                                  applications. It provides tools for prompt
+                                  management, chains, agents, memory, tool
+                                  calling, workflows, and integrations with
+                                  various LLM providers and data sources.
+                                  LangChain: great general LLM
+                                  orchestration/agents, but LlamaIndex is
+                                  stronger out-of-the-box for data source
+                                  integration & indexing.
+                                </p>
+
+                                <h6 class="mt-3">Key Differences</h6>
+                                <ul>
+                                  <li>
+                                    <strong>LlamaIndex:</strong> Primarily
+                                    focused on data indexing and retrieval for
+                                    RAG applications.
+                                  </li>
+                                  <li>
+                                    <strong>LangChain:</strong> Focused on
+                                    orchestrating end-to-end LLM applications,
+                                    including agents, tools, and workflows.
+                                  </li>
+                                  <li>
+                                    <strong>LlamaIndex:</strong> Provides
+                                    advanced document parsing, indexing
+                                    structures, and retrieval techniques out of
+                                    the box.
+                                  </li>
+                                  <li>
+                                    <strong>LangChain:</strong> Offers a larger
+                                    ecosystem for building complex multi-step AI
+                                    applications.
+                                  </li>
+                                  <li>
+                                    <strong>LlamaIndex:</strong> Often used when
+                                    efficient retrieval from enterprise
+                                    knowledge sources is the primary
+                                    requirement.
+                                  </li>
+                                  <li>
+                                    <strong>LangChain:</strong> Often used when
+                                    creating agent-based systems that interact
+                                    with multiple tools and services.
+                                  </li>
+                                </ul>
+
+                                <h6 class="mt-3">Can They Be Used Together?</h6>
+                                <p>
+                                  Yes. In many GenAI applications, LlamaIndex is
+                                  used for document ingestion and retrieval,
+                                  while LangChain is used to orchestrate
+                                  prompts, agents, and application workflows.
+                                  They complement each other rather than compete
+                                  directly.
+                                </p>
+
+                                <div class="alert alert-info mt-3 mb-0">
+                                  <strong>Exam Tip:</strong> Think of
+                                  <strong>LlamaIndex</strong> as the data
+                                  retrieval layer for RAG systems and
+                                  <strong>LangChain</strong> as the application
+                                  orchestration layer for building complete
+                                  LLM-powered solutions.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#canRetrieveWithoutLLM"
+                              >
+                                In a RAG system, can documents be retrieved
+                                without an LLM?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="canRetrieveWithoutLLM"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Yes, documents can absolutely be retrieved
+                                  without an LLM in a RAG (Retrieval-Augmented
+                                  Generation) system. Retrieval is a separate
+                                  step from generation, and many non-LLM methods
+                                  can fetch candidate documents efficiently.
+                                </p>
+
+                                <p>
+                                  For example, in a RAG pipeline asking
+                                  <code>"What company acquired MosaicML?"</code
+                                  >, a retrieval system without an LLM can fetch
+                                  documents using keyword matching or vector
+                                  similarity, returning results like company
+                                  news articles, press releases, or
+                                  documentation pages.
+                                </p>
+
+                                <pre><code>Input:  Query = "What company acquired MosaicML?"
 Retrieval (no LLM): BM25 keyword search or vector similarity
 Output: [Databricks_news.pdf, MosaicML_acquisition.docx, tech_report_2023.pdf]</code></pre>
 
-      <p>
-        Non-LLM retrieval is useful because it's fast, lightweight, and cost-effective for getting initial candidate documents. The LLM typically comes in the next step for **reordering/reranking** those retrieved documents with more precise relevance scoring, or for **generating** the final answer using the retrieved content.
-      </p>
+                                <p>
+                                  Non-LLM retrieval is useful because it's fast,
+                                  lightweight, and cost-effective for getting
+                                  initial candidate documents. The LLM typically
+                                  comes in the next step for
+                                  **reordering/reranking** those retrieved
+                                  documents with more precise relevance scoring,
+                                  or for **generating** the final answer using
+                                  the retrieved content.
+                                </p>
 
-      <ul>
-        <li>
-          Purpose: fetch candidate documents quickly using simpler methods before LLM processing.
-        </li>
-        <li>
-          Common retrieval methods: keyword search (BM25), TF-IDF, vector search with embedding models + vector databases (FAISS, Pinecone, ChromaDB).
-        </li>
-        <li>
-          Main benefit: fast, inexpensive retrieval that scales well, allowing you to apply expensive LLM reranking only to a small subset of retrieved documents.
-        </li>
-        <li>
-          Main risk: non-LLM retrieval may miss semantically similar documents that don't share exact keywords, requiring a reranking step with an LLM for precision.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-```
+                                <ul>
+                                  <li>
+                                    Purpose: fetch candidate documents quickly
+                                    using simpler methods before LLM processing.
+                                  </li>
+                                  <li>
+                                    Common retrieval methods: keyword search
+                                    (BM25), TF-IDF, vector search with embedding
+                                    models + vector databases (FAISS, Pinecone,
+                                    ChromaDB).
+                                  </li>
+                                  <li>
+                                    Main benefit: fast, inexpensive retrieval
+                                    that scales well, allowing you to apply
+                                    expensive LLM reranking only to a small
+                                    subset of retrieved documents.
+                                  </li>
+                                  <li>
+                                    Main risk: non-LLM retrieval may miss
+                                    semantically similar documents that don't
+                                    share exact keywords, requiring a reranking
+                                    step with an LLM for precision.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
 
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#evaluationMetricsAndTools"
+                              >
+                                Different Evaluation Metrics and Tools
+                              </button>
+                            </h2>
 
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#whatIsMrr"
-    >
-      What is MRR (Mean Reciprocal Rank)?
-    </button>
-  </h2>
+                            <div
+                              id="evaluationMetricsAndTools"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p class="lead">
+                                  The following core metrics and standard tools
+                                  are used to evaluate
+                                  <strong
+                                    >Ranked Retrieval and Recommendation
+                                    Systems</strong
+                                  >. They measure how effectively an algorithm
+                                  surfaces relevant items at the top of its
+                                  returned lists.
+                                </p>
 
-  <div
-    id="whatIsMrr"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        MRR, or Mean Reciprocal Rank, is an evaluation metric used to measure
-        the quality of ranked search results or recommendations. It captures
-        how high the first relevant item appears in a list by averaging the
-        reciprocal of the rank position across multiple queries or requests.
-      </p>
+                                <div class="retrieval-metrics-group mt-3">
+                                  <h3>1. MRR (Mean Reciprocal Rank)</h3>
+                                  <p>
+                                    MRR evaluates retrieval when the system only
+                                    needs to find
+                                    <strong>the first relevant item</strong>. It
+                                    captures how high that first correct result
+                                    appears by averaging its reciprocal rank
+                                    position across all queries.
+                                  </p>
 
-      <p>
-        For example, if a search system returns a list of documents and the
-        first relevant document appears at rank 2 for one query and rank 1 for
-        another, the reciprocal ranks are \(1/2\) and \(1/1\); the MRR would
-        be the average of those values.
-      </p>
+                                  <p>
+                                    For example, if the first relevant document
+                                    appears at rank 2 for one query and rank 1
+                                    for another, the reciprocal ranks are 1/2
+                                    and 1/1; the MRR is the average of those
+                                    values.
+                                  </p>
 
-      <pre><code>Input (queries and ranks of first relevant result):
+                                  <pre><code>Input (queries and ranks of first relevant result):
 Query A: first relevant at rank 3
 Query B: first relevant at rank 1
 Query C: no relevant result returned (treated as rank = ∞, reciprocal = 0)
 Output: MRR = (1/3 + 1/1 + 0) / 3 = 0.444...</code></pre>
 
-      <p>
-        MRR is commonly used in information retrieval, QA systems, and
-        recommendation evaluation where only the position of the first
-        relevant item matters. It emphasizes returning a relevant result as
-        early as possible.
-      </p>
+                                  <ul>
+                                    <li>
+                                      <strong>Focus:</strong> Order of the
+                                      single first relevant item.
+                                    </li>
+                                    <li>
+                                      <strong>Interpretation:</strong> 0 to 1;
+                                      higher means the very first result is more
+                                      likely to be correct.
+                                    </li>
+                                    <li>
+                                      <strong>Best Use Case:</strong> "Factoid"
+                                      search, question-answering systems, or
+                                      "I'm feeling lucky" style queries where a
+                                      user only needs one definitive answer.
+                                    </li>
+                                  </ul>
 
-      <ul>
-        <li>
-          Purpose: measure how quickly the first correct or relevant item is
-          retrieved in ranked lists.
-        </li>
-        <li>
-          Interpretation: values range from 0 to 1; higher is better (1 means
-          the first result is always relevant).
-        </li>
-        <li>
-          Main benefit: simple, interpretable summary of ranking quality that
-          directly rewards systems that place a correct answer at top positions.
-        </li>
-        <li>
-          Main limitation: ignores additional relevant items beyond the first;
-          it treats queries with multiple relevant results the same as those
-          with a single relevant item.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                                  <hr />
 
+                                  <h3>2. MAP (Mean Average Precision)</h3>
+                                  <p>
+                                    MAP evaluates retrieval quality when queries
+                                    have
+                                    <strong>multiple relevant documents</strong
+                                    >, and the system uses
+                                    <strong>binary relevance</strong> (an item
+                                    is either completely relevant or completely
+                                    irrelevant). It penalizes systems that bury
+                                    relevant items deep in the list.
+                                  </p>
 
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#whatIsVectorSearchAndMlflowSearchModel"
-    >
-      What are VECTOR_SEARCH and mlflow.search_model() in Databricks?
-    </button>
-  </h2>
+                                  <pre><code>Input (precision at each relevant item's rank):
+Query A: relevant items at rank 1 (Prec=1.0) and rank 3 (Prec=0.66) -> AP = (1.0 + 0.66) / 2 = 0.83
+Query B: relevant item at rank 2 (Prec=0.5) -> AP = (0.5) / 1 = 0.5
+Output: MAP = (0.83 + 0.5) / 2 = 0.665</code></pre>
 
-  <div
-    id="whatIsVectorSearchAndMlflowSearchModel"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <h6>VECTOR_SEARCH</h6>
+                                  <ul>
+                                    <li>
+                                      <strong>Focus:</strong> Order and
+                                      precision of all relevant items returned.
+                                    </li>
+                                    <li>
+                                      <strong>Interpretation:</strong> 0 to 1;
+                                      higher scores mean the system successfully
+                                      pushed more relevant items toward the top.
+                                    </li>
+                                    <li>
+                                      <strong>Best Use Case:</strong>
+                                      Traditional web search engine evaluation
+                                      or legal/medical document retrieval where
+                                      finding all relevant pieces matters.
+                                    </li>
+                                  </ul>
 
-      <p>
-        Vector Search is a Databricks capability that enables semantic search
-        over unstructured data using vector embeddings. Instead of searching
-        only for exact keywords, Vector Search finds content that is
-        semantically similar to a query by comparing embedding vectors.
-      </p>
+                                  <hr />
 
-      <p>
-        It is commonly used in Retrieval-Augmented Generation (RAG)
-        applications, recommendation systems, document search, and knowledge
-        assistants where understanding meaning is more important than matching
-        exact words.
-      </p>
+                                  <h3>
+                                    3. NDCG (Normalized Discounted Cumulative
+                                    Gain)
+                                  </h3>
+                                  <p>
+                                    NDCG evaluates retrieval quality using
+                                    <strong>graded relevance scales</strong>
+                                    (e.g., highly relevant, somewhat relevant,
+                                    irrelevant). It sums up the "gain" of items,
+                                    scales down (discounts) that gain for lower
+                                    ranks, and normalizes it against a perfectly
+                                    ordered list.
+                                  </p>
 
-      <pre><code>Query: "How do I reset my password?"
+                                  <pre><code>Input (graded relevance scores on a 0-3 scale):
+Query A actual output ranks: [Result 1 (score 3), Result 2 (score 0), Result 3 (score 2)]
+Query A ideal output ranks:   [Result 1 (score 3), Result 3 (score 2), Result 2 (score 0)]
+Output: NDCG = DCG of actual output / DCG of ideal output (ranges from 0.0 to 1.0)</code></pre>
+
+                                  <ul>
+                                    <li>
+                                      <strong>Focus:</strong> Order based on
+                                      multi-level degrees of relevance.
+                                    </li>
+                                    <li>
+                                      <strong>Interpretation:</strong> 0 to 1; 1
+                                      indicates the system perfectly sorted the
+                                      items from most relevant to least
+                                      relevant.
+                                    </li>
+                                    <li>
+                                      <strong>Best Use Case:</strong> Modern
+                                      e-commerce product recommendations or
+                                      streaming platforms (like Netflix/Spotify)
+                                      where user interactions provide graded
+                                      preferences (e.g., 1-5 stars, watch time
+                                      percentages).
+                                    </li>
+                                  </ul>
+
+                                  <hr />
+
+                                  <h3>4. Evaluation Tool: trec_eval</h3>
+                                  <p>
+                                    <strong>trec_eval</strong> is the standard,
+                                    globally recognized command-line tool used
+                                    to evaluate Information Retrieval (IR)
+                                    systems. Originally written in C for the
+                                    Text REtrieval Conference (TREC), it
+                                    computes all the core metrics mentioned
+                                    above (MAP, MRR, NDCG, and more) by
+                                    comparing a system's search results against
+                                    a ground-truth "golden dataset."
+                                  </p>
+
+                                  <p>
+                                    To run an evaluation, the tool requires two
+                                    specific plain-text input files: the
+                                    <strong>qrels (ground truth) file</strong>
+                                    and the
+                                    <strong>results (system output) file</strong
+                                    >.
+                                  </p>
+
+                                  <pre><code># Standard terminal execution syntax:
+$ trec_eval [options] &lt;qrels_file&gt; &lt;results_file&gt;
+
+# Example Output Snippet:
+num_q          all    100
+map            all    0.6650
+recip_rank     all    0.4444
+ndcg           all    0.7125</code></pre>
+
+                                  <ul>
+                                    <li>
+                                      <strong>The Qrels File:</strong> Contains
+                                      the true relevance judgments made by human
+                                      assessors. Each line contains:
+                                      <code
+                                        >[Query_ID] [Iteration] [Document_ID]
+                                        [Relevance_Score]</code
+                                      >.
+                                    </li>
+                                    <li>
+                                      <strong>The Results File:</strong>
+                                      Contains the ranked output generated by
+                                      your search engine algorithm. Each line
+                                      contains:
+                                      <code
+                                        >[Query_ID] [Q0] [Document_ID] [Rank]
+                                        [Score] [System_Name]</code
+                                      >.
+                                    </li>
+                                    <li>
+                                      <strong>Why it matters:</strong> It
+                                      eliminates implementation discrepancies.
+                                      Because different programming libraries
+                                      may calculate metrics like NDCG with
+                                      slight mathematical variations,
+                                      <code>trec_eval</code> serves as the
+                                      industry-wide baseline benchmark for
+                                      publishing research papers and comparing
+                                      search systems objectively.
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#databricksClustersAndModelHosting"
+                              >
+                                Databricks Clusters and Model Hosting
+                              </button>
+                            </h2>
+
+                            <div
+                              id="databricksClustersAndModelHosting"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p class="lead">
+                                  A <strong>Databricks cluster</strong> is a set
+                                  of computation resources and configurations
+                                  running <strong>Apache Spark</strong> to
+                                  process data in a distributed, parallelized
+                                  manner. While they are the powerhouse of data
+                                  engineering, their role in model hosting
+                                  depends entirely on your architectural needs.
+                                </p>
+
+                                <div class="databricks-clusters-group mt-3">
+                                  <h3>1. Understanding Databricks Clusters</h3>
+                                  <p>
+                                    Under the hood, a cluster is a group of
+                                    cloud virtual machines (VMs) managed by
+                                    Databricks. A standard multi-node cluster
+                                    consists of two main components:
+                                  </p>
+                                  <ul>
+                                    <li>
+                                      <strong>The Driver Node:</strong> The
+                                      "brain" of the cluster. It coordinates
+                                      code execution, manages the SparkSession,
+                                      breaks jobs down into tasks, and
+                                      distributes them.
+                                    </li>
+                                    <li>
+                                      <strong>Worker Nodes (Executors):</strong>
+                                      The "muscle" of the cluster. These nodes
+                                      run the actual tasks assigned by the
+                                      driver node to process data and return
+                                      results.
+                                    </li>
+                                  </ul>
+
+                                  <p>
+                                    Databricks offers three primary cluster
+                                    types tailored to different stages of your
+                                    workflow:
+                                  </p>
+                                  <ul>
+                                    <li>
+                                      <strong
+                                        >All-Purpose (Interactive)
+                                        Clusters:</strong
+                                      >
+                                      Used for manual, collaborative data
+                                      analysis and model training within
+                                      notebooks. Multiple users can share them.
+                                    </li>
+                                    <li>
+                                      <strong>Job Clusters:</strong> Automated,
+                                      short-lived clusters created by the
+                                      Databricks job scheduler. They spin up to
+                                      execute a specific task and immediately
+                                      terminate to optimize cloud costs.
+                                    </li>
+                                    <li>
+                                      <strong>Serverless Compute:</strong> A
+                                      fully managed approach where Databricks
+                                      handles the underlying infrastructure
+                                      entirely, offering instant startup times
+                                      and automatic scaling without manual VM
+                                      configuration.
+                                    </li>
+                                  </ul>
+
+                                  <hr />
+
+                                  <h3>
+                                    2. Hosting Models for Real-Time / Production
+                                    Inference
+                                  </h3>
+                                  <p>
+                                    If you want to host an AI/ML model (such as
+                                    a Scikit-learn, PyTorch, Hugging Face, or
+                                    Large Language Model) as a live, low-latency
+                                    REST API for web apps to query, you should
+                                    <strong>not</strong> use a standard
+                                    Databricks cluster.
+                                  </p>
+                                  <p>
+                                    Instead, you should utilize
+                                    <strong>Databricks Model Serving</strong>, a
+                                    dedicated serverless feature built on top of
+                                    Unity Catalog.
+                                  </p>
+                                  <ul>
+                                    <li>
+                                      <strong>How it works:</strong> It packages
+                                      your model and deploys it into a
+                                      specialized, highly available environment
+                                      completely isolated from your data
+                                      processing clusters.
+                                    </li>
+                                    <li>
+                                      <strong>Why it's better:</strong> It
+                                      features sub-50ms latency overhead,
+                                      automatically scales down to zero when not
+                                      in use to save costs, and can handle tens
+                                      of thousands of queries per second without
+                                      requiring manual virtual machine
+                                      management.
+                                    </li>
+                                  </ul>
+
+                                  <hr />
+
+                                  <h3>
+                                    3. Hosting Models for Batch or Offline
+                                    Inference
+                                  </h3>
+                                  <p>
+                                    If your architecture requires generating
+                                    predictions on millions of rows of data on a
+                                    recurring schedule (e.g., once a day, once a
+                                    week, or hourly), standard Databricks
+                                    clusters are the ideal tool for the job.
+                                  </p>
+                                  <pre><code>Input (Batch processing architecture):
+- Raw data stored in Delta Tables
+- Saved model loaded from MLflow registry
+- Job Cluster spins up automatically on a schedule
+Output: Distributed predictions written back to a target Delta Table</code></pre>
+                                  <ul>
+                                    <li>
+                                      <strong>How it works:</strong> A scheduled
+                                      pipeline spins up a
+                                      <strong>Job Cluster</strong>, loads your
+                                      saved model via MLflow, distributes the
+                                      model across the worker nodes using a
+                                      Spark UDF (User Defined Function), and
+                                      processes the batch dataset in parallel.
+                                    </li>
+                                    <li>
+                                      <strong>Best Use Case:</strong>
+                                      Recommendation systems generating weekly
+                                      user suggestions, daily risk assessment
+                                      scoring, or any scenario where real-time
+                                      API responses are not required.
+                                    </li>
+                                  </ul>
+
+                                  <hr />
+
+                                  <h3>4. Prototyping & Live Testing</h3>
+                                  <p>
+                                    During the active development,
+                                    experimentation, and training phases inside
+                                    a notebook, you can host a quick local test
+                                    endpoint directly on your active compute.
+                                  </p>
+                                  <ul>
+                                    <li>
+                                      <strong>How it works:</strong> You utilize
+                                      the built-in MLflow integration within an
+                                      <strong>All-Purpose cluster</strong> to
+                                      serve the model locally within the
+                                      notebook environment.
+                                    </li>
+                                    <li>
+                                      <strong>Best Use Case:</strong> Strictly
+                                      meant for development, ad-hoc sanity
+                                      checks, and debugging before formally
+                                      promoting the model asset into a
+                                      production Model Serving endpoint.
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#correctRagDeploymentSequence"
+                              >
+                                What are correct sequences of steps for
+                                deploying an endpoint for a basic
+                                Retrieval-Augmented Generation (RAG) application
+                                on Databricks?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="correctRagDeploymentSequence"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Deploying a RAG endpoint on Databricks follows
+                                  a specific sequence: prepare data, create
+                                  embeddings, build a Vector Search index,
+                                  develop the retrieval function, package with
+                                  MLflow, register to Unity Catalog, and deploy
+                                  to Model Serving.
+                                </p>
+
+                                <p>
+                                  For example, you first ingest documents and
+                                  chunk them, then generate vector embeddings
+                                  using Databricks embedding models, create a
+                                  Vector Search index for fast retrieval,
+                                  assemble the RAG chain with LangChain, log and
+                                  package it with MLflow, register it in Unity
+                                  Catalog, and finally deploy as a Model Serving
+                                  endpoint.
+                                </p>
+
+                                <pre><code>Correct Sequence for RAG Deployment on Databricks:
+1. Prepare/ingest data (load documents, chunk text)
+2. Generate embeddings for chunks (using BGE, Ada, etc.)
+3. Create Vector Search Index (stores embeddings for retrieval)
+4. Develop the retrieval function (LangChain + LLM + prompt)
+5. Package the application (log with MLflow, include dependencies , we use log_model() method to package )
+6. Register the model with Unity Catalog (via MLflow.register_model)
+7. Deploy the endpoint (Model Serving → REST API)</code></pre>
+
+                                <p>
+                                  This sequence is used in production RAG
+                                  systems where you retrieve external knowledge
+                                  and augment prompts for pre-trained LLMs. It
+                                  emphasizes indexing data first, then building
+                                  retrieval logic, then deploying via governed
+                                  model serving.
+                                </p>
+                                <p>
+                                  "Package the application" means bundling your
+                                  RAG code along with all its dependencies into
+                                  a self-contained, deployable unit. To package
+                                  we use - log_model() method . After
+                                  registering - Model Appears in Unity Catalog
+                                  and it becomes a goverened asset . now we can
+                                  promote the model to staging , prod etc as
+                                  well as serve it via API.
+                                </p>
+                                <ul>
+                                  <li>
+                                    <b>Purpose</b>: deploy a production-ready
+                                    RAG endpoint that retrieves relevant
+                                    documents and generates responses using
+                                    pre-trained LLMs.
+                                  </li>
+                                  <li>
+                                    <b>Key components</b>: data ingestion,
+                                    chunking, embeddings, Vector Search index,
+                                    LangChain RAG chain, MLflow packaging, Unity
+                                    Catalog registration, Model Serving
+                                    deployment.
+                                  </li>
+                                  <li>
+                                    <b>Main benefit</b>: enterprise-grade
+                                    governance via Unity Catalog, scalable
+                                    serving via Model Serving, reproducible
+                                    deployments with MLflow.
+                                  </li>
+                                  <li>
+                                    <b>Main limitation</b>: requires setup of
+                                    Vector Search index and embedding pipeline
+                                    before retrieval can work; not suitable for
+                                    simple in-memory retrieval.
+                                  </li>
+                                </ul>
+
+                                <p>
+                                  <b>Runtime flow</b>: User asks question →
+                                  endpoint computes embeddings → searches Vector
+                                  Search index for similar docs → creates
+                                  augmented prompt → sends to LLM → returns
+                                  response [web:3].
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsVectorSearchAndMlflowSearchModel"
+                              >
+                                What are VECTOR_SEARCH and mlflow.search_model()
+                                in Databricks?
+                              </button>
+                            </h2>
+
+                            <div
+                              id="whatIsVectorSearchAndMlflowSearchModel"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <h6>VECTOR_SEARCH</h6>
+
+                                <p>
+                                  Vector Search is a Databricks capability that
+                                  enables semantic search over unstructured data
+                                  using vector embeddings. Instead of searching
+                                  only for exact keywords, Vector Search finds
+                                  content that is semantically similar to a
+                                  query by comparing embedding vectors.
+                                </p>
+
+                                <p>
+                                  It is commonly used in Retrieval-Augmented
+                                  Generation (RAG) applications, recommendation
+                                  systems, document search, and knowledge
+                                  assistants where understanding meaning is more
+                                  important than matching exact words.
+                                </p>
+
+                                <pre><code>Query: "How do I reset my password?"
 
 Retrieved Documents:
 - "Steps to change account credentials"
 - "Password recovery guide"
 - "Account access troubleshooting"</code></pre>
 
-      <p>
-        In Databricks, documents are first converted into embeddings using an
-        embedding model and stored in a Vector Search Index. When a user submits
-        a query, the query is also converted into an embedding and matched
-        against stored vectors to find the most relevant results.
-      </p>
+                                <p>
+                                  In Databricks, documents are first converted
+                                  into embeddings using an embedding model and
+                                  stored in a Vector Search Index. When a user
+                                  submits a query, the query is also converted
+                                  into an embedding and matched against stored
+                                  vectors to find the most relevant results.
+                                </p>
 
-      <ul>
-        <li>
-          Purpose: perform semantic similarity search on embeddings.
-        </li>
-        <li>
-          Common use cases: RAG, document retrieval, knowledge assistants,
-          recommendations, and semantic search.
-        </li>
-        <li>
-          Main benefit: finds relevant content even when exact keywords do not
-          match.
-        </li>
-        <li>
-          Main risk: retrieval quality depends on embedding quality and index
-          configuration.
-        </li>
-      </ul>
+                                <ul>
+                                  <li>
+                                    Purpose: perform semantic similarity search
+                                    on embeddings.
+                                  </li>
+                                  <li>
+                                    Common use cases: RAG, document retrieval,
+                                    knowledge assistants, recommendations, and
+                                    semantic search.
+                                  </li>
+                                  <li>
+                                    Main benefit: finds relevant content even
+                                    when exact keywords do not match.
+                                  </li>
+                                  <li>
+                                    Main risk: retrieval quality depends on
+                                    embedding quality and index configuration.
+                                  </li>
+                                </ul>
 
-      <hr />
+                                <hr />
 
-      <h6>mlflow.search_model()</h6>
+                                <h6>mlflow.search_model()</h6>
 
-      <p>
-        <code>mlflow.search_model()</code> is an MLflow function used to search
-        and discover registered models in the Databricks Unity Catalog or
-        MLflow Model Registry. It allows users to find models based on names,
-        tags, metadata, creation information, or other filtering criteria.
-      </p>
+                                <p>
+                                  <code>mlflow.search_model()</code> is an
+                                  MLflow function used to search and discover
+                                  registered models in the Databricks Unity
+                                  Catalog or MLflow Model Registry. It allows
+                                  users to find models based on names, tags,
+                                  metadata, creation information, or other
+                                  filtering criteria.
+                                </p>
 
-      <p>
-        This function is especially useful in large organizations where many
-        machine learning and GenAI models are registered and need to be located
-        programmatically.
-      </p>
+                                <p>
+                                  This function is especially useful in large
+                                  organizations where many machine learning and
+                                  GenAI models are registered and need to be
+                                  located programmatically.
+                                </p>
 
-      <pre><code>Example:
+                                <pre><code>Example:
 Search for all models tagged as "production"
 
 Result:
@@ -1782,287 +3401,382 @@ Result:
 - fraud-detection-model
 - support-chat-assistant</code></pre>
 
-      <p>
-        Instead of manually browsing the registry UI, developers can use
-        <code>mlflow.search_model()</code> to discover available models and
-        automate model selection workflows.
-      </p>
+                                <p>
+                                  Instead of manually browsing the registry UI,
+                                  developers can use
+                                  <code>mlflow.search_model()</code> to discover
+                                  available models and automate model selection
+                                  workflows.
+                                </p>
 
-      <ul>
-        <li>
-          Purpose: search and discover registered MLflow models.
-        </li>
-        <li>
-          Common filters: model name, tags, owner, creation date, and metadata.
-        </li>
-        <li>
-          Main benefit: simplifies model discovery and governance.
-        </li>
-        <li>
-          Main risk: incorrect filters may return incomplete or unexpected
-          results.
-        </li>
-      </ul>
+                                <ul>
+                                  <li>
+                                    Purpose: search and discover registered
+                                    MLflow models.
+                                  </li>
+                                  <li>
+                                    Common filters: model name, tags, owner,
+                                    creation date, and metadata.
+                                  </li>
+                                  <li>
+                                    Main benefit: simplifies model discovery and
+                                    governance.
+                                  </li>
+                                  <li>
+                                    Main risk: incorrect filters may return
+                                    incomplete or unexpected results.
+                                  </li>
+                                </ul>
 
-      <p>
-        Together, Vector Search and <code>mlflow.search_model()</code> are often
-        used in GenAI applications. Vector Search retrieves relevant knowledge
-        from documents, while MLflow helps discover and manage the models used
-        for embeddings, retrieval, evaluation, and response generation.
-      </p>
-    </div>
-  </div>
-</div>
+                                <p>
+                                  Together, Vector Search and
+                                  <code>mlflow.search_model()</code> are often
+                                  used in GenAI applications. Vector Search
+                                  retrieves relevant knowledge from documents,
+                                  while MLflow helps discover and manage the
+                                  models used for embeddings, retrieval,
+                                  evaluation, and response generation.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
 
                           <div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#unityCatalogMasking"
-    >
-      What is Unity Catalog's role-based masking?
-    </button>
-  </h2>
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#unityCatalogMasking"
+                              >
+                                What is Unity Catalog's role-based masking?
+                              </button>
+                            </h2>
+                            <div
+                              id="unityCatalogMasking"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Role-based masking in Unity Catalog is a data
+                                  governance feature that allows organizations
+                                  to hide, partially mask, or filter sensitive
+                                  data based on the user's assigned role, group
+                                  membership, or permissions. Instead of giving
+                                  every user access to the original values,
+                                  Unity Catalog can dynamically return masked or
+                                  filtered values while still allowing
+                                  authorized users to view the full data.
+                                </p>
 
-  <div
-    id="unityCatalogMasking"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        Role-based masking in Unity Catalog is a data governance feature that
-        allows organizations to hide or partially mask sensitive data based on
-        the user's assigned role, group membership, or permissions. Instead of
-        giving every user access to the original values, Unity Catalog can
-        dynamically return masked values while still allowing authorized users
-        to view the full data.
-      </p>
+                                <p>
+                                  <strong
+                                    >Can we perform both Row-level and
+                                    Column-level masking?</strong
+                                  ><br />
+                                  Yes. Unity Catalog supports both
+                                  <strong>Column-Level Masking</strong> (using
+                                  Row Filters and Column Masks) to secure data
+                                  at a granular level based on who is querying
+                                  the data:
+                                </p>
 
-      <p>
-        For example, a customer table may contain email addresses and credit
-        card information. Data analysts may only see masked values, while
-        administrators or compliance teams can view the actual data.
-      </p>
+                                <ul>
+                                  <li>
+                                    <strong>Column-Level Masking:</strong>
+                                    Allows you to apply a masking function to a
+                                    specific column. Security policies dictate
+                                    whether a user sees the real data, partially
+                                    masked data (e.g., credit card ends in
+                                    1111), or completely redacted data (e.g.,
+                                    NULL or fixed hashes), depending on their
+                                    database roles or groups.
+                                  </li>
+                                  <li>
+                                    <strong
+                                      >Row-Level Masking (Row
+                                      Filtering):</strong
+                                    >
+                                    Allows you to filter out specific rows from
+                                    a query result based on user privileges. For
+                                    example, a regional sales manager might only
+                                    see rows where the
+                                    <code>Region</code> column equals 'US',
+                                    while a global executive can see all rows.
+                                  </li>
+                                </ul>
 
-      <pre><code>Input Data:
-Customer = John Smith
-Email    = john.smith@example.com
-Card No. = 4111-1111-1111-1111
+                                <p>
+                                  For example, a customer table may contain
+                                  email addresses, credit card information, and
+                                  regional data. Data analysts may only see
+                                  masked columns and filtered rows, while
+                                  administrators or compliance teams can view
+                                  the actual, complete dataset.
+                                </p>
 
-Analyst View:
-Customer = John Smith
-Email    = j***@example.com
-Card No. = ****-****-****-1111
+                                <pre><code>Input Data:
+Customer   = John Smith  | Region = US | Card No. = 4111-1111-1111-1111
+Customer   = Yuki Tanaka | Region = JP | Card No. = 5222-2222-2222-2222
 
-Admin View:
-Customer = John Smith
-Email    = john.smith@example.com
-Card No. = 4111-1111-1111-1111</code></pre>
+Analyst View (US Region Group):
+Customer   = John Smith  | Region = US | Card No. = ****-****-****-1111
+*(Yuki Tanaka's row is completely hidden due to row filtering)*
 
-      <p>
-        Role-based masking helps organizations protect personally identifiable
-        information (PII), financial records, healthcare data, and other
-        sensitive fields while enabling users to perform analytics on the same
-        datasets. Masking policies are centrally managed in Unity Catalog and
-        enforced automatically whenever users query the data.
-      </p>
+Admin View (Global Group):
+Customer   = John Smith  | Region = US | Card No. = 4111-1111-1111-1111
+Customer   = Yuki Tanaka | Region = JP | Card No. = 5222-2222-2222-2222</code></pre>
 
-      <ul>
-        <li>
-          Purpose: protect sensitive columns by showing different values to
-          different users based on their roles or permissions.
-        </li>
-        <li>
-          Common use cases: masking emails, phone numbers, credit card numbers,
-          salaries, customer identifiers, and healthcare records.
-        </li>
-        <li>
-          Main benefit: enables secure data sharing while maintaining a single
-          source of truth for governed datasets.
-        </li>
-        <li>
-          Main risk: incorrectly configured masking policies may expose
-          sensitive information or unnecessarily restrict legitimate access.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                                <p>
+                                  Role-based masking and filtering help
+                                  organizations protect personally identifiable
+                                  information (PII), financial records,
+                                  healthcare data, and other sensitive fields
+                                  while enabling users to perform analytics on
+                                  the same datasets. Masking policies are
+                                  centrally managed in Unity Catalog using
+                                  standard SQL functions (like
+                                  <code
+                                    >CASE WHEN
+                                    IS_ACCOUNT_GROUP_MEMBER(...)</code
+                                  >) and enforced automatically whenever users
+                                  query the data.
+                                </p>
 
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#whatIsAutoscaling"
-    >
-      What is Autoscaling in Cloud Computing?
-    </button>
-  </h2>
+                                <ul>
+                                  <li>
+                                    Purpose: protect sensitive columns and
+                                    restrict row visibility by showing different
+                                    subsets of data to different users based on
+                                    their roles or permissions.
+                                  </li>
+                                  <li>
+                                    Common use cases: masking emails, phone
+                                    numbers, credit card numbers, and filtering
+                                    rows by geographic region, department, or
+                                    business unit.
+                                  </li>
+                                  <li>
+                                    Main benefit: enables secure data sharing
+                                    while maintaining a single source of truth
+                                    for governed datasets without creating
+                                    duplicate physical tables.
+                                  </li>
+                                  <li>
+                                    Main risk: incorrectly configured masking or
+                                    filtering policies may expose sensitive
+                                    information or unnecessarily restrict
+                                    legitimate access.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
 
-  <div
-    id="whatIsAutoscaling"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        Autoscaling is a cloud computing feature that automatically adjusts
-        computational resources (like CPUs, GPUs, or entire servers) based on
-        real-time system demand without manual intervention. It continuously
-        monitors metrics like CPU usage, memory, or request count, and
-        dynamically adds or removes resources to match workload requirements.
-      </p>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#whatIsAutoscaling"
+                              >
+                                What is Autoscaling in Cloud Computing?
+                              </button>
+                            </h2>
 
-      <p>
-        For example, during a flash sale on an e-commerce site, traffic might
-        spike 10x. Autoscaling automatically launches additional servers to
-        handle the load, then terminates them when traffic returns to normal.
-      </p>
+                            <div
+                              id="whatIsAutoscaling"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  Autoscaling is a cloud computing feature that
+                                  automatically adjusts computational resources
+                                  (like CPUs, GPUs, or entire servers) based on
+                                  real-time system demand without manual
+                                  intervention. It continuously monitors metrics
+                                  like CPU usage, memory, or request count, and
+                                  dynamically adds or removes resources to match
+                                  workload requirements.
+                                </p>
 
-      <pre><code>Normal traffic: 2 servers running
+                                <p>
+                                  For example, during a flash sale on an
+                                  e-commerce site, traffic might spike 10x.
+                                  Autoscaling automatically launches additional
+                                  servers to handle the load, then terminates
+                                  them when traffic returns to normal.
+                                </p>
+
+                                <pre><code>Normal traffic: 2 servers running
 Flash sale starts (10x traffic): System adds 8 more servers
 Sale ends: System removes the 8 extra servers → back to 2 servers</code></pre>
 
-      <p>
-        Autoscaling is essential for running applications efficiently in the
-        cloud. For LLM inference workloads (like RAG applications), it ensures
-        sufficient GPU/compute capacity during high demand while avoiding
-        over-provisioning during low-traffic periods.
-      </p>
+                                <p>
+                                  Autoscaling is essential for running
+                                  applications efficiently in the cloud. For LLM
+                                  inference workloads (like RAG applications),
+                                  it ensures sufficient GPU/compute capacity
+                                  during high demand while avoiding
+                                  over-provisioning during low-traffic periods.
+                                </p>
 
-      <ul>
-        <li>
-          Purpose: Automatically allocate/deallocate resources based on demand
-          to maintain performance and optimize costs.
-        </li>
-        <li>
-          Two types:
-          <strong>Horizontal scaling</strong> (adds/removes entire instances)
-          and <strong>vertical scaling</strong> (increases/decreases CPU/RAM of
-          existing instances).
-        </li>
-        <li>
-          Main benefit: Prevents over-provisioning (paying for unused capacity)
-          while ensuring uptime during traffic spikes.
-        </li>
-        <li>
-          Main risk: Scaling lag (delay between detecting load and adding
-          resources) can cause temporary slowdowns if thresholds are too
-          aggressive.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                                <ul>
+                                  <li>
+                                    Purpose: Automatically allocate/deallocate
+                                    resources based on demand to maintain
+                                    performance and optimize costs.
+                                  </li>
+                                  <li>
+                                    Two types:
+                                    <strong>Horizontal scaling</strong>
+                                    (adds/removes entire instances) and
+                                    <strong>vertical scaling</strong>
+                                    (increases/decreases CPU/RAM of existing
+                                    instances).
+                                  </li>
+                                  <li>
+                                    Main benefit: Prevents over-provisioning
+                                    (paying for unused capacity) while ensuring
+                                    uptime during traffic spikes.
+                                  </li>
+                                  <li>
+                                    Main risk: Scaling lag (delay between
+                                    detecting load and adding resources) can
+                                    cause temporary slowdowns if thresholds are
+                                    too aggressive.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
 
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#howAutoscalingAffectsLLM"
-    >
-      How Does Autoscaling Affect LLM Performance?
-    </button>
-  </h2>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#howAutoscalingAffectsLLM"
+                              >
+                                How Does Autoscaling Affect LLM Performance?
+                              </button>
+                            </h2>
 
-  <div
-    id="howAutoscalingAffectsLLM"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        When autoscaling increases resources for LLM inference, it adds more
-        GPUs or servers to handle the workload. This improves response times and
-        throughput during high demand, but it does NOT change the quality of
-        answers or reduce the per-query cost of using the LLM.
-      </p>
+                            <div
+                              id="howAutoscalingAffectsLLM"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  When autoscaling increases resources for LLM
+                                  inference, it adds more GPUs or servers to
+                                  handle the workload. This improves response
+                                  times and throughput during high demand, but
+                                  it does NOT change the quality of answers or
+                                  reduce the per-query cost of using the LLM.
+                                </p>
 
-      <p>
-        For example, with 2 GPUs processing 100 requests/sec, latency might be
-        500ms with 10 requests queued. After scaling to 8 GPUs, latency drops to
-        150ms with 0 requests queued—but each query still costs the same per
-        token.
-      </p>
+                                <p>
+                                  For example, with 2 GPUs processing 100
+                                  requests/sec, latency might be 500ms with 10
+                                  requests queued. After scaling to 8 GPUs,
+                                  latency drops to 150ms with 0 requests
+                                  queued—but each query still costs the same per
+                                  token.
+                                </p>
 
-      <pre><code>Before scaling: 2 GPUs, 100 req/sec → 500ms latency, 10 queued
+                                <pre><code>Before scaling: 2 GPUs, 100 req/sec → 500ms latency, 10 queued
 After scaling:  8 GPUs, 100 req/sec → 150ms latency, 0 queued
 Per-query cost: Still the same (same tokens, same price per token)</code></pre>
 
-      <p>
-        This distinction is critical for RAG applications. Autoscaling optimizes
-        infrastructure utilization (not wasting idle capacity), but it doesn't
-        reduce the actual LLM inference cost, which is determined by token count
-        and number of queries.
-      </p>
+                                <p>
+                                  This distinction is critical for RAG
+                                  applications. Autoscaling optimizes
+                                  infrastructure utilization (not wasting idle
+                                  capacity), but it doesn't reduce the actual
+                                  LLM inference cost, which is determined by
+                                  token count and number of queries.
+                                </p>
 
-      <ul>
-        <li>
-          <strong>What improves:</strong> Latency (faster responses), throughput
-          (more concurrent queries), queue time (fewer waiting requests), and
-          availability during traffic spikes.
-        </li>
-        <li>
-          <strong>What stays the same:</strong> Per-query cost, model quality,
-          response accuracy, and token consumption—autoscaling doesn't make the
-          LLM cheaper or smarter.
-        </li>
-        <li>
-          <strong>Main benefit for LLMs:</strong> Maintains performance under
-          load without manual intervention, preventing dropped requests during
-          peak usage.
-        </li>
-        <li>
-          <strong>Why it doesn't solve cost problems:</strong> LLM costs are
-          driven by tokens × queries, not infrastructure. To reduce costs, you
-          need prompt optimization (fewer tokens) or caching (fewer queries),
-          not more GPUs.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                                <ul>
+                                  <li>
+                                    <strong>What improves:</strong> Latency
+                                    (faster responses), throughput (more
+                                    concurrent queries), queue time (fewer
+                                    waiting requests), and availability during
+                                    traffic spikes.
+                                  </li>
+                                  <li>
+                                    <strong>What stays the same:</strong>
+                                    Per-query cost, model quality, response
+                                    accuracy, and token consumption—autoscaling
+                                    doesn't make the LLM cheaper or smarter.
+                                  </li>
+                                  <li>
+                                    <strong>Main benefit for LLMs:</strong>
+                                    Maintains performance under load without
+                                    manual intervention, preventing dropped
+                                    requests during peak usage.
+                                  </li>
+                                  <li>
+                                    <strong
+                                      >Why it doesn't solve cost
+                                      problems:</strong
+                                    >
+                                    LLM costs are driven by tokens × queries,
+                                    not infrastructure. To reduce costs, you
+                                    need prompt optimization (fewer tokens) or
+                                    caching (fewer queries), not more GPUs.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
 
-<div class="accordion-item">
-  <h2 class="accordion-header">
-    <button
-      class="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#bestRAGCostControl"
-    >
-      Best Way to Control RAG Costs in Databricks (Without Losing Quality)
-    </button>
-  </h2>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#bestRAGCostControl"
+                              >
+                                Best Way to Control RAG Costs in Databricks
+                                (Without Losing Quality)
+                              </button>
+                            </h2>
 
-  <div
-    id="bestRAGCostControl"
-    class="accordion-collapse collapse"
-    data-bs-parent="#learnByQaAccordion"
-  >
-    <div class="accordion-body">
-      <p>
-        The most effective way to control RAG application costs in Databricks
-        without compromising response quality is to employ prompt optimization
-        techniques and cache common query results. Prompt optimization reduces
-        token usage per query, while caching eliminates redundant LLM calls for
-        repeated questions.
-      </p>
+                            <div
+                              id="bestRAGCostControl"
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#learnByQaAccordion"
+                            >
+                              <div class="accordion-body">
+                                <p>
+                                  The most effective way to control RAG
+                                  application costs in Databricks without
+                                  compromising response quality is to employ
+                                  prompt optimization techniques and cache
+                                  common query results. Prompt optimization
+                                  reduces token usage per query, while caching
+                                  eliminates redundant LLM calls for repeated
+                                  questions.
+                                </p>
 
-      <p>
-        For example, if users frequently ask "What is the return policy?",
-        caching the response means the LLM only runs once, and subsequent
-        identical queries return the cached answer instantly at near-zero cost.
-      </p>
+                                <p>
+                                  For example, if users frequently ask "What is
+                                  the return policy?", caching the response
+                                  means the LLM only runs once, and subsequent
+                                  identical queries return the cached answer
+                                  instantly at near-zero cost.
+                                </p>
 
-      <pre><code>Without caching:
+                                <pre><code>Without caching:
 User asks "Return policy?" → LLM runs → 500 tokens → $0.01
 User asks "Return policy?" → LLM runs → 500 tokens → $0.01
 User asks "Return policy?" → LLM runs → 500 tokens → $0.01
@@ -2074,37 +3788,45 @@ User asks "Return policy?" → Cache hit → 0 tokens → $0
 User asks "Return policy?" → Cache hit → 0 tokens → $0
 Total: 500 tokens, $0.01 (67% savings)</code></pre>
 
-      <p>
-        Unlike autoscaling (which optimizes infrastructure but not per-query
-        cost) or reducing max tokens (which risks incomplete answers), prompt
-        optimization + caching directly reduces LLM usage while maintaining full
-        response quality.
-      </p>
+                                <p>
+                                  Unlike autoscaling (which optimizes
+                                  infrastructure but not per-query cost) or
+                                  reducing max tokens (which risks incomplete
+                                  answers), prompt optimization + caching
+                                  directly reduces LLM usage while maintaining
+                                  full response quality.
+                                </p>
 
-      <ul>
-        <li>
-          <strong>Prompt optimization:</strong> Use concise prompts, reduce
-          top-k documents, summarize retrieved chunks, and encourage brief
-          responses to cut token usage.
-        </li>
-        <li>
-          <strong>Caching:</strong> Store responses for common/similar queries
-          in Databricks Cache or MLflow to avoid redundant LLM inference.
-        </li>
-        <li>
-          <strong>Main benefit:</strong> Directly reduces LLM inference costs by
-          lowering token consumption and query count, without sacrificing
-          answer quality.
-        </li>
-        <li>
-          <strong>Why other options fail:</strong> Autoscaling doesn't reduce
-          per-query cost; checkpointing is for training (not inference);
-          reducing max tokens truncates responses and harms quality.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                                <ul>
+                                  <li>
+                                    <strong>Prompt optimization:</strong> Use
+                                    concise prompts, reduce top-k documents,
+                                    summarize retrieved chunks, and encourage
+                                    brief responses to cut token usage.
+                                  </li>
+                                  <li>
+                                    <strong>Caching:</strong> Store responses
+                                    for common/similar queries in Databricks
+                                    Cache or MLflow to avoid redundant LLM
+                                    inference.
+                                  </li>
+                                  <li>
+                                    <strong>Main benefit:</strong> Directly
+                                    reduces LLM inference costs by lowering
+                                    token consumption and query count, without
+                                    sacrificing answer quality.
+                                  </li>
+                                  <li>
+                                    <strong>Why other options fail:</strong>
+                                    Autoscaling doesn't reduce per-query cost;
+                                    checkpointing is for training (not
+                                    inference); reducing max tokens truncates
+                                    responses and harms quality.
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
 
                           <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -2314,8 +4036,8 @@ Output schema: answer: string</code></pre>
 
                                 <ul>
                                   <li>
-                                    Purpose: define the model's input and
-                                    output contract.
+                                    Purpose: define the model's input and output
+                                    contract.
                                   </li>
                                   <li>
                                     Benefit: catches schema mismatches during
@@ -2468,7 +4190,6 @@ Output schema: answer: string</code></pre>
                               </div>
                             </div>
                           </div>
-
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
@@ -2477,8 +4198,8 @@ Output schema: answer: string</code></pre>
                                 data-bs-toggle="collapse"
                                 data-bs-target="#bleuAndRougeEvaluationMetrics"
                               >
-                                What are BLEU and ROUGE, and when should they
-                                be used?
+                                What are BLEU and ROUGE, and when should they be
+                                used?
                               </button>
                             </h2>
 
@@ -2525,35 +4246,43 @@ Output schema: answer: string</code></pre>
                                   <thead>
                                     <tr>
                                       <th>Metric</th>
-                                      <th>Main idea</th>
-                                      <th>Best used for</th>
+                                      <th>Measures</th>
+                                      <th>Best For</th>
+                                      <th>Memory Hook</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <td>BLEU</td>
+                                      <td>ROUGE</td>
+                                      <td>Word Overlap</td>
+                                      <td>Summarization</td>
                                       <td>
-                                        Precision-oriented n-gram overlap:
-                                        how much of the generated text matches
-                                        the reference wording.
-                                      </td>
-                                      <td>
-                                        Machine translation, controlled text
-                                        generation, and regression tests where
-                                        exact phrasing matters.
+                                        ROUGE is for
+                                        <span class="badge bg-warning text-dark"
+                                          >Recall</span
+                                        >
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td>ROUGE</td>
+                                      <td>BLEU</td>
+                                      <td>Translation Quality</td>
+                                      <td>Machine Translation</td>
                                       <td>
-                                        Recall-oriented overlap: how much of the
-                                        reference answer or summary is covered
-                                        by the generated text.
+                                        BLEU is for
+                                        <span class="badge bg-warning text-dark"
+                                          >Bilingual</span
+                                        >
                                       </td>
+                                    </tr>
+                                    <tr>
+                                      <td>BERTScore</td>
+                                      <td>Semantic Similarity</td>
+                                      <td>Paraphrasing</td>
                                       <td>
-                                        Summarization, content coverage checks,
-                                        and comparing whether key points were
-                                        preserved.
+                                        BERT is for
+                                        <span class="badge bg-warning text-dark"
+                                          >Bonding</span
+                                        >
                                       </td>
                                     </tr>
                                   </tbody>
@@ -2586,10 +4315,10 @@ Output schema: answer: string</code></pre>
                                   </li>
                                   <li>
                                     Avoid using BLEU or ROUGE as the primary
-                                    metric for open-ended chat, reasoning,
-                                    code generation, creative writing, or
-                                    factual QA where multiple very different
-                                    answers can be correct.
+                                    metric for open-ended chat, reasoning, code
+                                    generation, creative writing, or factual QA
+                                    where multiple very different answers can be
+                                    correct.
                                   </li>
                                 </ul>
 
@@ -2640,8 +4369,8 @@ Output schema: answer: string</code></pre>
                               <div class="accordion-body">
                                 <p>
                                   Databricks provides native integration with
-                                  identity management solutions like AWS IAM
-                                  and Azure Active Directory.
+                                  identity management solutions like AWS IAM and
+                                  Azure Active Directory.
                                 </p>
                               </div>
                             </div>
@@ -3377,11 +5106,10 @@ Output schema: answer: string</code></pre>
                         <hr />
                         <hr />
                         <hr />
-                        self notes ---
-                        
-                        MLflow documentation explicitly recommends combining AI metrics with domain expert judgment through consistent quality metrics (scorers) tuned to align with human expertise 
-
-
+                        self notes --- MLflow documentation explicitly
+                        recommends combining AI metrics with domain expert
+                        judgment through consistent quality metrics (scorers)
+                        tuned to align with human expertise
                       </div>
                     </div>
                   </div>
@@ -3423,9 +5151,7 @@ Output schema: answer: string</code></pre>
                             and avoid rushing to incorrect conclusions.
                           </li>
                           <li>
-                            <strong
-                              >Reasoning Models (e.g., OpenAI o1):</strong
-                            >
+                            <strong>Reasoning Models (e.g., OpenAI o1):</strong>
                             These models are trained to generate their own
                             internal chain of thought before producing a final
                             answer. For these models, manual CoT prompting is
@@ -3599,10 +5325,9 @@ Output schema: answer: string</code></pre>
                         <p>
                           <strong>The Trade-off:</strong> As we fill the window
                           with more retrieved data, the model's ability to
-                          reason degrades (the "Lost in the Middle"
-                          phenomenon), and latency increases significantly.
-                          Strategic context management is essential for
-                          maintaining performance.
+                          reason degrades (the "Lost in the Middle" phenomenon),
+                          and latency increases significantly. Strategic context
+                          management is essential for maintaining performance.
                         </p>
                         <p>Key considerations:</p>
                         <ul>
@@ -4425,8 +6150,8 @@ Output schema: answer: string</code></pre>
                         <ul>
                           <li>Directly saving the agent object</li>
                           <li>
-                            Using the "agent as code" approach with Python
-                            files and YAML configuration
+                            Using the "agent as code" approach with Python files
+                            and YAML configuration
                           </li>
                           <li>Using mlflow.pytorch.log_model</li>
                           <li>Using mlflow.sklearn.log_model</li>
@@ -4596,36 +6321,33 @@ Output schema: answer: string</code></pre>
                               data-bs-parent="#genAiDeploymentMonitoringCourseAccordion"
                             >
                               <div class="accordion-body">
-
-                                batch deployment should be used when Pace at which input/records change or is received is > 30 mins
-                                we can use ai_query() to run batch generation directly from SQL in database . 
-                                a 10-billion-parameter model using 32-bit weights needs
-around 40 GB of GPU RAM.
-
+                                batch deployment should be used when Pace at
+                                which input/records change or is received is >
+                                30 mins we can use ai_query() to run batch
+                                generation directly from SQL in database . a
+                                10-billion-parameter model using 32-bit weights
+                                needs around 40 GB of GPU RAM.
                               </div>
                             </div>
                           </div>
-                          we can deploy model on databricks using databricks-sdk api as well as using mlFlow Deployments method.
-
+                          we can deploy model on databricks using databricks-sdk
+                          api as well as using mlFlow Deployments method.
                           databricks model serving Supports online evaluation
-strategies such as A/B testing or
-canary deployments through the
-ability to serve multiple models to
-a serving endpoint
+                          strategies such as A/B testing or canary deployments
+                          through the ability to serve multiple models to a
+                          serving endpoint To give you an idea of how monitoring
+                          works for a deployed generative Al system within
+                          Databricks’ serving infrastructure, there’s a key
+                          feature called the inference table from model serving.
+                          This feature allows for effective online monitoring of
+                          the system in real time.
 
+                          <br />
+                          <hr />
+                          AI application monitoring
 
-To give you an idea of how monitoring works for a deployed generative Al system
-within Databricks’ serving infrastructure, there’s a key feature called the inference
-table from model serving. This feature allows for effective online monitoring of the
-system in real time.
-
-
-<br/>
-<hr/>
-AI application monitoring
- 
-<br/>
-<hr/>
+                          <br />
+                          <hr />
 
                           <div
                             class="accordion mt-3"
@@ -4650,27 +6372,25 @@ AI application monitoring
                               >
                                 <div class="accordion-body">
                                   MLOps is the set of processes and automation
-for managing data, code and models
-to improve performance, stability and long-term efficiency of ML
-systems
-MLOps = DataOps + DevOps + ModelOps
-
-
-What are Databricks Asset Bundles? They are defined using YAML files that specify
-all the artifacts, resources, and configurations necessary for a Databricks project.
-How do bundles work? The new Databricks CLI includes functions to validate, deploy,
-and run these bundles using the bundle.yml file. Bundles are particularly useful during
-development and CI/CD processes as they automate the transition between
-environments. They consolidate complex setup steps into a concise, declarative
-syntax.
-
+                                  for managing data, code and models to improve
+                                  performance, stability and long-term
+                                  efficiency of ML systems MLOps = DataOps +
+                                  DevOps + ModelOps What are Databricks Asset
+                                  Bundles? They are defined using YAML files
+                                  that specify all the artifacts, resources, and
+                                  configurations necessary for a Databricks
+                                  project. How do bundles work? The new
+                                  Databricks CLI includes functions to validate,
+                                  deploy, and run these bundles using the
+                                  bundle.yml file. Bundles are particularly
+                                  useful during development and CI/CD processes
+                                  as they automate the transition between
+                                  environments. They consolidate complex setup
+                                  steps into a concise, declarative syntax.
                                 </div>
                               </div>
                             </div>
                           </div>
-
-
-
                         </div>
                       </div>
                     </div>
