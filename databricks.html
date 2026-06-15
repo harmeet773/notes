@@ -309,6 +309,10 @@ title: DataBricks
 
                 <h6>mlflow.pyfunc</h6>
                 <p>
+                  If you just wrote a standard Python class without inheriting from mlflow.pyfunc.PythonModel, you could easily use it locally. However, the moment you try to log it to MLflow or register it in Databricks, the system will get confused.
+                  <strong>Hence it is important to inherit from mlflow.pyfunc.PythonModel to be able to register it in databricks.</strong>
+                </p>
+                <p>
                   <code>mlflow.pyfunc</code> is MLflow's generic Python model
                   flavor. It lets you wrap custom inference logic in a standard
                   <code>predict()</code> interface, so the model can be logged,
@@ -390,6 +394,7 @@ title: DataBricks
               data-bs-parent="#databricsComponentsAccordion"
             >
               <div class="accordion-body">
+                <p>Although ,Databricks Feature Store is primarily for key-based lookups but still we can store embedding in it .For example , we can store embedding of an image instead of raw image in feature store.</p>
                 <p>
                   A Feature Store is a centralized repository that stores and
                   manages reusable features (data attributes) used by AI,
@@ -1966,6 +1971,77 @@ Similarity Search / RAG Retrieval</code></pre>
                               </div>
                             </div>
                           </div>
+
+
+                          <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsDatabricksDeltaLiveTables"
+    >
+      What is Databricks Delta Live Tables?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsDatabricksDeltaLiveTables"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Databricks Delta Live Tables (DLT) is a cloud service that makes reliable
+        ETL (extract, transform, and load) easy on Delta Lake. It is now part of
+        Lakeflow Spark Declarative Pipelines (previously known as DLT), allowing
+        data engineering teams to streamline ETL development with a simple UI and
+        declarative tooling [web:1][web:3].
+      </p>
+
+      <p>
+        Instead of writing complex pipeline code manually, you define your data
+        transformations using declarative SQL or Python statements. DLT automatically
+        manages the execution engine, handles dependencies between tables, and ensures
+        data is refreshed correctly—whether for batch or streaming data [web:3][web:8].
+      </p>
+
+      <p>
+        Key capabilities include support for streaming tables, materialized views,
+        Medallion Architecture (Bronze → Silver → Gold), and built-in data quality
+        rules called "expectations" that monitor and flag bad data [web:3][web:7].
+        DLT also provides deep visibility through an event log for operational
+        monitoring [web:3].
+      </p>
+
+      <p>
+        In Gen AI and data engineering applications, Delta Live Tables is useful when
+        you need to ingest long conversation histories, retrieved documents, logs,
+        or user-provided files into structured, quality-checked tables for downstream
+        MLflow training, RAG pipelines, or analytics [web:5][web:7].
+      </p>
+
+      <ul>
+        <li>
+          Declarative pipeline framework: defines transformations using SQL/Python,
+          DLT orchestrates execution.
+        </li>
+        <li>
+          Automated dependency management: DLT tracks table relationships and
+          refreshes them in the correct order.
+        </li>
+        <li>
+          Main benefit: simplifies ETL development, improves data reliability with
+          quality rules, and scales operations with event logging.
+        </li>
+        <li>
+          Main risk: DLT is Databricks-only (not open source like Delta Tables), so
+          it may not fit multi-platform or non-Databricks environments [web:7].
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
