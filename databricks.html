@@ -4343,6 +4343,18 @@ Output schema: answer: string</code></pre>
                                   the reference.
                                 </p>
 
+                                <p>
+                                  Mean Squared Error (MSE) is a different
+                                  evaluation metric used for regression tasks,
+                                  where the model predicts a numeric value
+                                  instead of text. It computes the average of
+                                  the squared differences between predicted and
+                                  actual values, which means larger errors are
+                                  penalized more heavily. MSE is commonly used
+                                  for forecasting, price prediction, and other
+                                  continuous-value outputs.
+                                </p>
+
                                 <pre><code>Generated text + Reference text -> BLEU / ROUGE metric -> Similarity score</code></pre>
 
                                 <table class="table table-bordered">
@@ -4415,6 +4427,12 @@ Output schema: answer: string</code></pre>
                                     Use ROUGE-L to compare the longest matching
                                     word sequence, which helps measure sentence
                                     structure similarity.
+                                  </li>
+                                  <li>
+                                    Use MSE for regression or forecasting tasks
+                                    where the output is a continuous number and
+                                    you want to penalize larger errors more
+                                    strongly.
                                   </li>
                                   <li>
                                     Avoid using BLEU or ROUGE as the primary
