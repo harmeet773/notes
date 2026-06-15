@@ -308,6 +308,23 @@ title: DataBricks
                 </ul>
 
                 <h6>mlflow.pyfunc</h6>
+                <p> Since language model applications can
+      be complex, MLflow now offers new model flavors designed for generative
+      Al. A “flavor” in MLflow adds extra details—like metadata, datasets,
+      metrics, and other artifacts—on top of the original model to help track
+      its lifecycle. For example, when using LangChain, MLflow can log the
+      entire chain as a model flavor, recording all steps, dependencies,
+      environment settings, and runtime versions. This makes it easy to package,
+      reproduce, and manage even complex logic as a unified MLflow model.Because
+      generative Al logic can be complex, MLflow has introduced new model
+      flavors to handle these cases. A flavor in MLflow adds useful metadata,
+      datasets, metrics, input examples, and other artifacts on top of your base
+      model for easier lifecycle tracking. For example, if you log a chain built
+      with LangChain, MLflow tracks all steps, dependencies, environment info,
+      and even Databricks runtimes—packaging everything needed to reproduce and
+      manage the complex logic as a single MLflow model. others - we can use
+      Attribute-Based Access Control (ABAC) in Unity Catalog helps protect
+      sensitive data using row filters and column mask policies.</p>
                 <p>
                   If you just wrote a standard Python class without inheriting from mlflow.pyfunc.PythonModel, you could easily use it locally. However, the moment you try to log it to MLflow or register it in Databricks, the system will get confused.
                   <strong>Hence it is important to inherit from mlflow.pyfunc.PythonModel to be able to register it in databricks.</strong>
