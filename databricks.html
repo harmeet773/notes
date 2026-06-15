@@ -1995,6 +1995,143 @@ Similarity Search / RAG Retrieval</code></pre>
                               </div>
                             </div>
                           </div>
+                          <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#foundationModelApiAccessMethods"
+    >
+      What are the different ways to access Foundation Model APIs?
+    </button>
+  </h2>
+
+  <div
+    id="foundationModelApiAccessMethods"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Databricks Foundation Model APIs provide multiple ways to access and
+        serve large language models depending on application requirements,
+        traffic volume, latency expectations, and cost considerations.
+      </p>
+
+      <p>
+        The three primary access methods are Pay-per-Token Throughput,
+        Provisioned Throughput, and External Models. Each option is designed
+        for different deployment scenarios and pricing models.
+      </p>
+
+      <h6>1. Pay-per-Token Throughput</h6>
+
+      <p>
+        Pay-per-Token Throughput uses shared infrastructure managed by
+        Databricks. Users are charged based on the number of input and output
+        tokens processed by the model.
+      </p>
+
+      <p>
+        This option is ideal for development, experimentation, proof-of-concept
+        projects, and applications with low or unpredictable traffic because
+        there is no need to reserve dedicated capacity.
+      </p>
+
+      <h6>2. Provisioned Throughput</h6>
+
+      <p>
+        Provisioned Throughput provides dedicated model-serving capacity that
+        is reserved specifically for an application. This helps ensure
+        predictable performance, throughput, and latency.
+      </p>
+
+      <p>
+        It is commonly used for production workloads that have high and
+        consistent traffic volumes where performance guarantees are important.
+      </p>
+
+      <h6>3. External Models</h6>
+
+      <p>
+        External Models allow applications to access foundation models hosted
+        by third-party providers through Databricks. Databricks acts as a
+        unified gateway while the actual model execution occurs on the external
+        provider's infrastructure.
+      </p>
+
+      <p>
+        This option is useful when an organization wants to use proprietary
+        models from external vendors while maintaining a consistent access
+        pattern within Databricks.
+      </p>
+
+      <h6>How does Serverless Hosting fit in?</h6>
+
+      <p>
+        Serverless is an infrastructure model, not an API access model.
+        It describes how the underlying compute resources are managed rather
+        than how the model is accessed.
+      </p>
+
+      <p>
+        With Serverless Model Serving, Databricks automatically provisions,
+        scales, and manages the serving infrastructure. Users do not need to
+        create or manage clusters, making deployment and scaling much simpler.
+      </p>
+
+      <pre><code>Model Serving
+│
+├── Serverless Model Serving
+│     ├── Foundation Model APIs
+│     │      ├── Pay-per-Token
+│     │      ├── Provisioned Throughput
+│     │      └── External Models
+│     │
+│     └── Custom Models
+│
+└── (Underlying infrastructure managed by Databricks)</code></pre>
+
+      <p>
+        Therefore, Serverless Model Serving is the hosting layer underneath
+        Foundation Model APIs and custom model endpoints. It is not a fourth
+        way to access Foundation Models, but rather the infrastructure that
+        enables model serving without requiring users to manage compute
+        resources themselves.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Pay-per-Token Throughput:</strong> Pay only for tokens used;
+          best for low-volume or variable workloads.
+        </li>
+        <li>
+          <strong>Provisioned Throughput:</strong> Dedicated capacity with
+          predictable performance for high-volume production applications.
+        </li>
+        <li>
+          <strong>External Models:</strong> Access third-party hosted models
+          through a unified Databricks interface.
+        </li>
+        <li>
+          <strong>Serverless Hosting:</strong> Infrastructure model that
+          automatically manages scaling and compute resources for model serving.
+        </li>
+        <li>
+          <strong>Cost consideration:</strong> Pay-per-Token is generally more
+          economical for small workloads, while Provisioned Throughput becomes
+          cost-effective for sustained high traffic.
+        </li>
+        <li>
+          <strong>Common exam tip:</strong> Low or unpredictable traffic →
+          Pay-per-Token; high and predictable traffic → Provisioned Throughput;
+          third-party models → External Models.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
                           <div class="accordion-item">
