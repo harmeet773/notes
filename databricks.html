@@ -2132,6 +2132,99 @@ Similarity Search / RAG Retrieval</code></pre>
     </div>
   </div>
 </div>
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#whatIsMetadataFiltering"
+    >
+      What is Metadata Filtering and Where is Metadata Stored?
+    </button>
+  </h2>
+
+  <div
+    id="whatIsMetadataFiltering"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        Metadata filtering is a technique used in vector search and Retrieval
+        Augmented Generation (RAG) systems to narrow down the set of documents
+        considered during retrieval. Instead of searching across all vectors,
+        the system first applies filters based on metadata such as document
+        type, author, date, department, region, security level, or product
+        category.
+      </p>
+
+      <p>
+        By reducing the search space before similarity search is performed,
+        metadata filtering helps improve retrieval accuracy, reduce irrelevant
+        results, and decrease query latency. This is especially useful when a
+        vector database contains documents from multiple sources, departments,
+        customers, or time periods.
+      </p>
+
+      <p>
+        For example, a company may store HR policies, engineering documents,
+        and legal contracts in the same vector index. If a user requests HR
+        information, metadata filters can restrict the search to documents
+        where <code>department = "HR"</code> before vector similarity matching
+        takes place.
+      </p>
+
+      <pre><code>User Query
+      ↓
+Metadata Filter (department = HR)
+      ↓
+Filtered Documents
+      ↓
+Vector Similarity Search
+      ↓
+Most Relevant Results</code></pre>
+
+      <p>
+        Metadata is typically stored alongside each vector record in the vector
+        database or vector index. When a document is converted into embeddings,
+        the associated metadata is stored together with the vector so that it
+        can be used later for filtering and retrieval operations.
+      </p>
+
+      <p>
+        Common metadata fields include document source, filename, creation
+        date, author, tags, customer ID, language, document category, access
+        permissions, and other descriptive attributes. The metadata itself is
+        usually stored as structured key-value pairs rather than embeddings.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Metadata filtering:</strong> Restricts retrieval to documents
+          matching specific metadata conditions before similarity search.
+        </li>
+        <li>
+          <strong>Where metadata is stored:</strong> Alongside vectors in the
+          vector database or vector index as structured attributes.
+        </li>
+        <li>
+          <strong>Common metadata examples:</strong> Document type, author,
+          department, region, date, tags, source, and access permissions.
+        </li>
+        <li>
+          <strong>Main benefit:</strong> Improves retrieval accuracy, reduces
+          irrelevant results, and speeds up searches.
+        </li>
+        <li>
+          <strong>Common use case:</strong> Multi-tenant RAG systems where
+          users should only retrieve documents belonging to a specific customer,
+          department, project, or security level.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
                           <div class="accordion-item">
