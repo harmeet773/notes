@@ -777,6 +777,9 @@ watched til 12 minutes , rewatch from 13 th
                             <strong>PromptTemplate</strong> formats input into a structured prompt for the model using variables, instructions, and examples.
                           </li>
                           <li>
+  <strong>CallbackHandler</strong> captures events during LangChain execution and is commonly used for logging, monitoring, debugging, and tracking model performance.
+</li>
+                          <li>
                             <strong>RunnableSequence</strong> chains multiple steps together so input flows from one component to the next in a predictable pipeline.
                           </li>
                           <li>
@@ -1583,6 +1586,46 @@ watched til 12 minutes , rewatch from 13 th
             </div>
           </div>
 
+          <div class="accordion-item">
+  <h2 class="accordion-header" id="qaNestedHeading5">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#qaNestedCollapse5"
+      aria-expanded="false"
+      aria-controls="qaNestedCollapse5"
+    >
+      What are stopwords?
+    </button>
+  </h2>
+  <div
+    id="qaNestedCollapse5"
+    class="accordion-collapse collapse"
+    aria-labelledby="qaNestedHeading5"
+    data-bs-parent="#qaNestedAccordion"
+  >
+    <div class="accordion-body">
+      <p class="card-text mb-2">
+        <strong>Stopwords</strong> are common words that appear frequently in a language but usually
+        carry little meaningful information for text analysis. Examples include words such as
+        <em>"the"</em>, <em>"is"</em>, <em>"and"</em>, <em>"of"</em>, and <em>"in"</em>.
+      </p>
+      <p class="card-text mb-2">
+        In many Natural Language Processing (NLP) tasks, stopwords are removed during
+        preprocessing to reduce noise and focus on the words that contribute more meaning
+        to the text.
+      </p>
+      <p class="card-text mb-0">
+        For example, in the sentence <em>"The customer is happy with the product"</em>,
+        words like <em>"the"</em> and <em>"is"</em> are stopwords, while words such as
+        <em>"customer"</em>, <em>"happy"</em>, and <em>"product"</em> provide the most useful
+        information. However, stopword removal is not always necessary, especially for tasks
+        where sentence structure and context are important, such as modern LLM-based applications.
+      </p>
+    </div>
+  </div>
+</div>
           <div class="accordion-item">
   <h2 class="accordion-header" id="qaNestedHeading1">
     <button
