@@ -1623,6 +1623,11 @@ watched til 12 minutes , rewatch from 13 th
         information. However, stopword removal is not always necessary, especially for tasks
         where sentence structure and context are important, such as modern LLM-based applications.
       </p>
+      <p class="card-text mb-0">
+
+Generally, you should NOT remove stopwords when creating embeddings for dense vector search in a RAG application.
+In case of Dense embeddings  - Keep stopwords . In case of Sparse embeddings - removing is better 
+      </p>
     </div>
   </div>
 </div>
