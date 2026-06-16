@@ -873,6 +873,180 @@ title: DataBricks
               data-bs-parent="#databricsComponentsAccordion"
             >
               <div class="accordion-body">
+<div class="container py-4">
+
+    <h1 class="mb-4">Embeddings, Delta Tables, and Vector Search in Databricks</h1>
+
+    <h2>Where Are Embeddings Stored?</h2>
+
+    <p>
+        In Databricks, embeddings are typically stored directly inside a
+        <strong>Delta Lake table</strong>.
+    </p>
+
+    <p>
+        The embedding is usually stored in an
+        <code>ARRAY&lt;FLOAT&gt;</code> column together with:
+    </p>
+
+    <ul>
+        <li>Document text or chunk</li>
+        <li>Document ID</li>
+        <li>Metadata</li>
+        <li>Source information</li>
+        <li>Timestamps</li>
+        <li>Embedding vector</li>
+    </ul>
+
+    <h2>Key Concept</h2>
+
+    <div class="alert alert-info">
+        <strong>Embeddings live in the Delta Table.</strong><br>
+        The Vector Search Index is built from those embeddings.
+    </div>
+
+    <h2>High-Level Architecture</h2>
+
+    <pre class="bg-light border p-3 rounded">
+Documents
+    ↓
+Chunking
+    ↓
+Embedding Model
+    ↓
+Delta Table
+(Text + Metadata + Embeddings)
+    ↓
+Vector Search Index
+(Fast Similarity Search)
+    ↓
+Retriever
+    ↓
+LLM
+    </pre>
+
+    <h2>Relationship Between Delta Table and Vector Search Index</h2>
+
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Delta Table</th>
+                <th>Vector Search Index</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Stores the actual embeddings.</td>
+                <td>Uses embeddings from the Delta table.</td>
+            </tr>
+            <tr>
+                <td>Acts as the source of truth.</td>
+                <td>Acts as the retrieval layer.</td>
+            </tr>
+            <tr>
+                <td>Stores text, metadata, and vectors.</td>
+                <td>Stores optimized search structures.</td>
+            </tr>
+            <tr>
+                <td>Supports ACID transactions.</td>
+                <td>Supports fast nearest-neighbor search.</td>
+            </tr>
+            <tr>
+                <td>Governed through Unity Catalog.</td>
+                <td>Created from a Unity Catalog Delta table.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Example Delta Table</h2>
+
+    <pre class="bg-light border p-3 rounded">
+CREATE TABLE knowledge_base (
+    id BIGINT,
+    chunk STRING,
+    source STRING,
+    embedding ARRAY&lt;FLOAT&gt;
+);
+    </pre>
+
+    <h2>Example Row</h2>
+
+    <pre class="bg-light border p-3 rounded">
+{
+  "id": 1,
+  "chunk": "LangChain is a framework for LLM applications...",
+  "source": "langchain_docs.pdf",
+  "embedding": [0.12, -0.45, 0.78, ...]
+}
+    </pre>
+
+    <h2>How the Index Is Built</h2>
+
+    <ol>
+        <li>Generate embeddings for document chunks.</li>
+        <li>Store chunks and embeddings in a Delta table.</li>
+        <li>Create a Vector Search Index on the Delta table.</li>
+        <li>Databricks builds optimized vector-search structures.</li>
+        <li>User query is converted into an embedding.</li>
+        <li>The index finds the nearest matching vectors.</li>
+        <li>Relevant rows are returned from the underlying Delta data.</li>
+    </ol>
+
+    <h2>Mental Model</h2>
+
+    <pre class="bg-light border p-3 rounded">
+Delta Table
+┌───────────────────────────────┐
+│ Text                          │
+│ Metadata                      │
+│ Embeddings                    │
+└───────────────┬───────────────┘
+                │
+                │ Builds
+                ▼
+Vector Search Index
+┌───────────────────────────────┐
+│ ANN Algorithms                │
+│ Optimized Vector Structures   │
+│ Fast Similarity Search        │
+└───────────────────────────────┘
+    </pre>
+
+    <h2>Why Do We Need a Vector Search Index?</h2>
+
+    <p>
+        A Delta table may contain millions of embeddings.
+        Calculating cosine similarity against every row would be slow and expensive.
+    </p>
+
+    <p>
+        The Vector Search Index uses Approximate Nearest Neighbor (ANN)
+        algorithms to find similar embeddings efficiently, often in milliseconds.
+    </p>
+
+    <h2>Rule of Thumb</h2>
+
+    <div class="alert alert-success">
+        <strong>Delta Table = Storage Layer</strong><br>
+        Stores documents, metadata, and embeddings.
+        <br><br>
+        <strong>Vector Search Index = Retrieval Layer</strong><br>
+        Provides fast semantic search over the stored embeddings.
+    </div>
+
+    <h2>Interview Answer</h2>
+
+    <p>
+        Embeddings are typically stored in a Delta Lake table as an
+        <code>ARRAY&lt;FLOAT&gt;</code> column. The Delta table acts as the source
+        of truth and stores the document text, metadata, and embeddings.
+        A Vector Search Index is then created on top of the Delta table to enable
+        efficient similarity search. The index does not replace the Delta table;
+        it is an optimized retrieval structure built from the embeddings stored
+        in Delta Lake.
+    </p>
+
+</div>
                 <p>
                   The Unity Catalog Model Registry relies on MLflow model artifacts, so the model must first be logged/saved in MLflow before it can be registered.
 
