@@ -2707,6 +2707,37 @@ Output: Satya Nadella = PERSON
                             </div>
                           </div>
 
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#retrieveEmbeddings"
+    >
+      Which command is used to retrieve similar embeddings from a Databricks Vector Search Index?
+    </button>
+  </h2>
+
+  <div
+    id="retrieveEmbeddings"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+      <p>
+        The <code>.query()</code> method is used to retrieve the most similar
+        embeddings from a Databricks Vector Search Index.
+      </p>
+
+      <pre><code>results = vector_index.query(
+    query_vector=query_embedding,
+    num_results=5
+)</code></pre>
+    </div>
+  </div>
+</div>
+
                           <div class="accordion-item">
                             <h2 class="accordion-header">
                               <button
