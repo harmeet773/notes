@@ -6022,41 +6022,44 @@ Output schema: answer: string</code></pre>
                                   queries.
                                 </p>
 
-                                <h3>Search Methods</h3>
-                                <p>
-                                  Different search methods serve different
-                                  retrieval needs:
-                                </p>
-                                <ul>
-                                  <li>
-                                    <strong>Similarity Search:</strong> This
-                                    method retrieves content based on semantic
-                                    correlation rather than exact word matching.
-                                    It enables natural language queries like
-                                    "how to deal with anxiety" to surface
-                                    relevant results that may use different
-                                    terminology, such as "coping with PTSD" or
-                                    "managing stress."
-                                  </li>
-                                  <li>
-                                    <strong>Full-Text Search:</strong> This
-                                    traditional approach relies on keyword
-                                    matching. It excels at finding specific
-                                    terms like part numbers, product codes, or
-                                    proper nouns, but fails to capture semantic
-                                    intent or recognize synonyms.
-                                  </li>
-                                  <li>
-                                    <strong>Hybrid Search:</strong> This
-                                    powerful approach combines vector similarity
-                                    search with keyword-based search. By
-                                    leveraging both semantic understanding and
-                                    exact keyword matching, hybrid search
-                                    typically delivers higher retrieval accuracy
-                                    than either method alone.
-                                  </li>
-                                </ul>
-
+                              <h3>Search Methods</h3>
+<p>
+  Different search methods serve different retrieval needs:
+</p>
+<ul>
+  <li>
+    <strong>Similarity Search:</strong> This method retrieves content based on semantic correlation rather than exact word matching. It enables natural language queries to surface relevant results that may use different terminology.
+    <br><br>
+    <em>Examples:</em>
+    <ul>
+      <li>Query: "how to deal with anxiety" → Returns: "coping with PTSD," "managing stress," "panic attack relief"</li>
+      <li>Query: "best laptop for coding" → Returns: "computers for software development," "machines for programming," "developer workstations"</li>
+      <li>Query: "quick dinner recipes" → Returns: "fast meal ideas," "30-minute dishes," "easy cooking recipes"</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Full-Text Search:</strong> This traditional approach relies on keyword matching. It excels at finding specific terms like part numbers, product codes, or proper nouns, but fails to capture semantic intent or recognize synonyms.
+    <br><br>
+    <em>Examples:</em>
+    <ul>
+      <li>Query: "iPhone 15 Pro" → Returns only pages containing exact phrase "iPhone 15 Pro"</li>
+      <li>Query: "SKU-12345" → Returns only products with that exact part number</li>
+      <li>Query: "Python programming" → Returns pages with both "Python" AND "programming" keywords (not "coding" or "software development")</li>
+      <li>Query: "ESA-2024-B" → Returns only documents with that exact product code</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Hybrid Search:</strong> This powerful approach combines vector similarity search with keyword-based search. By leveraging both semantic understanding and exact keyword matching, hybrid search typically delivers higher retrieval accuracy than either method alone.
+    <br><br>
+    <em>Examples:</em>
+    <ul>
+      <li>Query: " MacDonald restaurant near Mumbai" → Returns: semantic match for "Italian restaurant" + exact match for "Mumbai" location</li>
+      <li>Query: "Llama 3 model documentation" → Returns: semantic understanding of "AI model docs" + exact match for version "Llama 3"</li>
+      <li>Query: "best wireless headphones Sony WH-1000XM5" → Returns: semantic match for "wireless earbuds recommendations" + exact match for model "WH-1000XM5"</li>
+      <li>Query: "Databricks MLflow tutorial Python" → Returns: semantic understanding of "machine learning pipeline guide" + exact matches for "Databricks," "MLflow," and "Python"</li>
+    </ul>
+  </li>
+</ul>
                                 <h3>Metrics</h3>
                                 <p>
                                   To determine how "similar" two vectors are, we
