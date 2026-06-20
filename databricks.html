@@ -6029,7 +6029,8 @@ Output schema: answer: string</code></pre>
 <ul>
   <li>
     <strong>Similarity Search:</strong> This method retrieves content based on semantic correlation rather than exact word matching. It enables natural language queries to surface relevant results that may use different terminology.
-    <br><br>
+    <br>
+    Text is converted into vector representations in the same embedding space, and then operations are peformed on the input vectore and the stored vectors to find the closest matches.
     <em>Examples:</em>
     <ul>
       <li>Query: "how to deal with anxiety" → Returns: "coping with PTSD," "managing stress," "panic attack relief"</li>
