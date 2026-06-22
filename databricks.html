@@ -3592,176 +3592,239 @@ ndcg           all    0.7125</code></pre>
                               data-bs-parent="#learnByQaAccordion"
                             >
                               <div class="accordion-body">
-                                <p class="lead">
-                                  A <strong>Databricks cluster</strong> is a set
-                                  of computation resources and configurations
-                                  running <strong>Apache Spark</strong> to
-                                  process data in a distributed, parallelized
-                                  manner. While they are the powerhouse of data
-                                  engineering, their role in model hosting
-                                  depends entirely on your architectural needs.
-                                </p>
+  <p class="lead">
+    <strong>Databricks clusters</strong>, <strong>Databricks Jobs</strong>,
+    <strong>Serverless Compute</strong>, and
+    <strong>Model Serving</strong> each serve a different purpose in the ML and
+    data engineering lifecycle. Understanding when to use each component helps
+    build scalable and cost-efficient solutions.
+  </p>
 
-                                <div class="databricks-clusters-group mt-3">
-                                  <h3>1. Understanding Databricks Clusters</h3>
-                                  <p>
-                                    Under the hood, a cluster is a group of
-                                    cloud virtual machines (VMs) managed by
-                                    Databricks. A standard multi-node cluster
-                                    consists of two main components:
-                                  </p>
-                                  <ul>
-                                    <li>
-                                      <strong>The Driver Node:</strong> The
-                                      "brain" of the cluster. It coordinates
-                                      code execution, manages the SparkSession,
-                                      breaks jobs down into tasks, and
-                                      distributes them.
-                                    </li>
-                                    <li>
-                                      <strong>Worker Nodes (Executors):</strong>
-                                      The "muscle" of the cluster. These nodes
-                                      run the actual tasks assigned by the
-                                      driver node to process data and return
-                                      results.
-                                    </li>
-                                  </ul>
+  <div class="databricks-clusters-group mt-3">
+    <h3>1. Understanding Databricks Clusters</h3>
 
-                                  <p>
-                                    Databricks offers three primary cluster
-                                    types tailored to different stages of your
-                                    workflow:
-                                  </p>
-                                  <ul>
-                                    <li>
-                                      <strong
-                                        >All-Purpose (Interactive)
-                                        Clusters:</strong
-                                      >
-                                      Used for manual, collaborative data
-                                      analysis and model training within
-                                      notebooks. Multiple users can share them.
-                                    </li>
-                                    <li>
-                                      <strong>Job Clusters:</strong> Automated,
-                                      short-lived clusters created by the
-                                      Databricks job scheduler. They spin up to
-                                      execute a specific task and immediately
-                                      terminate to optimize cloud costs.
-                                    </li>
-                                    <li>
-                                      <strong>Serverless Compute:</strong> A
-                                      fully managed approach where Databricks
-                                      handles the underlying infrastructure
-                                      entirely, offering instant startup times
-                                      and automatic scaling without manual VM
-                                      configuration.
-                                    </li>
-                                  </ul>
+    <p>
+      A Databricks cluster is a collection of cloud virtual machines running
+      Apache Spark. It provides distributed computation for ETL, analytics,
+      machine learning, and batch inference workloads.
+    </p>
 
-                                  <hr />
+    <p>A multi-node cluster consists of:</p>
 
-                                  <h3>
-                                    2. Hosting Models for Real-Time / Production
-                                    Inference
-                                  </h3>
-                                  <p>
-                                    If you want to host an AI/ML model (such as
-                                    a Scikit-learn, PyTorch, Hugging Face, or
-                                    Large Language Model) as a live, low-latency
-                                    REST API for web apps to query, you should
-                                    <strong>not</strong> use a standard
-                                    Databricks cluster.
-                                  </p>
-                                  <p>
-                                    Instead, you should utilize
-                                    <strong>Databricks Model Serving</strong>, a
-                                    dedicated serverless feature built on top of
-                                    Unity Catalog.
-                                  </p>
-                                  <ul>
-                                    <li>
-                                      <strong>How it works:</strong> It packages
-                                      your model and deploys it into a
-                                      specialized, highly available environment
-                                      completely isolated from your data
-                                      processing clusters.
-                                    </li>
-                                    <li>
-                                      <strong>Why it's better:</strong> It
-                                      features sub-50ms latency overhead,
-                                      automatically scales down to zero when not
-                                      in use to save costs, and can handle tens
-                                      of thousands of queries per second without
-                                      requiring manual virtual machine
-                                      management.
-                                    </li>
-                                  </ul>
+    <ul>
+      <li>
+        <strong>Driver Node:</strong> Coordinates execution, manages the
+        SparkSession, and distributes tasks.
+      </li>
+      <li>
+        <strong>Worker Nodes:</strong> Execute tasks and process data in
+        parallel.
+      </li>
+    </ul>
 
-                                  <hr />
+    <p>Databricks provides three major compute types:</p>
 
-                                  <h3>
-                                    3. Hosting Models for Batch or Offline
-                                    Inference
-                                  </h3>
-                                  <p>
-                                    If your architecture requires generating
-                                    predictions on millions of rows of data on a
-                                    recurring schedule (e.g., once a day, once a
-                                    week, or hourly), standard Databricks
-                                    clusters are the ideal tool for the job.
-                                  </p>
-                                  <pre><code>Input (Batch processing architecture):
-- Raw data stored in Delta Tables
-- Saved model loaded from MLflow registry
-- Job Cluster spins up automatically on a schedule
-Output: Distributed predictions written back to a target Delta Table</code></pre>
-                                  <ul>
-                                    <li>
-                                      <strong>How it works:</strong> A scheduled
-                                      pipeline spins up a
-                                      <strong>Job Cluster</strong>, loads your
-                                      saved model via MLflow, distributes the
-                                      model across the worker nodes using a
-                                      Spark UDF (User Defined Function), and
-                                      processes the batch dataset in parallel.
-                                    </li>
-                                    <li>
-                                      <strong>Best Use Case:</strong>
-                                      Recommendation systems generating weekly
-                                      user suggestions, daily risk assessment
-                                      scoring, or any scenario where real-time
-                                      API responses are not required.
-                                    </li>
-                                  </ul>
+    <ul>
+      <li>
+        <strong>All-Purpose Clusters:</strong>
+        Interactive clusters used for notebook development, exploration, and
+        model training.
+      </li>
 
-                                  <hr />
+      <li>
+        <strong>Job Clusters:</strong>
+        Temporary clusters created automatically by Databricks Jobs and
+        terminated after execution to minimize costs.
+      </li>
 
-                                  <h3>4. Prototyping & Live Testing</h3>
-                                  <p>
-                                    During the active development,
-                                    experimentation, and training phases inside
-                                    a notebook, you can host a quick local test
-                                    endpoint directly on your active compute.
-                                  </p>
-                                  <ul>
-                                    <li>
-                                      <strong>How it works:</strong> You utilize
-                                      the built-in MLflow integration within an
-                                      <strong>All-Purpose cluster</strong> to
-                                      serve the model locally within the
-                                      notebook environment.
-                                    </li>
-                                    <li>
-                                      <strong>Best Use Case:</strong> Strictly
-                                      meant for development, ad-hoc sanity
-                                      checks, and debugging before formally
-                                      promoting the model asset into a
-                                      production Model Serving endpoint.
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
+      <li>
+        <strong>Serverless Compute:</strong>
+        Fully managed compute where Databricks handles provisioning and
+        autoscaling with near-instant startup.
+      </li>
+    </ul>
+
+    <hr />
+
+    <h3>2. Understanding Databricks Jobs</h3>
+<p>Databricks Jobs are batch-oriented.Databricks Jobs = orchestration mechanism,</p>
+    <p>
+      <strong>Databricks Jobs</strong> provide orchestration and scheduling.
+      They automate workflows consisting of notebooks, Python scripts, SQL
+      queries, Delta Live Tables pipelines, or ML tasks.
+    </p>
+
+    <pre><code>Job Trigger
+      ↓
+Create Job Cluster
+      ↓
+Execute Task(s)
+      ↓
+Store Results
+      ↓
+Terminate Cluster</code></pre>
+
+    <p>Jobs support:</p>
+
+    <ul>
+      <li>Scheduled execution.</li>
+      <li>Multi-task workflows with dependencies.</li>
+      <li>Retries and failure handling.</li>
+      <li>Event-driven execution.</li>
+      <li>Cost optimization through ephemeral clusters.</li>
+    </ul>
+
+    <p>
+      Typical use cases include ETL pipelines, batch scoring, retraining
+      pipelines, feature engineering, and report generation.
+    </p>
+
+    <hr />
+
+    <h3>3. Serverless Compute</h3>
+
+    <p>
+      Serverless Compute removes the need to manage clusters manually.
+      Databricks automatically provisions resources and scales them according to
+      workload requirements.
+    </p>
+
+    <p>Advantages include:</p>
+
+    <ul>
+      <li>No cluster management.</li>
+      <li>Fast startup times.</li>
+      <li>Automatic scaling.</li>
+      <li>Pay only for actual usage.</li>
+      <li>Reduced operational overhead.</li>
+    </ul>
+
+    <p>
+      Serverless Compute is commonly used for SQL warehouses, notebooks,
+      pipelines, and model serving infrastructure.
+    </p>
+
+    <hr />
+
+    <h3>4. Model Hosting for Real-Time Inference</h3>
+
+    <p>
+      Standard clusters are not ideal for low-latency APIs. For production
+      inference, Databricks provides
+      <strong>Model Serving</strong>, which is built on serverless
+      infrastructure.
+    </p>
+
+    <pre><code>User Request
+      ↓
+Model Serving Endpoint
+      ↓
+Registered Model (Unity Catalog / MLflow)
+      ↓
+Prediction Response</code></pre>
+
+    <p>Benefits include:</p>
+
+    <ul>
+      <li>Automatic scaling.</li>
+      <li>High availability.</li>
+      <li>Low latency.</li>
+      <li>No infrastructure management.</li>
+      <li>REST API endpoints for applications.</li>
+    </ul>
+
+    <p>
+      Best suited for web applications, chatbots, recommendation systems, and
+      real-time AI services.
+    </p>
+
+    <hr />
+
+    <h3>5. Batch or Offline Inference</h3>
+
+    <p>
+      When predictions are required on millions of rows periodically, Databricks
+      Jobs combined with Job Clusters provide the most cost-efficient solution.
+    </p>
+
+    <pre><code>Delta Table
+      ↓
+Scheduled Databricks Job
+      ↓
+Job Cluster Spins Up
+      ↓
+Load Model from MLflow
+      ↓
+Distributed Batch Predictions
+      ↓
+Write Results Back to Delta Table
+      ↓
+Cluster Terminates</code></pre>
+
+    <p>
+      Common use cases include credit scoring, recommendation generation,
+      customer segmentation, and daily analytics pipelines.
+    </p>
+
+    <hr />
+
+    <h3>6. Development and Experimentation</h3>
+
+    <p>
+      During model development, data scientists typically work on
+      <strong>All-Purpose Clusters</strong>.
+    </p>
+
+    <ul>
+      <li>Interactive notebooks.</li>
+      <li>Feature engineering.</li>
+      <li>Model training and evaluation.</li>
+      <li>Hyperparameter tuning.</li>
+      <li>Debugging and experimentation.</li>
+    </ul>
+
+    <pre><code>Notebook Development
+      ↓
+All-Purpose Cluster
+      ↓
+Train Model
+      ↓
+Register in MLflow / Unity Catalog
+      ↓
+Deploy to Model Serving Endpoint</code></pre>
+
+    <hr />
+
+    <h3>7. Typical End-to-End Architecture</h3>
+
+    <pre><code>Raw Data
+    ↓
+Databricks Jobs
+    ↓
+Job Clusters / Serverless Compute
+    ↓
+Feature Engineering & Training
+    ↓
+MLflow / Unity Catalog
+    ↓
+Model Serving Endpoint
+    ↓
+Applications & Users</code></pre>
+
+    <p>
+      In practice:
+    </p>
+
+    <ul>
+      <li><strong>All-Purpose Clusters</strong> → Development and training.</li>
+      <li><strong>Databricks Jobs</strong> → Workflow orchestration.</li>
+      <li><strong>Job Clusters</strong> → Batch processing and retraining.</li>
+      <li><strong>Serverless Compute</strong> → Managed scalable compute.</li>
+      <li><strong>Model Serving</strong> → Real-time production inference.</li>
+    </ul>
+
+  </div>
+</div>
                             </div>
                           </div>
 
@@ -6116,16 +6179,63 @@ Output schema: answer: string</code></pre>
     </ul>
   </li>
   <li>
-    <strong>Hybrid Search:</strong> This powerful approach combines vector similarity search with keyword-based search. By leveraging both semantic understanding and exact keyword matching, hybrid search typically delivers higher retrieval accuracy than either method alone.
-    <br><br>
-    <em>Examples:</em>
-    <ul>
-      <li>Query: " MacDonald restaurant near Mumbai" → Returns: semantic match for "Italian restaurant" + exact match for "Mumbai" location</li>
-      <li>Query: "Llama 3 model documentation" → Returns: semantic understanding of "AI model docs" + exact match for version "Llama 3"</li>
-      <li>Query: "best wireless headphones Sony WH-1000XM5" → Returns: semantic match for "wireless earbuds recommendations" + exact match for model "WH-1000XM5"</li>
-      <li>Query: "Databricks MLflow tutorial Python" → Returns: semantic understanding of "machine learning pipeline guide" + exact matches for "Databricks," "MLflow," and "Python"</li>
-    </ul>
-  </li>
+  <strong>Hybrid Search:</strong> This powerful approach combines vector similarity search with keyword-based search. By leveraging both semantic understanding and exact keyword matching, hybrid search typically delivers higher retrieval accuracy than either method alone.
+  <br><br>
+  <strong>How it works:</strong>
+  <ul>
+    <li><strong>Vector search</strong> captures the semantic meaning of a query, so it can find related content even when the exact words do not match.</li>
+    <li><strong>Keyword search</strong> focuses on exact terms such as product names, version numbers, locations, IDs, or domain-specific phrases.</li>
+    <li><strong>Hybrid search</strong> combines both result sets and ranks them together, giving you the benefit of semantic relevance plus exact term precision.</li>
+  </ul>
+
+  <strong>Why it is useful:</strong>
+  <ul>
+    <li>Improves retrieval quality when user queries contain both intent and exact identifiers.</li>
+    <li>Handles natural language questions better than pure keyword search.</li>
+    <li>Preserves important exact matches such as names, locations, codes, and model versions.</li>
+    <li>Works especially well in RAG systems where relevant context must be retrieved before sending it to the LLM.</li>
+  </ul>
+
+  <br>
+  <em>Examples:</em>
+  <ul>
+    <li>Query: "MacDonald restaurant near Mumbai" → Returns: semantic match for "restaurant" + exact match for "Mumbai" location</li>
+    <li>Query: "Llama 3 model documentation" → Returns: semantic understanding of "AI model docs" + exact match for version "Llama 3"</li>
+    <li>Query: "best wireless headphones Sony WH-1000XM5" → Returns: semantic match for "headphones recommendations" + exact match for model "WH-1000XM5"</li>
+    <li>Query: "Databricks MLflow tutorial Python" → Returns: semantic understanding of "machine learning pipeline guide" + exact matches for "Databricks", "MLflow", and "Python"</li>
+  </ul>
+
+  <strong>How to implement hybrid search:</strong>
+  <ul>
+    <li><strong>Step 1: Store document text and metadata</strong> in a search system or vector database. Metadata can include title, category, author, tags, product name, version, location, etc.</li>
+    <li><strong>Step 2: Generate embeddings</strong> for each document or chunk using an embedding model and store them in a vector index.</li>
+    <li><strong>Step 3: Build a keyword index</strong> on the same documents using a keyword-based method such as BM25 or full-text search.</li>
+    <li><strong>Step 4: At query time</strong>, run both searches in parallel:
+      <ul>
+        <li>perform <strong>vector similarity search</strong> using the query embedding</li>
+        <li>perform <strong>keyword search</strong> using the raw query text</li>
+      </ul>
+    </li>
+    <li><strong>Step 5: Merge and rank results</strong> by combining scores from both searches. This can be done using weighted scoring, reciprocal rank fusion (RRF), or custom ranking logic.</li>
+    <li><strong>Step 6: Return the top ranked chunks/documents</strong> to the application or pass them to the LLM in a RAG workflow.</li>
+  </ul>
+
+  <strong>Common scoring strategies:</strong>
+  <ul>
+    <li><strong>Weighted score fusion:</strong> Final score = (vector score × weight) + (keyword score × weight)</li>
+    <li><strong>Reciprocal Rank Fusion (RRF):</strong> Combines ranked lists from both methods without requiring score normalization</li>
+    <li><strong>Metadata boosting:</strong> Increase rank if the result matches important metadata such as category, product name, date, or location</li>
+  </ul>
+
+  <strong>Typical use cases:</strong>
+  <ul>
+    <li>Enterprise document search</li>
+    <li>RAG pipelines for chatbots and assistants</li>
+    <li>E-commerce product search</li>
+    <li>Support ticket and knowledge base retrieval</li>
+    <li>Code and technical documentation search</li>
+  </ul>
+</li>>
 </ul>
                                 <h3>Metrics</h3>
                                 <p>
@@ -6873,6 +6983,9 @@ Output schema: answer: string</code></pre>
                               data-bs-parent="#genAiDeploymentMonitoringCourseAccordion"
                             >
                               <div class="accordion-body">
+                                databricks jobs is a batch-oriented orchestration mechanism that allows you to schedule and automate workflows consisting of notebooks, Python scripts, SQL queries, and other tasks.
+                                 It is designed for batch processing and is not optimized for real-time or low-latency applications.
+                                 For generative AI applications that require real-time inference, Databricks Model Serving is the recommended deployment option.
                                 <p>
                                   Since language model applications can be
                                   complex, MLflow offers model flavors designed
