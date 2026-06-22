@@ -6053,12 +6053,66 @@ Output schema: answer: string</code></pre>
   <li>
     <strong>Full-Text Search:</strong> This traditional approach relies on keyword matching. It excels at finding specific terms like part numbers, product codes, or proper nouns, but fails to capture semantic intent or recognize synonyms.
     <br><br>
+    <strong>How It Performs Matching:</strong> Exact keyword/token matching — requires 100% word match. "app" won't find "apple" (no partial matching).<br>
+    <strong>Index Usage:</strong> Uses inverted text indexes for fast search (O(log n) performance).<br>
+    <strong>Stop Words:</strong> Filters out common words like "the", "and", "is".<br>
+    <strong>Stemming:</strong> Yes — reduces "running", "ran" to root form "run".<br>
+    <br>
+    
+    <strong>Full-Text Search vs. Regex Matching Comparison:</strong>
+    <table border="1" cellpadding="5" style="border-collapse: collapse; margin-top: 10px;">
+      <tr>
+        <th>Aspect</th>
+        <th>Full-Text Search</th>
+        <th>Regex Matching</th>
+      </tr>
+      <tr>
+        <td><strong>Partial Match</strong></td>
+        <td>❌ No — requires exact word</td>
+        <td>✅ Yes — "app" finds "apple"</td>
+      </tr>
+      <tr>
+        <td><strong>Index Usage</strong></td>
+        <td>✅ Uses text indexes (fast)</td>
+        <td>❌ No index (scans all data)</td>
+      </tr>
+      <tr>
+        <td><strong>Performance</strong></td>
+        <td>🔥 Much faster on large datasets</td>
+        <td>🐌 Slow on large datasets</td>
+      </tr>
+      <tr>
+        <td><strong>Stemming</strong></td>
+        <td>✅ Yes ("running" → "run")</td>
+        <td>❌ No (must specify patterns)</td>
+      </tr>
+      <tr>
+        <td><strong>Flexibility</strong></td>
+        <td>Word-based, boolean operators</td>
+        <td>Ultra-flexible: wildcards, anchors, groups</td>
+      </tr>
+      <tr>
+        <td><strong>Best For</strong></td>
+        <td>Product search, content search, large datasets</td>
+        <td>Pattern validation, partial matches, small datasets</td>
+      </tr>
+    </table>
+    <br>
+    
+    <strong>When to Use Each:</strong>
+    <ul>
+      <li><strong>Use Full-Text:</strong> E-commerce search ("wireless headphones"), blog/content search, large datasets, RAG applications</li>
+      <li><strong>Use Regex:</strong> Email/phone validation, partial substring search ("app" in "apple"), SKUs with patterns, small datasets, no index setup needed</li>
+    </ul>
+    <br>
+
     <em>Examples:</em>
     <ul>
       <li>Query: "iPhone 15 Pro" → Returns only pages containing exact phrase "iPhone 15 Pro"</li>
       <li>Query: "SKU-12345" → Returns only products with that exact part number</li>
       <li>Query: "Python programming" → Returns pages with both "Python" AND "programming" keywords (not "coding" or "software development")</li>
       <li>Query: "ESA-2024-B" → Returns only documents with that exact product code</li>
+      <li><strong>Regex alternative:</strong> Query: `{ $regex: "app" }` → Finds "apple", "application", "applet" (partial match)</li>
     </ul>
   </li>
   <li>
