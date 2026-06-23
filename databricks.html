@@ -2342,6 +2342,9 @@ Similarity Search / RAG Retrieval</code></pre>
     </div>
   </div>
 </div>
+
+
+
 <div class="accordion-item">
   <h2 class="accordion-header">
     <button
@@ -2436,6 +2439,212 @@ Most Relevant Results</code></pre>
   </div>
 </div>
 
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#guardrailsInGenAI"
+    >
+      Guardrails in Generative AI
+    </button>
+  </h2>
+
+  <div
+    id="guardrailsInGenAI"
+    class="accordion-collapse collapse"
+    data-bs-parent="#learnByQaAccordion"
+  >
+    <div class="accordion-body">
+
+      <h4>What are guardrails in Generative AI?</h4>
+
+      <p>
+        Guardrails in Generative AI are controls that guide a chatbot or model to
+        behave safely, accurately, and appropriately. They help limit harmful,
+        irrelevant, unsafe, or policy-violating responses.
+      </p>
+
+      <p>
+        In simple terms, guardrails act like rules around the model’s inputs and
+        outputs. They can block certain topics, prevent leakage of sensitive data,
+        enforce tone or formatting, and make sure the assistant stays within its
+        intended domain.
+      </p>
+
+      <p>
+        Different types of guardrails are used depending on the risk you want to
+        control. Some focus on safety, some on security, some on compliance, and
+        some on keeping responses aligned with the user’s context or business
+        rules.
+      </p>
+
+      <p>
+        In chatbot systems, guardrails are especially useful when the assistant must
+        answer only specific topics, follow company policies, or avoid dangerous or
+        restricted content.
+      </p>
+
+      <ul>
+        <li><strong>Safety guardrail:</strong> Prevents harmful, offensive, toxic, or disallowed content.</li>
+        <li><strong>Security guardrail:</strong> Protects against prompt injection, data leakage, and malicious misuse.</li>
+        <li><strong>Contextual guardrail:</strong> Keeps responses relevant to the conversation, domain, or user intent.</li>
+        <li><strong>Compliance guardrail:</strong> Ensures responses follow legal, regulatory, or policy requirements.</li>
+      </ul>
+
+      <hr>
+
+      <h4>What is a safety guardrail?</h4>
+
+      <p>
+        A safety guardrail is designed to stop a chatbot from producing harmful or
+        unsafe answers. It is commonly used to block toxic language, abusive
+        responses, explicit content, or dangerous instructions.
+      </p>
+
+      <p>
+        For example, if a user asks for violent, hateful, or self-harm-related
+        content, the safety guardrail can stop the response and return a safe
+        fallback message instead.
+      </p>
+
+      <p>
+        This type of guardrail is useful in customer-facing assistants where brand
+        safety and user protection are important. It helps reduce the chance of the
+        model generating risky output.
+      </p>
+
+      <ul>
+        <li><strong>Main purpose:</strong> Prevent harmful or unsafe generated content.</li>
+        <li><strong>Common use case:</strong> Blocking violence, hate speech, abuse, or explicit material.</li>
+        <li><strong>Main benefit:</strong> Improves trust and protects users.</li>
+        <li><strong>Main limitation:</strong> It may sometimes block legitimate content if rules are too strict.</li>
+      </ul>
+
+      <hr>
+
+      <h4>What is a security guardrail?</h4>
+
+      <p>
+        A security guardrail protects the chatbot system from attacks and misuse.
+        It is meant to defend against prompt injection, jailbreak attempts, data
+        exfiltration, and unauthorized access to sensitive information.
+      </p>
+
+      <p>
+        For example, if a user tries to trick the model into revealing hidden
+        prompts, API keys, or internal instructions, the security guardrail can
+        detect and block that attempt.
+      </p>
+
+      <p>
+        This type of guardrail is especially important in enterprise AI systems
+        that connect to tools, databases, or private knowledge sources.
+      </p>
+
+      <ul>
+        <li><strong>Main purpose:</strong> Protect the system from malicious input and data theft.</li>
+        <li><strong>Common use case:</strong> Detecting prompt injection and jailbreak attempts.</li>
+        <li><strong>Main benefit:</strong> Helps keep internal data and workflows secure.</li>
+        <li><strong>Main limitation:</strong> Needs continuous tuning because attack patterns change.</li>
+      </ul>
+
+      <hr>
+
+      <h4>What is a contextual guardrail?</h4>
+
+      <p>
+        A contextual guardrail ensures that the chatbot stays relevant to the
+        current conversation, domain, or use case. It keeps the model focused on
+        the right context instead of drifting into unrelated topics.
+      </p>
+
+      <p>
+        For example, if a chatbot is built only for insurance support, a contextual
+        guardrail can prevent it from answering questions about politics, sports, or
+        general entertainment.
+      </p>
+
+      <p>
+        This guardrail is useful when a chatbot must answer only within a defined
+        business domain and should give a fixed fallback response outside that
+        domain.
+      </p>
+
+      <ul>
+        <li><strong>Main purpose:</strong> Keep responses aligned with the allowed context.</li>
+        <li><strong>Common use case:</strong> Domain-limited assistants such as insurance, banking, or healthcare bots.</li>
+        <li><strong>Main benefit:</strong> Improves relevance and reduces off-topic answers.</li>
+        <li><strong>Main limitation:</strong> Requires strong intent detection and topic rules.</li>
+      </ul>
+
+      <hr>
+
+      <h4>What is a compliance guardrail?</h4>
+
+      <p>
+        A compliance guardrail makes sure the chatbot follows laws, regulations,
+        and company policies. It is used when responses must meet legal, ethical,
+        or operational standards.
+      </p>
+
+      <p>
+        For example, a healthcare chatbot may need to provide disclaimers, while a
+        financial chatbot may need to follow disclosure rules and avoid misleading
+        claims.
+      </p>
+
+      <p>
+        This type of guardrail is important in regulated industries where incorrect
+        or incomplete responses can create legal risk.
+      </p>
+
+      <ul>
+        <li><strong>Main purpose:</strong> Enforce legal and policy requirements.</li>
+        <li><strong>Common use case:</strong> Healthcare, finance, insurance, and enterprise support.</li>
+        <li><strong>Main benefit:</strong> Reduces regulatory and legal risk.</li>
+        <li><strong>Main limitation:</strong> Must be updated whenever rules or policies change.</li>
+      </ul>
+
+      <hr>
+
+      <h4>Which guardrail should be used to block political questions?</h4>
+
+      <p>
+        Suppose a Generative AI engineer is building a chatbot that must answer
+        only insurance-related questions. When users ask about politics, the bot
+        should return a fixed message such as:
+      </p>
+
+      <blockquote>
+        "Sorry, I cannot answer that. I only answer questions around insurance."
+      </blockquote>
+
+      <p>
+        The correct choice is a <strong>contextual guardrail</strong>. Its purpose
+        is to keep the chatbot restricted to its intended domain and prevent it
+        from drifting into unrelated topics.
+      </p>
+
+      <p>
+        Although safety guardrails block harmful or inappropriate content, political
+        questions are not necessarily unsafe. The requirement here is domain
+        restriction rather than content moderation, making contextual guardrails
+        the best fit.
+      </p>
+
+      <ul>
+        <li><strong>Correct answer:</strong> Contextual guardrail.</li>
+        <li><strong>Reason:</strong> Keeps the chatbot focused on insurance-related topics.</li>
+        <li><strong>Behavior:</strong> Returns a predefined fallback response for out-of-domain questions.</li>
+        <li><strong>Exam tip:</strong> Domain restriction and topic relevance usually indicate a contextual guardrail.</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
 
                           <div class="accordion-item">
   <h2 class="accordion-header">
