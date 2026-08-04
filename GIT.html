@@ -1,9 +1,9 @@
 ---
 layout: default
-title: GIT
+title: VCS - GIT
 ---
 
-<h2 class="mb-4">Resources to Learn GIT</h2>
+<h2 class="mb-4">Resources to Learn VCS like GIT</h2>
 
 <div class="accordion" id="gitResourcesAccordion">
   <div class="accordion-item">
@@ -60,6 +60,81 @@ title: GIT
       <div class="accordion-body">
         <p>Use the following command:</p>
         <pre><code>git remote show origin</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"a
+        data-bs-target="#vcsSection"
+      >
+        VCS
+      </button>
+    </h2>
+
+    <div
+      id="vcsSection"
+      class="accordion-collapse collapse"
+      data-bs-parent="#gitResourcesAccordion"
+    >
+      <div class="accordion-body">
+        <p>
+          Version Control Systems (VCS) help teams track changes, collaborate,
+          and manage code history across branches, repositories, and releases.
+        </p>
+
+        <div class="accordion" id="vcsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#vcsMonorepo"
+              >
+                Monorepo
+              </button>
+            </h2>
+
+            <div
+              id="vcsMonorepo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vcsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  A <strong>monorepo</strong> is a single repository that stores
+                  multiple projects, packages, or services together.
+                </p>
+
+                <h3>Why teams use a monorepo</h3>
+                <ul>
+                  <li>Shared code and libraries are easier to reuse.</li>
+                  <li>Cross-project changes can be coordinated in one place.</li>
+                  <li>Dependencies and versioning are easier to manage for large teams.</li>
+                </ul>
+
+                <h3>Common monorepo tools</h3>
+                <ul>
+                  <li>Git as the version control system.</li>
+                  <li>GitHub or GitLab for collaboration and pull requests.</li>
+                  <li>TurboRepo, Nx, or Lerna for large-scale dependency and build management.</li>
+                </ul>
+
+                <h3>Trade-offs</h3>
+                <ul>
+                  <li>Large repositories can become slower to clone, build, and test.</li>
+                  <li>One change may affect many projects at once.</li>
+                  <li>Repository governance and CI pipelines need stronger discipline.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
