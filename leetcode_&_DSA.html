@@ -1413,4 +1413,74 @@ title: LeetCode & DSA
       </div>
     </div>
   </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#solvedIndexSection"
+      >
+        Solved Questions Indexing
+      </button>
+    </h2>
+
+    <div
+      id="solvedIndexSection"
+      class="accordion-collapse collapse"
+      data-bs-parent="#leetcodeMainAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="solvedIndexSubAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#climbingStairs"
+              >
+                Climbing Stairs
+              </button>
+            </h2>
+
+            <div
+              id="climbingStairs"
+              class="accordion-collapse collapse"
+              data-bs-parent="#solvedIndexSubAccordion"
+            >
+              <div class="accordion-body">
+                <p><a href="https://leetcode.com/problems/climbing-stairs/?envType=problem-list-v2&envId=dynamic-programming" target="_blank" rel="noopener">70. Climbing Stairs</a></p>
+<pre><code>/**
+ * @param {number} 
+ * @return {number}
+ */
+let ar = [0,1,2];
+var climbStairs = function(n) {
+
+    if(n<3)return n;
+
+    let waysForNMinus1 = 2 ; 
+    let waysForNMinus2 = 1 ; 
+    let waysForN ; 
+    for(let i=3;   i<= n  ; i++  ){
+
+        waysForN = waysForNMinus1 + waysForNMinus2 ; 
+        waysForNMinus2 = waysForNMinus1 ; 
+        waysForNMinus1= waysForN;
+
+    }
+    return waysForN;
+
+};</code></pre>
+              </div>
+            <p> memory can be optimized further  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
