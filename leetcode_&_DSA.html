@@ -1478,9 +1478,49 @@ var climbStairs = function(n) {
             <p> memory can be optimized further  </p>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#fibonacciNumber"
+              >
+                Fibonacci Number
+              </button>
+            </h2>
+
+            <div
+              id="fibonacciNumber"
+              class="accordion-collapse collapse"
+              data-bs-parent="#solvedIndexSubAccordion"
+            >
+              <div class="accordion-body">
+                <p><a href="https://leetcode.com/problems/fibonacci-number/?envType=problem-list-v2&envId=dynamic-programming" target="_blank" rel="noopener">509. Fibonacci Number</a></p>
+<pre><code>/**
+ * @param {number}
+ * @return {number}
+ */
+var fib = function(n) {
+  if (n < 2) return n;
+  let a = 0, b = 1;
+  for (let i = 2; i <= n; i++) {
+    const c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
+};</code></pre>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+
+    
   </div>
 
 </div>
