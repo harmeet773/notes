@@ -1515,6 +1515,45 @@ var fib = function(n) {
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#singleNumber"
+              >
+                Single Number
+              </button>
+            </h2>
+
+            <div
+              id="singleNumber"
+              class="accordion-collapse collapse"
+              data-bs-parent="#solvedIndexSubAccordion"
+            >
+              <div class="accordion-body">
+                <p><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a></p>
+<pre><code>/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    let buffer = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        if (buffer.get(nums[i])) {
+            buffer.delete(nums[i]);
+        } else {
+            buffer.set(nums[i], true);
+        }
+    }
+    return [...buffer.keys()][0];
+};</code></pre>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
