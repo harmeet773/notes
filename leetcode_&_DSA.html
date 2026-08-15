@@ -1573,6 +1573,21 @@ var singleNumber = function(nums) {
             >
               <div class="accordion-body">
                 <p><a href="https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/submissions/2106756022/?envType=problem-list-v2&envId=sliding-window" target="_blank" rel="noopener">2379. Minimum Recolors to Get K Consecutive Black Blocks</a></p>
+
+                <div class="accordion mt-3" id="minimumRecolorsCodeAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#minimumRecolorsVersion1"
+                      >
+                        Version 1
+                      </button>
+                    </h2>
+                    <div id="minimumRecolorsVersion1" class="accordion-collapse collapse" data-bs-parent="#minimumRecolorsCodeAccordion">
+                      <div class="accordion-body">
 <pre><code>/**
  * @param {string} blocks
  * @param {number} k
@@ -1601,6 +1616,50 @@ var minimumRecolors = function(blocks, k) {
 
     return ans;
 };</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#minimumRecolorsVersion2"
+                      >
+                        Version 2
+                      </button>
+                    </h2>
+                    <div id="minimumRecolorsVersion2" class="accordion-collapse collapse" data-bs-parent="#minimumRecolorsCodeAccordion">
+                      <div class="accordion-body">
+<pre><code>/**
+ * @param {string} blocks
+ * @param {number} k
+ * @return {number}
+ */
+var minimumRecolors = function(blocks, k) {
+    let count = 0;
+    let ans = Infinity;
+
+    for (let i = 0; i < blocks.length; i++) {
+        count += Number(blocks[i] === "W");
+
+        if (i >= k) {
+            count -= Number(blocks[i - k] === "W");
+        }
+
+        if (i >= k - 1) {
+            ans = Math.min(ans, count);
+        }
+    }
+
+    return ans;
+};</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
