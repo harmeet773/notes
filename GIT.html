@@ -134,6 +134,73 @@ title: VCS - GIT
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#vcsSubtree"
+              >
+                Subtree
+              </button>
+            </h2>
+
+            <div
+              id="vcsSubtree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vcsAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  A <strong>Git subtree</strong> lets you include one repository
+                  inside a directory of another repository while keeping the
+                  included project history available.
+                </p>
+
+                <h3>How Git subtree works</h3>
+                <p>
+                  The external project is copied into a subdirectory of the
+                  main repository. You can pull updates from the source
+                  repository and push changes back to it when needed.
+                </p>
+                <pre><code>git subtree add --prefix=path/to/project origin main --squash
+git subtree pull --prefix=path/to/project origin main --squash
+git subtree push --prefix=path/to/project origin main</code></pre>
+
+                <h3>Relationship between subtree and monorepo</h3>
+                <p>
+                  They are related because both can keep multiple projects in
+                  one working tree. A monorepo is an overall repository
+                  strategy, while Git subtree is a technique for importing and
+                  synchronizing one project within another repository.
+                </p>
+                <ul>
+                  <li>
+                    Use a <strong>monorepo</strong> when all projects are managed
+                    together as one repository from the beginning.
+                  </li>
+                  <li>
+                    Use <strong>subtree</strong> when a project has its own
+                    repository but also needs to be included in a larger project.
+                  </li>
+                  <li>
+                    A monorepo can contain code brought in with subtree, but
+                    subtree is not required to build a monorepo.
+                  </li>
+                </ul>
+
+                <h3>Subtree compared with submodule</h3>
+                <p>
+                  A subtree stores the included files directly in the parent
+                  repository, which makes cloning and building simpler. A Git
+                  submodule stores a reference to another repository and
+                  requires separate initialization and updates.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
