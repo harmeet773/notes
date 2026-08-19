@@ -169,6 +169,42 @@ title: VCS - GIT
 git subtree pull --prefix=path/to/project origin main --squash
 git subtree push --prefix=path/to/project origin main</code></pre>
 
+                <h3>How to update the underlying project</h3>
+                <p>
+                  To bring the latest changes from the underlying project into
+                  the parent repository, first make sure the source repository
+                  is configured as a remote. Then fetch its latest commits and
+                  run <code>git subtree pull</code> using the same directory
+                  prefix and branch used when the subtree was added.
+                </p>
+                <pre><code>git remote add project-origin https://github.com/example/project.git
+git fetch project-origin
+git subtree pull --prefix=path/to/project project-origin main --squash</code></pre>
+                <p>
+                  The pull creates a commit in the parent repository containing
+                  the updated subtree. Review the changes and run your tests
+                  before pushing the parent repository.
+                </p>
+                <pre><code>git status
+git diff HEAD~1
+git push origin main</code></pre>
+
+                <h3>How to publish changes back to the underlying project</h3>
+                <p>
+                  If you changed files inside the subtree and want to send
+                  those changes back to its source repository, commit the
+                  changes in the parent repository first, then use
+                  <code>git subtree push</code>.
+                </p>
+                <pre><code>git add path/to/project
+git commit -m "Update underlying project"
+git subtree push --prefix=path/to/project project-origin main</code></pre>
+                <p>
+                  Do not use <code>git subtree pull</code> while the parent
+                  repository has uncommitted changes in the subtree directory;
+                  commit or stash them first to avoid conflicts.
+                </p>
+
                 <h3>Relationship between subtree and monorepo</h3>
                 <p>
                   They are related because both can keep multiple projects in
