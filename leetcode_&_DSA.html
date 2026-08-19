@@ -1664,6 +1664,49 @@ var minimumRecolors = function(blocks, k) {
             </div>
           </div>
 
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#divisorSubstrings"
+              >
+                Find the K-Beauty of a Number
+              </button>
+            </h2>
+
+            <div
+              id="divisorSubstrings"
+              class="accordion-collapse collapse"
+              data-bs-parent="#solvedIndexSubAccordion"
+            >
+              <div class="accordion-body">
+                <p><a href="https://leetcode.com/problems/find-the-k-beauty-of-a-number/submissions/2112853404/?envType=problem-list-v2&amp;envId=sliding-window" target="_blank" rel="noopener">2269. Find the K-Beauty of a Number</a></p>
+<pre><code>/**
+ * @param {number} num
+ * @param {number} k
+ * @return {number}
+ */
+var divisorSubstrings = function(num, k) {
+    let numStr  = String(num) ;
+    let str ="";let ans= 0;
+    for(let i = 0 ; i &lt; numStr.length ; i++){
+        // initial window
+        if(i&lt;k){ str = str + numStr[i]; }
+
+        if(i&gt;=k){str = str.slice(1) + numStr[i] ;  }
+        if(i&gt;=k-1){
+        ans =  (num % Number(str) ===0) ? ans +1 : ans  ; }
+
+
+    }
+return ans;
+};</code></pre>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
