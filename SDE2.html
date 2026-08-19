@@ -169,13 +169,140 @@ function topKFrequent(nums, k) {
           <li>Microservices</li>
         </ul>
 
+        
+
+
         <h5>Notes</h5>
         <ul>
           <li><b>CAP Theorem:</b> Choose between Consistency, Availability, Partition tolerance</li>
           <li><b>Caching:</b> Reduces DB load, improves latency</li>
-          <li><b>Rate Limiter:</b> Token bucket / sliding window</li>
+
           <li><b>Design Tip:</b> Always start with requirements → scale later</li>
         </ul>
+
+        <div class="accordion" id="rateLimitterAccordion">
+          <div class="accordion-item">
+            <h5 class="accordion-header" id="headingRateLimitter">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rateLimitter" aria-expanded="false" aria-controls="rateLimitter">
+                rate limitter
+              </button>
+            </h5>
+            <div id="rateLimitter" class="accordion-collapse collapse" data-bs-parent="#rateLimitterAccordion">
+              <div class="accordion-body">
+                Rate limiting controls how many requests a client can make within a given time window.
+                <h6 class="mt-3">design approaches</h6>
+                <div class="accordion" id="rateLimitterDesignsAccordion">
+                  <div class="accordion-item">
+                    <h6 class="accordion-header" id="headingTokenBucket">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tokenBucket" aria-expanded="false" aria-controls="tokenBucket">
+                        Token bucket
+                      </button>
+                    </h6>
+                    <div id="tokenBucket" class="accordion-collapse collapse" data-bs-parent="#rateLimitterDesignsAccordion">
+                      <div class="accordion-body">
+                        <p>Tokens are added at a steady rate. Each request consumes one token.</p>
+                        <pre><code>class TokenBucket {
+  constructor(capacity, refillRate) {
+    this.capacity = capacity;
+    this.tokens = capacity;
+    this.refillRate = refillRate;
+    this.lastRefill = Date.now();
+  }
+
+  allowRequest() {
+    const now = Date.now();
+    const elapsedSeconds = (now - this.lastRefill) / 1000;
+    this.tokens = Math.min(this.capacity, this.tokens + elapsedSeconds * this.refillRate);
+    this.lastRefill = now;
+
+    if (this.tokens &lt; 1) return false;
+    this.tokens -= 1;
+    return true;
+  }
+}</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h6 class="accordion-header" id="headingSlidingWindow">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#slidingWindow" aria-expanded="false" aria-controls="slidingWindow">
+                        Sliding window
+                      </button>
+                    </h6>
+                    <div id="slidingWindow" class="accordion-collapse collapse" data-bs-parent="#rateLimitterDesignsAccordion">
+                      <div class="accordion-body">
+                        <p>Only requests that fall inside the moving time window are counted.</p>
+                        <pre><code>function allowSlidingWindow(requestTimes, now, windowMs, limit) {
+  const recentRequests = requestTimes.filter(
+    requestTime =&gt; now - requestTime &lt; windowMs
+  );
+
+  if (recentRequests.length &gt;= limit) return false;
+  recentRequests.push(now);
+  return true;
+}</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h6 class="accordion-header" id="headingLeakyBucket">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#leakyBucket" aria-expanded="false" aria-controls="leakyBucket">
+                        Leaky bucket
+                      </button>
+                    </h6>
+                    <div id="leakyBucket" class="accordion-collapse collapse" data-bs-parent="#rateLimitterDesignsAccordion">
+                      <div class="accordion-body">
+                        <p>Requests enter a queue and leave at a fixed processing rate.</p>
+                        <pre><code>class LeakyBucket {
+  constructor(capacity, leakRate) {
+    this.capacity = capacity;
+    this.leakRate = leakRate;
+    this.queue = [];
+  }
+
+  addRequest(request) {
+    if (this.queue.length &gt;= this.capacity) return false;
+    this.queue.push(request);
+    return true;
+  }
+
+  processRequests() {
+    return this.queue.splice(0, this.leakRate);
+  }
+}</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h6 class="accordion-header" id="headingFixedWindow">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fixedWindow" aria-expanded="false" aria-controls="fixedWindow">
+                        Fixed window
+                      </button>
+                    </h6>
+                    <div id="fixedWindow" class="accordion-collapse collapse" data-bs-parent="#rateLimitterDesignsAccordion">
+                      <div class="accordion-body">
+                        <p>Each fixed time interval has its own request counter.</p>
+                        <pre><code>function allowFixedWindow(state, now, windowMs, limit) {
+  if (now - state.windowStart &gt;= windowMs) {
+    state.windowStart = now;
+    state.requestCount = 0;
+  }
+
+  if (state.requestCount &gt;= limit) return false;
+  state.requestCount += 1;
+  return true;
+}</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
