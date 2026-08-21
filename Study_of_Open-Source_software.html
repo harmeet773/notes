@@ -1,0 +1,279 @@
+---
+layout: default
+title: Study of Open-Source Software
+---
+
+<h2 class="mb-3">Study of Open-Source Software</h2>
+<h3 class="mb-4">Hermes Agent</h3>
+
+<div class="accordion" id="hermesMainAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesOverview">
+        Hermes Agent: Overview
+      </button>
+    </h2>
+    <div id="hermesOverview" class="accordion-collapse collapse" data-bs-parent="#hermesMainAccordion">
+      <div class="accordion-body">
+        <p>
+          <strong><a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">Hermes Agent</a></strong>
+          is an open-source, self-improving AI agent from Nous Research. It can run locally or on a remote machine and
+          can be accessed through a terminal, a web interface, or messaging platforms.
+        </p>
+        <p>
+          Its main idea is to combine an LLM with tools, persistent memory, reusable skills, scheduled jobs, and
+          multiple communication channels. The project is MIT licensed.
+        </p>
+
+        <div class="accordion" id="hermesOverviewNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesWhyUseIt">
+                Why study Hermes Agent?
+              </button>
+            </h2>
+            <div id="hermesWhyUseIt" class="accordion-collapse collapse" data-bs-parent="#hermesOverviewNestedAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>It demonstrates how an LLM agent connects reasoning with real-world tools.</li>
+                  <li>It separates the model provider from the agent workflow, reducing provider lock-in.</li>
+                  <li>It shows how memory, skills, scheduling, and messaging can turn a chat interface into an automation system.</li>
+                  <li>Its source code is available for inspection, extension, and contribution.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesCoreIdeas">
+                Core ideas
+              </button>
+            </h2>
+            <div id="hermesCoreIdeas" class="accordion-collapse collapse" data-bs-parent="#hermesOverviewNestedAccordion">
+              <div class="accordion-body">
+                <div class="accordion" id="hermesCoreIdeasNestedAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesLearningLoop">
+                        Self-improving learning loop
+                      </button>
+                    </h2>
+                    <div id="hermesLearningLoop" class="accordion-collapse collapse" data-bs-parent="#hermesCoreIdeasNestedAccordion">
+                      <div class="accordion-body">
+                        Hermes can search past conversations, maintain persistent knowledge, and create or improve skills based on experience. This creates a feedback loop between completed work and future behavior.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesProviderChoice">
+                        Model and provider choice
+                      </button>
+                    </h2>
+                    <div id="hermesProviderChoice" class="accordion-collapse collapse" data-bs-parent="#hermesCoreIdeasNestedAccordion">
+                      <div class="accordion-body">
+                        Users can select providers such as Nous Portal, OpenRouter, OpenAI, or a compatible custom endpoint. The <code>hermes model</code> command changes the selected model without changing the agent code.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesRemoteRuntime">
+                        Local and remote execution
+                      </button>
+                    </h2>
+                    <div id="hermesRemoteRuntime" class="accordion-collapse collapse" data-bs-parent="#hermesCoreIdeasNestedAccordion">
+                      <div class="accordion-body">
+                        The agent can use local execution or terminal backends such as Docker, SSH, Singularity, Modal, Daytona, and Vercel Sandbox. This lets the conversation interface stay separate from the environment doing the work.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesGettingStarted">
+        Getting Started
+      </button>
+    </h2>
+    <div id="hermesGettingStarted" class="accordion-collapse collapse" data-bs-parent="#hermesMainAccordion">
+      <div class="accordion-body">
+        <div class="accordion" id="hermesSetupAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesInstall">
+                Install and launch
+              </button>
+            </h2>
+            <div id="hermesInstall" class="accordion-collapse collapse" data-bs-parent="#hermesSetupAccordion">
+              <div class="accordion-body">
+                <p>Hermes provides an installer for Linux, macOS, WSL2, and Termux. Native Windows is also supported through PowerShell.</p>
+                <pre><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+source ~/.zshrc
+hermes</code></pre>
+                <p>For Windows, use the PowerShell installer documented in the upstream README. Review installation scripts before running them in a production environment.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesFirstCommands">
+                First commands
+              </button>
+            </h2>
+            <div id="hermesFirstCommands" class="accordion-collapse collapse" data-bs-parent="#hermesSetupAccordion">
+              <div class="accordion-body">
+                <pre><code>hermes setup       # Run the setup wizard
+hermes model       # Choose a provider and model
+hermes tools       # Configure enabled tools
+hermes config get  # Inspect configuration
+hermes doctor      # Diagnose installation problems
+hermes update      # Update Hermes</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesInterfaces">
+                Interfaces and messaging
+              </button>
+            </h2>
+            <div id="hermesInterfaces" class="accordion-collapse collapse" data-bs-parent="#hermesSetupAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>CLI/TUI:</strong> interactive terminal conversations with streaming output, history, multiline editing, and slash commands.</li>
+                  <li><strong>Gateway:</strong> a long-running process that connects Hermes to Telegram, Discord, Slack, WhatsApp, Signal, or other supported channels.</li>
+                  <li><strong>Scheduled delivery:</strong> cron jobs can run tasks and send reports to a configured platform.</li>
+                </ul>
+                <p>Start the gateway with <code>hermes gateway</code> after configuring the required platform credentials and access controls.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesCapabilities">
+        Capabilities and Architecture
+      </button>
+    </h2>
+    <div id="hermesCapabilities" class="accordion-collapse collapse" data-bs-parent="#hermesMainAccordion">
+      <div class="accordion-body">
+        <div class="accordion" id="hermesCapabilitiesNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesTools">
+                Tools and skills
+              </button>
+            </h2>
+            <div id="hermesTools" class="accordion-collapse collapse" data-bs-parent="#hermesCapabilitiesNestedAccordion">
+              <div class="accordion-body">
+                <p>Tools let the model act outside the conversation. Common categories include terminal execution, web research, browser automation, file operations, code execution, and integrations through MCP.</p>
+                <p><strong>Skills</strong> are reusable procedural instructions. A skill can package domain knowledge and a repeatable workflow so the agent does not need to rediscover the process every time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesMemory">
+                Memory and context
+              </button>
+            </h2>
+            <div id="hermesMemory" class="accordion-collapse collapse" data-bs-parent="#hermesCapabilitiesNestedAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Conversation history supports continuity across sessions.</li>
+                  <li>Persistent memory and user profiles help retain useful preferences and facts.</li>
+                  <li>FTS5-based session search helps retrieve relevant past conversations.</li>
+                  <li>Context files such as project instructions can shape behavior for a workspace.</li>
+                </ul>
+                <p>Memory should be treated as data with privacy and retention requirements, not as an unquestioned source of truth.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesAgentLoop">
+                Agent loop and delegates
+              </button>
+            </h2>
+            <div id="hermesAgentLoop" class="accordion-collapse collapse" data-bs-parent="#hermesCapabilitiesNestedAccordion">
+              <div class="accordion-body">
+                <ol>
+                  <li>Receive a user request and relevant context.</li>
+                  <li>Ask the selected model to reason about the next action.</li>
+                  <li>Call a tool when work outside the model is needed.</li>
+                  <li>Feed the tool result back into the conversation.</li>
+                  <li>Repeat until the task is complete, then persist useful results.</li>
+                </ol>
+                <p>Delegates can run isolated subagents in parallel for separate workstreams. This can reduce wall-clock time, but it increases coordination and review needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSafety">
+        Security, Operations, and Open-Source Study
+      </button>
+    </h2>
+    <div id="hermesSafety" class="accordion-collapse collapse" data-bs-parent="#hermesMainAccordion">
+      <div class="accordion-body">
+        <div class="accordion" id="hermesSafetyNestedAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSecurity">
+                Security checklist
+              </button>
+            </h2>
+            <div id="hermesSecurity" class="accordion-collapse collapse" data-bs-parent="#hermesSafetyNestedAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Use least-privilege API keys and messaging permissions.</li>
+                  <li>Review command approval and DM pairing settings before exposing a gateway.</li>
+                  <li>Prefer isolated execution backends for untrusted code or files.</li>
+                  <li>Keep dependencies, the agent, and container images updated.</li>
+                  <li>Do not store secrets in skills, context files, logs, or persistent memory.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesContributorWorkflow">
+                How to study the repository
+              </button>
+            </h2>
+            <div id="hermesContributorWorkflow" class="accordion-collapse collapse" data-bs-parent="#hermesSafetyNestedAccordion">
+              <div class="accordion-body">
+                <ol>
+                  <li>Read the upstream README and documentation before running the agent.</li>
+                  <li>Trace a simple request from the CLI into the agent loop and back to the output.</li>
+                  <li>Inspect the tool and skill interfaces, then follow one tool call end to end.</li>
+                  <li>Read the tests for the component you want to change.</li>
+                  <li>Run the repository test commands and document assumptions in a focused pull request.</li>
+                </ol>
+                <p>Useful links: <a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">source repository</a>, <a href="https://hermes-agent.nousresearch.com/docs/" target="_blank" rel="noopener">official documentation</a>, and <a href="https://github.com/NousResearch/hermes-agent/blob/main/LICENSE" target="_blank" rel="noopener">MIT license</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
