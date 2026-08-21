@@ -181,6 +181,75 @@ hermes update      # Update Hermes</code></pre>
               <div class="accordion-body">
                 <p>Tools let the model act outside the conversation. Common categories include terminal execution, web research, browser automation, file operations, code execution, and integrations through MCP.</p>
                 <p><strong>Skills</strong> are reusable procedural instructions. A skill can package domain knowledge and a repeatable workflow so the agent does not need to rediscover the process every time.</p>
+
+                <div class="accordion mt-3" id="hermesSkillsNestedAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSelfUpdatingSkills">
+                        Self-updating skills
+                      </button>
+                    </h2>
+                    <div id="hermesSelfUpdatingSkills" class="accordion-collapse collapse" data-bs-parent="#hermesSkillsNestedAccordion">
+                      <div class="accordion-body">
+                        <p>
+                          Hermes has a closed learning loop: after completing a complex task, it can identify a useful
+                          repeatable procedure and turn that experience into a reusable skill. Later, the skill can be
+                          selected for a similar task instead of starting from a blank context.
+                        </p>
+                        <div class="accordion" id="hermesSkillLifecycleAccordion">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSkillCreation">
+                                1. Create from experience
+                              </button>
+                            </h2>
+                            <div id="hermesSkillCreation" class="accordion-collapse collapse" data-bs-parent="#hermesSkillLifecycleAccordion">
+                              <div class="accordion-body">
+                                When a task contains valuable steps, decisions, or troubleshooting knowledge, Hermes can capture the successful approach as a named skill with instructions and supporting context.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSkillReuse">
+                                2. Reuse on future tasks
+                              </button>
+                            </h2>
+                            <div id="hermesSkillReuse" class="accordion-collapse collapse" data-bs-parent="#hermesSkillLifecycleAccordion">
+                              <div class="accordion-body">
+                                Skills act as procedural memory. Hermes can search or invoke a relevant skill when a later request resembles the task that produced it, making repeated work more consistent and efficient.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSkillImprovement">
+                                3. Improve during use
+                              </button>
+                            </h2>
+                            <div id="hermesSkillImprovement" class="accordion-collapse collapse" data-bs-parent="#hermesSkillLifecycleAccordion">
+                              <div class="accordion-body">
+                                If a skill is incomplete or produces a weak result, the agent can refine its instructions based on the new experience. This allows a skill to become more useful over repeated applications rather than remaining static documentation.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSkillReview">
+                                4. Review and control changes
+                              </button>
+                            </h2>
+                            <div id="hermesSkillReview" class="accordion-collapse collapse" data-bs-parent="#hermesSkillLifecycleAccordion">
+                              <div class="accordion-body">
+                                Self-updating does not mean every generated instruction should be trusted automatically. Review skill changes, remove incorrect procedures, restrict sensitive tools, and keep important skills under version control. Hermes skills are compatible with the agentskills.io open standard.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
