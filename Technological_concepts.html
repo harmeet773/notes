@@ -278,6 +278,42 @@ title: Technological Concepts
           <li><strong>f(n):</strong> The estimated total cost of a solution through that state.</li>
         </ul>
 
+        <h3>Example: solving a route problem</h3>
+        <p>
+          Suppose a delivery robot must travel from Start to Goal. There are
+          two possible routes:
+        </p>
+        <ul>
+          <li>Start to A costs 2, and A to Goal costs 100. Total cost: 102.</li>
+          <li>Start to B costs 5, and B to Goal costs 5. Total cost: 10.</li>
+        </ul>
+
+        <h4>Using an exact method</h4>
+        <p>
+          Dijkstra's algorithm explores paths by their total known cost. It
+          continues checking alternatives and eventually compares both complete
+          routes. It returns Start to B to Goal with a cost of 10, which is the
+          guaranteed shortest route when all edge costs are non-negative.
+        </p>
+
+        <h4>Using a heuristic method</h4>
+        <p>
+          A heuristic method may estimate that A is more promising because it
+          appears closer to the destination. It explores the route through A
+          first and may return a route costing 102 without fully checking the
+          alternative through B. The result is found quickly, but it is not the
+          best route.
+        </p>
+
+        <p>
+          This example shows the trade-off: an exact method provides a stronger
+          guarantee but may do more work, while a heuristic can be faster but
+          depends on the quality of its estimate. A* can use a heuristic while
+          still guarantee the shortest route when the heuristic does not
+          overestimate the remaining cost and the algorithm is implemented
+          correctly.
+        </p>
+
         <h3>Advantages of heuristics</h3>
         <ul>
           <li>They reduce the amount of searching required.</li>
