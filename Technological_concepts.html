@@ -186,4 +186,137 @@ title: Technological Concepts
       </div>
     </div>
   </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#heuristicsConcept"
+      >
+        Heuristics
+      </button>
+    </h2>
+
+    <div
+      id="heuristicsConcept"
+      class="accordion-collapse collapse"
+      data-bs-parent="#technologicalConceptsAccordion"
+    >
+      <div class="accordion-body">
+        <h3>What is a heuristic?</h3>
+        <p>
+          A heuristic is a practical rule, shortcut, or strategy used to solve
+          a problem more quickly. Instead of checking every possible option,
+          a heuristic uses experience, useful clues, or an estimate to find a
+          good solution in a reasonable amount of time.
+        </p>
+
+        <p>
+          A heuristic does not guarantee the perfect answer. Its purpose is to
+          make problem solving faster and more manageable when an exact method
+          would require too much time or computing power.
+        </p>
+
+        <h3>What is a heuristic in AI?</h3>
+        <p>
+          In artificial intelligence, a heuristic is a function or rule that
+          estimates how promising a possible action or state is. AI systems use
+          this estimate to decide which possibilities to explore first and
+          which ones to ignore or postpone.
+        </p>
+
+        <p>
+          For example, in a route-planning problem, the straight-line distance
+          from a current location to the destination can be used as a heuristic.
+          A location that appears closer to the destination is explored first,
+          although it may not ultimately produce the shortest route.
+        </p>
+
+        <h3>Examples of heuristics in AI</h3>
+        <ul>
+          <li>
+            <strong>Route finding:</strong> Estimate the remaining distance to
+            a destination when searching for a path.
+          </li>
+          <li>
+            <strong>Games:</strong> Score a chess position using features such
+            as material, king safety, and control of the center.
+          </li>
+          <li>
+            <strong>Search engines:</strong> Rank pages using signals such as
+            relevance, authority, freshness, and user intent.
+          </li>
+          <li>
+            <strong>Spam detection:</strong> Treat unusual sender details,
+            suspicious links, or certain phrases as warning signals.
+          </li>
+          <li>
+            <strong>Robotics:</strong> Prefer a movement that appears to bring
+            a robot closer to its target while avoiding obstacles.
+          </li>
+          <li>
+            <strong>Recommendation systems:</strong> Suggest items based on
+            similarities between a user and other users or items.
+          </li>
+        </ul>
+
+        <h3>Heuristics in search algorithms</h3>
+        <p>
+          Algorithms such as Greedy Best-First Search and A* use heuristic
+          information. A* combines the cost already spent with an estimate of
+          the remaining cost. This helps it focus on paths that are both
+          affordable so far and likely to reach the goal efficiently.
+        </p>
+
+        <pre><code>f(n) = g(n) + h(n)</code></pre>
+
+        <ul>
+          <li><strong>g(n):</strong> The cost of reaching the current state.</li>
+          <li><strong>h(n):</strong> The estimated cost from the current state to the goal.</li>
+          <li><strong>f(n):</strong> The estimated total cost of a solution through that state.</li>
+        </ul>
+
+        <h3>Advantages of heuristics</h3>
+        <ul>
+          <li>They reduce the amount of searching required.</li>
+          <li>They can produce useful results quickly.</li>
+          <li>They make difficult, large-scale problems practical.</li>
+          <li>They can use domain knowledge and human experience.</li>
+        </ul>
+
+        <h3>Limitations and risks</h3>
+        <ul>
+          <li>A heuristic may select a good solution instead of the best solution.</li>
+          <li>A poor heuristic can make an algorithm inefficient or inaccurate.</li>
+          <li>Results may be biased if the rules or data contain bias.</li>
+          <li>Heuristics can fail when conditions differ from the assumptions they use.</li>
+          <li>They should be tested against representative examples and edge cases.</li>
+        </ul>
+
+        <h3>Heuristic vs exact algorithm</h3>
+        <ul>
+          <li>
+            <strong>Exact algorithm:</strong> Systematically finds a guaranteed
+            correct or optimal answer when its assumptions are satisfied.
+          </li>
+          <li>
+            <strong>Heuristic approach:</strong> Uses an estimate or shortcut
+            to find a useful answer faster, without always guaranteeing the
+            optimum.
+          </li>
+        </ul>
+
+        <h3>Summary</h3>
+        <p>
+          A heuristic is a problem-solving shortcut based on an estimate or
+          practical rule. In AI, heuristics guide search, ranking, prediction,
+          and decision making toward promising options. They are valuable when
+          exact computation is too expensive, but their assumptions and possible
+          errors must be evaluated carefully.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
