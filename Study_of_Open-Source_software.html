@@ -255,6 +255,174 @@ hermes update      # Update Hermes</code></pre>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesLearningMechanisms">
+                Self-learning mechanisms
+              </button>
+            </h2>
+            <div id="hermesLearningMechanisms" class="accordion-collapse collapse" data-bs-parent="#hermesCapabilitiesNestedAccordion">
+              <div class="accordion-body">
+                <p>Hermes self-learning is not one single mechanism. It is better understood as several layers of persistence and self-improvement:</p>
+                <div class="table-responsive">
+                  <table class="table table-bordered align-middle">
+                    <thead>
+                      <tr>
+                        <th scope="col">Mechanism</th>
+                        <th scope="col">What it learns</th>
+                        <th scope="col">Where it persists</th>
+                        <th scope="col">Can it change future behavior?</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>User memory</td>
+                        <td>Facts and preferences about you</td>
+                        <td><code>USER.md</code></td>
+                        <td>Yes, indirectly</td>
+                      </tr>
+                      <tr>
+                        <td>Conversation memory</td>
+                        <td>Useful information from past interactions</td>
+                        <td><code>MEMORY.md</code></td>
+                        <td>Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Skills</td>
+                        <td>Reusable procedures and workflows</td>
+                        <td>Skill files</td>
+                        <td>Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Background review</td>
+                        <td>What worked, what failed, and what should improve</td>
+                        <td>Memory or skill files</td>
+                        <td>Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Session and context history</td>
+                        <td>Previous conversation and tool context</td>
+                        <td>Session storage</td>
+                        <td>Temporarily or per session</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="accordion" id="hermesLearningMechanismsNestedAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesUserProfileLearning">
+                        1. User profile and <code>USER.md</code>
+                      </button>
+                    </h2>
+                    <div id="hermesUserProfileLearning" class="accordion-collapse collapse" data-bs-parent="#hermesLearningMechanismsNestedAccordion">
+                      <div class="accordion-body">
+                        <p><code>USER.md</code> represents what Hermes knows about you. It can contain preferences, typical workflows, active projects, response preferences, and repeated instructions.</p>
+                        <p>For example, if you say, “I prefer Python over JavaScript,” Hermes can save that preference and use it in future conversations. This changes behavior indirectly by adding user-specific facts to future prompts.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesLongTermMemoryLearning">
+                        2. Long-term memory and <code>MEMORY.md</code>
+                      </button>
+                    </h2>
+                    <div id="hermesLongTermMemoryLearning" class="accordion-collapse collapse" data-bs-parent="#hermesLearningMechanismsNestedAccordion">
+                      <div class="accordion-body">
+                        <p><code>MEMORY.md</code> stores information that Hermes considers useful for future tasks. For example, it might remember that you are building a LangGraph multi-agent system and evaluating it with Phoenix.</p>
+                        <p>The distinction is:</p>
+                        <ul>
+                          <li><code>USER.md</code> stores who you are and how you prefer to work.</li>
+                          <li><code>MEMORY.md</code> stores useful knowledge learned from previous work.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesProceduralLearning">
+                        3. Skills: learning how to do something
+                      </button>
+                    </h2>
+                    <div id="hermesProceduralLearning" class="accordion-collapse collapse" data-bs-parent="#hermesLearningMechanismsNestedAccordion">
+                      <div class="accordion-body">
+                        <p>Memory means, “I remember something.” A skill means, “I learned how to do something.”</p>
+                        <p>For example, Hermes could turn a repeated repository workflow into a reusable skill:</p>
+                        <ol>
+                          <li>Inspect the repository.</li>
+                          <li>Run tests and find the failing component.</li>
+                          <li>Modify the code and run the tests again.</li>
+                          <li>Prepare the completed change for review.</li>
+                        </ol>
+                        <p>The next similar request can invoke that skill rather than reconstructing the workflow from scratch.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesBackgroundReviewLearning">
+                        4. Background review and self-improvement
+                      </button>
+                    </h2>
+                    <div id="hermesBackgroundReviewLearning" class="accordion-collapse collapse" data-bs-parent="#hermesLearningMechanismsNestedAccordion">
+                      <div class="accordion-body">
+                        <p>After completing work, Hermes can review what happened:</p>
+                        <ul>
+                          <li>What went well?</li>
+                          <li>What mistakes occurred?</li>
+                          <li>What should be remembered?</li>
+                          <li>Is there a reusable procedure worth turning into a skill?</li>
+                        </ul>
+                        <p>The result may be an update to persistent memory or the creation and refinement of a skill. This is the mechanism to scrutinize most closely if you do not want Hermes modifying its own knowledge or behavior without permission.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSessionHistoryLearning">
+                        5. Session and conversation history
+                      </button>
+                    </h2>
+                    <div id="hermesSessionHistoryLearning" class="accordion-collapse collapse" data-bs-parent="#hermesLearningMechanismsNestedAccordion">
+                      <div class="accordion-body">
+                        <p>Session history is not learning in the model-training sense. It is context persistence:</p>
+                        <ul>
+                          <li><strong>Context and history:</strong> temporary recall of previous conversation and tool context.</li>
+                          <li><strong>Memory:</strong> persistent recall written for future tasks.</li>
+                          <li><strong>Skills:</strong> persistent learned procedures.</li>
+                        </ul>
+                        <p>Session history can therefore be retained for continuity without necessarily writing new information into <code>MEMORY.md</code>.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesDisableLearning">
+                        6. How to disable or control self-learning
+                      </button>
+                    </h2>
+                    <div id="hermesDisableLearning" class="accordion-collapse collapse" data-bs-parent="#hermesLearningMechanismsNestedAccordion">
+                      <div class="accordion-body">
+                        <p>Hermes does not normally train the underlying LLM or modify its neural-network weights. Instead, experience is written to files or session storage and added to future prompts:</p>
+                        <p><strong>Experience &rarr; files, memory, or skills &rarr; future prompts &rarr; the same underlying LLM</strong></p>
+                        <p>For a mostly stateless setup:</p>
+                        <ul>
+                          <li>Disable background review or automatic self-improvement in the Hermes configuration for your version.</li>
+                          <li>Disable automatic memory and skill updates, or require approval before generated changes are saved.</li>
+                          <li>Remove, rename, or keep <code>USER.md</code>, <code>MEMORY.md</code>, and skill directories empty or read-only.</li>
+                          <li>Disable session-history persistence if you also do not want context retained between sessions.</li>
+                          <li>Use <code>hermes config get</code> and the version-matched documentation to identify the exact configuration keys; option names can change between releases.</li>
+                          <li>Review logs and file changes, and restrict write permissions when running Hermes with untrusted tasks.</li>
+                        </ul>
+                        <p>You can keep ordinary in-session context while disabling persistent memory and automatic skill modification, depending on the level of statelessness you need.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesMemory">
                 Memory and context
               </button>
