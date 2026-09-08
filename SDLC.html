@@ -1,0 +1,204 @@
+---
+layout: default
+title: SDLC
+---
+
+<h2 class="mb-3">Software Development Lifecycle</h2>
+<h3 class="mb-4">AI-native SDLC</h3>
+
+<p>
+  These notes summarize the AI-native SDLC playbook published by
+  <a href="https://claude.com/blog/the-ai-native-sdlc-playbook" target="_blank" rel="noopener">Claude</a>.
+  The central idea is to redesign the whole lifecycle around agentic AI, rather than only using AI to write code.
+</p>
+
+<div class="accordion" id="sdlcMainAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingOverview">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcOverview" aria-expanded="false" aria-controls="sdlcOverview">
+        1. What is an AI-native SDLC?
+      </button>
+    </h2>
+    <div id="sdlcOverview" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingOverview" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          A traditional SDLC moves work through planning, design, build, test, deployment, and maintenance using human-owned handoffs, documents, tickets, and approvals. An AI-native SDLC embeds AI in every stage and turns the lifecycle into a feedback loop.
+        </p>
+        <p>
+          The build phase may become much faster when agents produce code, so the bottleneck moves to planning, review, testing, deployment, and governance. The response is to make those surrounding processes machine-readable, automated where appropriate, and easier for people to supervise.
+        </p>
+        <ul>
+          <li><strong>Artifacts replace lossy handoffs:</strong> each stage commits an artifact that the next stage can read.</li>
+          <li><strong>AI operates throughout the loop:</strong> agents help plan, design, implement, test, review, deploy, and diagnose.</li>
+          <li><strong>People remain accountable:</strong> humans make decisions that require judgment and retain approval over important risks.</li>
+          <li><strong>Controls move closer to the action:</strong> policies, hooks, permissions, and automated checks guide or block unsafe actions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingArtifacts">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcArtifacts" aria-expanded="false" aria-controls="sdlcArtifacts">
+        2. The committed artifact chain
+      </button>
+    </h2>
+    <div id="sdlcArtifacts" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingArtifacts" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          The playbook treats the chain of version-controlled artifacts as both the handoff mechanism and the audit trail. The exact names can vary, but the next stage should be able to understand what the previous stage decided.
+        </p>
+        <ul>
+          <li><strong>Plan:</strong> <code>intent.md</code> captures the problem, outcome, users, constraints, and open questions.</li>
+          <li><strong>Design:</strong> <code>spec.md</code> turns accepted intent into requirements and a design, with policy concerns flagged.</li>
+          <li><strong>Build:</strong> <code>plan.md</code> names the files, implementation order, risks, and proof required.</li>
+          <li><strong>Test:</strong> the diff, tests, evaluations, and feedback show whether the change works.</li>
+          <li><strong>Deploy:</strong> the pull request and review findings record what was checked and approved.</li>
+          <li><strong>Maintain:</strong> incidents and operational signals can create a new <code>intent.md</code> and restart the loop.</li>
+        </ul>
+        <p>
+          Git history adds authorship, timestamps, revisions, and approvals to the artifact chain. If legacy tools remain authoritative, each artifact should clearly identify its source of truth and link back to the corresponding record or commit.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingPlan">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcPlan" aria-expanded="false" aria-controls="sdlcPlan">
+        3. Stage 1 - Plan
+      </button>
+    </h2>
+    <div id="sdlcPlan" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingPlan" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          The originator describes a problem in ordinary language and works with an agent to make the idea concrete. The agent asks about scope, users, constraints, success, and open questions, then records the result in a human-readable and machine-actionable <code>intent.md</code>.
+        </p>
+        <p>
+          A product owner corrects misunderstandings and decides whether the intent should proceed. The accepted commit triggers the design stage. This reduces the number of handoffs between the original problem and the team that will solve it.
+        </p>
+        <p><strong>Useful measure:</strong> time from the first conversation to a committed intent, plus the proportion of intents accepted into design.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingDesign">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcDesign" aria-expanded="false" aria-controls="sdlcDesign">
+        4. Stage 2 - Design
+      </button>
+    </h2>
+    <div id="sdlcDesign" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingDesign" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          The agent reads the accepted intent and produces a requirements and design specification in one guided session. Organizational standards for security, compliance, UX, architecture, and brand can be encoded as reusable skills or instructions and applied while the specification is written.
+        </p>
+        <p>
+          The product owner reviews whether the specification still solves the original problem. Flagged concerns are resolved with the relevant policy owners before <code>spec.md</code> is accepted and the build stage begins.
+        </p>
+        <p><strong>Useful measure:</strong> requirements rework after planning begins, especially changes to the specification after the first implementation plan.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingBuild">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcBuild" aria-expanded="false" aria-controls="sdlcBuild">
+        5. Stage 3 - Build
+      </button>
+    </h2>
+    <div id="sdlcBuild" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingBuild" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          Engineers start in plan mode with the intent and specification. The agent inspects the repository, proposes the files and sequence of work, identifies risks, and names the tests that will prove the change. After the engineer accepts <code>plan.md</code>, the agent can implement against it.
+        </p>
+        <p>
+          Team knowledge belongs in version-controlled files such as <code>CLAUDE.md</code> and reusable skills. Hooks can enforce rules deterministically, such as protecting generated code, scanning for secrets, or running a formatter after edits. Auto-accept and parallel sessions are best reserved for routine work with a small blast radius and strong checks.
+        </p>
+        <p>
+          Existing systems such as Jira or requirements tools do not need to disappear. Choose one source of truth for each artifact and maintain an explicit link when systems coexist.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingTest">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcTest" aria-expanded="false" aria-controls="sdlcTest">
+        6. Stage 4 - Test
+      </button>
+    </h2>
+    <div id="sdlcTest" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingTest" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          An agent that can produce code quickly also needs a fast feedback loop. Give it one-command builds, tests, linting, and measurable acceptance criteria. For UI work, include a browser or screenshot check so visual behavior is verified before human review.
+        </p>
+        <p>
+          Continuous evaluations extend ordinary tests to agent behavior. A team can collect representative tasks, define acceptable outcomes, run them in CI when prompts or skills change, and turn production incidents into regression cases.
+        </p>
+        <p><strong>Principle:</strong> the session should check its own work and iterate before a person has to inspect the result.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingDeploy">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcDeploy" aria-expanded="false" aria-controls="sdlcDeploy">
+        7. Stage 5 - Deploy
+      </button>
+    </h2>
+    <div id="sdlcDeploy" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingDeploy" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          AI can review pull requests in consistent passes for bugs, security, and compliance, while human reviewers focus on intent, risk, and the final decision. Review policies should define severity and keep the agent that made a change from approving it.
+        </p>
+        <p>
+          Deployment automation should be sandboxed, use scoped credentials, and expose only approved actions. Branch protection, environment-specific permissions, hooks, and named release approvals preserve the production boundary. The agent may prepare or propose a release, but it must not bypass the gate.
+        </p>
+        <p><strong>Useful measures:</strong> time to first review, pre-merge defects and vulnerabilities, deployment frequency, change failure rate, and recovery time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingMaintain">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcMaintain" aria-expanded="false" aria-controls="sdlcMaintain">
+        8. Stage 6 - Maintain and close the loop
+      </button>
+    </h2>
+    <div id="sdlcMaintain" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingMaintain" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <p>
+          Maintenance becomes an active feedback loop instead of a queue that waits for someone to restart the process. A deterministic monitor can watch a stable baseline such as test failure rate, post-deploy errors, or service latency. When a control band is breached, the agent diagnoses the evidence and writes the finding as a new intent.
+        </p>
+        <p>
+          Response tiers can separate logging, read-only diagnosis, and proposals such as a pull request or a pre-approved rollback. Production changes still pass through the normal review and release gates. The same pattern can support recurring security scans and incidents received through team communication tools.
+        </p>
+        <p><strong>Important boundary:</strong> detection should be deterministic; the model is invoked after the signal is detected and is constrained by the response tier.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="sdlcHeadingPrinciples">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sdlcPrinciples" aria-expanded="false" aria-controls="sdlcPrinciples">
+        9. Adoption principles
+      </button>
+    </h2>
+    <div id="sdlcPrinciples" class="accordion-collapse collapse" aria-labelledby="sdlcHeadingPrinciples" data-bs-parent="#sdlcMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Start with one stage where the current bottleneck and outcome are measurable.</li>
+          <li>Commit artifacts so that people and agents share the same source of context.</li>
+          <li>Encode institutional knowledge in reviewed, version-controlled instructions and skills.</li>
+          <li>Make permissions, hooks, tests, evaluations, and approval gates explicit.</li>
+          <li>Increase autonomy only as the feedback loop becomes reliable and the blast radius is understood.</li>
+          <li>Keep humans above the loop for judgment, accountability, regulated changes, and critical production actions.</li>
+        </ul>
+        <p>
+          The goal is not to remove people from software development. It is to move human attention from repetitive handoffs and line-by-line supervision toward intent, risk, governance, and the decisions that matter most.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
