@@ -2268,6 +2268,35 @@ title: Gen AI
                           requests.
                         </p>
                         <p>
+                          Browser automation is one category of internet access. Common categories include:
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>Browser automation libraries:</strong> Playwright, Selenium, and Puppeteer drive
+                            Chromium, Firefox, or WebKit and can interact with JavaScript-heavy websites.
+                          </li>
+                          <li>
+                            <strong>HTTP clients:</strong> Python <code>requests</code> or <code>httpx</code>, and
+                            JavaScript <code>fetch</code> or <code>axios</code>, send requests directly to an API or web
+                            server. They are usually faster than a browser but cannot render or interact with a page in
+                            the same way.
+                          </li>
+                          <li>
+                            <strong>Search and data APIs:</strong> services such as Tavily, Brave Search, Bing Web
+                            Search, or a website's own API return structured results without requiring the agent to
+                            control a browser.
+                          </li>
+                          <li>
+                            <strong>Hosted browsers:</strong> services such as Browserless or Browserbase run an
+                            isolated browser remotely and expose it to the agent through an API or automation protocol.
+                          </li>
+                          <li>
+                            <strong>Computer-use tools:</strong> some agent platforms expose screenshots, mouse
+                            actions, keyboard actions, and window controls. The model chooses actions, while a separate
+                            computer-use runtime performs them.
+                          </li>
+                        </ul>
+                        <p>
                           A useful mental model is that automation provides <strong>eyes and hands</strong> for a
                           program: the browser exposes what is visible and interactable, while the automation tool
                           performs actions. The AI model supplies language understanding and decision-making, but it
@@ -2301,11 +2330,20 @@ title: Gen AI
                           browser service, or a computer-use interface.
                         </p>
                         <p>
+                          In an agent framework, these capabilities are normally exposed as <strong>tools</strong>.
+                          For example, an agent may have a <code>web_search</code> tool backed by Tavily or Brave, a
+                          <code>fetch_url</code> tool backed by an HTTP client, and a <code>browser</code> tool backed by
+                          Playwright. An MCP server can expose similar search, fetch, or browser functions through the
+                          Model Context Protocol. The model does not receive unrestricted network access; the runtime
+                          decides which tools are available, validates their arguments, and applies authentication,
+                          domain allowlists, rate limits, and confirmation rules.
+                        </p>
+                        <p>
                           The process usually looks like this:
                         </p>
                         <ol>
                           <li>The user gives the agent a goal, such as finding a product specification.</li>
-                          <li>The model decides that a search or browser action is needed and emits a structured tool call.</li>
+                          <li>The model decides that a search, HTTP request, or browser action is needed and emits a structured tool call.</li>
                           <li>The agent runtime validates the call and executes it with the tool's permissions.</li>
                           <li>The tool returns page content, a search result, a screenshot, or an error to the model.</li>
                           <li>The model interprets the result, chooses the next action, or produces a final answer.</li>
@@ -2322,6 +2360,75 @@ title: Gen AI
                           block private network targets where appropriate, require confirmation before purchases or
                           account changes, and treat web content as untrusted input because pages can contain prompt
                           injection instructions.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h3 class="accordion-header" id="automationDetectionHeading">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#automationDetectionSection" aria-expanded="false"
+                        aria-controls="automationDetectionSection">
+                        3. How do websites detect browser automation and AI agents?
+                      </button>
+                    </h3>
+                    <div id="automationDetectionSection" class="accordion-collapse collapse"
+                      aria-labelledby="automationDetectionHeading" data-bs-parent="#browserAgentsDetailsAccordion">
+                      <div class="accordion-body">
+                        <p>
+                          Websites usually do not identify an AI agent with one definitive test. They combine many
+                          signals and calculate whether a request or session looks automated. A legitimate browser can
+                          also trigger some of these signals, so detection is probabilistic rather than perfect.
+                        </p>
+                        <ul>
+                          <li>
+                            <strong>Request and network signals:</strong> servers inspect the user-agent and client
+                            hints, missing or unusual headers, cookie behavior, request frequency, repeated URL
+                            patterns, IP reputation, datacenter or proxy networks, and TLS or HTTP fingerprints.
+                          </li>
+                          <li>
+                            <strong>Browser and JavaScript signals:</strong> client-side code can check browser
+                            capabilities, inconsistent screen or platform values, missing APIs, disabled features,
+                            automation-related properties, and whether a real browser appears to execute JavaScript and
+                            store cookies normally.
+                          </li>
+                          <li>
+                            <strong>Behavioral signals:</strong> perfectly regular timing, very fast form completion,
+                            unusual scrolling, no pointer or keyboard activity, improbable navigation paths, and many
+                            actions repeated at machine-like intervals can increase the automation score.
+                          </li>
+                          <li>
+                            <strong>Account and session signals:</strong> rapid account creation, many accounts from
+                            one network, repeated failed logins, unusual geolocation changes, and a new device combined
+                            with high-volume activity can cause additional scrutiny.
+                          </li>
+                          <li>
+                            <strong>Challenges and reputation systems:</strong> a site may use rate limits, email or
+                            phone verification, browser challenges, CAPTCHA, device reputation, or a managed bot
+                            protection service. These controls are often applied only when the combined risk score is
+                            high.
+                          </li>
+                        </ul>
+                        <p>
+                          This applies to both ordinary browser automation and AI agents. Playwright, Selenium, or a
+                          computer-use tool may generate normal browser requests, but the surrounding agent can still
+                          reveal automation through request volume, navigation patterns, repeated tasks, or use from a
+                          datacenter IP. An HTTP client or search API is easier to classify because it does not behave
+                          like a complete interactive browser and may expose a recognizable client signature.
+                        </p>
+                        <p>
+                          Detection is not the same as understanding the model's thoughts. A website generally sees
+                          network requests, browser observations, and user actions; it usually cannot know with certainty
+                          whether a person, a scripted program, or an AI selected the next action. It infers risk from
+                          observable evidence. Sites can therefore produce false positives, while sophisticated automated
+                          traffic can sometimes resemble human traffic.
+                        </p>
+                        <p class="mb-0">
+                          Responsible agents should respect robots.txt and terms of service where applicable, use an
+                          official API when one exists, keep request rates low, identify themselves when required, and
+                          stop when a site presents a challenge or requires human verification. They should not attempt
+                          to bypass CAPTCHA, authentication, access controls, or bot-protection mechanisms.
                         </p>
                       </div>
                     </div>
