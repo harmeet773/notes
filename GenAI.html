@@ -2313,11 +2313,79 @@ title: Gen AI
                   </div>
 
                   <div class="accordion-item">
+                    <h3 class="accordion-header" id="browserToolHeading">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#browserToolSection" aria-expanded="false"
+                        aria-controls="browserToolSection">
+                        2. What is a browser tool? Is it a special kind of browser?
+                      </button>
+                    </h3>
+                    <div id="browserToolSection" class="accordion-collapse collapse"
+                      aria-labelledby="browserToolHeading" data-bs-parent="#browserAgentsDetailsAccordion">
+                      <div class="accordion-body">
+                        <p>
+                          A <strong>browser tool</strong> is an interface that an AI agent can call to operate a web
+                          browser. It is not usually a new type of browser. It is a software layer between the language
+                          model and a browser runtime. The tool exposes a small set of permitted actions, such as
+                          opening a URL, reading the page, clicking an element, entering text, pressing a key, or taking
+                          a screenshot.
+                        </p>
+                        <p>
+                          The browser runtime may be Chromium, Chrome, Firefox, or WebKit running locally, in a
+                          container, or on a hosted-browser service. Playwright, Selenium, and Puppeteer are common
+                          automation libraries used to control that runtime. A higher-level product such as Browser Use
+                          can provide an agent-oriented browser tool on top of browser automation and a remote browser
+                          service.
+                        </p>
+                        <p>
+                          The model normally sees tool descriptions rather than browser internals. For example, a
+                          runtime might describe a tool like this:
+                        </p>
+                        <pre><code>{
+  "name": "browser_open",
+  "description": "Open a URL and return the page observation.",
+  "parameters": {
+    "url": "string"
+  }
+}</code></pre>
+                        <p>
+                          If the model decides to use it, it emits a structured call. The runtime validates the URL,
+                          opens the page, and sends an observation back to the model:
+                        </p>
+                        <pre><code>{
+  "name": "browser_open",
+  "arguments": {
+    "url": "https://example.com/product"
+  }
+}
+
+{
+  "title": "Example Product",
+  "visible_text": "Price: $49.99 ...",
+  "links": ["Specifications", "Reviews"]
+}</code></pre>
+                        <p>
+                          The observation may contain accessible text, page structure, links, a screenshot, or an error.
+                          The model then chooses another action or gives the user an answer. This is different from
+                          giving the model a raw unrestricted network socket: the runtime can restrict domains, hide
+                          credentials, ask for confirmation before side effects, and log each action.
+                        </p>
+                        <p class="mb-0">
+                          Browser tools can be exposed directly by an agent framework, through an MCP server, or by a
+                          hosted-browser provider. The name <code>browser</code> describes the capability; the actual
+                          implementation might be Playwright, Selenium, Puppeteer, Browser Use, a computer-use API, or
+                          another provider.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
                     <h3 class="accordion-header" id="aiInternetAccessHeading">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#aiInternetAccessSection" aria-expanded="false"
                         aria-controls="aiInternetAccessSection">
-                        2. How do AI agents, such as Hermes, access the internet?
+                        3. How do AI agents, such as Hermes, access the internet?
                       </button>
                     </h3>
                     <div id="aiInternetAccessSection" class="accordion-collapse collapse"
@@ -2354,6 +2422,15 @@ title: Gen AI
                           the browser process performs the network request and page interaction. If an agent only has a
                           search API, it can search and read returned results but cannot interact with arbitrary pages.
                         </p>
+                        <p>
+                          For the public Hermes agent from Nous Research, the repository documentation currently lists
+                          <strong>Browser Use</strong> as its cloud-browser integration. Hermes can access it through the
+                          Nous Portal <strong>Tool Gateway</strong>, which also routes other capabilities such as web
+                          search. This means the browser backend is a configured tool service, not a special browser
+                          built into the Hermes language model. Hermes can also support provider-specific or self-hosted
+                          configurations, so the exact backend may vary by version and setup. The reliable way to confirm
+                          a particular installation is to inspect its enabled tools and Tool Gateway configuration.
+                        </p>
                         <p class="mb-0">
                           Internet-enabled agents should be treated like software with external side effects. Give
                           them least-privilege access, isolate browser sessions, protect cookies and credentials,
@@ -2370,7 +2447,7 @@ title: Gen AI
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#automationDetectionSection" aria-expanded="false"
                         aria-controls="automationDetectionSection">
-                        3. How do websites detect browser automation and AI agents?
+                        4. How do websites detect browser automation and AI agents?
                       </button>
                     </h3>
                     <div id="automationDetectionSection" class="accordion-collapse collapse"
