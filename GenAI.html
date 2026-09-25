@@ -2230,6 +2230,106 @@ title: Gen AI
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="qaNestedHeadingBrowserAgents">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#qaNestedCollapseBrowserAgents" aria-expanded="false"
+                aria-controls="qaNestedCollapseBrowserAgents">
+                What is browser automation, and how do AI agents access the internet?
+              </button>
+            </h2>
+            <div id="qaNestedCollapseBrowserAgents" class="accordion-collapse collapse"
+              aria-labelledby="qaNestedHeadingBrowserAgents" data-bs-parent="#qaNestedAccordion">
+              <div class="accordion-body">
+                <p>
+                  Browser automation is the programmatic control of a web browser. Instead of a person clicking
+                  buttons, entering text, and reading pages, software performs those actions through a browser
+                  automation tool. AI agents can use this capability to complete tasks such as searching for
+                  information, filling forms, or navigating a website.
+                </p>
+
+                <div class="accordion" id="browserAgentsDetailsAccordion">
+                  <div class="accordion-item">
+                    <h3 class="accordion-header" id="browserAutomationHeading">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#browserAutomationSection" aria-expanded="false"
+                        aria-controls="browserAutomationSection">
+                        1. What is browser automation?
+                      </button>
+                    </h3>
+                    <div id="browserAutomationSection" class="accordion-collapse collapse"
+                      aria-labelledby="browserAutomationHeading" data-bs-parent="#browserAgentsDetailsAccordion">
+                      <div class="accordion-body">
+                        <p>
+                          A browser automation library such as Playwright or Selenium can launch a browser, open a
+                          URL, inspect the page, click elements, type into fields, select options, download files, and
+                          capture screenshots. It can also wait for pages to load and observe errors or network
+                          requests.
+                        </p>
+                        <p>
+                          A useful mental model is that automation provides <strong>eyes and hands</strong> for a
+                          program: the browser exposes what is visible and interactable, while the automation tool
+                          performs actions. The AI model supplies language understanding and decision-making, but it
+                          does not directly click a page by itself.
+                        </p>
+                        <p class="mb-0">
+                          Browser automation is different from scraping HTML with a simple HTTP client. A browser can
+                          execute JavaScript, maintain cookies, handle redirects, and interact with dynamic pages.
+                          That makes it useful for modern web applications, although it is usually slower and requires
+                          stronger security controls than a direct API call.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h3 class="accordion-header" id="aiInternetAccessHeading">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#aiInternetAccessSection" aria-expanded="false"
+                        aria-controls="aiInternetAccessSection">
+                        2. How do AI agents, such as Hermes, access the internet?
+                      </button>
+                    </h3>
+                    <div id="aiInternetAccessSection" class="accordion-collapse collapse"
+                      aria-labelledby="aiInternetAccessHeading" data-bs-parent="#browserAgentsDetailsAccordion">
+                      <div class="accordion-body">
+                        <p>
+                          An AI agent does not automatically have internet access just because it is an LLM. The
+                          application hosting the agent must connect the model to an approved tool. That tool may be a
+                          search API, an HTTP client, or a browser controlled through Playwright, Selenium, a remote
+                          browser service, or a computer-use interface.
+                        </p>
+                        <p>
+                          The process usually looks like this:
+                        </p>
+                        <ol>
+                          <li>The user gives the agent a goal, such as finding a product specification.</li>
+                          <li>The model decides that a search or browser action is needed and emits a structured tool call.</li>
+                          <li>The agent runtime validates the call and executes it with the tool's permissions.</li>
+                          <li>The tool returns page content, a search result, a screenshot, or an error to the model.</li>
+                          <li>The model interprets the result, chooses the next action, or produces a final answer.</li>
+                        </ol>
+                        <p>
+                          For example, Hermes may use a browser tool to open a page, inspect its accessible text, click a
+                          link, and return the resulting page content. The model reasons over the returned observation;
+                          the browser process performs the network request and page interaction. If an agent only has a
+                          search API, it can search and read returned results but cannot interact with arbitrary pages.
+                        </p>
+                        <p class="mb-0">
+                          Internet-enabled agents should be treated like software with external side effects. Give
+                          them least-privilege access, isolate browser sessions, protect cookies and credentials,
+                          block private network targets where appropriate, require confirmation before purchases or
+                          account changes, and treat web content as untrusted input because pages can contain prompt
+                          injection instructions.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
