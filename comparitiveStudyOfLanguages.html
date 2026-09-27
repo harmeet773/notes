@@ -6,6 +6,62 @@ title: Comparitive Study Of syntax of  Languages
 The purpose of the page is to serve as a quick reference guide for syntax.
 <br/>
 <hr />
+<div class="accordion mb-4" id="typingQuestionsAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="typingQuestionsHeading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#typingQuestionsContent" aria-expanded="false" aria-controls="typingQuestionsContent">
+        Learn by &quot;Q and A&quot;
+      </button>
+    </h2>
+    <div id="typingQuestionsContent" class="accordion-collapse collapse" aria-labelledby="typingQuestionsHeading" data-bs-parent="#typingQuestionsAccordion">
+      <div class="accordion-body">
+        <div class="accordion" id="typingConceptsAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="staticDynamicTypingHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#staticDynamicTypingContent" aria-expanded="false" aria-controls="staticDynamicTypingContent">
+                1. Static vs Dynamic Typing
+              </button>
+            </h3>
+            <div id="staticDynamicTypingContent" class="accordion-collapse collapse" aria-labelledby="staticDynamicTypingHeading" data-bs-parent="#typingConceptsAccordion">
+              <div class="accordion-body">
+                <p><strong>Q: What is the difference?</strong></p>
+                <p><strong>A:</strong> Static typing checks types before a program runs, usually during compilation or type checking. Dynamic typing checks types as the program runs.</p>
+                <p class="mb-0"><strong>Examples:</strong> TypeScript and Java are statically typed; JavaScript and Python are dynamically typed. A language can also offer optional or gradual type checking.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="strongWeakTypingHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#strongWeakTypingContent" aria-expanded="false" aria-controls="strongWeakTypingContent">
+                2. Strong vs Weak Typing
+              </button>
+            </h3>
+            <div id="strongWeakTypingContent" class="accordion-collapse collapse" aria-labelledby="strongWeakTypingHeading" data-bs-parent="#typingConceptsAccordion">
+              <div class="accordion-body">
+                <p><strong>Q: What does strong or weak typing describe?</strong></p>
+                <p class="mb-0"><strong>A:</strong> It describes how strictly a language enforces type rules and whether it implicitly converts values between types. The terms are informal rather than a precise, universally agreed classification. For example, JavaScript implicitly converts values in expressions such as <code>&quot;5&quot; - 1</code>, while Python rejects <code>&quot;5&quot; - 1</code> unless the string is converted explicitly.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="nominalStructuralTypingHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nominalStructuralTypingContent" aria-expanded="false" aria-controls="nominalStructuralTypingContent">
+                3. Nominal vs Structural Typing
+              </button>
+            </h3>
+            <div id="nominalStructuralTypingContent" class="accordion-collapse collapse" aria-labelledby="nominalStructuralTypingHeading" data-bs-parent="#typingConceptsAccordion">
+              <div class="accordion-body">
+                <p><strong>Q: How does a type system decide whether two types are compatible?</strong></p>
+                <p class="mb-0"><strong>A:</strong> Nominal typing uses declared type names and relationships, such as a class explicitly implementing an interface. Structural typing compares the members and shape of the types; values are compatible when they provide the required structure, regardless of their declared names.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <a class="btn btn-link" data-bs-toggle="collapse" href="#HowJSConvertsExpressionsInBoolean">
   How JS Converts Expressions Into Boolean?
 </a>
