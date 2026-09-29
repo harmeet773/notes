@@ -1707,6 +1707,53 @@ return ans;
             </div>
           </div>
 
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#removeDuplicatesFromSortedList"
+              >
+                Remove Duplicates from Sorted List
+              </button>
+            </h2>
+
+            <div
+              id="removeDuplicatesFromSortedList"
+              class="accordion-collapse collapse"
+              data-bs-parent="#solvedIndexSubAccordion"
+            >
+              <div class="accordion-body">
+                <p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/" target="_blank" rel="noopener">83. Remove Duplicates from Sorted List</a></p>
+<pre><code>/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+    let current = head;
+
+    while (current !== null &amp;&amp; current.next !== null) {
+        if (current.val === current.next.val) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+
+    return head;
+};</code></pre>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
