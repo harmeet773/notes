@@ -2249,6 +2249,193 @@ title: Gen AI
                   closer to a human user than a raw API call.
                 </p>
 
+                <h4 class="mt-3">Core idea</h4>
+                <p>
+                  An AI model does not directly operate a website. An <strong>AI agent</strong> uses an LLM to decide
+                  what to do, then calls a browser-control capability that performs the actual website interaction.
+                </p>
+                <pre><code>User goal
+   ↓
+LLM decides next step
+   ↓
+Browser tool executes it
+   ↓
+Website changes
+   ↓
+Browser tool returns new page state
+   ↓
+LLM decides the next step</code></pre>
+                <p>
+                  This repeated cycle is:
+                </p>
+                <pre><code>Observe → decide → act → verify → repeat</code></pre>
+
+                <h4 class="mt-3">What “browser tool” means</h4>
+                <p>
+                  A browser tool is software that controls a real browser such as Chromium, Chrome, Firefox, or
+                  WebKit. It can:
+                </p>
+                <ul>
+                  <li>Open URLs</li>
+                  <li>Read visible webpage text</li>
+                  <li>Inspect page elements</li>
+                  <li>Click buttons and links</li>
+                  <li>Type into text fields</li>
+                  <li>Select dropdown values</li>
+                  <li>Scroll pages</li>
+                  <li>Press keyboard keys</li>
+                  <li>Upload or download files</li>
+                  <li>Take screenshots</li>
+                  <li>Wait for a page, popup, or result to load</li>
+                </ul>
+                <p>
+                  The LLM decides <strong>which</strong> action to take. The browser-control layer performs the
+                  low-level browser action.
+                </p>
+                <p>
+                  For example:
+                </p>
+                <pre><code>LLM: “The search box is visible. Fill it with ‘mechanical keyboard’.”
+   ↓
+Browser tool: types “mechanical keyboard” into the search field
+   ↓
+Browser tool: returns updated page information
+   ↓
+LLM: “Now click Search.”</code></pre>
+
+                <h4 class="mt-3">One tool or many tools</h4>
+                <p>
+                  Browser capabilities can be exposed in two valid ways:
+                </p>
+                <ul>
+                  <li><strong>One generic browser tool:</strong> <code>browser(action="click", target="Search")</code></li>
+                  <li><strong>Multiple browser tools:</strong> <code>browser_click(target="Search")</code></li>
+                </ul>
+                <p>
+                  These are mostly different tool-interface designs. Internally, both can use the same browser-control
+                  code.
+                </p>
+                <p>
+                  A conceptual single tool:
+                </p>
+                <pre><code>browser(
+    action="fill",
+    element_ref="e2",
+    text="wireless headphones"
+)</code></pre>
+                <p>
+                  The same thing as multiple tools:
+                </p>
+                <pre><code>browser_fill(
+    element_ref="e2",
+    text="wireless headphones"
+)</code></pre>
+                <p>
+                  For a real agent, small separate tools are often easier to debug, validate, restrict, and evaluate.
+                </p>
+
+                <h4 class="mt-3">How agents know where to click</h4>
+                <p>
+                  A browser agent needs to observe the current webpage before it acts. It may receive:
+                </p>
+                <ul>
+                  <li><strong>Accessibility or DOM snapshot:</strong> structured page controls such as <code>textbox "Search"</code> or <code>button "Add to cart"</code></li>
+                  <li><strong>Visible text:</strong> headings, product names, prices, errors, and links</li>
+                  <li><strong>Screenshot:</strong> an image of the webpage</li>
+                  <li><strong>URL and page title</strong></li>
+                  <li><strong>Current input values and selected options</strong></li>
+                </ul>
+                <p>
+                  A good page snapshot might look like:
+                </p>
+                <pre><code>URL: https://shop.example/
+
+[e1] link "Electronics"
+[e2] textbox "Search products"
+[e3] button "Search"
+[e4] button "Sign in"</code></pre>
+                <p>
+                  The model can then call:
+                </p>
+                <pre><code>{
+  "name": "browser_fill",
+  "arguments": {
+    "element_ref": "e2",
+    "text": "mechanical keyboard"
+  }
+}</code></pre>
+                <p>
+                  Then it receives a new page snapshot and chooses the next step. This is better than clicking fixed
+                  coordinates because page layouts change. When possible, agents should target controls by their role
+                  and label, such as “button named Search,” rather than by pixel position.
+                </p>
+
+                <h4 class="mt-3">Agent control loop</h4>
+                <p>
+                  A complete simple workflow looks like this:
+                </p>
+                <pre><code>1. User: “Find five keyboards below ₹5,000.”
+
+2. Agent opens a product catalogue.
+
+3. Browser returns:
+   [e2] textbox "Search products"
+   [e3] button "Search"
+
+4. Agent fills the search box with “mechanical keyboard.”
+
+5. Agent clicks Search.
+
+6. Browser returns search results and price controls.
+
+7. Agent selects the price filter.
+
+8. Browser returns filtered results.
+
+9. Agent extracts product title, price, rating, and URL.
+
+10. Agent verifies the constraints and returns the five results.</code></pre>
+                <p>
+                  The agent must constantly verify whether the last action worked. It should not blindly run a long
+                  sequence of actions.
+                </p>
+
+                <h4 class="mt-3">Reliability and safety</h4>
+                <p>
+                  To make browser agents work well:
+                </p>
+                <ul>
+                  <li>Take a fresh page snapshot after navigation, clicks, popups, submissions, or major page changes.</li>
+                  <li>Use semantic element references such as <code>button "Search"</code> instead of fragile CSS selectors or screen coordinates.</li>
+                  <li>Give each action a postcondition, such as “results appear” or “cart count increases.”</li>
+                  <li>Limit the number of steps so an agent cannot loop indefinitely.</li>
+                  <li>Record actions, URLs, results, screenshots, and failures for debugging.</li>
+                  <li>Treat webpage text as untrusted; malicious pages may try to inject instructions into the agent.</li>
+                  <li>Restrict which domains and URLs the agent may open.</li>
+                  <li>Require explicit user approval before high-impact actions.</li>
+                </ul>
+                <p>
+                  <strong>Action</strong> → <strong>Typical policy</strong>
+                </p>
+                <ul>
+                  <li><strong>Read public pages</strong> → Allow</li>
+                  <li><strong>Search, filter, sort, compare</strong> → Allow</li>
+                  <li><strong>Fill draft form fields</strong> → Usually allow with logging</li>
+                  <li><strong>Upload a file</strong> → Require user approval</li>
+                  <li><strong>Send a message/email</strong> → Require confirmation just before sending</li>
+                  <li><strong>Submit an application</strong> → Require confirmation just before submission</li>
+                  <li><strong>Make a purchase or financial transaction</strong> → Require human confirmation or takeover</li>
+                  <li><strong>Change security settings</strong> → Do not automate by default</li>
+                  <li><strong>CAPTCHA, OTP, MFA</strong> → Ask the user to take over</li>
+                </ul>
+                <p>
+                  The key rule is:
+                </p>
+                <blockquote>
+                  Let the agent browse, collect information, and prepare drafts; require explicit approval before an
+                  irreversible or high-impact action.
+                </blockquote>
+
                 <div class="accordion" id="browserAgentsDetailsAccordion">
                   <div class="accordion-item">
                     <h3 class="accordion-header" id="browserAutomationHeading">
