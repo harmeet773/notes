@@ -1498,20 +1498,104 @@ var climbStairs = function(n) {
             >
               <div class="accordion-body">
                 <p><a href="https://leetcode.com/problems/fibonacci-number/?envType=problem-list-v2&envId=dynamic-programming" target="_blank" rel="noopener">509. Fibonacci Number</a></p>
+                <div class="accordion mt-3" id="fibonacciSolutionsAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#fibonacciIterativeDynamicProgramming"
+                      >
+                        Iterative Dynamic Programming (Space Optimized)
+                      </button>
+                    </h2>
+                    <div
+                      id="fibonacciIterativeDynamicProgramming"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#fibonacciSolutionsAccordion"
+                    >
+                      <div class="accordion-body">
 <pre><code>/**
- * @param {number}
+ * @param {number} n
  * @return {number}
  */
 var fib = function(n) {
-  if (n < 2) return n;
+  if (n &lt; 2) return n;
   let a = 0, b = 1;
-  for (let i = 2; i <= n; i++) {
+  for (let i = 2; i &lt;= n; i++) {
     const c = a + b;
     a = b;
     b = c;
   }
   return b;
 };</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#fibonacciNaiveDynamicProgramming"
+                      >
+                        Naive Dynamic Programming
+                      </button>
+                    </h2>
+                    <div
+                      id="fibonacciNaiveDynamicProgramming"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#fibonacciSolutionsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>Time: O(n). Space: O(n).</p>
+<pre><code>/**
+ * @param {number} n
+ * @return {number}
+ */
+var fib = function(n) {
+  let fibArray = [];
+  fibArray[0] = 0;
+  fibArray[1] = 1;
+
+  for (let i = 2; i &lt;= n; i++) {
+    fibArray[i] = fibArray[i - 1] + fibArray[i - 2];
+  }
+
+  return fibArray[n];
+};</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#fibonacciFastDoubling"
+                      >
+                        Further Optimization: Fast Doubling
+                      </button>
+                    </h2>
+                    <div
+                      id="fibonacciFastDoubling"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#fibonacciSolutionsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>Fast doubling computes Fibonacci values in O(log n) time by halving the index at each step. Given F(k) and F(k + 1), calculate:</p>
+                        <ul>
+                          <li>F(2k) = F(k) * (2 * F(k + 1) - F(k))</li>
+                          <li>F(2k + 1) = F(k)^2 + F(k + 1)^2</li>
+                        </ul>
+                        <p>Choose the even or odd result based on whether n is even or odd. This improves on the O(n) time used by both dynamic-programming solutions.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
