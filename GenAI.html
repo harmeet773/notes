@@ -2243,10 +2243,10 @@ title: Gen AI
               aria-labelledby="qaNestedHeadingBrowserAgents" data-bs-parent="#qaNestedAccordion">
               <div class="accordion-body">
                 <p>
-                  Browser automation is the programmatic control of a web browser. Instead of a person clicking
-                  buttons, entering text, and reading pages, software performs those actions through a browser
-                  automation tool. AI agents can use this capability to complete tasks such as searching for
-                  information, filling forms, or navigating a website.
+                  Browser automation is a way to let software control a real web browser. Instead of a person
+                  manually clicking links, filling forms, and reading pages, a program can do those actions in a
+                  browser on its own. This is what allows AI agents to interact with websites in a way that feels
+                  closer to a human user than a raw API call.
                 </p>
 
                 <div class="accordion" id="browserAgentsDetailsAccordion">
@@ -2262,51 +2262,20 @@ title: Gen AI
                       aria-labelledby="browserAutomationHeading" data-bs-parent="#browserAgentsDetailsAccordion">
                       <div class="accordion-body">
                         <p>
-                          A browser automation library such as Playwright or Selenium can launch a browser, open a
-                          URL, inspect the page, click elements, type into fields, select options, download files, and
-                          capture screenshots. It can also wait for pages to load and observe errors or network
-                          requests.
+                          Browser automation means using a library such as Playwright, Selenium, or Puppeteer to open a
+                          browser, load a URL, inspect the page, click elements, type into fields, scroll, download
+                          files, and capture screenshots. It is especially useful when a website is JavaScript-heavy,
+                          interactive, or requires login flows.
                         </p>
                         <p>
-                          Browser automation is one category of internet access. Common categories include:
-                        </p>
-                        <ul>
-                          <li>
-                            <strong>Browser automation libraries:</strong> Playwright, Selenium, and Puppeteer drive
-                            Chromium, Firefox, or WebKit and can interact with JavaScript-heavy websites.
-                          </li>
-                          <li>
-                            <strong>HTTP clients:</strong> Python <code>requests</code> or <code>httpx</code>, and
-                            JavaScript <code>fetch</code> or <code>axios</code>, send requests directly to an API or web
-                            server. They are usually faster than a browser but cannot render or interact with a page in
-                            the same way.
-                          </li>
-                          <li>
-                            <strong>Search and data APIs:</strong> services such as Tavily, Brave Search, Bing Web
-                            Search, or a website's own API return structured results without requiring the agent to
-                            control a browser.
-                          </li>
-                          <li>
-                            <strong>Hosted browsers:</strong> services such as Browserless or Browserbase run an
-                            isolated browser remotely and expose it to the agent through an API or automation protocol.
-                          </li>
-                          <li>
-                            <strong>Computer-use tools:</strong> some agent platforms expose screenshots, mouse
-                            actions, keyboard actions, and window controls. The model chooses actions, while a separate
-                            computer-use runtime performs them.
-                          </li>
-                        </ul>
-                        <p>
-                          A useful mental model is that automation provides <strong>eyes and hands</strong> for a
-                          program: the browser exposes what is visible and interactable, while the automation tool
-                          performs actions. The AI model supplies language understanding and decision-making, but it
-                          does not directly click a page by itself.
+                          In simple terms, the browser gives the program <strong>eyes and hands</strong>. It can see the
+                          rendered page and act on it just like a user would. This is different from a plain HTTP request,
+                          which only fetches raw content and does not interact with the page in a browser context.
                         </p>
                         <p class="mb-0">
-                          Browser automation is different from scraping HTML with a simple HTTP client. A browser can
-                          execute JavaScript, maintain cookies, handle redirects, and interact with dynamic pages.
-                          That makes it useful for modern web applications, although it is usually slower and requires
-                          stronger security controls than a direct API call.
+                          That is why browser automation is often used in testing, web scraping, and AI agent workflows:
+                          it allows software to work with modern web applications that cannot be understood simply by
+                          reading HTML or JSON from an API endpoint.
                         </p>
                       </div>
                     </div>
@@ -2317,29 +2286,22 @@ title: Gen AI
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#browserToolSection" aria-expanded="false"
                         aria-controls="browserToolSection">
-                        2. What is a browser tool? Is it a special kind of browser?
+                        2. How does an AI agent use a browser?
                       </button>
                     </h3>
                     <div id="browserToolSection" class="accordion-collapse collapse"
                       aria-labelledby="browserToolHeading" data-bs-parent="#browserAgentsDetailsAccordion">
                       <div class="accordion-body">
                         <p>
-                          A <strong>browser tool</strong> is an interface that an AI agent can call to operate a web
-                          browser. It is not usually a new type of browser. It is a software layer between the language
-                          model and a browser runtime. The tool exposes a small set of permitted actions, such as
-                          opening a URL, reading the page, clicking an element, entering text, pressing a key, or taking
-                          a screenshot.
+                          A browser tool is usually not a separate kind of browser. It is a software interface that lets
+                          an AI agent call a browser runtime under controlled conditions. The agent does not directly
+                          manipulate the browser; instead, it asks for a specific action such as opening a URL, reading
+                          page text, clicking a button, or submitting a form.
                         </p>
                         <p>
-                          The browser runtime may be Chromium, Chrome, Firefox, or WebKit running locally, in a
-                          container, or on a hosted-browser service. Playwright, Selenium, and Puppeteer are common
-                          automation libraries used to control that runtime. A higher-level product such as Browser Use
-                          can provide an agent-oriented browser tool on top of browser automation and a remote browser
-                          service.
-                        </p>
-                        <p>
-                          The model normally sees tool descriptions rather than browser internals. For example, a
-                          runtime might describe a tool like this:
+                          A typical browser tool might expose actions like <code>open_url</code>, <code>click</code>,
+                          <code>type</code>, <code>scroll</code>, and <code>extract_text</code>. The model chooses which
+                          tool to call based on the task, and the runtime validates the request before performing it.
                         </p>
                         <pre><code>{
   "name": "browser_open",
@@ -2349,32 +2311,14 @@ title: Gen AI
   }
 }</code></pre>
                         <p>
-                          If the model decides to use it, it emits a structured call. The runtime validates the URL,
-                          opens the page, and sends an observation back to the model:
-                        </p>
-                        <pre><code>{
-  "name": "browser_open",
-  "arguments": {
-    "url": "https://example.com/product"
-  }
-}
-
-{
-  "title": "Example Product",
-  "visible_text": "Price: $49.99 ...",
-  "links": ["Specifications", "Reviews"]
-}</code></pre>
-                        <p>
-                          The observation may contain accessible text, page structure, links, a screenshot, or an error.
-                          The model then chooses another action or gives the user an answer. This is different from
-                          giving the model a raw unrestricted network socket: the runtime can restrict domains, hide
-                          credentials, ask for confirmation before side effects, and log each action.
+                          Once the tool runs, it returns structured output such as page title, visible text, links, or a
+                          screenshot. The model then interprets that result and decides the next step. This is how an agent
+                          can browse the web step by step without needing a human to click every button.
                         </p>
                         <p class="mb-0">
-                          Browser tools can be exposed directly by an agent framework, through an MCP server, or by a
-                          hosted-browser provider. The name <code>browser</code> describes the capability; the actual
-                          implementation might be Playwright, Selenium, Puppeteer, Browser Use, a computer-use API, or
-                          another provider.
+                          The important point is that the model still reasons over the returned page information; the
+                          browser tool is simply the mechanism that gives the model access to the web in a safe and
+                          controlled way.
                         </p>
                       </div>
                     </div>
@@ -2385,58 +2329,48 @@ title: Gen AI
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#aiInternetAccessSection" aria-expanded="false"
                         aria-controls="aiInternetAccessSection">
-                        3. How do AI agents, such as Hermes, access the internet?
+                        3. How do AI agents access the internet?
                       </button>
                     </h3>
                     <div id="aiInternetAccessSection" class="accordion-collapse collapse"
                       aria-labelledby="aiInternetAccessHeading" data-bs-parent="#browserAgentsDetailsAccordion">
                       <div class="accordion-body">
                         <p>
-                          An AI agent does not automatically have internet access just because it is an LLM. The
-                          application hosting the agent must connect the model to an approved tool. That tool may be a
-                          search API, an HTTP client, or a browser controlled through Playwright, Selenium, a remote
-                          browser service, or a computer-use interface.
+                          An AI model does not automatically have internet access. The application or runtime hosting the
+                          agent must explicitly provide approved tools. These tools may include a search API, an HTTP
+                          client, or a browser automation layer.
                         </p>
                         <p>
-                          In an agent framework, these capabilities are normally exposed as <strong>tools</strong>.
-                          For example, an agent may have a <code>web_search</code> tool backed by Tavily or Brave, a
-                          <code>fetch_url</code> tool backed by an HTTP client, and a <code>browser</code> tool backed by
-                          Playwright. An MCP server can expose similar search, fetch, or browser functions through the
-                          Model Context Protocol. The model does not receive unrestricted network access; the runtime
-                          decides which tools are available, validates their arguments, and applies authentication,
-                          domain allowlists, rate limits, and confirmation rules.
+                          Common ways an agent accesses the internet are:
                         </p>
+                        <ul>
+                          <li>
+                            <strong>Search APIs:</strong> services such as Tavily or Brave return search results without
+                            the agent needing to open a browser.
+                          </li>
+                          <li>
+                            <strong>HTTP clients:</strong> libraries such as <code>requests</code>, <code>httpx</code>,
+                            or JavaScript <code>fetch</code> can call APIs and fetch webpage content directly.
+                          </li>
+                          <li>
+                            <strong>Browser tools:</strong> Playwright or Selenium can open pages, click buttons, and read
+                            rendered content like a human user would.
+                          </li>
+                          <li>
+                            <strong>MCP or agent frameworks:</strong> tools can be exposed to the model in a structured,
+                            permission-controlled way through a platform or protocol.
+                          </li>
+                        </ul>
                         <p>
-                          The process usually looks like this:
-                        </p>
-                        <ol>
-                          <li>The user gives the agent a goal, such as finding a product specification.</li>
-                          <li>The model decides that a search, HTTP request, or browser action is needed and emits a structured tool call.</li>
-                          <li>The agent runtime validates the call and executes it with the tool's permissions.</li>
-                          <li>The tool returns page content, a search result, a screenshot, or an error to the model.</li>
-                          <li>The model interprets the result, chooses the next action, or produces a final answer.</li>
-                        </ol>
-                        <p>
-                          For example, Hermes may use a browser tool to open a page, inspect its accessible text, click a
-                          link, and return the resulting page content. The model reasons over the returned observation;
-                          the browser process performs the network request and page interaction. If an agent only has a
-                          search API, it can search and read returned results but cannot interact with arbitrary pages.
-                        </p>
-                        <p>
-                          For the public Hermes agent from Nous Research, the repository documentation currently lists
-                          <strong>Browser Use</strong> as its cloud-browser integration. Hermes can access it through the
-                          Nous Portal <strong>Tool Gateway</strong>, which also routes other capabilities such as web
-                          search. This means the browser backend is a configured tool service, not a special browser
-                          built into the Hermes language model. Hermes can also support provider-specific or self-hosted
-                          configurations, so the exact backend may vary by version and setup. The reliable way to confirm
-                          a particular installation is to inspect its enabled tools and Tool Gateway configuration.
+                          The usual flow is simple: the user asks for a goal, the model decides that web access is
+                          needed, the runtime validates the tool call, the tool fetches or navigates the web, and the
+                          returned result is passed back to the model for reasoning. The agent does not receive unrestricted
+                          network access; it only gets the capabilities the application chooses to expose.
                         </p>
                         <p class="mb-0">
-                          Internet-enabled agents should be treated like software with external side effects. Give
-                          them least-privilege access, isolate browser sessions, protect cookies and credentials,
-                          block private network targets where appropriate, require confirmation before purchases or
-                          account changes, and treat web content as untrusted input because pages can contain prompt
-                          injection instructions.
+                          This is also why different agents behave differently. One agent may have only a search API,
+                          while another may have both search and browser tools. The available tools determine the agent's
+                          ability to interact with the internet.
                         </p>
                       </div>
                     </div>
@@ -2447,65 +2381,26 @@ title: Gen AI
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#automationDetectionSection" aria-expanded="false"
                         aria-controls="automationDetectionSection">
-                        4. How do websites detect browser automation and AI agents?
+                        4. What should we keep in mind when using browser automation?
                       </button>
                     </h3>
                     <div id="automationDetectionSection" class="accordion-collapse collapse"
                       aria-labelledby="automationDetectionHeading" data-bs-parent="#browserAgentsDetailsAccordion">
                       <div class="accordion-body">
                         <p>
-                          Websites usually do not identify an AI agent with one definitive test. They combine many
-                          signals and calculate whether a request or session looks automated. A legitimate browser can
-                          also trigger some of these signals, so detection is probabilistic rather than perfect.
-                        </p>
-                        <ul>
-                          <li>
-                            <strong>Request and network signals:</strong> servers inspect the user-agent and client
-                            hints, missing or unusual headers, cookie behavior, request frequency, repeated URL
-                            patterns, IP reputation, datacenter or proxy networks, and TLS or HTTP fingerprints.
-                          </li>
-                          <li>
-                            <strong>Browser and JavaScript signals:</strong> client-side code can check browser
-                            capabilities, inconsistent screen or platform values, missing APIs, disabled features,
-                            automation-related properties, and whether a real browser appears to execute JavaScript and
-                            store cookies normally.
-                          </li>
-                          <li>
-                            <strong>Behavioral signals:</strong> perfectly regular timing, very fast form completion,
-                            unusual scrolling, no pointer or keyboard activity, improbable navigation paths, and many
-                            actions repeated at machine-like intervals can increase the automation score.
-                          </li>
-                          <li>
-                            <strong>Account and session signals:</strong> rapid account creation, many accounts from
-                            one network, repeated failed logins, unusual geolocation changes, and a new device combined
-                            with high-volume activity can cause additional scrutiny.
-                          </li>
-                          <li>
-                            <strong>Challenges and reputation systems:</strong> a site may use rate limits, email or
-                            phone verification, browser challenges, CAPTCHA, device reputation, or a managed bot
-                            protection service. These controls are often applied only when the combined risk score is
-                            high.
-                          </li>
-                        </ul>
-                        <p>
-                          This applies to both ordinary browser automation and AI agents. Playwright, Selenium, or a
-                          computer-use tool may generate normal browser requests, but the surrounding agent can still
-                          reveal automation through request volume, navigation patterns, repeated tasks, or use from a
-                          datacenter IP. An HTTP client or search API is easier to classify because it does not behave
-                          like a complete interactive browser and may expose a recognizable client signature.
+                          Browser automation is powerful, but it also introduces security and trust issues. Websites can
+                          detect automated behavior using IP reputation, request patterns, browser fingerprints, and other
+                          signals. Some pages may challenge, rate-limit, or block suspicious traffic.
                         </p>
                         <p>
-                          Detection is not the same as understanding the model's thoughts. A website generally sees
-                          network requests, browser observations, and user actions; it usually cannot know with certainty
-                          whether a person, a scripted program, or an AI selected the next action. It infers risk from
-                          observable evidence. Sites can therefore produce false positives, while sophisticated automated
-                          traffic can sometimes resemble human traffic.
+                          For this reason, internet-enabled agents should use least-privilege access, limit the domains
+                          they can visit, protect cookies and credentials, and avoid actions that would change accounts or
+                          perform purchases without approval. Web pages can also contain malicious instructions or prompt
+                          injection content, so the agent should treat external content as untrusted.
                         </p>
                         <p class="mb-0">
-                          Responsible agents should respect robots.txt and terms of service where applicable, use an
-                          official API when one exists, keep request rates low, identify themselves when required, and
-                          stop when a site presents a challenge or requires human verification. They should not attempt
-                          to bypass CAPTCHA, authentication, access controls, or bot-protection mechanisms.
+                          In short, browser automation gives AI agents a practical way to use the web, but it should be
+                          implemented with clear permissions, strong controls, and careful handling of untrusted content.
                         </p>
                       </div>
                     </div>
