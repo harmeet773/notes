@@ -425,6 +425,70 @@ aws s3 cp file.txt s3://my-bucket/path/file.txt --sse AES256
     </h2>
     <div id="awsIAM" class="accordion-collapse collapse" aria-labelledby="awsHeadingIAM" data-bs-parent="#awsMainAccordion">
       <div class="accordion-body">
+        <h5>1. Overview of AWS IAM</h5>
+        <ul>
+          <li><strong>Definition:</strong> AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS services and resources.</li>
+          <li><strong>Cost &amp; Scope:</strong> IAM is completely free and acts as the first layer of security in AWS. It is a global service, so IAM users, groups, and roles are not tied to a specific region.</li>
+        </ul>
+
+        <h5>2. Root User vs. IAM Users</h5>
+        <ul>
+          <li><strong>AWS Root User:</strong> Created automatically when the AWS account is first set up with the primary email address and password. It has full unrestricted access to the account. Best practice: keep it locked down and do not use it for normal work.</li>
+          <li><strong>IAM Users:</strong> Represent individual people who need access. Each user gets unique credentials and by default has zero permissions until a policy grants them access.</li>
+        </ul>
+
+        <h5>3. IAM Groups and IAM Roles</h5>
+        <ul>
+          <li><strong>IAM Groups:</strong> A collection of users used to grant permission to multiple people at once. Users inherit permissions from the group. A user may belong to multiple groups.</li>
+          <li><strong>IAM Roles:</strong> Used for AWS services, applications, or external users. Roles provide temporary credentials instead of long-term static credentials. They are intended for service-to-service access and federated identity use cases.</li>
+        </ul>
+
+        <h5>4. IAM Policies &amp; Structure</h5>
+        <ul>
+          <li><strong>Definition:</strong> An IAM policy is a JSON document that allows or denies actions on specific resources under certain conditions.</li>
+          <li><strong>Core components:</strong> <code>Version</code>, <code>Statement</code>, <code>Effect</code>, <code>Action</code>, <code>Resource</code>, and optional <code>Condition</code>.</li>
+          <li><strong>Policy types:</strong> AWS managed policies, customer managed policies, and inline policies.</li>
+        </ul>
+
+        <pre><code class="language-json">{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::my-bucket/*",
+      "Condition": {
+        "Bool": { "aws:MultiFactorAuthPresent": "true" }
+      }
+    }
+  ]
+}
+</code></pre>
+
+        <h5>5. Primary IAM Role Use Cases</h5>
+        <ul>
+          <li>Cross-account access</li>
+          <li>Access for AWS services like EC2, Lambda, or ECS</li>
+          <li>Identity federation using corporate identity providers</li>
+          <li>Temporary credentials for automation and serverless workloads</li>
+          <li>Enforcing least privilege</li>
+        </ul>
+
+        <h5>6. Multi-Factor Authentication (MFA)</h5>
+        <ul>
+          <li><strong>Purpose:</strong> Adds an extra security layer using something you know (password) + something you have (MFA code).</li>
+          <li><strong>Supported devices:</strong> Virtual authenticator apps, FIDO security keys, and hardware MFA tokens.</li>
+          <li><strong>Best practice:</strong> Enable MFA on the root account and enforce it for privileged access using policy conditions such as <code>aws:MultiFactorAuthPresent: true</code>.</li>
+        </ul>
+
+        <h5>7. IAM Exam Tips &amp; Best Practices</h5>
+        <ul>
+          <li>Always enable MFA on the root user and avoid using root credentials for daily operations.</li>
+          <li>Attach policies to groups instead of individual users whenever possible.</li>
+          <li>Prefer IAM roles over static IAM users for service-to-service access and automation.</li>
+          <li>Use least privilege, rotate credentials regularly, and enable CloudTrail for auditing.</li>
+        </ul>
+
         <ul>
           <li>Principals: Users, Roles, Federated identities; Policies (identity, resource-based).</li>
           <li>Least privilege, permission boundaries, SCPs (AWS Organizations), MFA, access analyzer.</li>
