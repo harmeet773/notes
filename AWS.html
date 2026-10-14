@@ -35,8 +35,79 @@ title: AWS
     </h2>
     <div id="awsCore" class="accordion-collapse collapse" aria-labelledby="awsHeadingCore" data-bs-parent="#awsMainAccordion">
       <div class="accordion-body">
+        <p>
+          AWS is built on a global infrastructure designed for reliability, low latency, and fault tolerance. The key
+          building blocks are <strong>Regions</strong>, <strong>Availability Zones (AZs)</strong>, and
+          <strong>Edge Locations</strong>.
+        </p>
+
         <ul>
-          <li>Global infrastructure: Regions, Availability Zones (AZs), Edge locations.</li>
+          <li>
+            <strong>Regions:</strong> A region is a geographically isolated area containing multiple data centers.
+            Each region is designed to be independent, with its own set of AWS resources, network connectivity,
+            and services availability. Regions are chosen based on latency, compliance requirements, disaster
+            recovery, and cost. Example: <code>us-east-1</code>, <code>ap-south-1</code>.
+          </li>
+          <li>
+            <strong>Availability Zones (AZs):</strong> An AZ is one or more physically separated data centers within a
+            region. AZs are connected by redundant, low-latency network links and are engineered to fail
+            independently. A well-designed application should run across multiple AZs to avoid downtime if one
+            AZ fails.
+          </li>
+          <li>
+            <strong>Edge Locations:</strong> Edge locations are smaller sites used mainly for content delivery and
+            low-latency access. They are not full AWS regions and usually host services like CloudFront and Route 53.
+            Edge locations help reduce latency by caching content closer to users around the world.
+          </li>
+          <li>
+            <strong>AWS Local Zones:</strong> Local Zones are extension points of an AWS region that place compute,
+            storage, and networking closer to large population centers or industry hubs. They are useful for
+            latency-sensitive applications such as media processing, live gaming, real-time analytics, and workloads
+            that need single-digit millisecond access to end users while still being connected to a parent region.
+            Local Zones are different from full regions because they are smaller deployments and are not standalone
+            regions; they are attached to a nearby AWS region.
+          </li>
+          <li>
+            <strong>AWS Wavelength Zones:</strong> Wavelength Zones are AWS infrastructure deployments embedded within
+            telecommunications provider networks, typically near 5G networks and mobile edge environments. They are
+            designed for ultra-low-latency applications that require very fast connectivity to mobile devices and
+            edge-based workloads, such as autonomous vehicles, AR/VR, smart factories, and live mobile experiences.
+            Wavelength helps reduce network latency by placing compute resources closer to the network edge and user
+            devices rather than in a traditional data center region.
+          </li>
+          <li>
+            <strong>Why this matters:</strong> Applications should be deployed in the region closest to users, and
+            critical workloads should be spread across multiple AZs for high availability. Edge locations improve
+            performance for globally distributed traffic by serving cached content closer to end users, Local Zones
+            help with ultra-low-latency workloads near major metro areas, and Wavelength Zones support mobile and
+            5G-driven applications requiring near-network performance.
+          </li>
+        </ul>
+
+        <div class="mt-4">
+          <ol>
+            <li><strong>High Availability (HA)</strong> = Minimal downtime. Like a hospital with backup power when the grid fails.</li>
+            <li><strong>Fault Tolerance</strong> = Zero downtime. Like jets that keep flying if an engine fails.</li>
+            <li><strong>Elasticity</strong> = Auto-scaling. Like a call center agent grows for 1000 requests, shrinks for 10.</li>
+            <li><strong>Scalability</strong> = Manual growth. Like building more floors when books overflow.</li>
+          </ol>
+
+          <p class="mt-3 mb-2">
+            <strong>High Availability (HA)</strong> = Minimal downtime || <strong>Fault Tolerance</strong> = Zero downtime
+          </p>
+          <p class="text-primary fw-semibold mb-2">
+            Exam Tip: If a question mentions "no downtime," think fault tolerance!
+          </p>
+
+          <p class="mt-3 mb-2">
+            <strong>Elasticity</strong> = Automatic scaling || <strong>Scalability</strong> = Manual scaling (e.g., resizing a VM).
+          </p>
+          <p class="text-primary fw-semibold">
+            Exam Trick: If the question says, "automatically adjusts capacity," it's elasticity!
+          </p>
+        </div>
+
+        <ul>
           <li>Shared Responsibility Model: AWS secures the cloud; customers secure what they put in the cloud.</li>
           <li>Well-Architected Framework: Operational Excellence, Security, Reliability, Performance, Cost Optimization, Sustainability.</li>
         </ul>
