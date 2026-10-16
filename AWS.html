@@ -489,6 +489,71 @@ aws s3 cp file.txt s3://my-bucket/path/file.txt --sse AES256
           <li>Use least privilege, rotate credentials regularly, and enable CloudTrail for auditing.</li>
         </ul>
 
+        <h5>8. IAM Access Analyzer (SAA-C03 Module 1.5)</h5>
+        <ul>
+          <li><strong>Purpose:</strong> IAM Access Analyzer identifies resources that can be accessed from outside a defined zone of trust. It uses automated reasoning to analyze resource-based policies.</li>
+          <li><strong>Regional setup:</strong> IAM is global, but Access Analyzer is regional. Create an analyzer in each Region where you want to analyze resources.</li>
+          <li><strong>Supported resources:</strong> External access analysis includes supported resource-based policies such as S3 buckets, IAM roles, KMS keys, Lambda functions, Secrets Manager secrets, and SQS queues. Check AWS documentation for the current supported resource list.</li>
+          <li><strong>Accessing findings:</strong> Review findings in the AWS Management Console or retrieve them with the AWS CLI or SDK.</li>
+        </ul>
+
+        <h6>Zone of trust and external access findings</h6>
+        <ul>
+          <li>The zone of trust is the account or AWS Organization configured as trusted by the analyzer. Principals outside that boundary, including public access, may result in findings when a resource policy grants them access.</li>
+          <li>For example, an S3 bucket policy granting access to <code>"Principal": "*"</code> can create a public-access finding.</li>
+          <li>A finding is a signal to review access, not proof that the access is unintended. Archive findings for known, intentional access using archive rules.</li>
+          <li>An organization analyzer can use the organization as its zone of trust. A delegated administrator can manage organization-wide analysis without granting the security team organization management permissions.</li>
+        </ul>
+
+        <h6>Analyzer types and cost</h6>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Analyzer</th>
+                <th scope="col">What it identifies</th>
+                <th scope="col">Key details</th>
+                <th scope="col">Pricing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">External access</th>
+                <td>Public or cross-account access to supported resources.</td>
+                <td>Continuously evaluates relevant policy changes in the Region.</td>
+                <td>Free.</td>
+              </tr>
+              <tr>
+                <th scope="row">Unused access</th>
+                <td>Unused IAM roles, users, passwords, access keys, and permissions.</td>
+                <td>Uses a configurable tracking period (90 days by default, from 1 to 365 days); resource tags can exclude principals from analysis.</td>
+                <td>Paid; $0.20 per analyzed IAM user or role per month.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ul>
+          <li><strong>Finding lifecycle:</strong> Findings can be Active, Archived, or Resolved. Archive rules automatically archive findings that match criteria, helping focus review on actionable items.</li>
+          <li><strong>Policy validation:</strong> Access Analyzer validates policies for errors and security best practices, including overly broad permissions. The API operation is <code>ValidatePolicy</code>.</li>
+          <li><strong>Automation:</strong> Findings are published to Amazon EventBridge, where rules can route events to services such as Lambda or SNS for notification or remediation. Review and test automated remediation carefully before enabling it.</li>
+        </ul>
+
+        <h5>9. IAM Credential Report</h5>
+        <ul>
+          <li><strong>What it is:</strong> A downloadable CSV snapshot of IAM users and their credential status in an account.</li>
+          <li><strong>Useful fields:</strong> Password and MFA status, password last-used time, access key status and age, and access key last-used information.</li>
+          <li><strong>Availability:</strong> A generated report is cached for up to four hours; request a new report after that period for a fresh snapshot.</li>
+          <li><strong>Exam tip:</strong> Use the credential report to audit IAM users and their credentials in one account-wide view.</li>
+        </ul>
+
+        <h5>10. IAM Access Analyzer Policy Generation</h5>
+        <ul>
+          <li><strong>Purpose:</strong> Generate a least-privilege policy draft based on the actions recorded for a role in CloudTrail.</li>
+          <li><strong>How it works:</strong> Select a time period of CloudTrail activity; Access Analyzer identifies the actions used and generates a policy containing those actions. Review and refine the generated policy before applying it.</li>
+          <li><strong>Console path:</strong> IAM Roles &rarr; select a role &rarr; Permissions &rarr; Generate policy based on CloudTrail activity.</li>
+        </ul>
+
         <ul>
           <li>Principals: Users, Roles, Federated identities; Policies (identity, resource-based).</li>
           <li>Least privilege, permission boundaries, SCPs (AWS Organizations), MFA, access analyzer.</li>
