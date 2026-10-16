@@ -465,6 +465,70 @@ hermes update      # Update Hermes</code></pre>
 
   <div class="accordion-item">
     <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesConcurrency">
+        Concurrency and Parallelism: Q&amp;A
+      </button>
+    </h2>
+    <div id="hermesConcurrency" class="accordion-collapse collapse" data-bs-parent="#hermesMainAccordion">
+      <div class="accordion-body">
+        <div class="accordion" id="hermesConcurrencyQuestions">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesMultipleConversations">
+                Can Hermes handle multiple users or conversations at the same time?
+              </button>
+            </h2>
+            <div id="hermesMultipleConversations" class="accordion-collapse collapse" data-bs-parent="#hermesConcurrencyQuestions">
+              <div class="accordion-body">
+                <p>Yes. Hermes supports conversations from multiple users and messaging platforms, with conversation history stored in sessions. Its API server accepts requests through a durable admission queue. The number of requests that can actively run at once depends on the interface, deployment, model-provider limits, and available resources; there is not one universal concurrency limit for every Hermes setup.</p>
+                <p>See the official <a href="https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/sessions.md" target="_blank" rel="noopener">sessions documentation</a> and <a href="https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/features/api-server.md" target="_blank" rel="noopener">API server documentation</a>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesParallelTasks">
+                Can Hermes run parallel tasks within one request?
+              </button>
+            </h2>
+            <div id="hermesParallelTasks" class="accordion-collapse collapse" data-bs-parent="#hermesConcurrencyQuestions">
+              <div class="accordion-body">
+                <p>Yes. The agent can delegate independent work to isolated subagents, which can run in parallel. The delegation documentation states that up to 10 subagents can run concurrently by default; this is configurable with <code>delegation.max_concurrent_children</code>. Parallel work is most useful when tasks do not depend on each other's results.</p>
+                <p>See the official <a href="https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/features/delegation.md" target="_blank" rel="noopener">subagent delegation documentation</a>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesSameConversation">
+                Should two requests to the same conversation run simultaneously?
+              </button>
+            </h2>
+            <div id="hermesSameConversation" class="accordion-collapse collapse" data-bs-parent="#hermesConcurrencyQuestions">
+              <div class="accordion-body">
+                <p>Keep turns for the same conversation ordered. The API server uses an admission queue and loads session history when a queued turn executes, after earlier queued work completes. Clients should avoid sending overlapping turns to one session unless they have verified the behavior for their Hermes version; use separate sessions for independent conversations.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesConcurrencyRecommendation">
+                What setup should I use for many users?
+              </button>
+            </h2>
+            <div id="hermesConcurrencyRecommendation" class="accordion-collapse collapse" data-bs-parent="#hermesConcurrencyQuestions">
+              <div class="accordion-body">
+                <p>Use the API server or a supported messaging gateway, keep a distinct session for each user or conversation, and size capacity according to your provider's rate limits and the resources required by your tools. Tune subagent parallelism separately; it is not the same as the number of user conversations the deployment can serve.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hermesCliCommands">
         Hermes CLI Commands
       </button>
