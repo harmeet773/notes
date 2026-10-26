@@ -394,6 +394,8 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
         <pre><code class="language-bash"># Upload to S3
 aws s3 cp file.txt s3://my-bucket/path/file.txt --sse AES256
 </code></pre>
+
+
       </div>
     </div>
   </div>
@@ -565,6 +567,64 @@ aws s3 cp file.txt s3://my-bucket/path/file.txt --sse AES256
   "Statement": [{ "Effect": "Allow", "Action": ["s3:*"], "Resource": ["arn:aws:s3:::my-bucket/*"] }]
 }
 </code></pre>
+
+        <h4>Advanced Identity &amp; Multi-Account Governance (SAA-C03)</h4>
+
+        <h5>11. AWS Control Tower</h5>
+        <ul>
+          <li><strong>Purpose:</strong> Control Tower automates the setup and ongoing governance of a multi-account AWS environment called a landing zone. It builds on AWS Organizations and services such as AWS IAM Identity Center, AWS CloudTrail, and AWS Config.</li>
+          <li><strong>Core accounts:</strong> The management account administers the organization. The log archive account centralizes audit logs, while the audit account provides the security team with access for investigations and cross-account review.</li>
+          <li><strong>Organizational units (OUs):</strong> Accounts are grouped into OUs so controls can be applied consistently. Control Tower creates a security OU and supports additional OUs for workloads such as development or sandbox environments.</li>
+          <li><strong>Controls (formerly called guardrails):</strong> Preventive controls block disallowed actions, commonly through service control policies (SCPs). Detective controls identify noncompliant resources, commonly through AWS Config. The available control types and implementations vary by control.</li>
+          <li><strong>Account Factory:</strong> Provides a governed way to provision accounts, place them in an OU, and apply the landing-zone baseline. Confirm account configuration and control status after provisioning.</li>
+        </ul>
+
+        <h5>12. AWS Organizations &amp; Service Control Policies</h5>
+        <ul>
+          <li><strong>Why multiple accounts:</strong> Separate workloads to reduce blast radius, isolate billing and quotas, and support different security or compliance requirements.</li>
+          <li><strong>Hierarchy:</strong> The organization root contains OUs, which can contain accounts or nested OUs. A member account belongs to one OU at a time. Structure OUs around common policy requirements.</li>
+          <li><strong>Management account:</strong> Owns the organization and receives consolidated billing. SCPs do not restrict principals in the management account.</li>
+          <li><strong>SCP behavior:</strong> SCPs set the maximum permissions available to IAM users and roles in member accounts, including the member account root user. They do not grant permissions; an IAM or resource-based policy must still allow an action.</li>
+          <li><strong>Evaluation:</strong> An explicit deny in an applicable policy blocks access. With an allow-list strategy, the action must be allowed by every applicable SCP in the hierarchy as well as by an identity or resource policy. With the default deny-list strategy, retain <code>FullAWSAccess</code> and add targeted denies.</li>
+          <li><strong>Consolidated billing:</strong> Combines charges for the organization and can enable eligible volume pricing and sharing of Savings Plans or Reserved Instance benefits, subject to service rules. The all-features organization mode enables SCPs and service integrations.</li>
+          <li><strong>Exam distinction:</strong> An organization trail can log activity across accounts, but logging and SCPs serve different purposes: CloudTrail records activity; SCPs limit maximum permissions.</li>
+        </ul>
+
+        <h5>13. AWS Security Token Service (STS)</h5>
+        <ul>
+          <li><strong>Purpose:</strong> STS issues temporary, limited-duration credentials: an access key ID, secret access key, and session token. Treat all three as sensitive credentials.</li>
+          <li><strong>AssumeRole:</strong> Returns credentials for a role in the same or another account. The role's trust policy identifies who may assume it; its permissions policies determine what the resulting session may do. The caller also needs permission to call <code>sts:AssumeRole</code>.</li>
+          <li><strong>Other federation APIs:</strong> <code>AssumeRoleWithSAML</code> supports SAML 2.0 identity providers; <code>AssumeRoleWithWebIdentity</code> supports OIDC identity providers. <code>GetSessionToken</code> can provide MFA-backed temporary credentials for IAM users.</li>
+          <li><strong>Duration:</strong> Role sessions are typically one hour by default and can be configured up to the role's maximum session duration (one to twelve hours). Role chaining limits a session to one hour. Use the shortest duration that meets the workload's needs.</li>
+          <li><strong>Cross-account pattern:</strong> Configure the target account's role trust policy, grant the caller permission to assume that role, and attach least-privilege permissions to the role.</li>
+        </ul>
+
+        <h5>14. Federation, Policy Types &amp; ARNs</h5>
+        <ul>
+          <li><strong>Delegation vs. federation:</strong> Delegation lets a principal use a role in another AWS account. Federation lets users authenticated by an external identity provider access AWS without creating a separate IAM user for each person.</li>
+          <li><strong>SAML flow:</strong> A corporate identity provider authenticates the user and issues a signed SAML assertion. The user exchanges it with STS using <code>AssumeRoleWithSAML</code> and receives temporary role credentials.</li>
+          <li><strong>Policy types:</strong> Inline policies are embedded in one identity; AWS-managed and customer-managed policies are reusable standalone policies. Identity-based policies attach to identities. Resource-based policies attach to supported resources and specify a <code>Principal</code>.</li>
+          <li><strong>Groups:</strong> IAM groups organize IAM users and can receive identity-based permissions, but a group cannot be used as a policy <code>Principal</code>.</li>
+          <li><strong>ARN format:</strong> <code>arn:partition:service:region:account-id:resource</code>. Some global resources, such as S3 buckets and IAM resources, omit the Region; some ARNs also omit the account ID.</li>
+          <li><strong>Zero trust and least privilege:</strong> Do not rely solely on network location. Authenticate and authorize each request, use relevant policy conditions, and scope actions and resources as narrowly as practical.</li>
+        </ul>
+
+        <h5>15. AWS Directory Service</h5>
+        <ul>
+          <li><strong>AWS Managed Microsoft AD:</strong> A managed, actual Microsoft Active Directory in AWS. Use it when workloads need Windows domain features such as Group Policy, LDAP/Kerberos, or trust relationships with an on-premises AD.</li>
+          <li><strong>AD Connector:</strong> A directory gateway that forwards authentication requests to an existing on-premises AD. It does not store directory users or passwords in AWS and requires connectivity to the directory.</li>
+          <li><strong>Simple AD:</strong> A lower-cost, Samba-based directory for basic directory needs. It is not a full Microsoft AD and does not support all Microsoft AD features, such as trust relationships.</li>
+          <li><strong>Choose by requirement:</strong> Use Managed Microsoft AD for managed AD features in AWS, AD Connector to use an existing on-premises directory without replicating it, and Simple AD for basic use cases that do not require full AD compatibility.</li>
+        </ul>
+
+        <h5>16. AWS IAM Identity Center</h5>
+        <ul>
+          <li><strong>Purpose:</strong> Provides workforce users with a single sign-in portal for AWS accounts and supported business applications. It was formerly named AWS Single Sign-On (AWS SSO).</li>
+          <li><strong>Identity sources:</strong> Use the built-in directory, connect an Active Directory, or federate with a supported external identity provider.</li>
+          <li><strong>Permission sets:</strong> Define job-based permission sets and assign them to users or groups for selected AWS accounts. Identity Center provisions the corresponding roles in those accounts; prefer group-based assignments for easier administration.</li>
+          <li><strong>ABAC:</strong> Attribute-based access control can pass user attributes as session tags and use policy conditions to match them with resource tags. Carefully govern the attributes and tags used to make access decisions.</li>
+          <li><strong>When to use it:</strong> It centralizes workforce access across accounts and applications. Use direct STS role federation when an application or integration needs to assume a specific role without the Identity Center user portal workflow.</li>
+        </ul>
       </div>
     </div>
   </div>
