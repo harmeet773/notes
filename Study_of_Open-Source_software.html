@@ -618,3 +618,114 @@ hermes update      # Update Hermes</code></pre>
     </div>
   </div>
 </div>
+
+<h3 class="mb-4 mt-5">OpenClaw</h3>
+<div class="accordion" id="openclawMainAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#openclawOverview">OpenClaw: Overview and Architecture</button>
+    </h2>
+    <div id="openclawOverview" class="accordion-collapse collapse" data-bs-parent="#openclawMainAccordion">
+      <div class="accordion-body">
+        <p><strong><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">OpenClaw</a></strong> is an open-source personal AI assistant that runs on your own devices and communicates through existing chat channels. Its state, memory, and credentials are stored on the user's hardware.</p>
+        <p>A local Gateway acts as the control plane for sessions, tools, events, and channel connections. The CLI, terminal UI, Control UI, native apps, and messaging channels connect to this Gateway. OpenClaw is MIT licensed and can use hosted or local model providers.</p>
+        <ul>
+          <li><strong>Gateway:</strong> central control for channels, sessions, tools, and events.</li>
+          <li><strong>Channels:</strong> WhatsApp, Telegram, Discord, Slack, Teams, Signal, iMessage, and others.</li>
+          <li><strong>Tools and skills:</strong> browser automation, command execution, web search, reusable skills, and plugins.</li>
+          <li><strong>Device nodes:</strong> supported devices can provide voice, canvas, camera, screen, and local actions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#openclawGettingStarted">Getting Started</button>
+    </h2>
+    <div id="openclawGettingStarted" class="accordion-collapse collapse" data-bs-parent="#openclawMainAccordion">
+      <div class="accordion-body">
+        <p>OpenClaw supports macOS, Linux, Windows, WSL2, npm, Docker, and Nix installation paths.</p>
+        <pre><code>curl -fsSL https://openclaw.ai/install.sh | bash
+openclaw onboard --install-daemon
+openclaw gateway status
+openclaw dashboard</code></pre>
+        <p>Onboarding configures model access, creates the workspace, and sets up the Gateway. Useful commands include <code>openclaw gateway install</code>, <code>openclaw gateway restart</code>, <code>openclaw status</code>, and <code>openclaw doctor</code>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#openclawSecurity">Security, Privacy, and Operations</button>
+    </h2>
+    <div id="openclawSecurity" class="accordion-collapse collapse" data-bs-parent="#openclawMainAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Treat inbound messages and files as untrusted input.</li>
+          <li>Use channel pairing, allowlists, authentication, and least privilege.</li>
+          <li>Tools in the main session can run on the host; use sandboxing when isolation is required.</li>
+          <li>Do not expose the Gateway publicly without reviewing authentication, TLS, firewall, and network controls.</li>
+          <li>Keep Node.js, OpenClaw, plugins, skills, and operating-system packages updated.</li>
+        </ul>
+        <p>Useful links: <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">official documentation</a>, <a href="https://docs.openclaw.ai/gateway/security" target="_blank" rel="noopener">security guide</a>, and <a href="https://docs.openclaw.ai/gateway/sandboxing" target="_blank" rel="noopener">sandboxing guide</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="mb-4 mt-5">OpenClaw vs Hermes Agent</h3>
+<div class="accordion" id="agentComparisonAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#agentComparisonOverview">Comparison Overview</button>
+    </h2>
+    <div id="agentComparisonOverview" class="accordion-collapse collapse" data-bs-parent="#agentComparisonAccordion">
+      <div class="accordion-body">
+        <p>Both projects are open-source AI agent platforms that connect language models to tools and communication channels. The better choice depends on the desired deployment and workflow.</p>
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead><tr><th>Area</th><th>OpenClaw</th><th>Hermes Agent</th></tr></thead>
+            <tbody>
+              <tr><td>Primary positioning</td><td>A local personal assistant available through existing chat channels.</td><td>A self-improving agent emphasizing memory, skills, tools, and learning.</td></tr>
+              <tr><td>Control plane</td><td>Gateway manages sessions, tools, events, and channel connections.</td><td>Agent runtime and API server coordinate conversation, tools, memory, skills, and delegated work.</td></tr>
+              <tr><td>Interfaces</td><td>CLI, TUI, Control UI, native apps, and many messaging channels.</td><td>CLI/TUI, web interface, API, and supported messaging platforms.</td></tr>
+              <tr><td>Model flexibility</td><td>Hosted or local providers can be configured as the model layer.</td><td>Providers and compatible endpoints can be selected independently of the agent workflow.</td></tr>
+              <tr><td>Execution</td><td>Runs on the user's devices through a local Gateway, host tools, nodes, and optional sandboxing.</td><td>Supports local execution and remote backends such as Docker, SSH, and cloud sandboxes.</td></tr>
+              <tr><td>Knowledge and learning</td><td>Persists workspace state and assistant memory locally.</td><td>Emphasizes persistent memory, conversation search, and creation or refinement of skills.</td></tr>
+              <tr><td>Extensibility</td><td>Channels, tools, skills, plugins, and device nodes.</td><td>Tools, skills, providers, hooks, and delegated subagents.</td></tr>
+              <tr><td>License</td><td>MIT licensed.</td><td>MIT licensed.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#agentComparisonSecurity">Security and Deployment</button>
+    </h2>
+    <div id="agentComparisonSecurity" class="accordion-collapse collapse" data-bs-parent="#agentComparisonAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li><strong>OpenClaw:</strong> pairing, allowlists, sandboxing, and least privilege are central to safe messaging-channel deployment.</li>
+          <li><strong>Hermes Agent:</strong> session isolation, supported pairing, approvals, and remote execution can limit host exposure.</li>
+          <li><strong>Shared concern:</strong> both execute commands and process untrusted messages, so prompt injection, credentials, and tool permissions require strict controls.</li>
+          <li>Test both with non-sensitive data before connecting important accounts or enabling unrestricted tools.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#agentComparisonRecommendation">Which One Should You Choose?</button>
+    </h2>
+    <div id="agentComparisonRecommendation" class="accordion-collapse collapse" data-bs-parent="#agentComparisonAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Choose <strong>OpenClaw</strong> when you want a local, always-available assistant integrated with many chat platforms and devices.</li>
+          <li>Choose <strong>Hermes Agent</strong> when persistent learning, reusable skills, delegated work, and flexible remote execution are priorities.</li>
+          <li>Compare both on one real workflow because features alone do not predict reliability for every task.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

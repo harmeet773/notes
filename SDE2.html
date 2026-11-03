@@ -169,7 +169,48 @@ function topKFrequent(nums, k) {
           <li>Microservices</li>
         </ul>
 
-        
+        <div class="accordion" id="scalabilityAccordion">
+          <div class="accordion-item">
+            <h5 class="accordion-header" id="headingScalability">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#scalability" aria-expanded="false" aria-controls="scalability">
+                Scalability (Horizontal vs Vertical)
+              </button>
+            </h5>
+            <div id="scalability" class="accordion-collapse collapse" data-bs-parent="#scalabilityAccordion">
+              <div class="accordion-body">
+                <p><b>Scalability</b> is the ability of a system to handle increased workload by adding capacity while maintaining acceptable performance.</p>
+
+                <h6>Vertical scaling (scale up)</h6>
+                <ul>
+                  <li>Add more CPU, memory, storage, or network capacity to an existing server.</li>
+                  <li>Advantages: simple to implement, no application-level distribution required, and easier data consistency.</li>
+                  <li>Disadvantages: hardware limits, downtime for upgrades, higher cost, and a single-node failure risk.</li>
+                  <li>Best for monoliths, small databases, and workloads that are difficult to partition.</li>
+                </ul>
+
+                <h6>Horizontal scaling (scale out)</h6>
+                <ul>
+                  <li>Add more machines and distribute traffic or work across them, usually behind a load balancer.</li>
+                  <li>Advantages: higher capacity, fault tolerance, and limited physical scaling ceiling.</li>
+                  <li>Disadvantages: more operational complexity, distributed state management, and consistency challenges.</li>
+                  <li>Requires the application to be stateless or to manage shared state through stores such as Redis or a database.</li>
+                  <li>Best for web tiers, microservices, queues, and workloads that can be partitioned or replicated.</li>
+                </ul>
+
+                <h6>Design considerations</h6>
+                <ul>
+                  <li><b>Stateless services:</b> Keep session and request state outside application instances.</li>
+                  <li><b>Database bottleneck:</b> Use read replicas, caching, partitioning/sharding, or optimized queries.</li>
+                  <li><b>Availability:</b> Run replicas across failure domains and deploy instances without a single point of failure.</li>
+                  <li><b>Cost and elasticity:</b> Horizontal scaling is often more cost-effective and elastic in cloud environments.</li>
+                  <li><b>Autoscaling:</b> Scale based on metrics such as CPU, memory, queue depth, or request latency.</li>
+                </ul>
+
+                <p><b>Common approach:</b> Start with vertical scaling for simplicity, then scale out the bottlenecks that can be distributed. Most production systems combine both forms.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
         <h5>Notes</h5>
