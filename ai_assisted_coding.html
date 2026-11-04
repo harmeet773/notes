@@ -110,6 +110,32 @@ title: AI-Assisted Coding
             </div>
           </div>
 
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#aiCodingHooks"
+              >
+                1.4 Hooks
+              </button>
+            </h2>
+            <div
+              id="aiCodingHooks"
+              class="accordion-collapse collapse"
+              data-bs-parent="#aiCodingToolsNestedAccordion"
+            >
+              <div class="accordion-body">
+                <p class="mb-0">
+                  Hooks run shell commands or scripts automatically when specific AI coding-agent events occur, such as before or after a tool call. Use them for repeatable automation like formatting code, running checks, or blocking unsafe actions; they should be kept small and deterministic.
+                  <br />
+                  Hooks may invoke custom agent commands or wrappers, such as <code>/commit-push-pr</code>, depending on the tool, but shell scripts are more reliable for Git and other deterministic operations. 
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
