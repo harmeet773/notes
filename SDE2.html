@@ -476,11 +476,60 @@ function topKFrequent(nums, k) {
     </div>
   </div>
 
-  <!-- 9. SDE Roadmap -->
+  <!-- 9. Design Patterns -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#designPatterns">
+        9. Design Patterns
+      </button>
+    </h2>
+    <div id="designPatterns" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
+      <div class="accordion-body">
+        <p>Design patterns are reusable solutions to recurring software design problems. They should describe intent and improve the structure of code, not merely add abstractions.</p>
+
+        <h5>Adapter Pattern</h5>
+        <p>An <strong>adapter</strong> converts one interface into another interface that a client expects. It is useful for integrating third-party libraries, legacy code, APIs, databases, and file formats without changing either side's implementation.</p>
+        <pre><code class="language-typescript">// Client interface
+interface UserService {
+  getUser(id: string): User;
+}
+
+// Adapter
+class PaymentUserAdapter implements UserService {
+  constructor(private paymentLibrary: PaymentLibrary) {}
+
+  getUser(id: string): User {
+    const customer = this.paymentLibrary.fetchCustomer(id);
+
+    return {
+      id: customer.userId,
+      name: customer.customerName
+    };
+  }
+}</code></pre>
+        <ul>
+          <li><strong>Purpose:</strong> bridge incompatible interfaces.</li>
+          <li><strong>Use when:</strong> the client and dependency can work together but expose different contracts.</li>
+          <li><strong>Avoid when:</strong> you can change one side directly, or the mapping is simple and the adapter only adds indirection.</li>
+        </ul>
+
+        <h5>Other Related Patterns</h5>
+        <ul>
+          <li><strong>Factory Method:</strong> lets subclasses decide which object type to create while keeping object creation in a common workflow. <a href="https://refactoring.guru/design-patterns/factory-method" target="_blank" rel="noopener noreferrer">Learn Factory Method</a></li>
+          <li><strong>Decorator:</strong> adds behavior to an object dynamically while preserving its interface.</li>
+          <li><strong>Proxy:</strong> provides a controlled replacement for another object, often for access control, caching, lazy loading, or remote calls.</li>
+        </ul>
+
+        <p><strong>Practice:</strong> identify the problem each pattern solves, then compare its structure and trade-offs with composition, inheritance, dependency injection, and direct implementation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. SDE Roadmap -->
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#sdeRoadmap">
-        9. SDE roadmap
+        10. SDE Roadmap
       </button>
     </h2>
     <div id="sdeRoadmap" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
@@ -505,21 +554,17 @@ function topKFrequent(nums, k) {
     </div>
   </div>
 
-  <!-- 10. Resources -->
+  <!-- 11. Resources -->
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#resources">
-        10. Resources
+        11. Resources
       </button>
     </h2>
     <div id="resources" class="accordion-collapse collapse" data-bs-parent="#sdeLevel2MainAccordion">
       <div class="accordion-body">
         <ul>
-          <li>
-            <a href="https://refactoring.guru/design-patterns/factory-method" target="_blank" rel="noopener noreferrer">
-              refactoring guru 
-            </a>
-          </li>
+          <li><a href="https://refactoring.guru/design-patterns" target="_blank" rel="noopener noreferrer">Refactoring Guru - Design Patterns</a></li>
         </ul>
       </div>
     </div>
