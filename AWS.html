@@ -303,6 +303,8 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
           VPC, administrators typically specify a CIDR (Classless Inter-Domain Routing) block such as 
           <code>10.0.0.0/16</code> to allocate private IP addresses.  
           <br><br>
+          <strong>An Amazon VPC is limited to a single AWS Region</strong>, but it can span multiple Availability Zones (AZs) within that Region.
+          <br><br>
           Within a VPC, resources can communicate securely with each other while remaining isolated from 
           other networks. VPCs are commonly divided into multiple subnets to organize workloads and 
           enhance security.
@@ -310,8 +312,9 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
 
         <li>
           <strong>Subnets:</strong>  
-          Subnets are smaller network segments created within a VPC. Each subnet resides within a specific 
-          Availability Zone to ensure high availability and fault tolerance.
+          Subnets are smaller network segments created within a VPC. Each subnet resides within a single
+          Availability Zone and cannot span multiple AZs. To support high availability and fault tolerance,
+          create separate subnets in multiple AZs.
           <ul>
             <li><strong>Public Subnets:</strong> Subnets that allow direct access to the internet through an Internet Gateway. Resources such as web servers are usually placed here.</li>
             <li><strong>Private Subnets:</strong> Subnets without direct internet access. Internal services such as databases and backend applications are typically deployed here for better security.</li>
