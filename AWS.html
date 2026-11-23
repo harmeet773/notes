@@ -363,7 +363,18 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
             <li><strong>VPC Peering:</strong> Connects two VPCs so resources can communicate privately.</li>
             <li><strong>Transit Gateway:</strong> Acts as a central hub that connects multiple VPCs and on-premise networks.</li>
             <li><strong>AWS PrivateLink:</strong> Enables secure private access to AWS services and third-party services without exposing traffic to the public internet.</li>
-            <li><strong>VPC Endpoints:</strong> Provide private access from a VPC to supported AWS services without requiring an internet or NAT gateway. Gateway endpoints support S3 and DynamoDB; interface endpoints use AWS PrivateLink.</li>
+            <li>
+              <strong>VPC Endpoints:</strong> Provide private connectivity to supported services and resources. AWS documents six types:
+              <ul>
+                <li><strong>Gateway:</strong> Routes traffic privately to Amazon S3 or DynamoDB.</li>
+                <li><strong>Interface:</strong> Uses private IP addresses to connect to supported services.</li>
+                <li><strong>Gateway Load Balancer:</strong> Routes traffic to virtual appliances. This endpoint is mainly used for network security and traffic inspection. example - NGFW , IDS/IPS</li>
+                <li><strong>Resource:</strong> Provides private access to a shared resource in another VPC.</li>
+                <li><strong>Tunnel:</strong> Provides private access to a shared network segment.</li>
+                <li><strong>Service network:</strong> Connects to services and resources in a VPC Lattice service network.</li>
+              </ul>
+              Gateway endpoints do not use AWS PrivateLink; the other endpoint types do.
+            </li>
           </ul>
         </li>
 
