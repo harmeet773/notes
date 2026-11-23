@@ -322,6 +322,14 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
         </li>
 
         <li>
+          <strong>Bastion Host (Jump Host):</strong>
+          A bastion host is a hardened server, often an EC2 instance in a public subnet, that provides an
+          administrative entry point to instances in private subnets. Restrict its inbound access to
+          trusted IP addresses and allow only the required protocols. AWS Systems Manager Session Manager
+          can provide managed instance access without exposing a bastion host to the internet.
+        </li>
+
+        <li>
           <strong>Security Groups:</strong>  
           Security Groups act as virtual firewalls that control inbound and outbound traffic for individual 
           AWS resources such as EC2 instances. They operate at the instance level and are stateful, meaning 
