@@ -351,7 +351,7 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
           external networks and other AWS environments.
           <ul>
             <li><strong>Internet Gateway (IGW):</strong> Enables communication between resources in a public subnet and the internet.</li>
-            <li><strong>NAT Gateway:</strong> Allows instances in private subnets to access the internet for updates while preventing inbound connections.</li>
+            <li><strong>NAT Gateway:</strong> Deployed in a public subnet, it allows instances in private subnets to access the internet for updates without public IP addresses.</li>
             <li><strong>Route Tables:</strong> Define how network traffic is directed within the VPC.</li>
           </ul>
         </li>
