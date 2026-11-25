@@ -367,7 +367,7 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
               <strong>VPC Endpoints:</strong> Provide private connectivity to supported services and resources. AWS documents six types:
               <ul>
                 <li><strong>Gateway:</strong> Routes traffic privately to Amazon S3 or DynamoDB with no additional endpoint charge (standard data transfer charges may apply).</li>
-                <li><strong>Interface:</strong> Uses private IP addresses to connect to supported services; billed per AZ-hour and per GB of data processed.</li>
+                <li><strong>Interface:</strong> Uses AWS PrivateLink to create endpoint network interfaces (ENIs) with private IP addresses in selected subnets. This enables private access to supported AWS and third-party services without an internet gateway or NAT gateway. Private DNS can resolve the service's standard AWS hostname to the endpoint, and AWS bills per Availability Zone-hour and per GB of data processed.</li>
                 <li><strong>Gateway Load Balancer:</strong> Routes traffic to virtual appliances. This endpoint is mainly used for network security and traffic inspection. example - NGFW , IDS/IPS</li>
                 <li><strong>Resource:</strong> Provides private access to a shared resource in another VPC.</li>
                 <li><strong>Tunnel:</strong> Provides private access to a shared network segment.</li>
