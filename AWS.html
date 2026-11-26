@@ -330,9 +330,18 @@ aws ec2 stop-instances --instance-ids i-0123456789abcdef0
         </li>
 
         <li>
+          <strong>AWS Network Control Relationship:</strong>
+          <ol>
+            <li><strong>ENI = Virtual NIC:</strong> An Elastic Network Interface provides network connectivity and IP addressing to a VPC resource.</li>
+            <li><strong>Security Group = Firewall for ENI:</strong> Security groups control inbound and outbound traffic for an ENI and are stateful.</li>
+            <li><strong>NACL = Firewall for Subnet:</strong> A Network ACL controls traffic entering and leaving a subnet and is stateless.</li>
+          </ol>
+        </li>
+
+        <li>
           <strong>Security Groups:</strong>  
-          Security Groups act as virtual firewalls that control inbound and outbound traffic for individual 
-          AWS resources such as EC2 instances. They operate at the instance level and are stateful, meaning 
+          Security Groups act as virtual firewalls that control inbound and outbound traffic for ENIs attached
+          to AWS resources such as EC2 instances. They operate at the ENI level and are stateful, meaning
           that if an inbound request is allowed, the response traffic is automatically permitted. Security 
           groups are commonly used to restrict access based on IP addresses, ports, and protocols.
         </li>
